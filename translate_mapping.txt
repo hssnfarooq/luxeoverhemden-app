@@ -1,0 +1,240 @@
+﻿
+PROFUOMO : LuxeOverhemden
+OVERSHIRT : Overshirt
+SOLID : Effen
+GRAPHIC : Patroon print
+FLOWER : Bloemen print
+STRIPE : Streep
+CHECK : Ruiten
+HERRINGBONE : Visgraat
+TWOTONE : Twee kleurig
+FAUXUNI : Semi effen
+PAISLEY : Paisley
+DOT : Dot
+COTTON : Katoen
+LINEN : Linnen
+WOOL : Wol
+NEW WOOL : Nieuwe wol
+VIRGIN WOOL : Maagdelijke wol
+POLYESTER : Polyester
+POLYCARBONATE : Polycarbonaat
+METAL : Metaal
+BUFFALO LEATHER : Buffelleer
+COW LEATHER : Runderleer
+LEATHER : Leer
+CALF SUEDE : Kalfssuède
+SILK : Zijde
+MODAL : Modal
+VISCOSE : Viscose
+POLYAMIDE : Polyamide
+COWLEATHER : Runderleer
+LEATHER : Leer
+MERINO : Merino
+SUEDE : Suède
+LYOCELL : Lyocell
+LAMBSWOOL : Lamswol
+SINGLE CUFF : Enkel manchet
+NO CUFF : Geen manchet
+DOUBLE CUFF : Dubbel manchet
+LUXURY BASIC : Luxury basic
+PIQUE : Pique
+BETTER COTTON INITIATIVE : Better Cotton Initiative
+ORGANIC CONTENT STANDARD : Organic Content Standard
+RESPONSIBLE WOOL STANDARD : Responsible Wool Standard
+GLOBAL ORGANIC TEXTILE STANDARD : Global Organic Textile Standard
+LENZING TENCEL LYOCELL : Lenzing Tencel Lyocell
+OCS BLEND 50 : OCS Blend 50
+ORGANIC : Organic
+BLUE : Blauw
+DARK BLUE : Blauw
+DARK PINK : Roze
+MID BLUE : Blauw
+PEACH : Oranje
+BEIGE : Beige
+LICHT ZAND : Beige
+TAUPE : Taupe
+BROWN : Bruin
+MID GREEN : Groen
+GREEN : Groen
+DARK GREEN : Legergroen
+WHITE : Wit
+LIGHT BLUE : Blauw
+LIGHT ORANGE : Oranje
+TUSCAN RED : Rood
+MULTICOLOR : Meerkleurig
+BURGUNDY : Bordeaux
+SAND : Beige
+DARK BEIGE : Beige
+LIGHT BROWN : Beige
+CAMEL : Camel
+NAVY : Navy
+GREY : Grijs
+ANTHRA : Antraciet
+DARK GREY : Antraciet
+PETROL : Petrol
+AQUA : Aqua
+PINK : Roze
+RUST : Roest
+GOLD : Goud
+BLACK : Zwart
+ORANGE : Oranje
+MINT : Mintgroen
+OLIVE : Olijfgroen
+LIGHT BEIGE : Beige
+LIGHT GREEN : Groen
+AUBERGINE : Aubergine
+RED : Rood
+ARMY : Legergroen
+MID BROWN : Bruin
+KHAKI : Khaki
+DARK BROWN : Bruin
+MULTICOLOUR : Meerkleurig
+SILVER : Zilver
+ROYAL : Koningsblauw
+CORAL : Koraal
+INDIGO : Indigo
+MID GREY : Grijs
+LIGHT GREY : Grijs
+COGNAC : Cognac
+OFF-WHITE : Off white
+WIDESPREAD : Widespread
+POLO COLLAR : Polo kraag
+EXTRA CUTAWAY : Extra cutaway
+CREWNECK : Ronde hals
+CUTAWAY : Cutaway
+EXTREME CUTAWAY : Extra cutaway
+STANDING COLLAR : Staande kraag
+V-NECK : V-hals
+CAMP COLLAR : Camp collar
+BUTTON DOWN : Button down
+HALF ZIP : Half zip
+ONE PIECE : One piece
+ROLL-NECK : Coltrui
+HOODIE : Hoodie
+LONG SLEEVE : Lange mouw (normaal)
+NORMAL SLEEVE : Lange mouw (normaal)
+SHORT SLEEVE : Korte mouw
+MOCK-NECK : Mock neck
+FULL-ZIP COLLAR : Full zip
+EXTRA LONG SLEEVE : Extra lange mouw 72 cm
+NON IRON : Strijkvrij
+ULTIMATE NON IRON : Ultiem strijkvrij
+EASY CARE : Easy care
+shirts : Overhemden
+shirts_profuomo : Overhemden
+winter_acessories : 
+shoes : 
+overshirts : Overshirts
+jackets : 
+polos : Polo's
+accessories : 
+t-shirts : 
+outerwear : 
+wedding : 
+ties : 
+knitwear : Truien
+trousers : 
+belts : 
+99% METAL / 1% EPOXY : 99% metaal / 1% epoxy
+100% LEATHER : 100% leer
+100% COTTON : 100% katoen
+56% LYOCELL / 20% COTTON / 20% POLYAMIDE / 4% SILK : 56% lyocell / 20% katoen / 20% polyamide / 4% zijde
+39% COTTON / 31% LINEN / 17% POLYESTER / 13% POLYAMIDE : 39% katoen / 31% linnen / 17% polyester / 13% polyamide
+100% LAMBSWOOL : 100% lamswol
+50% COTTON / 50% POLYESTER : 50% katoen / 50% polyester
+70% COTTON / 26% POLYAMIDE / 4% ELASTANE : 70% katoen / 26% polyamide / 4% elastaan
+75% COTTON / 21% POLYAMIDE / 4% ELASTANE : 75% katoen / 21% polyamide / 4% elastaan
+82% POLYESTER / 18% ELASTINE : 82% polyester / 18% elastaan
+87% POLYESTER / 13% ELASTINE : 87% polyester / 13% elastaan
+50% POLYESTER / 30% COTTON / 20% WOOL : 50% polyester / 30% katoen / 20% wol
+100% CALF LEATH : 100% kalfsleer
+55% WOOL / 45% COTTON : 55% wol / 45% katoen
+98% COTTON / 2% ELASTAN : 98% katoen / 2% elastaan
+75% METAL / 25% EPOXY : 75% metaal / 25% epoxy
+100% LEATHER BU : 100% leer
+85% POLYESTER / 15% ELASTINE : 85% polyester / 15% elastaan
+85% THERMOPLAS / 15% STAINLESS : 85% thermoplastisch / 15% roestvrij staal
+80% COTTON / 10% RUBBER / 10% VISCOSE : 80% katoen / 10% rubber / 10% viscose
+38% NEW WOOL / 38% COTTON / 24% POLYESTER : 38% nieuwe wol / 38% katoen / 24% polyester
+54% COTTON / 46% POLYESTER : 54% katoen / 46% polyester
+80% METAL / 20% STONE : 80% metaal / 20% steen
+90% NEW WOOL / 10% POLYAMIDE : 90% nieuwe wol / 10% polyamide
+59% NEW WOOL / 39% POLYESTER / 2% ELASTAN : 59% nieuwe wol / 39% polyester / 2% elastaan
+70% LYOCELL / 25% COTTON / 5% SILK : 70% lyocell / 25% katoen / 5% zijde
+100% NEW WOOL : 100% nieuwe wol
+52% LINEN / 48% COTTON : 52% linnen / 48% katoen
+53% VIRGINWOOL / 45% POLYESTER / 2% ELASTAN : 53% scheerwol / 45% polyester / 2% elastaan
+38% NEW WOOL / 37% COTTON / 25% POLYESTER : 38% nieuwe wol / 37% katoen / 25% polyester
+55% POLYESTER / 45% LINEN : 55% polyester / 45% linnen
+56% LYOCELL / 20% COTTON / 20% SILK / 4% POLYAMIDE : 56% lyocell / 20% katoen / 20% zijde / 4% polyamide
+37% COTTON / 28% CARBONATE / 25% POLYESTER / 10% W : 37% katoen / 28% carbonaat / 25% polyester / 10% w
+56% COTTON / 44% POLYESTER : 56% katoen / 44% polyester
+80% COTTON / 18% POLYAMIDE / 2% ELATINE : 80% katoen / 18% polyamide / 2% elatine
+46% POLYESTER / 43% WOOL / 8% NEW WOOL / 3% POLYAM : 46% polyester / 43% wol / 8% nieuwe wol / 3% polyam
+100% WOOL : 100% wol
+NEW WOOL : Nieuw wol
+53% COTTON / 47% : 53% katoen / 47% lyocell
+53% COTTON / 47% LYOCELL : 53% katoen / 47% lyocell
+70% COTTON / 30% LYOCELL : 70% katoen / 30% lyocell
+50% WOOL / 28% COTTON / 21% NYLON / 1% ELASTAN : 50% wol / 28% katoen / 21% nylon / 1% elastaan
+100% POLYAMIDE : 100% polyamide
+86% POLYESTER / 14% ELASTINE : 86% polyester / 14% elastaan
+56% POLYESTER / 26% LINEN / 16% VISCOSE / 2% ELAST : 56% polyester / 26% linnen / 16% viscose / 2% elastaan
+47% POLYESTER / 20% WOOL / 16% NYLON / 13% COTTON : 47% polyester / 20% wol / 16% nylon / 13% katoen
+80% POLYAMIDE / 10% ELASTODINE / 10% COW LEATHE : 80% polyamide / 10% elastodine / 10% runderleer
+70% VISCOSE / 25% POLYAMIDE / 5% NYLON : 70% viscose / 25% polyamide / 5% nylon
+100% COW LEATHE : 100% runderleer
+50% COTTON / 40% WOOL / 10% POLYAMIDE : 50% katoen / 40% wol / 10% polyamide
+80% COTTON / 20% LINEN : 80% katoen / 20% linnen
+43% COTTON / 40% VIRGIN WOOL / 14% VISCOSE / 3% POLYESTER : 43% katoen / 40% virgin wol / 14% viscose / 3% polyester
+85% METAL / 15% STONE : 85% metaal / 15% steen
+100% SILK : 100% zijde
+100% VIRGIN WOOL : 100% virgin wol
+60% WOOL / 40% POLYESTER : 60% wol / 40% polyester
+68% LYOCELL / 29% COTTON / 3% ELASTAN : 68% lyocell / 29% katoen / 3% elastaan
+55% WOOL / 19% CARBONATE / 16% POLYAMIDE / 6% POLY : 55% wol / 19% carbonaat / 16% polyamide / 6% poly
+100% COW SUEDE : 100% kalfssuède
+80% WOOL / 20% NYLON : 80% wol / 20% nylon
+68% WOOL / 32% POLYAMIDE : 68% wol / 32% polyamide
+100% METAL : 100% metaal
+72% POLYESTER / 28% ELASTOMULT : 72% polyester / 28% elastomult
+65% WOOL / 35% POLYAMIDE : 65% wol / 35% polyamide
+51% COTTON / 49% POLYESTER : 51% katoen / 49% polyester
+58% WOOL / 42% POLYESTER : 58% wol / 42% polyester
+74% POLYESTER / 18% VISCOSE / 8% ELASTINE : 74% polyester / 18% viscose / 8% elastaan
+50% NEW WOOL / 30% POLYAMIDE / 20% MODAL : 50% nieuwe wol / 30% polyamide / 20% modal
+62% COTTON / 38% LINEN : 62% katoen / 38% linnen
+80% WOOL / 20% POLYAMIDE : 80% wol / 20% polyamide
+56% POLYESTER / 29% WOOL / 10% COTTON / 5% VISCOSE : 56% polyester / 29% wol / 10% katoen / 5% viscose
+72% LINEN / 28% COTTON : 72% linnen / 28% katoen
+100% LINEN : 100% linnen
+95% METAL / 5% CARBON : 95% metaal / 5% carbon
+66% POLYESTER / 34% COTTON : 66% polyester / 34% katoen
+50% WOOL / 25% NYLON / 25% LYOCELL : 50% wol / 25% nylon / 25% lyocell
+85% COTTON / 15% POLYESTER : 85% katoen / 15% polyester
+85% COTTON / 15% LINEN : 85% katoen / 15% linnen
+88% COTTON / 12% LINEN : 88% katoen / 12% linnen 
+30% WOOL / 30% VISCOSE / 25% POLYAMIDE / 15% SILK : 30% wol / 30% viscose / 25% polyamide / 15% zijde
+90% METAL / 10% CARBON : 90% metaal / 10% carbon
+56% LYOCELL / 20% COTTON / 20% NYLON / 4% SILK : 56% lyocell / 20% katoen / 20% nylon / 4% zijde
+97% COTTON / 3% ELASTAN : 97% katoen / 3% elastaan
+97% COTTON / 3% ELASTANE : 97% katoen / 3% elastaan
+53% NEW WOOL / 45% POLYESTER / 2% ELASTAN : 53% nieuwe wol / 45% polyester / 2% elastaan
+100% COWLEATHER : 100% runderleer
+69% MODAL / 28% COTTON / 3% ELASTAN : 69% modal / 28% katoen / 3% elastaan
+55% LINEN / 45% COTTON : 55% linnen / 45% katoen
+63% POLYAMIDE / 15% POLYESTER / 12% ELASTAN / 10% : 63% polyamide / 15% polyester / 12% elastaan / 10%
+97% METAL / 3% EPOXY : 97% metaal / 3% epoxy
+62% POLYESTER / 33% VISCOSE / 5% ELASTAN : 62% polyester / 33% viscose / 5% elastaan
+46% COTTON / 33% POLYESTER / 18% VISCOSE / 3% ELAS : 46% katoen / 33% polyester / 18% viscose / 3% elas
+50% WOOL / 30% NYLON / 20% MODAL : 50% wol / 30% nylon / 20% modal
+98% METAL / 2% EPOXY : 98% metaal / 2% epoxy
+53% POLYESTER / 47% COTTON : 53% polyester / 47% katoen
+100% POLYESTER : 100% polyester
+54% POLYAMIDE / 32% COTTON / 14% POLYESTER : 54% polyamide / 32% katoen / 14% polyester
+47% POLYESTER / 20% WOOL / 16% POLYAMIDE / 13% COTTON / 4% VISCOSE : 47% polyester / 20% wol / 16% polyamide / 13% katoen / 4% viscose
+60% WOOL / 20% POLYAMIDE / 15% POLYCARBONATE / 5% POLYESTER : 60% wol / 20% polyamide / 15% polycarbonaat / 5% polyester
+70% WOOL / 30% POLYAMIDE : 70% wol / 30% polyamide
+46% POLYESTER / 20% WOOL / 18% POLYAMIDE / 12% COTTON / 4% VISCOSE : 46% polyester / 20% wol / 18% polyamide/ 12% katoen / 4% viscose
+70% VIRGIN WOOL / 30% POLYAMIDE : 70% virgin wol / 30% polyamide
+70% WOOL / 30% POLYAMIDE : 70% wol / 30% polyamide

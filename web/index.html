@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>AUTOMATION</title>
+	<link rel="shortcut icon" type="image/x-icon" href="assets/icon.ico">
+	<!-- moved styles to styles.css -->
+	<link rel="stylesheet" href="styles.css">
+
+	<!-- Favicon CSS -->
+	<link rel="icon" type="img/png" sizes="32x32" href="assets/images/favicon.png">
+	<!-- fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/all.min.css">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+	<!-- Slick CSS -->
+	<link rel="stylesheet" href="assets/plugins/slick/slick.css">
+	<!-- Style CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- Page CSS -->
+	<link rel="stylesheet" href="assets/css/index.css">
+	<script type="text/javascript" src="eel.js"></script>
+
+</head>
+
+<body>
+	<form>
+		<h1>SUPPLIERSTOCK</h1>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-download-csv"><i
+				class="fa fa-download fa-lg"></i> Download bestand</button>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-merge-csv"><i
+				class="fa fa-cog fa-lg"></i> Bestand samenvoegen</button>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-download-profuomo"><i
+				class="fa fa-download fa-lg"></i> Profuomo voorraad</button>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-upload-csv"><i
+				class="fa fa-upload fa-lg"></i> Upload Stock</button>
+		<label>CM Lagerbestand<input type="checkbox" id="cmlagerbestand" checked></label><br>
+		<label>Profuomo voorraad<input type="checkbox" id="profuomo_products" checked></label><br>
+		<label for="automation-scrape-profuomo-url">URL Scraper</label><br>
+		<input type="text" name="automation-scrape-profuomo-url" id="automation-scrape-profuomo-url" placeholder="https://b2b.profuomo.com/.../Shirts">
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-profuomo"><i
+				class="fa fa-download fa-lg"></i>Scrape URL</button>
+		<label for="automation-upload-csv-magento">CSV voor upload</label><br>
+		<select name="automation-upload-csv-magento" id="automation-upload-csv-magento">
+			<!-- CSV Options here -->
+		</select>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-products"><i
+				class="fa fa-upload fa-lg"></i> Upload Products</button>
+		<div id="info"></div>
+		<div id="message"></div>
+		<div id="error"></div>
+	</form>
+	<!-- Jquery -->
+	<script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+	<!-- Slick -->
+	<script src="assets/plugins/slick/slick.js"></script>
+	<!-- svg -->
+	<script src="assets/plugins/svg/svg-handler.js"></script>
+	<!-- fontawesome -->
+	<script src="assets/plugins/fontawesome/all.min.js"></script>
+	<!-- Script Js -->
+	<script src="assets/js/script.js"></script>
+	<script src="assets/js/interface.js"></script>
+	<script>
+		$(document).ready(function () {
+			window.resizeTo(420, 820);
+		});
+
+		// onclick handlers for the buttons
+		document.getElementById("automation-download-csv").addEventListener("click", function () {
+			// code to handle download button click
+			console.log("Download button clicked");
+			$('#info').text("Downloaden...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.download()(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+		// onclick handlers for the buttons
+		document.getElementById("automation-download-profuomo").addEventListener("click", function () {
+			// code to handle download button click
+			console.log("Download profuomo clicked");
+			$('#info').text("Downloaden...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.profuomo()(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+
+
+		document.getElementById("automation-merge-csv").addEventListener("click", function () {
+			// code to handle merge button click
+			console.log("Merge button clicked");
+			$('#info').text("Samenvoegen...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.merge()(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+		document.getElementById("automation-upload-csv").addEventListener("click", function () {
+			// code to handle upload button click
+			console.log("Upload button clicked");
+			cmlagerbestand = document.getElementById("cmlagerbestand").checked;
+			profuomo_products = document.getElementById("profuomo_products").checked;
+			$('#info').text("Uploaden...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.upload(cmlagerbestand, profuomo_products)(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+		document.getElementById("automation-scrape-profuomo").addEventListener("click", function () {
+			// code to handle scrape button click
+			console.log("Scrape button clicked");
+			url = document.getElementById("automation-scrape-profuomo-url").value;
+			$('#info').text("Scrapen...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.profuomo_scraper(url)(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+		document.getElementById("automation-register-products").addEventListener("click", function () {
+			// code to handle scrape button click
+			console.log("Register products button clicked");
+			$('#info').text("Registering...");
+			$('#message').text("");
+			$('#error').text("");
+			csvPath = document.getElementById("automation-upload-csv-magento").value;
+			eel.register_products(csvPath)(function (status) {
+				$('#info').text("");
+				if (status['message']) {
+					$('#message').text(status['message']);
+				} else {
+					$('#error').text(status['error']);
+				}
+			});
+		});
+
+		function fillCsvOptions() {
+			eel.get_csvs()(function (options) {
+				$('#automation-upload-csv-magento').empty();
+				options.forEach(function (option) {
+					$('#automation-upload-csv-magento').append($('<option>', {
+						value: option,
+						text: option.split('/').pop()
+					}));
+				});
+			});
+		}
+		fillCsvOptions()
+
+		eel._websocket.onerror = function (event) {
+			window.close();
+		};
+
+		function checkHealth() {
+			if (eel._websocket.readyState === WebSocket.CLOSING || eel._websocket.readyState === WebSocket.CLOSED) {
+				window.close();
+			} else {
+				eel.health()().then((health) => {
+					if (!health) {
+						window.close();
+					}
+				}).catch((error) => {
+					console.error("Error checking health:", error);
+					window.close();
+				});
+			}
+		}
+
+		// check health every 10 seconds
+		setInterval(checkHealth, 10000);
+	</script>
+
+</body>
+
+</html>
