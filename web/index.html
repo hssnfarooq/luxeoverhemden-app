@@ -42,11 +42,15 @@
 		<label>Profuomo voorraad<input type="checkbox" id="profuomo_products" checked></label><br>
 		<label for="automation-scrape-profuomo-url">URL Scraper</label><br>
 		<input type="text" name="automation-scrape-profuomo-url" id="automation-scrape-profuomo-url" placeholder="https://b2b.profuomo.com/.../Shirts">
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-profuomo"><i
-				class="fa fa-download fa-lg"></i>Scrape URL</button>
-		<label for="automation-upload-csv-magento">CSV voor upload</label><br>
-		<select name="automation-upload-csv-magento" id="automation-upload-csv-magento">
-			<!-- CSV Options here -->
+			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-profuomo"><i
+					class="fa fa-download fa-lg"></i>Scrape URL</button>
+			<label for="automation-reset-sku-input">Reset product SKU</label><br>
+			<input type="text" name="automation-reset-sku-input" id="automation-reset-sku-input" placeholder="PPXF10016A">
+			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-reset-sku"><i
+					class="fa fa-trash fa-lg"></i> Reset SKU State</button>
+			<label for="automation-upload-csv-magento">CSV voor upload</label><br>
+			<select name="automation-upload-csv-magento" id="automation-upload-csv-magento">
+				<!-- CSV Options here -->
 		</select>
 		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-products"><i
 				class="fa fa-upload fa-lg"></i> Upload Products</button>
@@ -159,34 +163,54 @@
 			});
 		});
 
-		document.getElementById("automation-register-products").addEventListener("click", function () {
-			// code to handle scrape button click
-			console.log("Register products button clicked");
-			$('#info').text("Registering...");
-			$('#message').text("");
-			$('#error').text("");
-			csvPath = document.getElementById("automation-upload-csv-magento").value;
-			eel.register_products(csvPath)(function (status) {
-				$('#info').text("");
-				if (status['message']) {
-					$('#message').text(status['message']);
-				} else {
-					$('#error').text(status['error']);
-				}
-			});
-		});
-
-		function fillCsvOptions() {
-			eel.get_csvs()(function (options) {
-				$('#automation-upload-csv-magento').empty();
-				options.forEach(function (option) {
-					$('#automation-upload-csv-magento').append($('<option>', {
-						value: option,
-						text: option.split('/').pop()
-					}));
+			document.getElementById("automation-register-products").addEventListener("click", function () {
+				// code to handle scrape button click
+				console.log("Register products button clicked");
+				$('#info').text("Registering...");
+				$('#message').text("");
+				$('#error').text("");
+				csvPath = document.getElementById("automation-upload-csv-magento").value;
+				eel.register_products(csvPath)(function (status) {
+					$('#info').text("");
+					if (status['message']) {
+						$('#message').text(status['message']);
+					} else {
+						$('#error').text(status['error']);
+					}
 				});
 			});
-		}
+
+			document.getElementById("automation-reset-sku").addEventListener("click", function () {
+				console.log("Reset SKU button clicked");
+				const sku = document.getElementById("automation-reset-sku-input").value;
+				if (!sku || !sku.trim()) {
+					$('#error').text("Please enter an SKU.");
+					return;
+				}
+				$('#info').text("Resetting SKU state...");
+				$('#message').text("");
+				$('#error').text("");
+				eel.reset_sku(sku)(function (status) {
+					$('#info').text("");
+					if (status['message']) {
+						$('#message').text(status['message']);
+					} else {
+						$('#error').text(status['error']);
+					}
+				});
+			});
+
+			function fillCsvOptions() {
+				eel.get_csvs()(function (options) {
+					$('#automation-upload-csv-magento').empty();
+					options.forEach(function (option) {
+						$('#automation-upload-csv-magento').append($('<option>', {
+							value: option,
+							text: option.split('/').pop()
+						}));
+					});
+				});
+			}
 		fillCsvOptions()
 
 		eel._websocket.onerror = function (event) {

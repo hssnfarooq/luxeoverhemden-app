@@ -12,6 +12,7 @@ if os.path.exists(".env"):
 from io import StringIO
 
 from automations.magento import MagentoFiller, MagentoUploader
+from automations.sku_reset import SKUResetService
 from config import (
     EMAIL_ADDRESS,
     PASSWORD,
@@ -154,6 +155,11 @@ def register_products(csv_path: str):
     if not csv_path:
         path = None
     return MagentoFiller.register_products(csv_path=path, test=TEST)
+
+
+@eel.expose
+def reset_sku(sku: str):
+    return SKUResetService.reset_sku_everywhere(sku)
 
 
 @eel.expose
