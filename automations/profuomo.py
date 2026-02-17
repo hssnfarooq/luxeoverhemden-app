@@ -360,10 +360,11 @@ class ProfuomoScraper(Profuomo):
         return sizes
 
     @classmethod
-    def download_images(cls, driver: webdriver.Chrome, sku: str):
+    def download_images(cls, driver: webdriver.Chrome, sku: str) -> int:
         # Create the folder for the SKU
         sku_folder = os.path.join(PRODUCTS_PATH, sku)
         os.makedirs(sku_folder, exist_ok=True)
+        downloaded_count = 0
 
         # Find the images inside the a4f-images div
         images_div = driver.find_element(By.CLASS_NAME, "a4f-images")
@@ -381,6 +382,8 @@ class ProfuomoScraper(Profuomo):
                 os.remove(img_path)
                 print(f"⚠️ Warning: Image too small for {sku}_{index}.jpg, skipping...")
                 continue  # Skip this image instead of failing the entire product
+            downloaded_count += 1
+        return downloaded_count
 
     @staticmethod
     def get_product_sku(driver: webdriver.Chrome) -> str:
@@ -428,11 +431,14 @@ class ProfuomoScraper(Profuomo):
             print(f"⚠️ Warning: Some product details failed for {product.get('sku', 'Unknown')}: {e}")
         
         # Download images (non-critical)
+        image_count = 0
         try:
-            cls.download_images(driver, product["sku"])
+            image_count = cls.download_images(driver, product["sku"])
         except Exception as e:
             print(f"⚠️ Warning: Image download failed for {product.get('sku', 'Unknown')}: {e}")
             # Continue without images rather than failing the entire product
+        product["image_count"] = image_count
+        product["has_images"] = image_count > 0
         
         return product
 
@@ -478,6 +484,15 @@ class ProfuomoScraper(Profuomo):
                     
                     print(f"Scraping product {i+1}/{len(required_links)}: {link}")
                     product = cls.scrape_product(driver, link, category)
+                    if not product.get("has_images", False):
+                        msg = (
+                            f"Skipped {product.get('sku', 'Unknown SKU')}: "
+                            "no valid supplier images found"
+                        )
+                        print(f"⚠️ {msg}")
+                        with open("scraping_errors.log", "a", encoding="utf-8") as f:
+                            f.write(msg + "\n")
+                        continue
                     products.append(product)
                     print(f"✅ Successfully scraped: {product.get('sku', 'Unknown SKU')}")
                 except Exception as e:

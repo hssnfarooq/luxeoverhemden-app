@@ -1296,6 +1296,20 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         return products
 
     @classmethod
+    def has_valid_images(cls, sku: str) -> bool:
+        images_path = Path(PRODUCTS_PATH, sku)
+        if not images_path.exists() or not images_path.is_dir():
+            return False
+        for image in images_path.glob("*"):
+            if image.is_file():
+                try:
+                    if image.stat().st_size >= 1000:
+                        return True
+                except OSError:
+                    continue
+        return False
+
+    @classmethod
     def register_products(
         cls, csv_path: str | None = None, test: bool = False
     ) -> dict[str, str]:
@@ -1361,6 +1375,11 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     f.write(f"Product data: {dict(product)}\n")
                     f.write(f"Productnaam: {product.get('Productnaam', 'MISSING')}\n")
                     f.write(f"Category: {product.get('category', 'MISSING')}\n")
+                if not cls.has_valid_images(sku):
+                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                        f.write(f"SKIPPED: {sku} has no valid images in products/{sku}\n")
+                    print(f"Skipping {sku}: no valid images found")
+                    continue
                 
                 try:
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:

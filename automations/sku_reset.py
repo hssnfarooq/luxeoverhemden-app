@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import re
 import shutil
 from typing import Callable
 
@@ -20,6 +21,20 @@ class SKUResetService:
     @staticmethod
     def _normalize_sku(sku: str) -> str:
         return (sku or "").strip().upper()
+
+    @classmethod
+    def _parse_skus(cls, raw_skus: str) -> list[str]:
+        if not raw_skus:
+            return []
+        parts = re.split(r"[\s,;]+", raw_skus.strip())
+        unique: list[str] = []
+        seen: set[str] = set()
+        for part in parts:
+            sku = cls._normalize_sku(part)
+            if sku and sku not in seen:
+                seen.add(sku)
+                unique.append(sku)
+        return unique
 
     @classmethod
     def _remove_lines(cls, path: Path, matcher: Callable[[str], bool]) -> int:
@@ -75,10 +90,9 @@ class SKUResetService:
         return removed
 
     @classmethod
-    def reset_sku_everywhere(cls, raw_sku: str) -> dict[str, object]:
-        sku = cls._normalize_sku(raw_sku)
+    def _reset_one_sku(cls, sku: str) -> dict[str, object]:
         if not sku:
-            return {"message": "", "error": "SKU is required"}
+            return {"message": "", "error": "SKU is required", "sku": ""}
 
         changes: list[FileChange] = []
         warnings: list[str] = []
@@ -154,5 +168,32 @@ class SKUResetService:
             "sku": sku,
             "changes": [change.__dict__ for change in changes],
             "deleted_folders": deleted_folders,
+            "warnings": warnings,
+        }
+
+    @classmethod
+    def reset_sku_everywhere(cls, raw_sku: str) -> dict[str, object]:
+        skus = cls._parse_skus(raw_sku)
+        if not skus:
+            return {"message": "", "error": "SKU is required"}
+
+        if len(skus) == 1:
+            return cls._reset_one_sku(skus[0])
+
+        results = [cls._reset_one_sku(sku) for sku in skus]
+        total_changes = sum(len(result.get("changes", [])) for result in results)
+        total_deleted_folders = sum(len(result.get("deleted_folders", [])) for result in results)
+        warnings: list[str] = []
+        for result in results:
+            warnings.extend(result.get("warnings", []))
+
+        return {
+            "message": (
+                f"Processed {len(skus)} SKUs. "
+                f"Updated files: {total_changes}, deleted image folders: {total_deleted_folders}."
+            ),
+            "error": "",
+            "skus": skus,
+            "results": results,
             "warnings": warnings,
         }
