@@ -134,7 +134,7 @@ def merge(filename="CM Lagerbestand.xlsx"):
 
 @eel.expose
 def upload(cmlagerbestand=False, profuomo=False, headless=False):
-    MagentoUploader.upload(
+    return MagentoUploader.upload(
         cmlagerbestand=cmlagerbestand, profuomo=profuomo, headless=headless
     )
 

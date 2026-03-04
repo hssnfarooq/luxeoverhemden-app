@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import (
     NoSuchElementException,
     ElementClickInterceptedException,
+    TimeoutException,
 )
 from urllib3.exceptions import ReadTimeoutError
 
@@ -82,6 +83,65 @@ class Magento(BaseScraper):
 
 
 class MagentoUploader(Magento):
+    SUPPLIER_STOCK_URL = "https://luxeoverhemden.nl/admin/supplierstock"
+    CRONFLAG_URL = "https://luxeoverhemden.nl/cronflag.php"
+    IMPORT_BUTTON_XPATH = '//button[text()="Import"]'
+    SUCCESS_MESSAGE_XPATH = '//div[@data-ui-id="messages-message-success"]'
+    ERROR_MESSAGE_XPATH = '//div[@data-ui-id="messages-message-error"]'
+    ANY_MESSAGE_XPATH = '//div[contains(@data-ui-id,"messages-message-")]'
+    IMPORT_WAIT_TIMEOUT_SECONDS = int(os.getenv("MAGENTO_IMPORT_TIMEOUT_SECONDS", "2700"))
+
+    @classmethod
+    def wait_for_import_result(
+        cls, driver: webdriver.Chrome, timeout_seconds: int | None = None
+    ):
+        wait_timeout = timeout_seconds or cls.IMPORT_WAIT_TIMEOUT_SECONDS
+
+        def import_result_visible(drv: webdriver.Chrome):
+            success = drv.find_elements(By.XPATH, cls.SUCCESS_MESSAGE_XPATH)
+            error = drv.find_elements(By.XPATH, cls.ERROR_MESSAGE_XPATH)
+            return len(success) > 0 or len(error) > 0
+
+        try:
+            WebDriverWait(driver, wait_timeout).until(import_result_visible)
+        except TimeoutException as ex:
+            messages = driver.find_elements(By.XPATH, cls.ANY_MESSAGE_XPATH)
+            message_text = " | ".join(
+                msg.text.strip() for msg in messages if msg.text and msg.text.strip()
+            )
+            if not message_text:
+                message_text = "No Magento result message found on page."
+            raise TimeoutException(
+                f"Timed out after {wait_timeout}s waiting for Magento import result. "
+                f"Messages: {message_text}"
+            ) from ex
+
+        errors = driver.find_elements(By.XPATH, cls.ERROR_MESSAGE_XPATH)
+        if errors:
+            error_text = " | ".join(
+                e.text.strip() for e in errors if e.text and e.text.strip()
+            )
+            if not error_text:
+                error_text = "Unknown Magento error."
+            raise Exception(f"Magento import failed: {error_text}")
+
+    @classmethod
+    def upload_single_file(cls, driver: webdriver.Chrome, filename: str):
+        file_path = Path(filename).resolve()
+        if not file_path.exists():
+            raise FileNotFoundError(f"File not found: {file_path}")
+
+        driver.get(cls.SUPPLIER_STOCK_URL)
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.ID, "csv")))
+        upload_input = driver.find_element(By.ID, "csv")
+        upload_input.send_keys(str(file_path))
+
+        import_button = WebDriverWait(driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, cls.IMPORT_BUTTON_XPATH))
+        )
+        import_button.click()
+        cls.wait_for_import_result(driver)
+
     @staticmethod
     def handle_upload_error(driver, ex):
         print("TimeoutException: " + str(ex))
@@ -118,73 +178,36 @@ class MagentoUploader(Magento):
         if not cmlagerbestand and not profuomo:
             status["error"] = "No file selected"
             return status
-        # load environment variables from .env file
+        driver = None
         try:
-            # set up webdriver
             options = webdriver.ChromeOptions()
             if headless:
                 options.add_argument("headless")
             driver = webdriver.Chrome(options=options)
-
             cls.magento_login(driver)
-
-            time.sleep(15)
-
-            # go to the https://luxeoverhemden.nl/admin/supplierstock page
-            driver.get("https://luxeoverhemden.nl/admin/supplierstock")
-
-            time.sleep(15)
-
-            # set selenium wait time to 15 minutes
-            driver.implicitly_wait(1800)
-
+            files_to_upload: list[str] = []
             if cmlagerbestand:
-                # upload CSV file (import_file.csv)
-                upload_input = driver.find_element(By.ID, "csv")
-                upload_input.send_keys(str(Path("import_file.csv").resolve()))
-
-                # click import:
-                try:
-                    import_button = driver.find_element(
-                        By.XPATH, '//button[text()="Import"]'
-                    )
-                    import_button.click()
-                except ReadTimeoutError as ex:
-                    cls.handle_upload_error(driver, ex)
-                except Exception as ex:
-                    raise ex
-
+                files_to_upload.append("import_file.csv")
             if profuomo:
-                # upload CSV file (import_file.csv)
-                upload_input = driver.find_element(By.ID, "csv")
-                upload_input.send_keys(str(Path("profuomo_products.csv").resolve()))
+                files_to_upload.append("profuomo_products.csv")
 
-                # click import:
-                try:
-                    import_button = driver.find_element(
-                        By.XPATH, '//button[text()="Import"]'
-                    )
-                    import_button.click()
-                except ReadTimeoutError as ex:
-                    cls.handle_upload_error(driver, ex)
-                except Exception as ex:
-                    raise ex
-                
-            driver.implicitly_wait(20)
-            time.sleep(20)
+            for filename in files_to_upload:
+                cls.upload_single_file(driver, filename)
 
-            driver.get("https://luxeoverhemden.nl/cronflag.php")
+            driver.get(cls.CRONFLAG_URL)
             time.sleep(3)
-            # close window
-            driver.quit()
             status["message"] = "File uploaded successfully"
-            return status
-        
+
         except Exception as ex:
             template = "er is een {0} opgetreden: {1!r}"
             status["error"] = template.format(type(ex).__name__, ex.args)
         finally:
-            return status
+            if driver is not None:
+                try:
+                    driver.quit()
+                except Exception:
+                    pass
+        return status
 
 
 class MagentoFiller(Magento):
