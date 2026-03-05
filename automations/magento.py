@@ -11,6 +11,7 @@ from selenium.common.exceptions import (
     NoSuchElementException,
     ElementClickInterceptedException,
     TimeoutException,
+    WebDriverException,
 )
 from urllib3.exceptions import ReadTimeoutError
 
@@ -90,40 +91,62 @@ class MagentoUploader(Magento):
     ERROR_MESSAGE_XPATH = '//div[@data-ui-id="messages-message-error"]'
     ANY_MESSAGE_XPATH = '//div[contains(@data-ui-id,"messages-message-")]'
     IMPORT_WAIT_TIMEOUT_SECONDS = int(os.getenv("MAGENTO_IMPORT_TIMEOUT_SECONDS", "2700"))
+    IMPORT_WAIT_POLL_SECONDS = int(os.getenv("MAGENTO_IMPORT_POLL_SECONDS", "5"))
+    SELENIUM_COMMAND_TIMEOUT_SECONDS = int(
+        os.getenv("SELENIUM_COMMAND_TIMEOUT_SECONDS", "600")
+    )
 
     @classmethod
     def wait_for_import_result(
         cls, driver: webdriver.Chrome, timeout_seconds: int | None = None
     ):
         wait_timeout = timeout_seconds or cls.IMPORT_WAIT_TIMEOUT_SECONDS
+        deadline = time.monotonic() + wait_timeout
+        poll_seconds = max(1, cls.IMPORT_WAIT_POLL_SECONDS)
+        last_message_text = ""
+        last_driver_error = ""
 
-        def import_result_visible(drv: webdriver.Chrome):
-            success = drv.find_elements(By.XPATH, cls.SUCCESS_MESSAGE_XPATH)
-            error = drv.find_elements(By.XPATH, cls.ERROR_MESSAGE_XPATH)
-            return len(success) > 0 or len(error) > 0
+        while time.monotonic() < deadline:
+            try:
+                errors = driver.find_elements(By.XPATH, cls.ERROR_MESSAGE_XPATH)
+                if errors:
+                    error_text = " | ".join(
+                        e.text.strip() for e in errors if e.text and e.text.strip()
+                    )
+                    if not error_text:
+                        error_text = "Unknown Magento error."
+                    raise Exception(f"Magento import failed: {error_text}")
 
-        try:
-            WebDriverWait(driver, wait_timeout).until(import_result_visible)
-        except TimeoutException as ex:
-            messages = driver.find_elements(By.XPATH, cls.ANY_MESSAGE_XPATH)
-            message_text = " | ".join(
-                msg.text.strip() for msg in messages if msg.text and msg.text.strip()
-            )
-            if not message_text:
-                message_text = "No Magento result message found on page."
-            raise TimeoutException(
-                f"Timed out after {wait_timeout}s waiting for Magento import result. "
-                f"Messages: {message_text}"
-            ) from ex
+                success = driver.find_elements(By.XPATH, cls.SUCCESS_MESSAGE_XPATH)
+                if success:
+                    return
 
-        errors = driver.find_elements(By.XPATH, cls.ERROR_MESSAGE_XPATH)
-        if errors:
-            error_text = " | ".join(
-                e.text.strip() for e in errors if e.text and e.text.strip()
-            )
-            if not error_text:
-                error_text = "Unknown Magento error."
-            raise Exception(f"Magento import failed: {error_text}")
+                messages = driver.find_elements(By.XPATH, cls.ANY_MESSAGE_XPATH)
+                message_text = " | ".join(
+                    msg.text.strip() for msg in messages if msg.text and msg.text.strip()
+                )
+                if message_text:
+                    last_message_text = message_text
+
+            except ReadTimeoutError as ex:
+                # ChromeDriver can time out while Magento import keeps page busy.
+                last_driver_error = str(ex)
+            except TimeoutException as ex:
+                last_driver_error = str(ex)
+            except WebDriverException as ex:
+                last_driver_error = str(ex)
+
+            time.sleep(poll_seconds)
+
+        timeout_details = []
+        if last_message_text:
+            timeout_details.append(f"Messages: {last_message_text}")
+        if last_driver_error:
+            timeout_details.append(f"Last driver error: {last_driver_error}")
+        details = " | ".join(timeout_details) if timeout_details else "No details."
+        raise TimeoutException(
+            f"Timed out after {wait_timeout}s waiting for Magento import result. {details}"
+        )
 
     @classmethod
     def upload_single_file(cls, driver: webdriver.Chrome, filename: str):
@@ -139,7 +162,11 @@ class MagentoUploader(Magento):
         import_button = WebDriverWait(driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, cls.IMPORT_BUTTON_XPATH))
         )
-        import_button.click()
+        try:
+            import_button.click()
+        except ReadTimeoutError:
+            # Submit can still be accepted by Magento even when the driver command times out.
+            pass
         cls.wait_for_import_result(driver)
 
     @staticmethod
@@ -184,6 +211,10 @@ class MagentoUploader(Magento):
             if headless:
                 options.add_argument("headless")
             driver = webdriver.Chrome(options=options)
+            try:
+                driver.command_executor.set_timeout(cls.SELENIUM_COMMAND_TIMEOUT_SECONDS)
+            except Exception:
+                pass
             cls.magento_login(driver)
             files_to_upload: list[str] = []
             if cmlagerbestand:
