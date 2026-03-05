@@ -1,6 +1,7 @@
 .venv
 .ruff_cache
 __pycache__
+.env
 products
 _products
 build/
