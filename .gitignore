@@ -5,5 +5,5 @@ products
 _products
 build/
 dist/
-
+.env
 ./app.spec
