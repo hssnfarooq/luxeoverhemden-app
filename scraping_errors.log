@@ -1,33 +1,3 @@
-Failed to scrape https://b2b.profuomo.com/webstore/v2/product/Micro_Fashion_04/PPWF10020/F4: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
-Critical error in scrape_profuomo: 'collar'
-Failed to scrape https://b2b.profuomo.com/webstore/v2/product/Micro_Fashion_04/PPWF10005/H3: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
-Critical error in scrape_profuomo: 'collar'
-Failed to scrape https://b2b.profuomo.com/webstore/v2/product/Micro_Fashion_04/PPWF30041/Z: Image is too small
-Critical error in scrape_profuomo: 'sku'
-Critical error in scrape_profuomo: 'collar'
-Critical error in scrape_profuomo: 'collar'
-Critical error in scrape_profuomo: 'sku'
-Critical error in scrape_profuomo: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=139.0.7258.155)
-Stacktrace:
-0   chromedriver                        0x000000010d64e668 chromedriver + 5928552
-1   chromedriver                        0x000000010d645c0a chromedriver + 5893130
-2   chromedriver                        0x000000010d10fe00 chromedriver + 429568
-3   chromedriver                        0x000000010d0e4870 chromedriver + 252016
-4   chromedriver                        0x000000010d1901f8 chromedriver + 954872
-5   chromedriver                        0x000000010d1aebdc chromedriver + 1080284
-6   chromedriver                        0x000000010d187e33 chromedriver + 921139
-7   chromedriver                        0x000000010d15437b chromedriver + 709499
-8   chromedriver                        0x000000010d155061 chromedriver + 712801
-9   chromedriver                        0x000000010d60c0e0 chromedriver + 5656800
-10  chromedriver                        0x000000010d60ffa4 chromedriver + 5672868
-11  chromedriver                        0x000000010d5e7052 chromedriver + 5505106
-12  chromedriver                        0x000000010d610a4f chromedriver + 5675599
-13  chromedriver                        0x000000010d5d6004 chromedriver + 5435396
-14  chromedriver                        0x000000010d632d88 chromedriver + 5815688
-15  chromedriver                        0x000000010d632f50 chromedriver + 5816144
-16  chromedriver                        0x000000010d6457e1 chromedriver + 5892065
-17  libsystem_pthread.dylib             0x00007ff803f474e1 _pthread_start + 125
-18  libsystem_pthread.dylib             0x00007ff803f42f6b thread_start + 15
-
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Profuomo login failed or login page layout changed

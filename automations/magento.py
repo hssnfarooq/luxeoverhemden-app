@@ -1,7 +1,9 @@
 from pathlib import Path
 import csv
+import ast
 import tempfile
 import time
+import re
 import pandas as pd
 import sys
 import os
@@ -888,75 +890,202 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
     @classmethod
     def add_sizes(cls, driver: webdriver.Chrome, sizes: str):
+        def safe_click(element, name: str) -> bool:
+            try:
+                element.click()
+                return True
+            except Exception:
+                try:
+                    driver.execute_script(
+                        "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                        element,
+                    )
+                    driver.execute_script("arguments[0].click();", element)
+                    return True
+                except Exception as click_error:
+                    print(f"Could not click {name}: {click_error}")
+                    return False
+
+        def find_first(
+            candidates: tuple[tuple[str, str], ...],
+            timeout: float = 10.0,
+            clickable: bool = False,
+        ):
+            deadline = time.monotonic() + timeout
+            while time.monotonic() < deadline:
+                for by, selector in candidates:
+                    try:
+                        elements = driver.find_elements(by, selector)
+                    except Exception:
+                        continue
+                    for element in elements:
+                        try:
+                            if not element.is_displayed():
+                                continue
+                            if clickable and not element.is_enabled():
+                                continue
+                            return element
+                        except Exception:
+                            continue
+                time.sleep(0.2)
+            return None
+
+        def find_all_visible(
+            candidates: tuple[tuple[str, str], ...],
+            timeout: float = 8.0,
+        ) -> list:
+            deadline = time.monotonic() + timeout
+            last_seen: list = []
+            while time.monotonic() < deadline:
+                visible: list = []
+                seen_ids: set[int] = set()
+                for by, selector in candidates:
+                    try:
+                        elements = driver.find_elements(by, selector)
+                    except Exception:
+                        continue
+                    for element in elements:
+                        try:
+                            if not element.is_displayed():
+                                continue
+                            element_id = id(element)
+                            if element_id in seen_ids:
+                                continue
+                            seen_ids.add(element_id)
+                            visible.append(element)
+                        except Exception:
+                            continue
+                if visible:
+                    return visible
+                last_seen = visible
+                time.sleep(0.2)
+            return last_seen
+
+        def parse_sizes(value: str | list[str]) -> list[str]:
+            if isinstance(value, list):
+                raw_sizes = value
+            elif isinstance(value, str):
+                try:
+                    parsed = ast.literal_eval(value)
+                    raw_sizes = parsed if isinstance(parsed, list) else [parsed]
+                except Exception:
+                    raw_sizes = [
+                        item.strip().strip("'\"")
+                        for item in value.strip().lstrip("[").rstrip("]").split(",")
+                        if item.strip()
+                    ]
+            else:
+                raw_sizes = [str(value)]
+
+            cleaned: list[str] = []
+            seen: set[str] = set()
+            for raw in raw_sizes:
+                size = str(raw).strip().strip("'\"")
+                if not size:
+                    continue
+                normalized = size.upper() if re.search(r"[A-Za-z]", size) else size
+                if normalized in seen:
+                    continue
+                seen.add(normalized)
+                cleaned.append(normalized)
+            return cleaned
+
         try:
             print(f"Starting size configuration for sizes: {sizes}")
             
             # Wait for the button with the data-index 'create_configurable_products_button' to be clickable and click on it
             print("Looking for create configurable products button...")
             create_configurable_products_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable(
-                    (
-                        By.XPATH,
-                        "//button[@data-index='create_configurable_products_button']",
-                    )
+                EC.presence_of_element_located(
+                    (By.XPATH, "//button[@data-index='create_configurable_products_button']")
                 )
             )
-            create_configurable_products_button.click()
+            if not safe_click(create_configurable_products_button, "create configurable products button"):
+                raise Exception("Could not click create configurable products button")
             print("Clicked create configurable products button")
 
             cls.random_wait(2)
 
-            # Wait for the checkboxes with the class 'data-grid-checkbox-cell-inner' to be present
+            # Magento can render this step with different checkbox markup depending on version/theme.
             print("Looking for size checkboxes...")
-            checkboxes = WebDriverWait(driver, 10).until(
-                EC.presence_of_all_elements_located(
-                    (
-                        By.CLASS_NAME,
-                        "data-grid-checkbox-cell-inner",
-                    )
-                )
+            checkboxes = find_all_visible(
+                (
+                    (By.CSS_SELECTOR, ".data-grid-checkbox-cell-inner"),
+                    (By.CSS_SELECTOR, "td.data-grid-checkbox-cell input[type='checkbox']"),
+                    (By.CSS_SELECTOR, "input.admin__control-checkbox"),
+                ),
+                timeout=12.0,
             )
             print(f"Found {len(checkboxes)} checkboxes")
 
-            # Click on the last checkbox
             if checkboxes:
-                checkboxes[-1].click()
-                print("Clicked last checkbox")
+                if safe_click(checkboxes[-1], "last size checkbox"):
+                    print("Clicked last checkbox")
+            else:
+                print("No size checkbox found on this step, continuing to next step")
 
             cls.random_wait(2)
 
             # Wait for the next button to be clickable and click on it
             print("Looking for next button...")
             next_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CLASS_NAME, "action-next-step"))
+                EC.presence_of_element_located((By.CLASS_NAME, "action-next-step"))
             )
-            next_button.click()
+            if not safe_click(next_button, "first next button"):
+                raise Exception("Could not click first next button")
             print("Clicked next button")
 
             cls.random_wait(2)
-            sizes_list = sizes.lstrip("[").rstrip("]").split(",")
+            sizes_list = parse_sizes(sizes)
             print(f"Processing sizes: {sizes_list}")
 
             # Click on the labels that match the sizes
+            selected_sizes = 0
             for size in sizes_list:
-                size = size.strip().strip("'\"")  # Clean up the size string
                 print(f"Looking for size label: {size}")
-                size_label = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, f"//label[text()='{size}']"))
+                size_label = find_first(
+                    (
+                        (By.XPATH, f"//label[normalize-space(text())='{size}']"),
+                        (
+                            By.XPATH,
+                            f"//*[contains(@class,'admin__field-option')]//label[normalize-space(.)='{size}']",
+                        ),
+                    ),
+                    timeout=3.0,
+                    clickable=True,
                 )
-                size_label.click()
-                print(f"Clicked size: {size}")
+                if size_label is None:
+                    print(f"Size not found in Magento options, skipping: {size}")
+                    continue
+                if safe_click(size_label, f"size label {size}"):
+                    selected_sizes += 1
+                    print(f"Clicked size: {size}")
+
+            if selected_sizes == 0:
+                raise Exception("No requested sizes could be selected in Magento")
 
             print("Clicking next button for size selection...")
-            next_button.click()
+            next_button = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "action-next-step"))
+            )
+            if not safe_click(next_button, "size selection next button"):
+                raise Exception("Could not click size selection next button")
             cls.random_wait(2)
 
             print("Clicking next button for final step...")
-            next_button.click()
+            next_button = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "action-next-step"))
+            )
+            if not safe_click(next_button, "final step next button"):
+                raise Exception("Could not click final step next button")
             cls.random_wait(2)
 
             print("Clicking next button to complete...")
-            next_button.click()
+            next_button = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "action-next-step"))
+            )
+            if not safe_click(next_button, "complete next button"):
+                raise Exception("Could not click complete next button")
             cls.random_wait(2)
             
             print("Size configuration completed successfully")
@@ -970,8 +1099,19 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 #     <span>Close</span>
                 # </button>
                 print("Attempting to close configuration dialog...")
-                driver.find_element(By.CLASS_NAME, "action-close").click()
-                print("Configuration dialog closed")
+                close_btn = find_first(
+                    (
+                        (By.CSS_SELECTOR, "button[data-role='closeBtn']"),
+                        (By.CLASS_NAME, "action-close"),
+                    ),
+                    timeout=2.0,
+                    clickable=True,
+                )
+                if close_btn is not None:
+                    safe_click(close_btn, "configuration dialog close button")
+                    print("Configuration dialog closed")
+                else:
+                    driver.find_element(By.TAG_NAME, "body").send_keys("\u001b")
             except Exception as close_error:
                 print(f"Could not close configuration dialog: {close_error}")
                 pass
@@ -1159,7 +1299,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 cls.input_default(driver, product)
         match cls.get_mapped_key(product["category"]):
             case "Truien":
-                match product["fit"].upper(): 
+                fit_value = str(product.get("fit", "")).upper().strip()
+                match fit_value:
                     case "SLIM FIT":
                         cls.change_maattabel(driver, "Profuomo slim fit truien")
                     case "NORMAL FIT":
@@ -1170,7 +1311,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                         cls.change_maattabel(driver, "Profuomo slim fit truien")
 
             case "Overhemden":
-                match product["fit"].upper(): 
+                fit_value = str(product.get("fit", "")).upper().strip()
+                match fit_value:
                     case "RELAXED FIT":
                         cls.change_maattabel(driver, "Profuomo relaxed fit overhemden")
                     case "REGULAR FIT":
@@ -1494,11 +1636,17 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
             cls.go_to_form(driver)
 
+            processed_count = 0
+            success_count = 0
+            failed_count = 0
+            skipped_no_images_count = 0
+
             for _, product in filter(
                 lambda product: product[1].get("Productnaam")
                 and str(product[1].get("Productnaam")) != "nan",
                 products.iterrows(),
             ):
+                processed_count += 1
                 sku = product["sku"]
                 with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                     f.write(f"\n{'='*60}\n")
@@ -1511,6 +1659,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                         f.write(f"SKIPPED: {sku} has no valid images in products/{sku}\n")
                     print(f"Skipping {sku}: no valid images found")
+                    skipped_no_images_count += 1
                     continue
                 
                 try:
@@ -1519,6 +1668,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     cls.register_product(driver, product)
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                         f.write(f"SUCCESS: Product {sku} registered successfully\n")
+                    success_count += 1
                     with done_path.open("a", encoding="utf-8") as f:
                         f.write(product["sku"] + "\n")
                     sizes = (
@@ -1552,9 +1702,14 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     driver.execute_script("window.scrollTo(0, 0);")
                     with failed_path.open("a", encoding="utf-8") as f:
                         f.write(product["sku"] + "\n")
+                    failed_count += 1
                     continue
 
-            data["message"] = "File uploaded successfully"
+            data["message"] = (
+                "File uploaded successfully "
+                f"({success_count} succeeded, {failed_count} failed, "
+                f"{skipped_no_images_count} skipped no images, {processed_count} processed)"
+            )
 
         except Exception as ex:
             data["error"] = str(ex)
