@@ -1012,12 +1012,21 @@ class ProfuomoScraper(Profuomo):
         "fabric": "fabric",
         "quality": "quality",
         "description": "description",
+        "cuff": "cuff",
+        "cuffs": "cuff",
+        "manchet": "cuff",
         "sleeve": "sleeve",
         "sleeve length": "sleeve",
         "sleevelength": "sleeve",
         "mouwlengte": "sleeve",
         "collar": "collar",
         "kraag": "collar",
+        "sustainability": "sustainability",
+        "iconen": "sustainability",
+        "icons": "sustainability",
+        "easy care": "noniron",
+        "non iron": "noniron",
+        "noniron": "noniron",
         "item comment": "item comment smc",
         "item comment smc": "item comment smc",
     }
@@ -1342,6 +1351,8 @@ class ProfuomoScraper(Profuomo):
                 and ("/products/" in current_url_u or "/product/" in current_url_u)
             ):
                 return False
+            if not sku_hit:
+                return False
 
         listing_signals = 0
         if len(cls._find_all(driver, cls.PRODUCT_CARD_TITLE_SELECTORS)) >= 6:
@@ -1591,10 +1602,11 @@ class ProfuomoScraper(Profuomo):
         if not cleaned:
             return ""
         lower = cleaned.lower()
+        if lower == "cuff" and key != "cuff":
+            return ""
         if lower in {
             "size",
             "image",
-            "cuff",
             "eur",
             "€",
             "unit price",
@@ -1616,6 +1628,28 @@ class ProfuomoScraper(Profuomo):
                 flags=re.IGNORECASE,
             )
         return cleaned
+
+    @staticmethod
+    def _merge_multi_value(existing: str, incoming: str) -> str:
+        values: list[str] = []
+        for raw in (existing or "").split("|"):
+            value = raw.strip()
+            if value and value not in values:
+                values.append(value)
+        for raw in (incoming or "").split("|"):
+            value = raw.strip()
+            if value and value not in values:
+                values.append(value)
+        return " | ".join(values)
+
+    @classmethod
+    def _set_detail_value(cls, details: dict[str, str], key: str, value: str) -> None:
+        if not key or not value:
+            return
+        if key in {"sustainability"}:
+            details[key] = cls._merge_multi_value(details.get(key, ""), value)
+            return
+        details[key] = value
 
     @classmethod
     def _looks_like_size_value(cls, value: str | None) -> bool:
@@ -1642,12 +1676,28 @@ class ProfuomoScraper(Profuomo):
                 mapped_key = cls.DETAIL_KEY_ALIASES.get(key_norm)
                 value = cls._sanitize_detail_value(mapped_key or "", value_part)
                 if mapped_key and value:
-                    details[mapped_key] = value
+                    cls._set_detail_value(details, mapped_key, value)
                     continue
 
             key_norm = cls._normalize_detail_key(line)
             mapped_key = cls.DETAIL_KEY_ALIASES.get(key_norm)
             if not mapped_key:
+                # Handle single-line "Key Value" rows (e.g. "Sleeve Long sleeve")
+                lowered = line.lower()
+                split_matched = False
+                for alias, mapped in sorted(
+                    cls.DETAIL_KEY_ALIASES.items(), key=lambda item: len(item[0]), reverse=True
+                ):
+                    if not lowered.startswith(alias + " "):
+                        continue
+                    remainder = line[len(alias) :].strip(" :-")
+                    sanitized = cls._sanitize_detail_value(mapped, remainder)
+                    if sanitized:
+                        cls._set_detail_value(details, mapped, sanitized)
+                        split_matched = True
+                    break
+                if split_matched:
+                    continue
                 continue
 
             for candidate in lines[idx + 1 : idx + 4]:
@@ -1659,7 +1709,7 @@ class ProfuomoScraper(Profuomo):
                     break
                 sanitized = cls._sanitize_detail_value(mapped_key, candidate_value)
                 if sanitized:
-                    details[mapped_key] = sanitized
+                    cls._set_detail_value(details, mapped_key, sanitized)
                     break
         return details
 
@@ -1753,8 +1803,47 @@ class ProfuomoScraper(Profuomo):
         return match.group(1).replace(",", ".").strip()
 
     @classmethod
+    def _expand_product_details_section(cls, driver: webdriver.Chrome) -> bool:
+        selectors: tuple[tuple[str, str], ...] = (
+            (
+                By.XPATH,
+                "//*[self::button or self::a or self::span][contains(translate(normalize-space(.),"
+                " 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'show more')]",
+            ),
+            (
+                By.XPATH,
+                "//*[self::button or self::a or self::span][contains(translate(normalize-space(.),"
+                " 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'),'meer')]",
+            ),
+            (By.CSS_SELECTOR, "[class*='show-more']"),
+        )
+        expanded = False
+        for by, selector in selectors:
+            try:
+                elements = driver.find_elements(by, selector)
+            except Exception:
+                continue
+            for element in elements:
+                try:
+                    if not element.is_displayed() or not element.is_enabled():
+                        continue
+                    text = cls._clean_text(getattr(element, "text", ""))
+                    if text and "show less" in text.lower():
+                        continue
+                    driver.execute_script("arguments[0].click();", element)
+                    expanded = True
+                    time.sleep(0.15)
+                    break
+                except Exception:
+                    continue
+            if expanded:
+                break
+        return expanded
+
+    @classmethod
     def get_product_details(cls, driver: webdriver.Chrome) -> dict[str, Any]:
         details: dict[str, Any] = {}
+        cls._expand_product_details_section(driver)
         context_sku = cls._extract_sku_from_url(driver.current_url)
         detail_blocks = cls._find_all(
             driver,
@@ -1772,7 +1861,7 @@ class ProfuomoScraper(Profuomo):
             line_details = cls._extract_details_from_lines(block_text)
             for key, value in line_details.items():
                 if value:
-                    details[key] = value
+                    cls._set_detail_value(details, key, value)
 
             lines = [cls._clean_text(line) for line in block_text.splitlines() if cls._clean_text(line)]
             if "color" not in details:
@@ -1796,7 +1885,7 @@ class ProfuomoScraper(Profuomo):
                         continue
                     value = cls._sanitize_detail_value(mapped_key, dd.text)
                     if mapped_key and value and not details.get(mapped_key):
-                        details[mapped_key] = value
+                        cls._set_detail_value(details, mapped_key, value)
         except Exception:
             pass
 
@@ -1812,7 +1901,7 @@ class ProfuomoScraper(Profuomo):
                     continue
                 value = cls._sanitize_detail_value(mapped_key, tds[1].text)
                 if mapped_key and value and not details.get(mapped_key):
-                    details[mapped_key] = value
+                    cls._set_detail_value(details, mapped_key, value)
         except Exception:
             pass
 
@@ -2341,7 +2430,19 @@ class ProfuomoScraper(Profuomo):
         if forced_sku:
             cls._ensure_product_detail_context(driver, forced_sku)
 
-        product: dict[str, Any] = {"category": category, "sizes": []}
+        product: dict[str, Any] = {
+            "category": category,
+            "sizes": [],
+            "color": "",
+            "capsule": "",
+            "collar": "",
+            "sleeve": "",
+            "cuff": "",
+            "sustainability": "",
+            "noniron": "",
+            "quality": "",
+            "rrp": "",
+        }
 
         if forced_sku:
             product["sku"] = forced_sku.upper()

@@ -351,6 +351,17 @@ Maar benoem in de geschrijving:
 
 en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zijn."""
 
+    FIELD_ALIASES: dict[str, tuple[str, ...]] = {
+        "sleeve": ("sleeve", "sleeve length", "sleevelength", "mouwlengte"),
+        "collar": ("collar", "kraag"),
+        "cuff": ("cuff", "manchet"),
+        "sustainability": ("sustainability", "iconen", "icons"),
+        "noniron": ("noniron", "easy care"),
+        "quality": ("quality", "materiaal", "material"),
+        "fabriccomp": ("fabriccomp", "fabric composition"),
+        "rrp": ("rrp", "rsp", "price"),
+    }
+
     @staticmethod
     def download_current_products(driver: webdriver.Chrome):
         # Wait for the page to load
@@ -651,14 +662,19 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             f.write(f"Available translation mappings: {len(cls.TRANSLATE_MAPPING)}\n")
         
         for key, value in cls.FORM_MAPPING.items():
+            raw_value = None
+            aliases = cls.FIELD_ALIASES.get(key, (key,))
+            for alias in aliases:
+                if alias in product.index and str(product[alias]) != "nan" and product[alias]:
+                    raw_value = product[alias]
+                    break
+
             if (
-                key not in product.index
-                or str(product[key]) == "nan"
-                or not product[key]
+                raw_value is None
             ):
                 # Special handling for overshirts: if collar is empty/nan, use "overshirt"
                 if key == "collar" and product["category"] == "Overshirts":
-                    product[key] = "overshirt"
+                    raw_value = "overshirt"
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                         f.write(f"  Special handling for overshirts collar: set to 'overshirt'\n")
                 else:
@@ -674,26 +690,29 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             for field in fields:
                 with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                     f.write(f"  Processing field: {field} for key: {key}\n")
-                    f.write(f"    Original value: {product[key]}\n")
+                    f.write(f"    Original value: {raw_value}\n")
                 
                 if field == "Productnaam":
-                    product[key] = "Profuomo " + product[key].replace("SC SF ", "")
+                    value_text = str(raw_value)
+                    if not value_text.lower().startswith("profuomo "):
+                        value_text = "Profuomo " + value_text
+                    value_text = value_text.replace("SC SF ", "")
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
-                        f.write(f"    Productnaam processed: {product[key]}\n")
+                        f.write(f"    Productnaam processed: {value_text}\n")
                     # Product name should not be translated, use as-is
                     element = cls.get_element(field)
-                    data[product[key]] = element
+                    data[value_text] = element
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
-                        f.write(f"    Added to data: {product[key]} -> {element}\n")
+                        f.write(f"    Added to data: {value_text} -> {element}\n")
                     continue
                     
-                k = cls.format_key(field, product[key], product["category"])
+                k = cls.format_key(field, str(raw_value), product["category"])
                 with Path("error_debug.txt").open("a", encoding="utf-8") as f:
                     f.write(f"    format_key result: {k}\n")
                 
-                if k is None:
+                if k is None or not str(k).strip():
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
-                        f.write(f"    SKIPPED: format_key returned None\n")
+                        f.write(f"    SKIPPED: format_key returned empty/None\n")
                     continue
                     
                 element = cls.get_element(field)
@@ -1288,11 +1307,22 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     log_file.write(f"{product['sku']}, {key}, {value}\n")
                 
                 # For critical fields, raise the exception to stop processing
-                critical_fields = ["Productnaam", "sku", "rrp"]
-                if key in critical_fields:
+                critical_input_targets = {"product[name]", "product[sku]", "product[price]"}
+                is_critical = (
+                    isinstance(value, tuple)
+                    and len(value) == 2
+                    and value[0] == By.NAME
+                    and value[1] in critical_input_targets
+                )
+                if is_critical:
                     with Path("error_debug.txt").open("a", encoding="utf-8") as f:
-                        f.write(f"    CRITICAL FIELD FAILURE: {key} - stopping product upload\n")
-                    print(f"Critical field {key} failed for product {product['sku']}, stopping product upload")
+                        f.write(
+                            f"    CRITICAL FIELD FAILURE: target={value} input='{key}' - stopping product upload\n"
+                        )
+                    print(
+                        f"Critical field failed for product {product['sku']} "
+                        f"(target={value}, input='{key}'), stopping product upload"
+                    )
                     raise e
             counter += 1
             if counter == 4:
