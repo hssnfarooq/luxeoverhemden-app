@@ -1,4 +1,5 @@
 from functools import cache
+import html
 import json
 import os
 import re
@@ -40,6 +41,14 @@ class Profuomo(BaseScraper):
         "0 results",
     )
     MIN_IMAGE_BYTES = int(os.getenv("PROFUOMO_MIN_IMAGE_BYTES", "5000"))
+    STOCK_RETRY_COUNT = int(os.getenv("PROFUOMO_STOCK_RETRY_COUNT", "2"))
+    INTER_SKU_DELAY_SECONDS = float(os.getenv("PROFUOMO_INTER_SKU_DELAY_SECONDS", "0.05"))
+    SEARCH_INPUT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_INPUT_TIMEOUT_SECONDS", "4"))
+    SEARCH_RESULT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_RESULT_TIMEOUT_SECONDS", "3"))
+    ORDER_GRID_WAIT_LOOPS = int(os.getenv("PROFUOMO_ORDER_GRID_WAIT_LOOPS", "12"))
+    ORDER_GRID_WAIT_INTERVAL_SECONDS = float(
+        os.getenv("PROFUOMO_ORDER_GRID_WAIT_INTERVAL_SECONDS", "0.35")
+    )
     DEBUG_CAPTURE = os.getenv("PROFUOMO_DEBUG_CAPTURE", "false").lower() == "true"
     DEBUG_CAPTURE_DIR = Path(os.getenv("PROFUOMO_DEBUG_DIR", "profuomo_debug"))
 
@@ -198,6 +207,46 @@ class Profuomo(BaseScraper):
             return ""
         match = cls.SKU_REGEX.search(value)
         return match.group(1).upper() if match else ""
+
+    @classmethod
+    def _sku_base(cls, sku: str | None) -> str:
+        value = cls._clean_text(sku).upper()
+        if not value:
+            return ""
+        if len(value) >= 2 and value[-1].isalpha():
+            return value[:-1]
+        return value
+
+    @classmethod
+    def _sku_matches_expected(cls, candidate_sku: str | None, expected_sku: str | None) -> bool:
+        candidate = cls._clean_text(candidate_sku).upper()
+        expected = cls._clean_text(expected_sku).upper()
+        if not candidate or not expected:
+            return False
+        if candidate == expected:
+            return True
+        return cls._sku_base(candidate) == cls._sku_base(expected)
+
+    @classmethod
+    def _normalize_candidate_image_url(cls, raw_url: str | None) -> str:
+        value = cls._clean_text(raw_url)
+        if not value:
+            return ""
+        value = html.unescape(value)
+        value = value.replace("\\/", "/")
+        value = value.replace("&amp;", "&")
+        value = value.strip().strip("\"'`")
+        if value.lower().startswith("url("):
+            value = value[4:]
+        value = value.strip("()\"'` ")
+        for marker in ("&quot;", "\"", "'", ")", ";", ","):
+            idx = value.find(marker)
+            if idx != -1:
+                value = value[:idx]
+        value = value.rstrip(")]};,")
+        if value.startswith("//"):
+            value = f"https:{value}"
+        return value.strip()
 
     @classmethod
     def _append_not_found(cls, sku: str):
@@ -397,20 +446,21 @@ class ProfuomoDownloader(Profuomo):
     def search_sku(cls, driver: webdriver.Chrome, sku: str) -> bool:
         if cls._search_sku_new_flow(driver, sku):
             return True
+        if cls._page_has_no_results_hint(driver):
+            return False
         return cls._search_sku_legacy_flow(driver, sku)
 
     @classmethod
     def _search_sku_new_flow(cls, driver: webdriver.Chrome, sku: str) -> bool:
         try:
             driver.get(cls.PRODUCTS_URL)
-            time.sleep(5)
             search_input = cls._find_first(
                 driver,
                 (
                     (By.ID, "productSearch"),
                     (By.NAME, "productSearch"),
                 ),
-                timeout=12,
+                timeout=cls.SEARCH_INPUT_TIMEOUT_SECONDS,
             )
             if search_input is None:
                 return False
@@ -420,34 +470,37 @@ class ProfuomoDownloader(Profuomo):
             except Exception:
                 pass
             search_input.send_keys(sku)
-            time.sleep(6)
-
-            result_title = cls._find_first(
-                driver,
-                (
+            result_title = None
+            deadline = time.monotonic() + cls.SEARCH_RESULT_TIMEOUT_SECONDS
+            while time.monotonic() < deadline:
+                result_title = cls._find_first(
+                    driver,
                     (
-                        By.XPATH,
-                        f"//*[contains(@class,'product-card__title') and "
-                        f"contains(translate(normalize-space(.),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{sku}')]",
+                        (
+                            By.XPATH,
+                            f"//*[contains(@class,'product-card__title') and "
+                            f"contains(translate(normalize-space(.),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{sku}')]",
+                        ),
                     ),
-                ),
-                timeout=8,
-                clickable=True,
-            )
-            if result_title is None:
-                body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
-                if "no results" in body_text:
+                    timeout=0,
+                    clickable=True,
+                )
+                if result_title is not None:
+                    break
+                if cls._page_has_no_results_hint(driver):
                     return False
+                time.sleep(0.2)
+            if result_title is None:
                 return False
 
             try:
                 result_title.click()
             except Exception:
                 driver.execute_script("arguments[0].click();", result_title)
-            time.sleep(3)
+            time.sleep(0.35)
 
             clicked_order_grid = False
-            for _ in range(40):
+            for _ in range(cls.ORDER_GRID_WAIT_LOOPS):
                 body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
                 if "deliveries" in body_text:
                     return True
@@ -472,7 +525,7 @@ class ProfuomoDownloader(Profuomo):
                         except Exception:
                             pass
                     clicked_order_grid = True
-                time.sleep(0.75)
+                time.sleep(cls.ORDER_GRID_WAIT_INTERVAL_SECONDS)
 
             body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
             if "order grid" in body_text or "deliveries" in body_text:
@@ -491,7 +544,11 @@ class ProfuomoDownloader(Profuomo):
             except Exception:
                 pass
 
-        search_input = cls._find_first(driver, cls.SEARCH_INPUT_SELECTORS, timeout=12)
+        search_input = cls._find_first(
+            driver,
+            cls.SEARCH_INPUT_SELECTORS,
+            timeout=cls.SEARCH_INPUT_TIMEOUT_SECONDS,
+        )
         if search_input is None:
             print(f"SKU {sku} not found: search input missing")
             cls._capture_debug_artifacts(driver, f"search_input_missing_{sku}")
@@ -502,9 +559,16 @@ class ProfuomoDownloader(Profuomo):
         except Exception:
             pass
         search_input.send_keys(sku)
-        cls.random_wait(2)
+        time.sleep(0.4)
+        if cls._page_has_no_results_hint(driver):
+            return False
 
-        result_link = cls._find_first(driver, cls.SEARCH_RESULT_SELECTORS, timeout=4, clickable=True)
+        result_link = cls._find_first(
+            driver,
+            cls.SEARCH_RESULT_SELECTORS,
+            timeout=cls.SEARCH_RESULT_TIMEOUT_SECONDS,
+            clickable=True,
+        )
         if result_link is not None:
             try:
                 result_link.click()
@@ -528,7 +592,7 @@ class ProfuomoDownloader(Profuomo):
 
         previous_url = driver.current_url
         search_input.send_keys(Keys.ENTER)
-        cls.random_wait(2)
+        time.sleep(0.35)
         if driver.current_url != previous_url:
             return True
         if sku in driver.current_url.upper() or "/product/" in driver.current_url.lower():
@@ -814,7 +878,8 @@ class ProfuomoDownloader(Profuomo):
             if headless:
                 options.add_argument("headless")
             driver = cls._create_chrome_driver(options)
-            driver.implicitly_wait(10)
+            # Use explicit waits in helper methods; implicit waits make missing selectors very slow.
+            driver.implicitly_wait(0)
             driver.maximize_window()
 
             cls.profuomo_login(driver)
@@ -827,12 +892,13 @@ class ProfuomoDownloader(Profuomo):
 
                 rows: list[dict[str, str]] = []
                 found_product = False
-                for _ in range(3):
-                    cls.random_wait()
+                for _ in range(max(1, cls.STOCK_RETRY_COUNT)):
+                    time.sleep(cls.INTER_SKU_DELAY_SECONDS)
                     if not cls.search_sku(driver, sku):
-                        continue
+                        # Product not found in search: do not retry, move on immediately.
+                        break
                     found_product = True
-                    cls.random_wait()
+                    time.sleep(cls.INTER_SKU_DELAY_SECONDS)
                     rows = cls.extract_stock_rows(driver, sku)
                     if rows:
                         break
@@ -934,6 +1000,7 @@ class ProfuomoScraper(Profuomo):
         "materials": "material",
         "color": "color",
         "colour": "color",
+        "kleur": "color",
         "stock label": "stocklabel",
         "stocklabel": "stocklabel",
         "available from": "stocklabel",
@@ -944,8 +1011,13 @@ class ProfuomoScraper(Profuomo):
         "fit": "fit",
         "fabric": "fabric",
         "quality": "quality",
+        "description": "description",
         "sleeve": "sleeve",
+        "sleeve length": "sleeve",
+        "sleevelength": "sleeve",
+        "mouwlengte": "sleeve",
         "collar": "collar",
+        "kraag": "collar",
         "item comment": "item comment smc",
         "item comment smc": "item comment smc",
     }
@@ -1196,8 +1268,6 @@ class ProfuomoScraper(Profuomo):
         except Exception:
             return False
         body_l = body_text.lower()
-        source_u = driver.page_source.upper()
-
         detail_tokens = (
             "product details",
             "additional information",
@@ -1236,13 +1306,42 @@ class ProfuomoScraper(Profuomo):
         if sum((1 if has_price else 0, 1 if has_sizes else 0, 1 if has_images else 0)) >= 2:
             positive_signals += 1
 
+        context_skus: set[str] = set()
+        context_url_sku = cls._extract_sku_from_url(driver.current_url)
+        if context_url_sku:
+            context_skus.add(context_url_sku)
+        for node in detail_nodes[:12]:
+            for value in (
+                cls._clean_text(getattr(node, "text", "")),
+                cls._clean_text(node.get_attribute("content")),
+                cls._clean_text(node.get_attribute("data-sku")),
+            ):
+                sku_value = cls._extract_sku_from_text(value)
+                if sku_value:
+                    context_skus.add(sku_value)
+
         sku_hit = False
         if expected_sku:
             sku_upper = expected_sku.upper()
+            sku_base = cls._sku_base(sku_upper)
             current_url_u = driver.current_url.upper()
-            if sku_upper in current_url_u or sku_upper in body_text.upper() or sku_upper in source_u:
+            strong_match = False
+            if sku_upper in current_url_u or (sku_base and sku_base in current_url_u):
+                strong_match = True
+            if any(cls._sku_matches_expected(candidate, sku_upper) for candidate in context_skus):
+                strong_match = True
+
+            if strong_match:
                 positive_signals += 2
                 sku_hit = True
+
+            # Guard against false positives where expected SKU appears only in swatch/related lists.
+            if (
+                context_skus
+                and not any(cls._sku_matches_expected(candidate, sku_upper) for candidate in context_skus)
+                and ("/products/" in current_url_u or "/product/" in current_url_u)
+            ):
+                return False
 
         listing_signals = 0
         if len(cls._find_all(driver, cls.PRODUCT_CARD_TITLE_SELECTORS)) >= 6:
@@ -1405,15 +1504,18 @@ class ProfuomoScraper(Profuomo):
         def consolidate(df: pd.DataFrame) -> pd.DataFrame:
             if df.empty or "sku" not in df.columns:
                 return df
-            score = df.notna().sum(axis=1).astype(float)
+            score_frame = df.drop(columns=[c for c in ("wsp", "description") if c in df.columns])
+            score = score_frame.notna().sum(axis=1).astype(float)
             if "image_count" in df.columns:
                 image_count = pd.to_numeric(df["image_count"], errors="coerce").fillna(0)
                 score = score + (image_count > 0).astype(float) * 2
             ranked = df.copy()
             ranked["_row_score"] = score
-            ranked = ranked.sort_values("_row_score", ascending=False)
+            ranked["_row_order"] = range(len(ranked))
+            # Prefer newer rows first so re-scrapes replace stale values; use quality score as tie-breaker.
+            ranked = ranked.sort_values(["_row_order", "_row_score"], ascending=[False, False])
             ranked = ranked.drop_duplicates(subset=["sku"], keep="first")
-            ranked = ranked.drop(columns=["_row_score"])
+            ranked = ranked.drop(columns=["_row_score", "_row_order"])
             return ranked.reset_index(drop=True)
 
         if not os.path.exists(category_path):
@@ -1484,6 +1586,49 @@ class ProfuomoScraper(Profuomo):
         return re.sub(r"\s+", " ", key.replace(":", "").strip().lower())
 
     @classmethod
+    def _sanitize_detail_value(cls, key: str, value: str) -> str:
+        cleaned = cls._clean_text(value).strip("|:- ").strip()
+        if not cleaned:
+            return ""
+        lower = cleaned.lower()
+        if lower in {
+            "size",
+            "image",
+            "cuff",
+            "eur",
+            "€",
+            "unit price",
+            "wsp",
+            "rsp",
+            "show more",
+            "size guide",
+            "compare to other product",
+            "product information",
+            "additional information",
+            "go to order grid",
+        }:
+            return ""
+        if key == "stocklabel":
+            cleaned = re.sub(
+                r"^\s*available\s+from\s*:\s*",
+                "",
+                cleaned,
+                flags=re.IGNORECASE,
+            )
+        return cleaned
+
+    @classmethod
+    def _looks_like_size_value(cls, value: str | None) -> bool:
+        candidate = cls._clean_text(value)
+        if not candidate:
+            return False
+        if cls._normalize_size(candidate):
+            return True
+        if re.fullmatch(r"\d+(?:[.,]\d+)?", candidate):
+            return True
+        return re.fullmatch(r"\d{1,3}[A-Z]?", candidate, flags=re.IGNORECASE) is not None
+
+    @classmethod
     def _extract_details_from_lines(cls, text: str) -> dict[str, str]:
         details: dict[str, str] = {}
         lines = [cls._clean_text(line) for line in text.splitlines() if cls._clean_text(line)]
@@ -1495,7 +1640,7 @@ class ProfuomoScraper(Profuomo):
                 key_part, value_part = line.split(":", 1)
                 key_norm = cls._normalize_detail_key(key_part)
                 mapped_key = cls.DETAIL_KEY_ALIASES.get(key_norm)
-                value = cls._clean_text(value_part)
+                value = cls._sanitize_detail_value(mapped_key or "", value_part)
                 if mapped_key and value:
                     details[mapped_key] = value
                     continue
@@ -1512,36 +1657,132 @@ class ProfuomoScraper(Profuomo):
                 candidate_key = cls._normalize_detail_key(candidate_value)
                 if candidate_key in cls.DETAIL_KEY_ALIASES:
                     break
-                details[mapped_key] = candidate_value
-                break
+                sanitized = cls._sanitize_detail_value(mapped_key, candidate_value)
+                if sanitized:
+                    details[mapped_key] = sanitized
+                    break
         return details
 
     @classmethod
-    def _extract_price_tokens(cls, text: str) -> list[str]:
+    def _extract_color_from_lines(
+        cls, lines: list[str], target_sku: str | None = None
+    ) -> str:
+        candidates: list[str] = []
+        for line in lines:
+            match = re.search(r"\bPP[A-Z0-9]{5,}\s*-\s*(.+)$", line, flags=re.IGNORECASE)
+            if not match:
+                continue
+            line_sku = cls._extract_sku_from_text(line)
+            if target_sku and line_sku and not cls._sku_matches_expected(line_sku, target_sku):
+                continue
+            color = cls._sanitize_detail_value("color", match.group(1))
+            if cls._looks_like_size_value(color):
+                continue
+            if color:
+                candidates.append(color)
+        if candidates:
+            return candidates[0]
+
+        # Fallback for pages where the "SKU - COLOR" line is not reliable:
+        # use the first swatch-like line after the RSP line and before product info blocks.
+        rsp_index = -1
+        for idx, line in enumerate(lines):
+            if "RSP" in line.upper():
+                rsp_index = idx
+                break
+        if rsp_index >= 0:
+            stop_tokens = ("COMPARE TO OTHER PRODUCT", "PRODUCT INFORMATION", "ADDITIONAL INFORMATION")
+            for line in lines[rsp_index + 1 : rsp_index + 15]:
+                upper_line = line.upper()
+                if any(token in upper_line for token in stop_tokens):
+                    break
+                candidate = cls._sanitize_detail_value("color", line)
+                if not candidate:
+                    continue
+                if cls._looks_like_size_value(candidate):
+                    continue
+                return candidate
+        return ""
+
+    @classmethod
+    def _extract_color_from_description(cls, description: str) -> str:
+        text = cls._clean_text(description).lower()
         if not text:
-            return []
-        raw = re.findall(r"(?:€|EUR\s*)?\s*\d{1,4}(?:[.,]\d{2})", text, flags=re.IGNORECASE)
-        normalized: list[str] = []
-        for token in raw:
-            compact = re.sub(r"\s+", "", token).replace("€", "EUR")
-            normalized.append(compact)
-        return normalized
+            return ""
+        color_candidates = (
+            "raw beige",
+            "light green",
+            "dark green",
+            "light brown",
+            "dark brown",
+            "mid green",
+            "mid brown",
+            "mid blue",
+            "dark pink",
+            "beige",
+            "blue",
+            "navy",
+            "green",
+            "brown",
+            "white",
+            "black",
+            "grey",
+            "gray",
+            "pink",
+            "clay",
+            "red",
+            "sand",
+        )
+        for color in color_candidates:
+            if color in text:
+                return color.title()
+        return ""
+
+    @classmethod
+    def _extract_rsp_price(cls, text: str) -> str:
+        if not text:
+            return ""
+        compact_text = text.replace("\n", " ")
+        match = re.search(
+            r"RSP\s*(?:EUR|€)?\s*(\d{1,4}(?:[.,]\d{2}))",
+            compact_text,
+            flags=re.IGNORECASE,
+        )
+        if not match:
+            return ""
+        return match.group(1).replace(",", ".").strip()
 
     @classmethod
     def get_product_details(cls, driver: webdriver.Chrome) -> dict[str, Any]:
         details: dict[str, Any] = {}
+        context_sku = cls._extract_sku_from_url(driver.current_url)
+        detail_blocks = cls._find_all(
+            driver,
+            (
+                (By.CSS_SELECTOR, ".product-details"),
+                (By.CSS_SELECTOR, "[class*='product-details']"),
+                (By.CSS_SELECTOR, ".a4f-product-details"),
+            ),
+        )
 
-        try:
-            rows = driver.find_elements(By.CSS_SELECTOR, ".extra-fields tr, table tr")
-            for row in rows:
-                tds = row.find_elements(By.TAG_NAME, "td")
-                if len(tds) == 2:
-                    key = cls._normalize_detail_key(tds[0].text)
-                    value = cls._clean_text(tds[1].text)
-                    if key and value:
-                        details[key] = value
-        except Exception:
-            pass
+        for block in detail_blocks[:3]:
+            block_text = cls._clean_text(block.text)
+            if not block_text:
+                continue
+            line_details = cls._extract_details_from_lines(block_text)
+            for key, value in line_details.items():
+                if value:
+                    details[key] = value
+
+            lines = [cls._clean_text(line) for line in block_text.splitlines() if cls._clean_text(line)]
+            if "color" not in details:
+                extracted_color = cls._extract_color_from_lines(lines, target_sku=context_sku)
+                if extracted_color:
+                    details["color"] = extracted_color
+            if "rrp" not in details:
+                rsp_price = cls._extract_rsp_price(block_text)
+                if rsp_price:
+                    details["rrp"] = rsp_price
 
         try:
             dls = driver.find_elements(By.CSS_SELECTOR, "dl")
@@ -1549,59 +1790,50 @@ class ProfuomoScraper(Profuomo):
                 dts = dl.find_elements(By.TAG_NAME, "dt")
                 dds = dl.find_elements(By.TAG_NAME, "dd")
                 for dt, dd in zip(dts, dds):
-                    key = cls._normalize_detail_key(dt.text)
-                    value = cls._clean_text(dd.text)
-                    if key and value:
-                        details[key] = value
+                    key_norm = cls._normalize_detail_key(dt.text)
+                    mapped_key = cls.DETAIL_KEY_ALIASES.get(key_norm)
+                    if not mapped_key:
+                        continue
+                    value = cls._sanitize_detail_value(mapped_key, dd.text)
+                    if mapped_key and value and not details.get(mapped_key):
+                        details[mapped_key] = value
         except Exception:
             pass
 
         try:
-            li_nodes = driver.find_elements(By.CSS_SELECTOR, "li")
-            for node in li_nodes:
-                text = cls._clean_text(node.text)
-                if ":" not in text:
+            rows = driver.find_elements(By.CSS_SELECTOR, ".extra-fields tr, table tr")
+            for row in rows:
+                tds = row.find_elements(By.TAG_NAME, "td")
+                if len(tds) != 2:
                     continue
-                key, value = text.split(":", 1)
-                normalized_key = cls._normalize_detail_key(key)
-                normalized_value = cls._clean_text(value)
-                if normalized_key and normalized_value and normalized_key not in details:
-                    details[normalized_key] = normalized_value
+                key_norm = cls._normalize_detail_key(tds[0].text)
+                mapped_key = cls.DETAIL_KEY_ALIASES.get(key_norm)
+                if not mapped_key:
+                    continue
+                value = cls._sanitize_detail_value(mapped_key, tds[1].text)
+                if mapped_key and value and not details.get(mapped_key):
+                    details[mapped_key] = value
         except Exception:
             pass
 
-        # New UI fallback: product attributes are often rendered as text blocks instead of table rows.
-        try:
-            body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text)
-            line_details = cls._extract_details_from_lines(body_text)
-            for key, value in line_details.items():
-                if key not in details and value:
-                    details[key] = value
-        except Exception:
-            pass
+        # Final fallback from visible body text only (avoid raw source which introduces noisy keys).
+        if not details.get("rrp") or not details.get("color"):
+            try:
+                body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text)
+            except Exception:
+                body_text = ""
+            if body_text:
+                body_lines = [cls._clean_text(line) for line in body_text.splitlines() if cls._clean_text(line)]
+                if not details.get("color"):
+                    body_color = cls._extract_color_from_lines(body_lines, target_sku=context_sku)
+                    if body_color:
+                        details["color"] = body_color
+                if not details.get("rrp"):
+                    body_rsp = cls._extract_rsp_price(body_text)
+                    if body_rsp:
+                        details["rrp"] = body_rsp
 
-        source = driver.page_source
-        for source_key, target_key in (
-            ("material", "material"),
-            ("color", "color"),
-            ("colour", "color"),
-            ("fit", "fit"),
-            ("fabric", "fabric"),
-            ("quality", "quality"),
-            ("sleeve", "sleeve"),
-            ("design", "design"),
-            ("capsule", "capsule"),
-        ):
-            if target_key in details and details.get(target_key):
-                continue
-            match = re.search(
-                rf'"{source_key}"\s*:\s*"(?P<value>[^"]+)"',
-                source,
-                flags=re.IGNORECASE,
-            )
-            if match:
-                details[target_key] = cls._clean_text(match.group("value"))
-
+        # RSP from dedicated price nodes, if still missing.
         price_text_candidates: list[str] = []
         try:
             price_nodes = driver.find_elements(
@@ -1614,19 +1846,28 @@ class ProfuomoScraper(Profuomo):
         except Exception:
             pass
 
-        price_values: list[str] = []
-        seen_prices: set[str] = set()
-        for candidate in price_text_candidates:
-            for price in cls._extract_price_tokens(candidate):
-                compact = price.strip()
-                if compact in seen_prices:
-                    continue
-                seen_prices.add(compact)
-                price_values.append(compact)
+        if not details.get("rrp"):
+            for candidate in price_text_candidates:
+                rsp_price = cls._extract_rsp_price(candidate)
+                if rsp_price:
+                    details["rrp"] = rsp_price
+                    break
 
-        if price_values:
-            details["wsp"] = price_values[0]
-            details["rrp"] = price_values[-1]
+        color_value = cls._clean_text(str(details.get("color", "")))
+        if cls._looks_like_size_value(color_value):
+            details["color"] = ""
+            color_value = ""
+        if not color_value:
+            description_color = cls._extract_color_from_description(
+                cls._clean_text(str(details.get("description", "")))
+            )
+            if description_color:
+                details["color"] = description_color
+
+        # Keep description internal-only (used as color fallback), not persisted in CSV schema.
+        details.pop("description", None)
+        # Explicitly do not scrape/store WSP; Magento upload uses only RSP/rrp.
+        details.pop("wsp", None)
 
         return details
 
@@ -1646,12 +1887,228 @@ class ProfuomoScraper(Profuomo):
         return sizes
 
     @classmethod
-    def _collect_image_urls(cls, driver: webdriver.Chrome) -> list[str]:
+    def _is_variant_image_url(cls, url: str) -> bool:
+        value = cls._normalize_candidate_image_url(url).lower()
+        if not value:
+            return True
+        if value.endswith(".svg") or ".svg?" in value:
+            return True
+        if any(token in value for token in ("logo", "icon", "sprite", "loading", "spinner")):
+            return True
+        if "/resize/200/200/" in value:
+            return True
+        variant_tokens = (
+            "swatch",
+            "colour-swatch",
+            "color-swatch",
+            "related",
+            "upsell",
+            "cross-sell",
+            "lookbook",
+            "recommend",
+        )
+        return any(token in value for token in variant_tokens)
+
+    @classmethod
+    def _normalize_download_image_url(cls, url: str, target_sku: str | None = None) -> str:
+        normalized = cls._normalize_candidate_image_url(url)
+        if not normalized:
+            return ""
+        lower = normalized.lower()
+        if "/resize/200/200/" in lower:
+            normalized = re.sub(
+                r"/resize/\d+/\d+/",
+                "/resize/1536/2048/",
+                normalized,
+                flags=re.IGNORECASE,
+            )
+        if target_sku:
+            sku_upper = cls._clean_text(target_sku).upper()
+            sku_base = cls._sku_base(sku_upper)
+            u = normalized.upper()
+            if sku_upper and sku_upper in u:
+                return normalized
+            if sku_base and sku_base in u:
+                return normalized
+        return normalized
+
+    @classmethod
+    def _is_excluded_image_context(cls, driver: webdriver.Chrome, img: Any) -> bool:
+        script = """
+            const node = arguments[0];
+            if (!node) return true;
+            const excludedSelectors = [
+              "[class*='swatch']",
+              "[class*='color-swatch']",
+              "[class*='colour-swatch']",
+              "[class*='related']",
+              "[class*='recommend']",
+              "[class*='lookbook']",
+              "[class*='upsell']",
+              "[class*='cross-sell']",
+              "[data-testid*='swatch']",
+              "[data-testid*='related']",
+              "[data-testid*='recommend']",
+            ];
+            return excludedSelectors.some((selector) => node.closest(selector));
+        """
+        try:
+            return bool(driver.execute_script(script, img))
+        except Exception:
+            return False
+
+    @classmethod
+    def _collect_main_gallery_candidates(cls, driver: webdriver.Chrome) -> list[str]:
+        script = """
+            const gallerySelectors = [
+              ".a4f-images",
+              ".product-gallery",
+              "[class*='product-gallery']",
+              "[class*='gallery-main']",
+              "[data-testid*='gallery']",
+              "[class*='pdp-gallery']",
+            ];
+            const excludedContainerSelectors = [
+              "[class*='swatch']",
+              "[class*='related']",
+              "[class*='recommend']",
+              "[class*='lookbook']",
+              "[class*='upsell']",
+              "[class*='cross-sell']",
+            ];
+            const out = [];
+            const seen = new Set();
+            const push = (value) => {
+              if (!value || typeof value !== "string") return;
+              const v = value.trim();
+              if (!v) return;
+              if (seen.has(v)) return;
+              seen.add(v);
+              out.push(v);
+            };
+
+            const containers = [];
+            for (const sel of gallerySelectors) {
+              for (const node of document.querySelectorAll(sel)) containers.push(node);
+            }
+            const uniqueContainers = Array.from(new Set(containers));
+            for (const container of uniqueContainers) {
+              if (!container) continue;
+              const isExcluded = excludedContainerSelectors.some((selector) =>
+                container.closest(selector)
+              );
+              if (isExcluded) continue;
+              const images = container.querySelectorAll("img");
+              for (const img of images) {
+                const imageExcluded = excludedContainerSelectors.some((selector) =>
+                  img.closest(selector)
+                );
+                if (imageExcluded) continue;
+                push(img.getAttribute("src"));
+                push(img.getAttribute("data-src"));
+                push(img.getAttribute("data-zoom-image"));
+                push(img.currentSrc || "");
+                const srcset = (img.getAttribute("srcset") || "").trim();
+                if (srcset) {
+                  for (const part of srcset.split(",")) {
+                    push((part.trim().split(" ")[0] || "").trim());
+                  }
+                }
+              }
+            }
+            return out;
+        """
+        try:
+            values = driver.execute_script(script)
+            if isinstance(values, list):
+                return [cls._clean_text(v) for v in values if cls._clean_text(v)]
+            return []
+        except Exception:
+            return []
+
+    @classmethod
+    def _collect_sku_image_candidates_from_source(
+        cls, driver: webdriver.Chrome, target_sku: str | None
+    ) -> list[str]:
+        sku = cls._clean_text(target_sku).upper()
+        if not sku:
+            return []
+        sku_base = cls._sku_base(sku)
+
+        try:
+            source = cls._clean_text(driver.page_source)
+        except Exception:
+            return []
+        if not source:
+            return []
+
+        normalized = source.replace("\\/", "/")
+        upper_normalized = normalized.upper()
+        indices = [m.start() for m in re.finditer(re.escape(sku), upper_normalized)]
+        if not indices:
+            return []
+
+        urls: list[str] = []
+        seen: set[str] = set()
+        url_pattern = re.compile(
+            r"(https?://[^\"'\s<>]+|//[^\"'\s<>]+)",
+            flags=re.IGNORECASE,
+        )
+        image_hint_tokens = (".jpg", ".jpeg", ".png", ".webp", "/media/", "/images/", "/image/")
+
+        for index in indices[:20]:
+            window_start = max(0, index - 5000)
+            window_end = min(len(normalized), index + 18000)
+            window = normalized[window_start:window_end]
+            for match in url_pattern.finditer(window):
+                candidate = cls._normalize_candidate_image_url(match.group(1))
+                if not candidate:
+                    continue
+                lower_candidate = candidate.lower()
+                if not lower_candidate.startswith("http"):
+                    continue
+                if not any(token in lower_candidate for token in image_hint_tokens):
+                    continue
+                upper_candidate = candidate.upper()
+                if sku not in upper_candidate and sku_base not in upper_candidate:
+                    continue
+                if cls._is_variant_image_url(candidate):
+                    continue
+                if candidate in seen:
+                    continue
+                seen.add(candidate)
+                urls.append(candidate)
+                if len(urls) >= 20:
+                    return urls
+        return urls
+
+    @classmethod
+    def _collect_image_urls(
+        cls,
+        driver: webdriver.Chrome,
+        strict_gallery: bool = True,
+        target_sku: str | None = None,
+    ) -> list[str]:
         urls: list[str] = []
         seen: set[str] = set()
         max_urls = 20
 
+        for raw_url in cls._collect_main_gallery_candidates(driver):
+            url = cls._normalize_candidate_image_url(raw_url)
+            if not url or not url.startswith("http"):
+                continue
+            if cls._is_variant_image_url(url):
+                continue
+            if url in seen:
+                continue
+            seen.add(url)
+            urls.append(url)
+            if len(urls) >= max_urls:
+                return urls
+
         for img in cls._find_all(driver, cls.IMAGE_SELECTORS):
+            if strict_gallery and cls._is_excluded_image_context(driver, img):
+                continue
             candidate_values = [
                 img.get_attribute("src"),
                 img.get_attribute("data-src"),
@@ -1662,11 +2119,10 @@ class ProfuomoScraper(Profuomo):
                 candidate_values.extend(part.strip().split(" ")[0] for part in srcset.split(","))
 
             for value in candidate_values:
-                url = cls._clean_text(value)
+                url = cls._normalize_candidate_image_url(value)
                 if not url or not url.startswith("http"):
                     continue
-                lower_url = url.lower()
-                if "logo" in lower_url or "icon" in lower_url or "sprite" in lower_url:
+                if cls._is_variant_image_url(url):
                     continue
                 if url in seen:
                     continue
@@ -1678,16 +2134,31 @@ class ProfuomoScraper(Profuomo):
         if not urls:
             try:
                 meta = driver.find_element(By.CSS_SELECTOR, "meta[property='og:image']")
-                meta_url = cls._clean_text(meta.get_attribute("content"))
-                if meta_url.startswith("http"):
+                meta_url = cls._normalize_candidate_image_url(meta.get_attribute("content"))
+                if meta_url.startswith("http") and not cls._is_variant_image_url(meta_url):
                     urls.append(meta_url)
             except Exception:
                 pass
 
+        if target_sku and len(urls) < 3:
+            for candidate in cls._collect_sku_image_candidates_from_source(driver, target_sku):
+                if candidate in seen:
+                    continue
+                seen.add(candidate)
+                urls.append(candidate)
+                if len(urls) >= max_urls:
+                    break
+
         return urls
 
     @classmethod
-    def download_images(cls, driver: webdriver.Chrome, sku: str) -> int:
+    def download_images(
+        cls,
+        driver: webdriver.Chrome,
+        sku: str,
+        strict_gallery: bool = True,
+        target_sku: str | None = None,
+    ) -> int:
         sku_folder = os.path.join(PRODUCTS_PATH, sku)
         os.makedirs(sku_folder, exist_ok=True)
         downloaded_count = 0
@@ -1724,14 +2195,48 @@ class ProfuomoScraper(Profuomo):
         except Exception:
             pass
 
-        image_urls = cls._collect_image_urls(driver)
-        for index, img_url in enumerate(image_urls):
+        image_urls: list[str] = []
+        for _ in range(8):
+            image_urls = cls._collect_image_urls(
+                driver,
+                strict_gallery=strict_gallery,
+                target_sku=target_sku or sku,
+            )
+            if image_urls:
+                break
+            time.sleep(0.2)
+
+        if not image_urls:
+            print(f"Warning: no image URLs detected for {sku} (strict_gallery={strict_gallery})")
+
+        sanitized_urls: list[str] = []
+        seen_urls: set[str] = set()
+        for raw in image_urls:
+            candidate = cls._normalize_download_image_url(raw, target_sku=target_sku or sku)
+            if not candidate or not candidate.startswith("http"):
+                continue
+            if cls._is_variant_image_url(candidate):
+                continue
+            if candidate in seen_urls:
+                continue
+            seen_urls.add(candidate)
+            sanitized_urls.append(candidate)
+
+        if not sanitized_urls and image_urls:
+            print(f"Warning: image candidates normalized to zero for {sku}")
+
+        for index, img_url in enumerate(sanitized_urls):
             try:
                 response = session.get(img_url, timeout=20)
                 if response.status_code != 200:
                     continue
                 content_type = cls._clean_text(response.headers.get("Content-Type", "")).lower()
-                if content_type and "image" not in content_type:
+                # Some supplier CDN endpoints return generic content-type for valid image bytes.
+                if (
+                    content_type
+                    and "image" not in content_type
+                    and "octet-stream" not in content_type
+                ):
                     continue
                 img_data = response.content
             except Exception:
@@ -1752,7 +2257,35 @@ class ProfuomoScraper(Profuomo):
 
         if downloaded_count > 0:
             return downloaded_count
+        if existing_valid_count == 0:
+            print(
+                f"Warning: no valid downloaded images for {sku} "
+                f"(strict_gallery={strict_gallery}, candidates={len(sanitized_urls)})"
+            )
         return existing_valid_count
+
+    @classmethod
+    def _ensure_product_detail_context(cls, driver: webdriver.Chrome, sku: str) -> None:
+        if cls._is_product_details_context(driver, sku):
+            return
+
+        if cls._open_product_card_via_search(driver, sku):
+            cls.random_wait()
+        if cls._is_product_details_context(driver, sku):
+            return
+
+        direct_href = cls._extract_product_href_for_sku(driver, sku)
+        if direct_href:
+            driver.get(direct_href)
+            cls.random_wait()
+        if cls._is_product_details_context(driver, sku):
+            return
+
+        sku_upper = sku.upper()
+        page_has_sku = sku_upper in driver.page_source.upper()
+        if cls._looks_like_listing_url(driver.current_url) and not page_has_sku:
+            raise Exception(f"Product detail context not found for {sku}")
+        print(f"Warning: detail context weak for {sku}, continuing with best-effort extraction")
 
     @classmethod
     def get_product_sku(cls, driver: webdriver.Chrome) -> str:
@@ -1805,22 +2338,8 @@ class ProfuomoScraper(Profuomo):
         driver.get(url)
         cls.random_wait()
 
-        if forced_sku and not cls._is_product_details_context(driver, forced_sku):
-            if cls._open_product_card_via_search(driver, forced_sku):
-                cls.random_wait()
-            if not cls._is_product_details_context(driver, forced_sku):
-                direct_href = cls._extract_product_href_for_sku(driver, forced_sku)
-                if direct_href:
-                    driver.get(direct_href)
-                    cls.random_wait()
-            if not cls._is_product_details_context(driver, forced_sku):
-                sku_upper = forced_sku.upper()
-                page_has_sku = sku_upper in driver.page_source.upper()
-                if cls._looks_like_listing_url(driver.current_url) and not page_has_sku:
-                    raise Exception(f"Product detail context not found for {forced_sku}")
-                print(
-                    f"Warning: detail context weak for {forced_sku}, continuing with best-effort extraction"
-                )
+        if forced_sku:
+            cls._ensure_product_detail_context(driver, forced_sku)
 
         product: dict[str, Any] = {"category": category, "sizes": []}
 
@@ -1845,7 +2364,43 @@ class ProfuomoScraper(Profuomo):
 
         image_count = 0
         try:
-            image_count = cls.download_images(driver, product["sku"])
+            image_count = cls.download_images(
+                driver,
+                product["sku"],
+                strict_gallery=True,
+                target_sku=forced_sku or product["sku"],
+            )
+            if image_count == 0:
+                print(
+                    f"Warning: no valid strict-gallery images for {product['sku']}; "
+                    "retrying after reload"
+                )
+                try:
+                    driver.get(url)
+                    cls.random_wait()
+                    if forced_sku:
+                        cls._ensure_product_detail_context(driver, forced_sku)
+                except Exception as reload_error:
+                    print(
+                        f"Warning: reload/context refresh failed for {product['sku']}: {reload_error}"
+                    )
+                image_count = cls.download_images(
+                    driver,
+                    product["sku"],
+                    strict_gallery=True,
+                    target_sku=forced_sku or product["sku"],
+                )
+            if image_count == 0:
+                print(
+                    f"Warning: strict-gallery image detection failed for {product['sku']}; "
+                    "trying relaxed gallery detection"
+                )
+                image_count = cls.download_images(
+                    driver,
+                    product["sku"],
+                    strict_gallery=False,
+                    target_sku=forced_sku or product["sku"],
+                )
         except Exception as e:
             print(f"Warning: Image download failed for {product.get('sku', 'Unknown')}: {e}")
         product["image_count"] = image_count
@@ -1928,6 +2483,24 @@ class ProfuomoScraper(Profuomo):
                             "no valid supplier images found"
                         )
                         print(f"Warning: {msg}")
+                        try:
+                            debug_dir = Path("profuomo_debug")
+                            debug_dir.mkdir(parents=True, exist_ok=True)
+                            timestamp = int(time.time())
+                            sku_label = re.sub(
+                                r"[^A-Za-z0-9_-]+",
+                                "_",
+                                product.get("sku", "UNKNOWN"),
+                            )
+                            debug_html = debug_dir / f"{timestamp}_no_images_{sku_label}.html"
+                            debug_png = debug_dir / f"{timestamp}_no_images_{sku_label}.png"
+                            debug_html.write_text(driver.page_source, encoding="utf-8")
+                            driver.save_screenshot(str(debug_png))
+                        except Exception:
+                            pass
+                        cls._capture_debug_artifacts(
+                            driver, f"scrape_no_images_{product.get('sku', 'UNKNOWN')}"
+                        )
                         skipped_no_images_count += 1
                         with open("scraping_errors.log", "a", encoding="utf-8") as f:
                             f.write(msg + "\n")
