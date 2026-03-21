@@ -45,6 +45,9 @@ class Profuomo(BaseScraper):
     INTER_SKU_DELAY_SECONDS = float(os.getenv("PROFUOMO_INTER_SKU_DELAY_SECONDS", "0.05"))
     SEARCH_INPUT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_INPUT_TIMEOUT_SECONDS", "4"))
     SEARCH_RESULT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_RESULT_TIMEOUT_SECONDS", "3"))
+    NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS = float(
+        os.getenv("PROFUOMO_NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS", "9")
+    )
     ORDER_GRID_WAIT_LOOPS = int(os.getenv("PROFUOMO_ORDER_GRID_WAIT_LOOPS", "12"))
     ORDER_GRID_WAIT_INTERVAL_SECONDS = float(
         os.getenv("PROFUOMO_ORDER_GRID_WAIT_INTERVAL_SECONDS", "0.35")
@@ -421,6 +424,36 @@ class ProfuomoDownloader(Profuomo):
         products.sort(key=lambda x: (x["id"], x["size"]))
         return products
 
+    @classmethod
+    def _stock_rank(cls, stock_value: str | None) -> int:
+        stock = cls._normalize_stock(stock_value)
+        try:
+            return int(stock)
+        except Exception:
+            return 0
+
+    @classmethod
+    def dedupe_stock_rows(cls, rows: list[dict[str, str]]) -> list[dict[str, str]]:
+        merged: dict[tuple[str, str], dict[str, str]] = {}
+        for row in rows:
+            product_id = cls._clean_text(str(row.get("id", ""))).upper()
+            size = cls._normalize_size(str(row.get("size", "")))
+            stock = cls._normalize_stock(str(row.get("stock", "")))
+            if not product_id or not size:
+                continue
+
+            key = (product_id, size)
+            existing = merged.get(key)
+            if existing is None:
+                merged[key] = {"id": product_id, "size": size, "stock": stock}
+                continue
+
+            # Keep the highest extracted stock when duplicate rows disagree.
+            if cls._stock_rank(stock) > cls._stock_rank(existing.get("stock", "0")):
+                merged[key] = {"id": product_id, "size": size, "stock": stock}
+
+        return list(merged.values())
+
     @staticmethod
     def delete_csvs():
         if os.path.exists("profuomo_products.csv"):
@@ -446,9 +479,156 @@ class ProfuomoDownloader(Profuomo):
     def search_sku(cls, driver: webdriver.Chrome, sku: str) -> bool:
         if cls._search_sku_new_flow(driver, sku):
             return True
-        if cls._page_has_no_results_hint(driver):
-            return False
         return cls._search_sku_legacy_flow(driver, sku)
+
+    @classmethod
+    def _clear_and_submit_new_search_input(
+        cls, driver: webdriver.Chrome, search_input: Any, query: str
+    ) -> None:
+        try:
+            search_input.clear()
+        except Exception:
+            pass
+        try:
+            driver.execute_script(
+                """
+                const input = arguments[0];
+                if (!input) return;
+                input.value = '';
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+                """,
+                search_input,
+            )
+        except Exception:
+            pass
+        search_input.send_keys(query)
+        # Give the reactive search model a moment to register the typed query.
+        time.sleep(0.18)
+        try:
+            search_input.send_keys(Keys.ENTER)
+        except Exception:
+            pass
+
+    @classmethod
+    def _wait_for_new_search_result_target(
+        cls,
+        driver: webdriver.Chrome,
+        sku: str,
+        timeout_seconds: float,
+        no_results_grace_seconds: float = 1.2,
+    ):
+        start_time = time.monotonic()
+        deadline = start_time + timeout_seconds
+        no_results_hits = 0
+        result_target = None
+        while time.monotonic() < deadline:
+            result_target = cls._find_new_search_result_target(driver, sku)
+            if result_target is not None:
+                return result_target
+            if cls._page_has_no_results_hint(driver) and not cls._has_new_search_results(driver):
+                if (time.monotonic() - start_time) > no_results_grace_seconds:
+                    no_results_hits += 1
+                    if no_results_hits >= 3:
+                        return None
+            else:
+                no_results_hits = 0
+            time.sleep(0.25)
+        return None
+
+    @classmethod
+    def _extract_result_href_from_node(cls, driver: webdriver.Chrome, node: Any) -> str:
+        if node is None:
+            return ""
+        href_candidates: list[str] = []
+        for attr in ("href", "data-href", "data-url", "data-link", "to"):
+            try:
+                value = cls._clean_text(node.get_attribute(attr))
+            except Exception:
+                value = ""
+            if value:
+                href_candidates.append(value)
+
+        for raw in href_candidates:
+            if raw.startswith("http") and ("/products/" in raw or "/product/" in raw):
+                return raw
+            if "/products/" in raw or "/product/" in raw:
+                return urljoin(driver.current_url, raw)
+        return ""
+
+    @classmethod
+    def _extract_product_href_for_search_sku(cls, driver: webdriver.Chrome, sku: str) -> str:
+        sku_upper = cls._clean_text(sku).upper()
+        sku_base = cls._sku_base(sku_upper)
+        xpath_tokens = [sku_upper]
+        if sku_base and sku_base != sku_upper:
+            xpath_tokens.append(sku_base)
+
+        for token in xpath_tokens:
+            anchor = cls._find_first(
+                driver,
+                (
+                    (
+                        By.XPATH,
+                        f"//a[contains(@href,'/products/') and contains(translate(@href,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{token}')]",
+                    ),
+                    (
+                        By.XPATH,
+                        f"//a[contains(@href,'/product/') and contains(translate(@href,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{token}')]",
+                    ),
+                    (
+                        By.XPATH,
+                        f"//*[contains(@class,'product-card') and contains(translate(normalize-space(.),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{token}')]//*[self::a or self::button][1]",
+                    ),
+                ),
+                timeout=1.5,
+                clickable=False,
+            )
+            if anchor is None:
+                continue
+            href = cls._extract_result_href_from_node(driver, anchor)
+            if href:
+                return href
+
+        source = driver.page_source
+        for token in xpath_tokens:
+            patterns = (
+                rf"https?://[^\s\"']*(?:/products/|/product/)[^\s\"']*{re.escape(token)}[^\s\"']*",
+                rf"/(?:products|product)/[^\s\"']*{re.escape(token)}[^\s\"']*",
+            )
+            for pattern in patterns:
+                match = re.search(pattern, source, flags=re.IGNORECASE)
+                if not match:
+                    continue
+                candidate = cls._clean_text(match.group(0))
+                if not candidate:
+                    continue
+                if candidate.startswith("http"):
+                    return candidate
+                return urljoin(driver.current_url, candidate)
+        return ""
+
+    @classmethod
+    def _resolve_clickable_new_result_target(cls, driver: webdriver.Chrome, node: Any):
+        try:
+            target = driver.execute_script(
+                """
+                const n = arguments[0];
+                if (!n) return null;
+                const direct = n.closest('a[href], button, [role="button"], [onclick], [data-href], [data-url], [data-link], [to]');
+                if (direct) return direct;
+                const card = n.closest('[class*="product-card"]');
+                if (!card) return n;
+                return (
+                  card.querySelector('a[href], button, [role="button"], [onclick], [data-href], [data-url], [data-link], [to]')
+                  || card
+                );
+                """,
+                node,
+            )
+            return target or node
+        except Exception:
+            return node
 
     @classmethod
     def _search_sku_new_flow(cls, driver: webdriver.Chrome, sku: str) -> bool:
@@ -465,39 +645,78 @@ class ProfuomoDownloader(Profuomo):
             if search_input is None:
                 return False
 
-            try:
-                search_input.clear()
-            except Exception:
-                pass
-            search_input.send_keys(sku)
-            result_title = None
-            deadline = time.monotonic() + cls.SEARCH_RESULT_TIMEOUT_SECONDS
-            while time.monotonic() < deadline:
-                result_title = cls._find_first(
-                    driver,
-                    (
-                        (
-                            By.XPATH,
-                            f"//*[contains(@class,'product-card__title') and "
-                            f"contains(translate(normalize-space(.),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{sku}')]",
-                        ),
-                    ),
-                    timeout=0,
-                    clickable=True,
-                )
-                if result_title is not None:
-                    break
-                if cls._page_has_no_results_hint(driver):
-                    return False
-                time.sleep(0.2)
-            if result_title is None:
-                return False
+            cls._clear_and_submit_new_search_input(driver, search_input, sku)
+            result_target = cls._wait_for_new_search_result_target(
+                driver,
+                sku,
+                timeout_seconds=max(
+                    cls.SEARCH_RESULT_TIMEOUT_SECONDS,
+                    cls.NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS,
+                ),
+            )
 
-            try:
-                result_title.click()
-            except Exception:
-                driver.execute_script("arguments[0].click();", result_title)
-            time.sleep(0.35)
+            if result_target is None:
+                # Late render guard: some result cards appear after the initial debounce.
+                late_deadline = time.monotonic() + 2.5
+                while time.monotonic() < late_deadline and result_target is None:
+                    result_target = cls._find_new_search_result_target(driver, sku)
+                    if result_target is not None:
+                        break
+                    time.sleep(0.2)
+
+            if result_target is None:
+                # Some variants are indexed by base SKU only; try once with base query.
+                sku_base = cls._sku_base(sku)
+                if sku_base and sku_base != cls._clean_text(sku).upper():
+                    cls._clear_and_submit_new_search_input(driver, search_input, sku_base)
+                    result_target = cls._wait_for_new_search_result_target(
+                        driver,
+                        sku,
+                        timeout_seconds=max(3.5, cls.SEARCH_RESULT_TIMEOUT_SECONDS),
+                        no_results_grace_seconds=0.9,
+                    )
+
+            if result_target is None:
+                href = cls._extract_product_href_for_search_sku(driver, sku)
+                if href:
+                    try:
+                        driver.get(href)
+                    except Exception:
+                        return False
+                    time.sleep(0.35)
+                else:
+                    return False
+
+            if result_target is not None:
+                opened = False
+                for target in (
+                    cls._resolve_clickable_new_result_target(driver, result_target),
+                    result_target,
+                ):
+                    if target is None:
+                        continue
+                    try:
+                        target.click()
+                        opened = True
+                        break
+                    except Exception:
+                        try:
+                            driver.execute_script("arguments[0].click();", target)
+                            opened = True
+                            break
+                        except Exception:
+                            continue
+                if not opened:
+                    href = cls._extract_product_href_for_search_sku(driver, sku)
+                    if href:
+                        try:
+                            driver.get(href)
+                            opened = True
+                        except Exception:
+                            opened = False
+                if not opened:
+                    return False
+                time.sleep(0.35)
 
             clicked_order_grid = False
             for _ in range(cls.ORDER_GRID_WAIT_LOOPS):
@@ -530,9 +749,115 @@ class ProfuomoDownloader(Profuomo):
             body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
             if "order grid" in body_text or "deliveries" in body_text:
                 return True
-            return sku in driver.current_url.upper() or sku in body_text.upper()
+            url_sku = cls._extract_sku_from_url(driver.current_url)
+            if cls._sku_matches_expected(url_sku, sku):
+                return True
+            if sku in driver.current_url.upper() or sku in body_text.upper():
+                return True
+            body_sku = cls._extract_sku_from_text(body_text)
+            return cls._sku_matches_expected(body_sku, sku)
         except Exception:
             return False
+
+    @classmethod
+    def _has_new_search_results(cls, driver: webdriver.Chrome) -> bool:
+        selectors: tuple[tuple[str, str], ...] = (
+            (By.CSS_SELECTOR, ".product-card"),
+            (By.CSS_SELECTOR, "[class*='product-card']"),
+            (By.CSS_SELECTOR, ".product-card__title"),
+            (By.CSS_SELECTOR, "[class*='product-card__title']"),
+        )
+        return len(cls._find_all(driver, selectors)) > 0
+
+    @classmethod
+    def _score_new_search_result(
+        cls,
+        sku: str,
+        title_text: str,
+        href: str,
+        card_text: str,
+    ) -> int:
+        expected = cls._clean_text(sku).upper()
+        expected_base = cls._sku_base(expected)
+        score = 0
+
+        candidate_skus = (
+            cls._extract_sku_from_url(href),
+            cls._extract_sku_from_text(title_text),
+            cls._extract_sku_from_text(card_text),
+        )
+        if any(cls._sku_matches_expected(candidate, expected) for candidate in candidate_skus):
+            score += 100
+
+        merged_text = f"{title_text} {href} {card_text}".upper()
+        if expected and expected in merged_text:
+            score += 20
+        if expected_base and expected_base in merged_text:
+            score += 15
+        return score
+
+    @classmethod
+    def _find_new_search_result_target(cls, driver: webdriver.Chrome, sku: str):
+        anchors = cls._find_all(
+            driver,
+            (
+                (By.CSS_SELECTOR, ".product-card a[href*='/products/']"),
+                (By.CSS_SELECTOR, ".product-card a[href*='/product/']"),
+                (By.CSS_SELECTOR, "[class*='product-card'] a[href*='/products/']"),
+                (By.CSS_SELECTOR, "[class*='product-card'] a[href*='/product/']"),
+            ),
+        )
+        best_score = -1
+        best_target = None
+
+        for anchor in anchors:
+            try:
+                candidate_target = cls._resolve_clickable_new_result_target(driver, anchor)
+                title_text = cls._clean_text(anchor.text) or cls._clean_text(anchor.get_attribute("title"))
+                href = cls._extract_result_href_from_node(driver, candidate_target) or cls._extract_result_href_from_node(driver, anchor)
+                card_text = cls._clean_text(
+                    driver.execute_script(
+                        "return (arguments[0].closest('[class*=\"product-card\"]') || arguments[0]).innerText || '';",
+                        anchor,
+                    )
+                )
+            except Exception:
+                continue
+
+            score = cls._score_new_search_result(sku, title_text, href, card_text)
+            if score > best_score:
+                best_score = score
+                best_target = candidate_target or anchor
+
+        title_nodes = cls._find_all(
+            driver,
+            (
+                (By.CSS_SELECTOR, ".product-card__title"),
+                (By.CSS_SELECTOR, "[class*='product-card__title']"),
+            ),
+        )
+        for title_node in title_nodes:
+            try:
+                candidate_target = cls._resolve_clickable_new_result_target(driver, title_node)
+                title_text = cls._clean_text(title_node.text)
+                href = cls._extract_result_href_from_node(driver, candidate_target)
+                card_text = cls._clean_text(
+                    driver.execute_script(
+                        "return (arguments[0].closest('[class*=\"product-card\"]') || arguments[0]).innerText || '';",
+                        title_node,
+                    )
+                )
+            except Exception:
+                continue
+
+            score = cls._score_new_search_result(sku, title_text, href, card_text)
+            if score > best_score:
+                best_score = score
+                best_target = candidate_target or title_node
+
+        if best_target is not None and best_score > 0:
+            return best_target
+        return None
 
     @classmethod
     def _search_sku_legacy_flow(cls, driver: webdriver.Chrome, sku: str) -> bool:
@@ -546,7 +871,11 @@ class ProfuomoDownloader(Profuomo):
 
         search_input = cls._find_first(
             driver,
-            cls.SEARCH_INPUT_SELECTORS,
+            (
+                (By.ID, "productSearch"),
+                (By.NAME, "productSearch"),
+                *cls.SEARCH_INPUT_SELECTORS,
+            ),
             timeout=cls.SEARCH_INPUT_TIMEOUT_SECONDS,
         )
         if search_input is None:
@@ -922,6 +1251,7 @@ class ProfuomoDownloader(Profuomo):
                 driver.close()
                 driver = None
 
+            all_products = cls.dedupe_stock_rows(all_products)
             products = cls.fill_products(skus, all_products)
             products = cls.sort_products(products)
             cls.write_products_to_csv("profuomo_products.csv", products)
@@ -983,11 +1313,15 @@ class ProfuomoScraper(Profuomo):
         (By.CSS_SELECTOR, "[class*='title'] h1"),
     )
     SIZE_SELECTORS: tuple[tuple[str, str], ...] = (
+        (By.CSS_SELECTOR, ".c-order-grid-mobile-content-row__skus-title"),
+        (By.CSS_SELECTOR, "[class*='skus-title']"),
+        (By.CSS_SELECTOR, ".template-order-grid-row.order-grid-header-row .order-grid-sku"),
+        (By.CSS_SELECTOR, ".template-order-grid-row.order-grid-header-row [class*='order-grid-sku']"),
         (By.CSS_SELECTOR, ".pr-sizes .size_name"),
         (By.CSS_SELECTOR, ".pr-sizes .h_size"),
-        (By.CSS_SELECTOR, "[data-size]"),
-        (By.CSS_SELECTOR, "button[class*='size']"),
-        (By.CSS_SELECTOR, "[class*='size']"),
+        (By.CSS_SELECTOR, ".pr-sizes [data-size]"),
+        (By.CSS_SELECTOR, "[class*='order-grid'] [data-size]"),
+        (By.CSS_SELECTOR, "button[data-size]"),
     )
     IMAGE_SELECTORS: tuple[tuple[str, str], ...] = (
         (By.CSS_SELECTOR, ".a4f-images img"),
@@ -1041,11 +1375,28 @@ class ProfuomoScraper(Profuomo):
             href = Profuomo._clean_text(anchor.get_attribute("href"))
             if not href or ("/product/" not in href and "/products/" not in href):
                 continue
+            href_l = href.lower()
+            if (
+                "categorycodeforlevel" in href_l
+                or "category=" in href_l
+                or "collectioncode=" in href_l
+                or "simplecolor=" in href_l
+                or "sizename=" in href_l
+            ):
+                continue
+            sku_hint = (
+                Profuomo._extract_sku_from_url(href)
+                or Profuomo._extract_sku_from_text(anchor.text)
+                or Profuomo._extract_sku_from_text(anchor.get_attribute("title"))
+                or Profuomo._extract_sku_from_text(anchor.get_attribute("aria-label"))
+            )
+            if not sku_hint:
+                continue
             if href in seen_links:
                 continue
             seen_links.add(href)
             yielded = True
-            product_text = Profuomo._clean_text(anchor.text)
+            product_text = Profuomo._clean_text(anchor.text) or sku_hint
             if not product_text:
                 product_text = (
                     Profuomo._clean_text(anchor.get_attribute("title"))
@@ -1053,7 +1404,10 @@ class ProfuomoScraper(Profuomo):
                 )
             if not product_text:
                 product_text = href.rstrip("/").split("/")[-1]
-            yield product_text, href
+            if Profuomo._extract_sku_from_url(href):
+                yield product_text, href
+            else:
+                yield product_text, f"sku:{sku_hint}"
 
         if yielded:
             return
@@ -1961,19 +2315,257 @@ class ProfuomoScraper(Profuomo):
         return details
 
     @classmethod
-    def get_product_sizes(cls, driver: webdriver.Chrome) -> list[str]:
+    def get_product_sizes(cls, driver: webdriver.Chrome, target_sku: str | None = None) -> list[str]:
+        candidate_tokens: list[str] = []
+        seen_tokens: set[str] = set()
+
+        for token in cls._extract_sizes_from_structured_dom(driver):
+            cleaned = cls._clean_text(token)
+            if not cleaned or cleaned in seen_tokens:
+                continue
+            seen_tokens.add(cleaned)
+            candidate_tokens.append(cleaned)
+
+        # Fallback to scoped selectors if structured extraction yields nothing.
+        if not candidate_tokens:
+            for node in cls._find_all(driver, cls.SIZE_SELECTORS):
+                if cls._is_excluded_size_node_context(driver, node):
+                    continue
+                raw_size = cls._clean_text(node.get_attribute("data-size")) or cls._clean_text(node.text)
+                if not raw_size or raw_size in seen_tokens:
+                    continue
+                seen_tokens.add(raw_size)
+                candidate_tokens.append(raw_size)
+
+        if not candidate_tokens:
+            for token in cls._extract_sizes_from_page_source(driver, target_sku=target_sku):
+                cleaned = cls._clean_text(token)
+                if not cleaned or cleaned in seen_tokens:
+                    continue
+                seen_tokens.add(cleaned)
+                candidate_tokens.append(cleaned)
+
+        sizes: list[str] = []
+        seen_sizes: set[str] = set()
+        for token in candidate_tokens:
+            size = cls._normalize_size(token)
+            if not size or size in seen_sizes:
+                continue
+            seen_sizes.add(size)
+            sizes.append(size)
+
+        return cls._harmonize_mixed_size_families(sizes)
+
+    @classmethod
+    def _extract_sizes_from_structured_dom(cls, driver: webdriver.Chrome) -> list[str]:
+        # Restrict extraction to product/order-grid contexts and skip filter/swatch UI.
+        script = """
+            const out = [];
+            const pushText = (value) => {
+              if (!value) return;
+              const cleaned = String(value).replace(/\\s+/g, ' ').trim();
+              if (!cleaned || out.includes(cleaned)) return;
+              out.push(cleaned);
+            };
+            const excludedSelector = [
+              "[class*='products-page__filter']",
+              "[class*='filter-column']",
+              "[class*='facet']",
+              "[class*='swatch']",
+              "[class*='related']",
+              "[class*='recommend']",
+              "[class*='lookbook']"
+            ].join(",");
+
+            const collect = (selector) => {
+              for (const node of document.querySelectorAll(selector)) {
+                if (node.closest(excludedSelector)) continue;
+                pushText(node.getAttribute?.('data-size') || node.innerText || node.textContent || '');
+              }
+            };
+
+            collect('.c-order-grid-mobile-content-row__skus-title');
+            collect('[class*="skus-title"]');
+            collect('.template-order-grid-row.order-grid-header-row .order-grid-sku');
+            collect('.template-order-grid-row.order-grid-header-row [class*="order-grid-sku"]');
+            collect('.pr-sizes .size_name');
+            collect('.pr-sizes .h_size');
+            collect('.pr-sizes [data-size]');
+            collect('[class*="order-grid"] [data-size]');
+            collect('button[data-size]');
+
+            return out;
+        """
+        try:
+            extracted = driver.execute_script(script)
+        except Exception:
+            extracted = []
+        if not isinstance(extracted, list):
+            return []
+        return [cls._clean_text(str(value)) for value in extracted if cls._clean_text(str(value))]
+
+    @classmethod
+    def _extract_sizes_from_page_source(
+        cls, driver: webdriver.Chrome, target_sku: str | None = None
+    ) -> list[str]:
+        source = driver.page_source or ""
+        if not source:
+            return []
+
+        sku = cls._clean_text(target_sku).upper()
+        if not sku:
+            sku = cls._extract_sku_from_url(driver.current_url).upper()
+
+        scoped_chunks: list[str] = []
+        if sku:
+            upper_source = source.upper()
+            for match in re.finditer(re.escape(sku), upper_source):
+                start = max(0, match.start() - 5000)
+                end = min(len(source), match.end() + 5000)
+                scoped_chunks.append(source[start:end])
+                if len(scoped_chunks) >= 8:
+                    break
+
+        if not scoped_chunks:
+            scoped_chunks = [source]
+
+        size_pattern = r"(?:\d{2,3}[A-Za-z]?|XS|S|M|L|XL|XXL|XXXL)"
+        kv_pattern = re.compile(
+            rf'"(?:size|sizeName|subSize|maat|label)"\s*:\s*"(?P<size>{size_pattern})"',
+            flags=re.IGNORECASE,
+        )
+        stock_linked_patterns = (
+            re.compile(
+                rf'"(?:size|sizeName|subSize|maat|label)"\s*:\s*"(?P<size>{size_pattern})"'
+                rf'.{{0,180}}?"(?:stock|quantity|available|voorraad)"\s*:\s*"?(?P<qty>\d+|100\+)',
+                flags=re.IGNORECASE | re.DOTALL,
+            ),
+            re.compile(
+                rf'"(?:stock|quantity|available|voorraad)"\s*:\s*"?(?P<qty>\d+|100\+)"?'
+                rf'.{{0,180}}?"(?:size|sizeName|subSize|maat|label)"\s*:\s*"(?P<size>{size_pattern})"',
+                flags=re.IGNORECASE | re.DOTALL,
+            ),
+        )
+
+        tokens: list[str] = []
+        seen_tokens: set[str] = set()
+
+        for chunk in scoped_chunks:
+            for pattern in stock_linked_patterns:
+                for match in pattern.finditer(chunk):
+                    token = cls._clean_text(match.group("size"))
+                    if not token or token in seen_tokens:
+                        continue
+                    seen_tokens.add(token)
+                    tokens.append(token)
+
+        if tokens:
+            return tokens
+
+        # Fallback: plain size key/value near SKU if stock fields are absent in source payload.
+        for chunk in scoped_chunks:
+            for match in kv_pattern.finditer(chunk):
+                token = cls._clean_text(match.group("size"))
+                if not token or token in seen_tokens:
+                    continue
+                seen_tokens.add(token)
+                tokens.append(token)
+
+        return tokens
+
+    @classmethod
+    def _is_excluded_size_node_context(cls, driver: webdriver.Chrome, node: Any) -> bool:
+        script = """
+            const element = arguments[0];
+            if (!element) return true;
+            const excludedSelector = [
+              "[class*='products-page__filter']",
+              "[class*='filter-column']",
+              "[class*='facet']",
+              "[class*='swatch']",
+              "[class*='related']",
+              "[class*='recommend']",
+              "[class*='lookbook']"
+            ].join(",");
+            return !!element.closest(excludedSelector);
+        """
+        try:
+            return bool(driver.execute_script(script, node))
+        except Exception:
+            class_blob = " ".join(
+                cls._clean_text(value).lower()
+                for value in (
+                    node.get_attribute("class"),
+                    node.get_attribute("id"),
+                    node.get_attribute("name"),
+                )
+                if cls._clean_text(value)
+            )
+            noisy_tokens = (
+                "products-page__filter",
+                "filter-column",
+                "facet",
+                "swatch",
+                "related",
+                "recommend",
+                "lookbook",
+            )
+            return any(token in class_blob for token in noisy_tokens)
+
+    @classmethod
+    def _harmonize_mixed_size_families(cls, sizes: list[str]) -> list[str]:
+        if len(sizes) < 2:
+            return sizes
+
+        alpha_sizes = [size for size in sizes if size in {"XS", "S", "M", "L", "XL", "XXL", "XXXL"}]
+        numeric_sizes = [size for size in sizes if re.match(r"^\d{2,3}[A-Z]?$", size)]
+        if not alpha_sizes or not numeric_sizes:
+            return sizes
+
+        # If one family appears as a singleton while the other has a clear run,
+        # treat the singleton as UI noise (e.g., swatch/filter leakage).
+        if len(alpha_sizes) == 1 and len(numeric_sizes) >= 4:
+            return [size for size in sizes if size not in set(alpha_sizes)]
+        if len(numeric_sizes) == 1 and len(alpha_sizes) >= 3:
+            return [size for size in sizes if size not in set(numeric_sizes)]
+        return sizes
+
+    @classmethod
+    def _extract_sizes_from_order_grid_fallback(
+        cls, driver: webdriver.Chrome, target_sku: str
+    ) -> list[str]:
+        try:
+            rows = ProfuomoDownloader.extract_stock_rows(driver, fallback_sku=target_sku)
+        except Exception:
+            return []
+        if not rows:
+            return []
+
+        expected = cls._clean_text(target_sku).upper()
         sizes: list[str] = []
         seen: set[str] = set()
 
-        for node in cls._find_all(driver, cls.SIZE_SELECTORS):
-            raw_size = cls._clean_text(node.get_attribute("data-size")) or cls._clean_text(node.text)
-            size = cls._normalize_size(raw_size)
+        # Prefer rows that match the target SKU (or same SKU base).
+        for row in rows:
+            row_sku = cls._clean_text(str(row.get("id", ""))).upper()
+            if expected and row_sku and not cls._sku_matches_expected(row_sku, expected):
+                continue
+            size = cls._normalize_size(str(row.get("size", "")))
             if not size or size in seen:
                 continue
             seen.add(size)
             sizes.append(size)
 
-        return sizes
+        # Fallback: if all rows are unlabeled/aggregated, accept unique sizes.
+        if not sizes:
+            for row in rows:
+                size = cls._normalize_size(str(row.get("size", "")))
+                if not size or size in seen:
+                    continue
+                seen.add(size)
+                sizes.append(size)
+
+        return cls._harmonize_mixed_size_families(sizes)
 
     @classmethod
     def _is_variant_image_url(cls, url: str) -> bool:
@@ -2370,9 +2962,7 @@ class ProfuomoScraper(Profuomo):
         if cls._is_product_details_context(driver, sku):
             return
 
-        sku_upper = sku.upper()
-        page_has_sku = sku_upper in driver.page_source.upper()
-        if cls._looks_like_listing_url(driver.current_url) and not page_has_sku:
+        if cls._looks_like_listing_url(driver.current_url):
             raise Exception(f"Product detail context not found for {sku}")
         print(f"Warning: detail context weak for {sku}, continuing with best-effort extraction")
 
@@ -2459,7 +3049,7 @@ class ProfuomoScraper(Profuomo):
 
         try:
             product.update(cls.get_product_details(driver))
-            product["sizes"] = cls.get_product_sizes(driver)
+            product["sizes"] = cls.get_product_sizes(driver, target_sku=product.get("sku"))
         except Exception as e:
             print(f"Warning: Some product details failed for {product.get('sku', 'Unknown')}: {e}")
 
@@ -2506,6 +3096,20 @@ class ProfuomoScraper(Profuomo):
             print(f"Warning: Image download failed for {product.get('sku', 'Unknown')}: {e}")
         product["image_count"] = image_count
         product["has_images"] = image_count > 0
+
+        if not product.get("sizes") and product.get("sku"):
+            try:
+                fallback_sizes = cls._extract_sizes_from_order_grid_fallback(
+                    driver, str(product.get("sku"))
+                )
+            except Exception as fallback_error:
+                print(
+                    f"Warning: order-grid size fallback failed for "
+                    f"{product.get('sku', 'Unknown')}: {fallback_error}"
+                )
+                fallback_sizes = []
+            if fallback_sizes:
+                product["sizes"] = fallback_sizes
 
         return product
 
@@ -2576,7 +3180,13 @@ class ProfuomoScraper(Profuomo):
                             forced_sku=sku,
                         )
                     else:
-                        product = cls.scrape_product(driver, link, category)
+                        forced_sku = cls._extract_sku_from_url(link)
+                        product = cls.scrape_product(
+                            driver,
+                            link,
+                            category,
+                            forced_sku=forced_sku or None,
+                        )
 
                     if not product.get("has_images", False):
                         msg = (
