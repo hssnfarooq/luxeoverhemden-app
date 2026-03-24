@@ -1,7 +1,5 @@
 from pathlib import Path
-import csv
 import ast
-import tempfile
 import time
 import re
 import pandas as pd
@@ -99,7 +97,6 @@ class MagentoUploader(Magento):
     SELENIUM_COMMAND_TIMEOUT_SECONDS = int(
         os.getenv("SELENIUM_COMMAND_TIMEOUT_SECONDS", "600")
     )
-    PROFUOMO_BATCH_SIZE = int(os.getenv("PROFUOMO_BATCH_SIZE", "800"))
     GATEWAY_TIMEOUT_PATTERNS = (
         "504 gateway time-out",
         "505 gateway time-out",
@@ -188,50 +185,6 @@ class MagentoUploader(Magento):
             pass
         cls.wait_for_import_result(driver)
 
-    @classmethod
-    def split_profuomo_batches(cls, source_path: Path) -> tuple[list[Path], Path | None]:
-        batch_size = cls.PROFUOMO_BATCH_SIZE
-        if batch_size <= 0:
-            return [source_path], None
-
-        with open(source_path, "r", encoding="utf-8-sig", newline="") as csv_file:
-            reader = csv.reader(csv_file)
-            header = next(reader, None)
-            if header is None:
-                raise Exception(f"CSV has no header: {source_path.name}")
-            rows = list(reader)
-
-        if len(rows) <= batch_size:
-            return [source_path], None
-
-        temp_dir = Path(tempfile.mkdtemp(prefix="profuomo_batches_"))
-        batch_files: list[Path] = []
-        for batch_index, start in enumerate(range(0, len(rows), batch_size), start=1):
-            end = start + batch_size
-            batch_rows = rows[start:end]
-            batch_path = temp_dir / f"{source_path.stem}_part_{batch_index:03d}.csv"
-            with open(batch_path, "w", encoding="utf-8", newline="") as batch_file:
-                writer = csv.writer(batch_file)
-                writer.writerow(header)
-                writer.writerows(batch_rows)
-            batch_files.append(batch_path)
-
-        return batch_files, temp_dir
-
-    @staticmethod
-    def cleanup_batch_dir(batch_dir: Path | None):
-        if batch_dir is None or not batch_dir.exists():
-            return
-        for file_path in batch_dir.iterdir():
-            try:
-                file_path.unlink()
-            except Exception:
-                pass
-        try:
-            batch_dir.rmdir()
-        except Exception:
-            pass
-
     @staticmethod
     def handle_upload_error(driver, ex):
         print("TimeoutException: " + str(ex))
@@ -269,7 +222,6 @@ class MagentoUploader(Magento):
             status["error"] = "No file selected"
             return status
         driver = None
-        uploaded_parts = 0
         try:
             options = webdriver.ChromeOptions()
             if headless:
@@ -287,27 +239,11 @@ class MagentoUploader(Magento):
                 files_to_upload.append("profuomo_products.csv")
 
             for filename in files_to_upload:
-                source_path = Path(filename).resolve()
-                if not source_path.exists():
-                    raise FileNotFoundError(f"File not found: {source_path}")
-
-                upload_files = [source_path]
-                batch_dir: Path | None = None
-                if source_path.name == "profuomo_products.csv":
-                    upload_files, batch_dir = cls.split_profuomo_batches(source_path)
-
-                try:
-                    for upload_file in upload_files:
-                        cls.upload_single_file(driver, str(upload_file))
-                        uploaded_parts += 1
-                finally:
-                    cls.cleanup_batch_dir(batch_dir)
+                cls.upload_single_file(driver, filename)
 
             driver.get(cls.CRONFLAG_URL)
             time.sleep(3)
-            status["message"] = (
-                f"File uploaded successfully ({uploaded_parts} import part(s))"
-            )
+            status["message"] = "File uploaded successfully"
 
         except Exception as ex:
             template = "er is een {0} opgetreden: {1!r}"
