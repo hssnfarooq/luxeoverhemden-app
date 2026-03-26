@@ -258,6 +258,8 @@ class MagentoUploader(Magento):
 
 
 class MagentoFiller(Magento):
+    PLACEHOLDER_IMAGE_DIMENSIONS = (256, 256)
+
     FORM_MAPPING = {
         "Productnaam": "name:product[name]",
         "sku": "name:product[sku]",
@@ -774,27 +776,131 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             option.click()
 
     @classmethod
+    def _image_dimensions(cls, image_path: Path) -> tuple[int, int] | None:
+        try:
+            with image_path.open("rb") as f:
+                header = f.read(32)
+        except OSError:
+            return None
+
+        # PNG: width/height are stored in IHDR at bytes 16..24.
+        if header.startswith(b"\x89PNG\r\n\x1a\n") and len(header) >= 24:
+            width = int.from_bytes(header[16:20], "big")
+            height = int.from_bytes(header[20:24], "big")
+            return width, height
+
+        # JPEG: scan markers until Start Of Frame segment.
+        if header[:2] == b"\xff\xd8":
+            try:
+                with image_path.open("rb") as f:
+                    f.read(2)  # SOI
+                    while True:
+                        marker_start = f.read(1)
+                        if not marker_start:
+                            return None
+                        if marker_start != b"\xff":
+                            continue
+
+                        marker = f.read(1)
+                        while marker == b"\xff":
+                            marker = f.read(1)
+                        if not marker:
+                            return None
+
+                        marker_byte = marker[0]
+                        if marker_byte in (0xD9, 0xDA):  # EOI/SOS without SOF found
+                            return None
+
+                        segment_length_bytes = f.read(2)
+                        if len(segment_length_bytes) != 2:
+                            return None
+                        segment_length = int.from_bytes(segment_length_bytes, "big")
+                        if segment_length < 2:
+                            return None
+
+                        if marker_byte in {
+                            0xC0,
+                            0xC1,
+                            0xC2,
+                            0xC3,
+                            0xC5,
+                            0xC6,
+                            0xC7,
+                            0xC9,
+                            0xCA,
+                            0xCB,
+                            0xCD,
+                            0xCE,
+                            0xCF,
+                        }:
+                            sof = f.read(5)
+                            if len(sof) != 5:
+                                return None
+                            height = int.from_bytes(sof[1:3], "big")
+                            width = int.from_bytes(sof[3:5], "big")
+                            return width, height
+
+                        # Move to next marker (length includes its own 2 bytes).
+                        f.seek(segment_length - 2, os.SEEK_CUR)
+            except OSError:
+                return None
+
+        # GIF
+        if header[:6] in (b"GIF87a", b"GIF89a") and len(header) >= 10:
+            width = int.from_bytes(header[6:8], "little")
+            height = int.from_bytes(header[8:10], "little")
+            return width, height
+
+        return None
+
+    @classmethod
+    def _is_placeholder_image(cls, image_path: Path) -> bool:
+        dimensions = cls._image_dimensions(image_path)
+        return dimensions == cls.PLACEHOLDER_IMAGE_DIMENSIONS
+
+    @classmethod
+    def _get_uploadable_images(cls, sku: str) -> list[Path]:
+        images_path = Path(PRODUCTS_PATH, sku)
+        if not images_path.exists() or not images_path.is_dir():
+            return []
+
+        images = sorted(
+            images_path.glob("*"),
+            key=lambda x: int(x.stem.split("_")[-1]) if x.stem.split("_")[-1].isdigit() else 0,
+        )
+
+        uploadable: list[Path] = []
+        for image in images:
+            if not image.is_file():
+                continue
+            try:
+                file_size = image.stat().st_size
+            except OSError:
+                continue
+            if file_size < 1000:
+                continue
+            if cls._is_placeholder_image(image):
+                continue
+            uploadable.append(image)
+        return uploadable
+
+    @classmethod
     def insert_images(cls, driver: webdriver.Chrome, sku: str):
         images_path = Path(PRODUCTS_PATH, sku)
         print(f"Looking for images in: {images_path.resolve()}")
         print(f"Images path exists: {images_path.exists()}")
         print(f"PRODUCTS_PATH: {PRODUCTS_PATH}")
         print(f"Current working directory: {os.getcwd()}")
-        
+
         images_path.mkdir(exist_ok=True, parents=True)
-        
-        # Get all image files
-        images = sorted(
-            images_path.glob("*"),
-            key=lambda x: int(x.stem.split("_")[-1]) if x.stem.split("_")[-1].isdigit() else 0,
-        )
-        
-        print(f"Found {len(images)} images for SKU {sku}")
-        
+
+        images = cls._get_uploadable_images(sku)
+        print(f"Found {len(images)} uploadable images for SKU {sku}")
+
         if not images:
-            print(f"No images found for SKU {sku} in {images_path}")
+            print(f"No uploadable images found for SKU {sku} in {images_path}")
             return
-            
+
         # Wait for the <span> element with the text 'Images And Videos' to be clickable and click on it
         images_and_videos_span = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//span[text()='Images And Videos']"))
@@ -1537,17 +1643,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
     @classmethod
     def has_valid_images(cls, sku: str) -> bool:
-        images_path = Path(PRODUCTS_PATH, sku)
-        if not images_path.exists() or not images_path.is_dir():
-            return False
-        for image in images_path.glob("*"):
-            if image.is_file():
-                try:
-                    if image.stat().st_size >= 1000:
-                        return True
-                except OSError:
-                    continue
-        return False
+        return len(cls._get_uploadable_images(sku)) > 0
 
     @classmethod
     def register_products(
