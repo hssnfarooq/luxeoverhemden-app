@@ -36,6 +36,17 @@ class SKUResetService:
                 unique.append(sku)
         return unique
 
+    @staticmethod
+    def _normalize_cell_value(value: object) -> str:
+        text = "" if value is None else str(value)
+        return (
+            text.replace("\ufeff", "")
+            .replace('"', "")
+            .replace("'", "")
+            .strip()
+            .upper()
+        )
+
     @classmethod
     def _remove_lines(cls, path: Path, matcher: Callable[[str], bool]) -> int:
         if not path.exists() or not path.is_file():
@@ -82,8 +93,9 @@ class SKUResetService:
             return 0
 
         before = len(df)
-        normalized = df[matched_col].fillna("").astype(str).str.strip().str.upper()
-        filtered = df[normalized != sku]
+        normalized = df[matched_col].map(cls._normalize_cell_value)
+        drop_mask = normalized.eq(sku) | normalized.str.startswith(f"{sku}-")
+        filtered = df[~drop_mask]
         removed = before - len(filtered)
         if removed > 0:
             filtered.to_csv(path, index=False)
