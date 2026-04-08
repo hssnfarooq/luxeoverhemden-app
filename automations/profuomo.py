@@ -2576,12 +2576,26 @@ class ProfuomoScraper(Profuomo):
             return True
         if any(token in value for token in ("logo", "icon", "sprite", "loading", "spinner")):
             return True
+        if any(token in value for token in ("thumbnail", "/thumb/", "_thumb", "-thumb", "thumb=")):
+            return True
         if "/resize/200/200/" in value:
             return True
+        resize_match = re.search(r"/resize/(\d{2,4})/(\d{2,4})/", value)
+        if resize_match:
+            try:
+                resize_w = int(resize_match.group(1))
+                resize_h = int(resize_match.group(2))
+                # Small resized derivatives are usually thumbnail/navigation images.
+                if max(resize_w, resize_h) <= 500:
+                    return True
+            except Exception:
+                pass
         variant_tokens = (
             "swatch",
             "colour-swatch",
             "color-swatch",
+            "thumb",
+            "thumbnail",
             "related",
             "upsell",
             "cross-sell",
@@ -2622,6 +2636,10 @@ class ProfuomoScraper(Profuomo):
               "[class*='swatch']",
               "[class*='color-swatch']",
               "[class*='colour-swatch']",
+              "[class*='thumb']",
+              "[class*='thumbnail']",
+              "[class*='gallery-nav']",
+              "[class*='carousel-nav']",
               "[class*='related']",
               "[class*='recommend']",
               "[class*='lookbook']",
@@ -2651,6 +2669,10 @@ class ProfuomoScraper(Profuomo):
             ];
             const excludedContainerSelectors = [
               "[class*='swatch']",
+              "[class*='thumb']",
+              "[class*='thumbnail']",
+              "[class*='gallery-nav']",
+              "[class*='carousel-nav']",
               "[class*='related']",
               "[class*='recommend']",
               "[class*='lookbook']",
