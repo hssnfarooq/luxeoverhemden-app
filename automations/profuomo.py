@@ -45,13 +45,26 @@ class Profuomo(BaseScraper):
     INTER_SKU_DELAY_SECONDS = float(os.getenv("PROFUOMO_INTER_SKU_DELAY_SECONDS", "0.05"))
     SEARCH_INPUT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_INPUT_TIMEOUT_SECONDS", "4"))
     SEARCH_RESULT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_RESULT_TIMEOUT_SECONDS", "3"))
-    NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS = float(
-        os.getenv("PROFUOMO_NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS", "9")
-    )
-    ORDER_GRID_WAIT_LOOPS = int(os.getenv("PROFUOMO_ORDER_GRID_WAIT_LOOPS", "12"))
+    NEW_SEARCH_RESULT_MIN_TIMEOUT_SECONDS = 4.5
+    ORDER_GRID_WAIT_LOOPS = 6
     ORDER_GRID_WAIT_INTERVAL_SECONDS = float(
-        os.getenv("PROFUOMO_ORDER_GRID_WAIT_INTERVAL_SECONDS", "0.35")
+        os.getenv("PROFUOMO_ORDER_GRID_WAIT_INTERVAL_SECONDS", "0.25")
     )
+    ORDER_GRID_BUTTON_WAIT_LOOPS = int(
+        os.getenv("PROFUOMO_ORDER_GRID_BUTTON_WAIT_LOOPS", "5")
+    )
+    ORDER_GRID_PAGE_WAIT_LOOPS = 5
+    ORDER_GRID_EXTRACTION_WAIT_INTERVAL_SECONDS = float(
+        os.getenv("PROFUOMO_ORDER_GRID_EXTRACTION_WAIT_INTERVAL_SECONDS", "0.2")
+    )
+    STOCK_BROWSER_RESTART_INTERVAL = 60
+    STOCK_PAGE_LOAD_TIMEOUT_SECONDS = int(
+        os.getenv("PROFUOMO_STOCK_PAGELOAD_TIMEOUT_SECONDS", "45")
+    )
+    STOCK_SCRIPT_TIMEOUT_SECONDS = int(
+        os.getenv("PROFUOMO_STOCK_SCRIPT_TIMEOUT_SECONDS", "45")
+    )
+    STOCK_DISABLE_IMAGES = os.getenv("PROFUOMO_STOCK_DISABLE_IMAGES", "true").lower() == "true"
     DEBUG_CAPTURE = os.getenv("PROFUOMO_DEBUG_CAPTURE", "false").lower() == "true"
     DEBUG_CAPTURE_DIR = Path(os.getenv("PROFUOMO_DEBUG_DIR", "profuomo_debug"))
 
@@ -523,6 +536,8 @@ class ProfuomoDownloader(Profuomo):
         no_results_hits = 0
         result_target = None
         while time.monotonic() < deadline:
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed while waiting search results for {sku}")
             result_target = cls._find_new_search_result_target(driver, sku)
             if result_target is not None:
                 return result_target
@@ -633,7 +648,20 @@ class ProfuomoDownloader(Profuomo):
     @classmethod
     def _search_sku_new_flow(cls, driver: webdriver.Chrome, sku: str) -> bool:
         try:
-            driver.get(cls.PRODUCTS_URL)
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed before searching {sku}")
+            search_input = cls._find_first(
+                driver,
+                (
+                    (By.ID, "productSearch"),
+                    (By.NAME, "productSearch"),
+                ),
+                timeout=0.5,
+            )
+            if search_input is None:
+                driver.get(cls.PRODUCTS_URL)
+                if cls._is_browser_crashed(driver):
+                    raise RuntimeError(f"Browser tab crashed while loading search page for {sku}")
             search_input = cls._find_first(
                 driver,
                 (
@@ -646,6 +674,8 @@ class ProfuomoDownloader(Profuomo):
                 return False
 
             cls._clear_and_submit_new_search_input(driver, search_input, sku)
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed after search submit for {sku}")
             result_target = cls._wait_for_new_search_result_target(
                 driver,
                 sku,
@@ -659,6 +689,8 @@ class ProfuomoDownloader(Profuomo):
                 # Late render guard: some result cards appear after the initial debounce.
                 late_deadline = time.monotonic() + 2.5
                 while time.monotonic() < late_deadline and result_target is None:
+                    if cls._is_browser_crashed(driver):
+                        raise RuntimeError(f"Browser tab crashed while waiting late results for {sku}")
                     result_target = cls._find_new_search_result_target(driver, sku)
                     if result_target is not None:
                         break
@@ -669,6 +701,10 @@ class ProfuomoDownloader(Profuomo):
                 sku_base = cls._sku_base(sku)
                 if sku_base and sku_base != cls._clean_text(sku).upper():
                     cls._clear_and_submit_new_search_input(driver, search_input, sku_base)
+                    if cls._is_browser_crashed(driver):
+                        raise RuntimeError(
+                            f"Browser tab crashed after base-SKU search submit for {sku}"
+                        )
                     result_target = cls._wait_for_new_search_result_target(
                         driver,
                         sku,
@@ -717,9 +753,13 @@ class ProfuomoDownloader(Profuomo):
                 if not opened:
                     return False
                 time.sleep(0.35)
+                if cls._is_browser_crashed(driver):
+                    raise RuntimeError(f"Browser tab crashed after opening product {sku}")
 
             clicked_order_grid = False
             for _ in range(cls.ORDER_GRID_WAIT_LOOPS):
+                if cls._is_browser_crashed(driver):
+                    raise RuntimeError(f"Browser tab crashed while opening order grid for {sku}")
                 body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
                 if "deliveries" in body_text:
                     return True
@@ -746,6 +786,8 @@ class ProfuomoDownloader(Profuomo):
                     clicked_order_grid = True
                 time.sleep(cls.ORDER_GRID_WAIT_INTERVAL_SECONDS)
 
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed before product validation for {sku}")
             body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
             if "order grid" in body_text or "deliveries" in body_text:
                 return True
@@ -756,6 +798,8 @@ class ProfuomoDownloader(Profuomo):
                 return True
             body_sku = cls._extract_sku_from_text(body_text)
             return cls._sku_matches_expected(body_sku, sku)
+        except RuntimeError:
+            raise
         except Exception:
             return False
 
@@ -861,6 +905,8 @@ class ProfuomoDownloader(Profuomo):
 
     @classmethod
     def _search_sku_legacy_flow(cls, driver: webdriver.Chrome, sku: str) -> bool:
+        if cls._is_browser_crashed(driver):
+            raise RuntimeError(f"Browser tab crashed before legacy search for {sku}")
         search_button = cls._find_first(driver, cls.SEARCH_BUTTON_SELECTORS, timeout=2)
         if search_button is not None:
             try:
@@ -889,6 +935,8 @@ class ProfuomoDownloader(Profuomo):
             pass
         search_input.send_keys(sku)
         time.sleep(0.4)
+        if cls._is_browser_crashed(driver):
+            raise RuntimeError(f"Browser tab crashed after legacy search submit for {sku}")
         if cls._page_has_no_results_hint(driver):
             return False
 
@@ -1168,15 +1216,19 @@ class ProfuomoDownloader(Profuomo):
                     order_grid_button.click()
                 except Exception:
                     pass
-            for _ in range(8):
-                time.sleep(0.25)
+            for _ in range(max(1, cls.ORDER_GRID_BUTTON_WAIT_LOOPS)):
+                if cls._is_browser_crashed(driver):
+                    return []
+                time.sleep(cls.ORDER_GRID_EXTRACTION_WAIT_INTERVAL_SECONDS)
                 rows = cls._extract_stock_rows_from_order_grid(driver, fallback_sku)
                 if rows:
                     return rows
 
         if "/products/" in driver.current_url and "/webstore/v2" not in driver.current_url:
-            for _ in range(12):
-                time.sleep(0.25)
+            for _ in range(max(1, cls.ORDER_GRID_PAGE_WAIT_LOOPS)):
+                if cls._is_browser_crashed(driver):
+                    return []
+                time.sleep(cls.ORDER_GRID_EXTRACTION_WAIT_INTERVAL_SECONDS)
                 rows = cls._extract_stock_rows_from_order_grid(driver, fallback_sku)
                 if rows:
                     return rows
@@ -1196,6 +1248,116 @@ class ProfuomoDownloader(Profuomo):
         return cls._extract_stock_rows_from_source(driver, fallback_sku)
 
     @classmethod
+    def _create_stock_driver(cls, headless: bool) -> webdriver.Chrome:
+        options = webdriver.ChromeOptions()
+        if headless:
+            options.add_argument("--headless=new")
+        # Reduce memory growth and rendering overhead for long stock loops.
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-background-networking")
+        options.add_argument("--disable-features=Translate,BackForwardCache")
+        options.add_argument("--disable-sync")
+        options.add_argument("--disable-application-cache")
+        options.add_argument("--disk-cache-size=1")
+        options.add_argument("--media-cache-size=1")
+        options.add_argument("--dns-prefetch-disable")
+        options.add_argument("--window-size=1600,1200")
+        if cls.STOCK_DISABLE_IMAGES:
+            options.add_experimental_option(
+                "prefs",
+                {
+                    "profile.managed_default_content_settings.images": 2,
+                },
+            )
+        driver = cls._create_chrome_driver(options)
+        driver.implicitly_wait(0)
+        try:
+            driver.set_page_load_timeout(cls.STOCK_PAGE_LOAD_TIMEOUT_SECONDS)
+        except Exception:
+            pass
+        try:
+            driver.set_script_timeout(cls.STOCK_SCRIPT_TIMEOUT_SECONDS)
+        except Exception:
+            pass
+        if not headless:
+            try:
+                driver.maximize_window()
+            except Exception:
+                pass
+        return driver
+
+    @classmethod
+    def _is_browser_crashed(cls, driver: webdriver.Chrome | None) -> bool:
+        if driver is None:
+            return True
+        try:
+            current_url = cls._clean_text(driver.current_url).lower()
+        except Exception:
+            return True
+        if current_url.startswith("chrome-error://") or "about:blank#blocked" in current_url:
+            return True
+        try:
+            title_text = cls._clean_text(driver.title).lower()
+        except Exception:
+            title_text = ""
+        title_tokens = ("aw, snap", "out of memory", "err_out_of_memory")
+        if any(token in title_text for token in title_tokens):
+            return True
+        try:
+            body_text = cls._clean_text(driver.find_element(By.TAG_NAME, "body").text).lower()
+        except Exception:
+            body_text = ""
+        crash_tokens = (
+            "aw, snap",
+            "out of memory",
+            "something went wrong while displaying this webpage",
+            "err_out_of_memory",
+        )
+        if any(token in body_text for token in crash_tokens):
+            return True
+        try:
+            source_l = driver.page_source.lower()
+        except Exception:
+            return False
+        return any(token in source_l for token in crash_tokens)
+
+    @classmethod
+    def _recreate_stock_driver(
+        cls, driver: webdriver.Chrome | None, headless: bool
+    ) -> webdriver.Chrome:
+        if driver is not None:
+            try:
+                driver.quit()
+            except Exception:
+                pass
+        new_driver = cls._create_stock_driver(headless)
+        cls.profuomo_login(new_driver)
+        return new_driver
+
+    @classmethod
+    def _collect_rows_for_sku(
+        cls, driver: webdriver.Chrome, sku: str
+    ) -> tuple[list[dict[str, str]], bool]:
+        rows: list[dict[str, str]] = []
+        found_product = False
+        for _ in range(max(1, cls.STOCK_RETRY_COUNT)):
+            time.sleep(cls.INTER_SKU_DELAY_SECONDS)
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed while searching {sku}")
+            if not cls.search_sku(driver, sku):
+                # Product not found in search: do not retry, move on immediately.
+                break
+            found_product = True
+            time.sleep(cls.INTER_SKU_DELAY_SECONDS)
+            if cls._is_browser_crashed(driver):
+                raise RuntimeError(f"Browser tab crashed before stock extraction for {sku}")
+            rows = cls.extract_stock_rows(driver, sku)
+            if rows:
+                break
+        return rows, found_product
+
+    @classmethod
     def download_profuomo(cls, headless=False):
         status: dict[str, str | None] = {"message": None, "error": None}
         driver: webdriver.Chrome | None = None
@@ -1203,34 +1365,43 @@ class ProfuomoDownloader(Profuomo):
             cls.delete_csvs()
             all_products: list[dict[str, str]] = []
             skus = cls.get_skus()
-            options = webdriver.ChromeOptions()
-            if headless:
-                options.add_argument("headless")
-            driver = cls._create_chrome_driver(options)
-            # Use explicit waits in helper methods; implicit waits make missing selectors very slow.
-            driver.implicitly_wait(0)
-            driver.maximize_window()
-
+            driver = cls._create_stock_driver(headless)
             cls.profuomo_login(driver)
 
             processed_skus: set[str] = set()
-            for sku in (str(p["sku"]).upper() for p in skus):
+            unique_skus = [str(p["sku"]).upper() for p in skus]
+            for index, sku in enumerate(unique_skus, start=1):
                 if sku in processed_skus:
                     continue
                 processed_skus.add(sku)
 
+                if (
+                    cls.STOCK_BROWSER_RESTART_INTERVAL > 0
+                    and index > 1
+                    and (index - 1) % cls.STOCK_BROWSER_RESTART_INTERVAL == 0
+                ):
+                    print(
+                        f"Info: restarting browser session after {index - 1} SKUs "
+                        f"to avoid memory buildup"
+                    )
+                    driver = cls._recreate_stock_driver(driver, headless)
+
                 rows: list[dict[str, str]] = []
                 found_product = False
-                for _ in range(max(1, cls.STOCK_RETRY_COUNT)):
-                    time.sleep(cls.INTER_SKU_DELAY_SECONDS)
-                    if not cls.search_sku(driver, sku):
-                        # Product not found in search: do not retry, move on immediately.
+                for attempt in range(2):
+                    try:
+                        rows, found_product = cls._collect_rows_for_sku(driver, sku)
                         break
-                    found_product = True
-                    time.sleep(cls.INTER_SKU_DELAY_SECONDS)
-                    rows = cls.extract_stock_rows(driver, sku)
-                    if rows:
-                        break
+                    except Exception as sku_error:
+                        if attempt == 0:
+                            print(
+                                f"Warning: retrying {sku} after browser recovery ({sku_error})"
+                            )
+                            driver = cls._recreate_stock_driver(driver, headless)
+                            continue
+                        print(f"Error: Could not process SKU {sku}: {sku_error}")
+                        rows = []
+                        found_product = False
                 if not rows:
                     if found_product:
                         print(f"Error: Found SKU {sku} but could not extract stock rows")
