@@ -2027,6 +2027,53 @@ class ProfuomoScraper(Profuomo):
         return parsed.path.split("/")[-1].replace("%20", "_")
 
     @classmethod
+    def _extract_sku_from_product_link(cls, link: str) -> str:
+        value = cls._clean_text(link)
+        if not value:
+            return ""
+        if value.startswith("sku:"):
+            return cls._clean_text(value.split(":", 1)[1]).upper()
+        sku_from_url = cls._extract_sku_from_url(value)
+        if sku_from_url:
+            return sku_from_url.upper()
+        return cls._extract_sku_from_text(value).upper()
+
+    @classmethod
+    def _read_known_skus_from_file(cls, path: Path) -> set[str]:
+        skus: set[str] = set()
+        if not path.exists() or not path.is_file():
+            return skus
+        try:
+            with path.open("r", encoding="utf-8-sig") as f:
+                for raw_line in f:
+                    line = cls._clean_text(raw_line)
+                    if not line:
+                        continue
+                    first_col = cls._clean_text(line.split(",", 1)[0]).strip("\"'`")
+                    if not first_col or first_col.lower() in {"sku", "id"}:
+                        continue
+                    sku = cls._extract_sku_from_text(first_col) or cls._extract_sku_from_url(first_col)
+                    if sku:
+                        skus.add(sku.upper())
+        except Exception:
+            return skus
+        return skus
+
+    @classmethod
+    def _get_skip_skus(cls, category: str) -> set[str]:
+        category_filename = f"{category.lower()}.csv"
+        candidate_paths = (
+            Path(PRODUCTS_PATH, "all.csv"),
+            Path(PRODUCTS_PATH, category_filename),
+            Path("input.csv"),
+            Path(PRODUCTS_PATH, "input.csv"),
+        )
+        skus: set[str] = set()
+        for path in candidate_paths:
+            skus.update(cls._read_known_skus_from_file(path))
+        return skus
+
+    @classmethod
     def save_products(cls, products: list[dict[str, Any]], category: str):
         if not products:
             return
@@ -3320,8 +3367,11 @@ class ProfuomoScraper(Profuomo):
             required_links: list[str] = []
             required_link_set: set[str] = set()
             category = cls.get_category(url)
+            skip_skus = cls._get_skip_skus(category)
             failed_count = 0
             skipped_no_images_count = 0
+            skipped_known_count = 0
+            run_seen_skus: set[str] = set()
 
             cls.profuomo_login(driver)
             driver.get(url)
@@ -3333,6 +3383,9 @@ class ProfuomoScraper(Profuomo):
                 listing_round += 1
                 links_before_round = len(required_links)
                 for _, link in cls.get_all_products(driver):
+                    link_sku = cls._extract_sku_from_product_link(link)
+                    if link_sku and (link_sku in skip_skus or link_sku in run_seen_skus):
+                        continue
                     if link in required_link_set:
                         continue
                     required_link_set.add(link)
@@ -3359,6 +3412,11 @@ class ProfuomoScraper(Profuomo):
                         break
 
                     print(f"Scraping product {i + 1}/{len(required_links)}: {link}")
+                    expected_sku = cls._extract_sku_from_product_link(link)
+                    if expected_sku and (expected_sku in skip_skus or expected_sku in run_seen_skus):
+                        skipped_known_count += 1
+                        print(f"Skipping known SKU {expected_sku}: already scraped/queued")
+                        continue
                     if link.startswith("sku:"):
                         sku = link.split(":", 1)[1].strip().upper()
                         if not cls._open_product_for_sku(driver, sku, url):
@@ -3381,6 +3439,9 @@ class ProfuomoScraper(Profuomo):
                             forced_sku=forced_sku or None,
                         )
 
+                    product_sku = cls._clean_text(str(product.get("sku", ""))).upper()
+                    if product_sku:
+                        run_seen_skus.add(product_sku)
                     if not product.get("has_images", False):
                         msg = (
                             f"Skipped {product.get('sku', 'Unknown SKU')}: "
@@ -3422,7 +3483,8 @@ class ProfuomoScraper(Profuomo):
             cls.save_products(products, "all")
             data["message"] = (
                 f"Finished ({len(products)} saved / {len(required_links)} found, "
-                f"{failed_count} failed, {skipped_no_images_count} skipped: no images)"
+                f"{failed_count} failed, {skipped_no_images_count} skipped: no images, "
+                f"{skipped_known_count} skipped: already known)"
             )
         except Exception as e:
             print(f"Critical error in scrape_profuomo: {str(e)}")
