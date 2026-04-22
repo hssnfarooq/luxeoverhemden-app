@@ -110,7 +110,8 @@ class Profuomo(BaseScraper):
         root = Path.home() / ".cache" / "selenium" / "chromedriver"
         if not root.exists():
             return []
-        paths = [p for p in root.rglob("chromedriver") if p.is_file()]
+        driver_names = ["chromedriver.exe", "chromedriver"] if os.name == "nt" else ["chromedriver"]
+        paths = [p for name in driver_names for p in root.rglob(name) if p.is_file()]
         paths.sort(key=lambda p: p.stat().st_mtime, reverse=True)
         return paths
 
@@ -3356,9 +3357,10 @@ class ProfuomoScraper(Profuomo):
     @classmethod
     def scrape_profuomo(cls, url: str):
         data = {"message": "", "error": ""}
-        options = webdriver.ChromeOptions()
-        driver = cls._create_chrome_driver(options)
+        driver: webdriver.Chrome | None = None
         try:
+            options = webdriver.ChromeOptions()
+            driver = cls._create_chrome_driver(options)
             # Use explicit waits in helper methods; implicit waits make each selector
             # query block for too long on the new dynamic category/product pages.
             driver.implicitly_wait(0)
@@ -3493,7 +3495,8 @@ class ProfuomoScraper(Profuomo):
             with open("scraping_errors.log", "a", encoding="utf-8") as f:
                 f.write(f"Critical error in scrape_profuomo: {str(e)}\n")
         finally:
-            driver.quit()
+            if driver is not None:
+                driver.quit()
             return data
 
     @classmethod

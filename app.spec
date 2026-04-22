@@ -1,12 +1,16 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from PyInstaller.utils.hooks import collect_submodules
+
+
+selenium_hiddenimports = collect_submodules('selenium')
 
 a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
     datas=[('web', 'web'), ('automations', 'automations'), ('products', 'products'), ('config.py', '.'), ('input.csv', '.'), ('autoimport.txt', '.'), ('.env', '.')],
-    hiddenimports=['pkg_resources', 'backports', 'backports.tarfile'],
+    hiddenimports=['pkg_resources', 'backports', 'backports.tarfile', *selenium_hiddenimports],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
