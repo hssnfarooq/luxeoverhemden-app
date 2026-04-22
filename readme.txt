@@ -1,1 +1,2 @@
-python -m eel app.py web --onefile --noconsole --icon=app.ico
+pip install -r requirements.txt
+pyinstaller --clean --noconfirm app.spec

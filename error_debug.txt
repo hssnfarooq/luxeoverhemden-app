@@ -1,0 +1,179 @@
+================================================================================
+PRODUCT UPLOAD DEBUG LOG
+================================================================================
+Timestamp: 2026-04-22 16:56:59
+CSV Path: C:\robot\products\polos.csv
+Test Mode: False
+Total Products: 2
+Translation Mappings Loaded: 303
+================================================================================
+
+
+============================================================
+PROCESSING PRODUCT: PPXD10014B
+============================================================
+Product data: {'sku': 'PPXD10014B', 'name': 'PPXD10014B', 'category': 'Polos', 'wsp': nan, 'rrp': 129.95, 'material': '72% Cotton / 20% Elastane / 8% Silk', 'color': 'Beige', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '72% Cotton / 20% Elastane / 8% Silk', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo beige polo collar
+Category: Polos
+Starting register_product for PPXD10014B
+
+--- FILL_FORM for SKU: PPXD10014B ---
+
+--- FETCH_DATA for SKU: PPXD10014B ---
+Product data: {'sku': 'PPXD10014B', 'name': 'PPXD10014B', 'category': 'Polos', 'wsp': nan, 'rrp': 129.95, 'material': '72% Cotton / 20% Elastane / 8% Silk', 'color': 'Beige', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '72% Cotton / 20% Elastane / 8% Silk', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Category: Polos
+Available translation mappings: 303
+  Processing field: name:product[name] for key: Productnaam
+    Original value: Profuomo beige polo collar
+    format_key called: field='name:product[name]', key='Profuomo beige polo collar', category='Polos'
+    format_key result: 'Profuomo beige polo collar'
+    format_key result: Profuomo beige polo collar
+    Added to data: Profuomo beige polo collar -> ('name', 'product[name]')
+  Processing field: name:product[sku] for key: sku
+    Original value: PPXD10014B
+    format_key called: field='name:product[sku]', key='PPXD10014B', category='Polos'
+    format_key result: 'PPXD10014B'
+    format_key result: PPXD10014B
+    Added to data: PPXD10014B -> ('name', 'product[sku]')
+  Skipping ean: not in product or is nan/empty
+  Processing field: name:product[price] for key: rrp
+    Original value: 129.95
+    format_key called: field='name:product[price]', key='129.95', category='Polos'
+    format_key result: '129.95'
+    format_key result: 129.95
+    Added to data: 129.95 -> ('name', 'product[price]')
+  Processing field: name:product[model]=option:data-title;capitalize for key: fit
+    Original value: Regular fit
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Regular fit', category='Polos'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Regular fit'
+    format_key result: 'Regular fit'
+    format_key result: Regular fit
+    Added to data: Regular fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+  Skipping cuff: not in product or is nan/empty
+  Skipping noniron: not in product or is nan/empty
+  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
+    Original value: Cotton
+    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Cotton', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Cotton'
+      Looking for key.lower(): 'cotton'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Katoen'
+      SUCCESS: 'Cotton' -> 'Katoen'
+    Dutch translation: 'Cotton' -> 'Katoen'
+    format_key result: 'Katoen'
+    format_key result: Katoen
+    Added to data: Katoen -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
+  Skipping capsule: not in product or is nan/empty
+  Processing field: option:data-title;dutch for key: fabriccomp
+    Original value: 72% Cotton / 20% Elastane / 8% Silk
+    format_key called: field='option:data-title;dutch', key='72% Cotton / 20% Elastane / 8% Silk', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: '72% Cotton / 20% Elastane / 8% Silk'
+      Looking for key.lower(): '72% cotton / 20% elastane / 8% silk'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: '72% katoen / 20% elastaan / 8% zijde'
+      SUCCESS: '72% Cotton / 20% Elastane / 8% Silk' -> '72% katoen / 20% elastaan / 8% zijde'
+    Dutch translation: '72% Cotton / 20% Elastane / 8% Silk' -> '72% katoen / 20% elastaan / 8% zijde'
+    format_key result: '72% katoen / 20% elastaan / 8% zijde'
+    format_key result: 72% katoen / 20% elastaan / 8% zijde
+    Added to data: 72% katoen / 20% elastaan / 8% zijde -> ('xpath', "//option[@data-title='{}']")
+  Processing field: option:data-title;dutch for key: sustainability
+    Original value: Guaranteed fixed buttons
+    format_key called: field='option:data-title;dutch', key='Guaranteed fixed buttons', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Guaranteed fixed buttons'
+      Looking for key.lower(): 'guaranteed fixed buttons'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: ''
+      ERROR: Key 'Guaranteed fixed buttons' not found in translation mapping!
+    Dutch translation: 'Guaranteed fixed buttons' -> ''
+    format_key result: ''
+    format_key result: 
+    SKIPPED: format_key returned empty/None
+  Processing field: option:data-title;dutch for key: design
+    Original value: Solid
+    format_key called: field='option:data-title;dutch', key='Solid', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Solid'
+      Looking for key.lower(): 'solid'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Effen'
+      SUCCESS: 'Solid' -> 'Effen'
+    Dutch translation: 'Solid' -> 'Effen'
+    format_key result: 'Effen'
+    format_key result: Effen
+    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
+  Processing field: option:data-title;dutch for key: color
+    Original value: Beige
+    format_key called: field='option:data-title;dutch', key='Beige', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Beige'
+      Looking for key.lower(): 'beige'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Beige'
+      SUCCESS: 'Beige' -> 'Beige'
+    Dutch translation: 'Beige' -> 'Beige'
+    format_key result: 'Beige'
+    format_key result: Beige
+    Added to data: Beige -> ('xpath', "//option[@data-title='{}']")
+  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
+    Original value: Polo collar
+    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Polo collar', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Polo collar'
+      Looking for key.lower(): 'polo collar'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Polo kraag'
+      SUCCESS: 'Polo collar' -> 'Polo kraag'
+    Dutch translation: 'Polo collar' -> 'Polo kraag'
+    format_key result: 'Polo kraag'
+    format_key result: Polo kraag
+    Added to data: Polo kraag -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
+  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
+    Original value: Short sleeve
+    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Short sleeve', category='Polos'
+    Applying formatting: 'dutch'
+      get_mapped_key called: 'Short sleeve'
+      Looking for key.lower(): 'short sleeve'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Korte mouw'
+      SUCCESS: 'Short sleeve' -> 'Korte mouw'
+    Dutch translation: 'Short sleeve' -> 'Korte mouw'
+    format_key result: 'Korte mouw'
+    format_key result: Korte mouw
+    Added to data: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+  Final data dict: {'Profuomo beige polo collar': ('name', 'product[name]'), 'PPXD10014B': ('name', 'product[sku]'), '129.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '72% katoen / 20% elastaan / 8% zijde': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Beige': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+  Data entries: 10
+Data to fill: {'Profuomo beige polo collar': ('name', 'product[name]'), 'PPXD10014B': ('name', 'product[sku]'), '129.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '72% katoen / 20% elastaan / 8% zijde': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Beige': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+Number of fields to fill: 10
+  Filling field: Profuomo beige polo collar -> ('name', 'product[name]')
+  Filling field: PPXD10014B -> ('name', 'product[sku]')
+  Filling field: 129.95 -> ('name', 'product[price]')
+  Filling field: Regular fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+      get_mapped_key called: 'Polos'
+      Looking for key.lower(): 'polos'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Polo's'
+      SUCCESS: 'Polos' -> 'Polo's'
+  Filling field: Katoen -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
+  Filling field: 72% katoen / 20% elastaan / 8% zijde -> ('xpath', "//option[@data-title='{}']")
+  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
+  Filling field: Beige -> ('xpath', "//option[@data-title='{}']")
+  Filling field: Polo kraag -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
+  Filling field: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+      get_mapped_key called: 'Polos'
+      Looking for key.lower(): 'polos'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Polo's'
+      SUCCESS: 'Polos' -> 'Polo's'
+SUCCESS: Product PPXD10014B registered successfully
+
+============================================================
+PROCESSING PRODUCT: PPXD10030C
+============================================================
+Product data: {'sku': 'PPXD10030C', 'name': 'PPXD10030C', 'category': 'Polos', 'wsp': nan, 'rrp': 109.95, 'material': '100% Cotton', 'color': 'Light Brown', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': 'Aero Ease', 'collar': 'Polo collar', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo lichtbruine aero ease streep polo', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo lichtbruine aero ease streep polo
+Category: Polos
+SKIPPED: PPXD10030C has no valid images in products/PPXD10030C

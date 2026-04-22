@@ -3,16 +3,14 @@ import sys
 from pathlib import Path
 from dotenv import load_dotenv
 
-if os.path.exists(".env"):
-    load_dotenv(".env")
-
-# Fix path resolution for cross-platform compatibility
 if getattr(sys, "frozen", False):
-    # Running as PyInstaller executable
-    BASE_DIR = Path(sys.executable).parent
+    BASE_DIR = Path(sys.executable).resolve().parent
 else:
-    # Running as Python script
-    BASE_DIR = Path(__file__).parent
+    BASE_DIR = Path(__file__).resolve().parent
+
+ENV_PATH = BASE_DIR / ".env"
+if ENV_PATH.exists():
+    load_dotenv(ENV_PATH)
 
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS", "")
 PASSWORD = os.getenv("EMAIL_PASSWORD", "")

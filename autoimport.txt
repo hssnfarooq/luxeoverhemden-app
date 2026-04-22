@@ -1,1 +1,5 @@
-https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Shirts
+https://b2b.profuomo.com/products/Micro_Fashion_04?categoryCodeForLevel1=Shirts
+https://b2b.profuomo.com/products/Micro_Fashion_04?categoryCodeForLevel1=Knitwear
+https://b2b.profuomo.com/products/Micro_Fashion_04?categoryCodeForLevel1=Overshirts
+https://b2b.profuomo.com/products/Micro_Fashion_04?categoryCodeForLevel1=Polos
+https://b2b.profuomo.com/products/Micro_Fashion_04?categoryCodeForLevel1=Sale

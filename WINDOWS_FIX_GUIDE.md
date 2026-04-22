@@ -87,7 +87,7 @@ scp -r luxeoverhemden-source.tar.gz user@windows-machine:/path/
 tar -xzf luxeoverhemden-source.tar.gz
 cd luxeoverhemden-app
 pip install -r requirements.txt
-pyinstaller --clean --noconfirm server_windows.spec
+pyinstaller --clean --noconfirm app.spec
 ```
 
 #### **Step 3: Upload Windows-built Executable**
@@ -162,5 +162,5 @@ After setup, verify:
 
 ## 🎯 **Files Created:**
 - `luxeoverhemden-source.tar.gz` - Complete source code package
-- `server_windows.spec` - Windows-optimized build spec
+- `app.spec` - Windows build spec
 - `WINDOWS_FIX_GUIDE.md` - This guide

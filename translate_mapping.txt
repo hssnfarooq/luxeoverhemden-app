@@ -1,6 +1,4 @@
-﻿
-PROFUOMO : LuxeOverhemden
-OVERSHIRT : Overshirt
+﻿PROFUOMO : LuxeOverhemden
 SOLID : Effen
 GRAPHIC : Patroon print
 FLOWER : Bloemen print
@@ -14,14 +12,10 @@ DOT : Dot
 COTTON : Katoen
 LINEN : Linnen
 WOOL : Wol
-NEW WOOL : Nieuwe wol
-VIRGIN WOOL : Maagdelijke wol
 POLYESTER : Polyester
-POLYCARBONATE : Polycarbonaat
 METAL : Metaal
 BUFFALO LEATHER : Buffelleer
 COW LEATHER : Runderleer
-LEATHER : Leer
 CALF SUEDE : Kalfssuède
 SILK : Zijde
 MODAL : Modal
@@ -38,12 +32,22 @@ NO CUFF : Geen manchet
 DOUBLE CUFF : Dubbel manchet
 LUXURY BASIC : Luxury basic
 PIQUE : Pique
+Regular fit : Regular fit
+Crochet : Crochet
+Aero Ease : Aero Ease
+Linen blend : Linen blend
+Linen collection : Linen collection
 BETTER COTTON INITIATIVE : Better Cotton Initiative
 ORGANIC CONTENT STANDARD : Organic Content Standard
 RESPONSIBLE WOOL STANDARD : Responsible Wool Standard
 GLOBAL ORGANIC TEXTILE STANDARD : Global Organic Textile Standard
 LENZING TENCEL LYOCELL : Lenzing Tencel Lyocell
 OCS BLEND 50 : OCS Blend 50
+OCS BLEND 70 : OCS Blend 70
+OCS BLEND 30 : OCS Blend 30
+RESPONSIBLE WOOL STANDARD 100 : Responsible Wool Standard 100
+RESPONSIBLE WOOL STANDARD 80 : Responsible Wool Standard 80
+RESPONSIBLE WOOL STANDARD 50 : Responsible Wool Standard 50
 ORGANIC : Organic
 BLUE : Blauw
 DARK BLUE : Blauw
@@ -57,10 +61,14 @@ BROWN : Bruin
 MID GREEN : Groen
 GREEN : Groen
 DARK GREEN : Legergroen
+Olive : Groen
 WHITE : Wit
+PURPLE : Paars
+YELLOW : Geel
 LIGHT BLUE : Blauw
 LIGHT ORANGE : Oranje
 TUSCAN RED : Rood
+DARK RED : Rood
 MULTICOLOR : Meerkleurig
 BURGUNDY : Bordeaux
 SAND : Beige
@@ -74,11 +82,12 @@ DARK GREY : Antraciet
 PETROL : Petrol
 AQUA : Aqua
 PINK : Roze
+LIGHT PINK : Roze
 RUST : Roest
 GOLD : Goud
 BLACK : Zwart
 ORANGE : Oranje
-MINT : Mintgroen
+MINT : Groen
 OLIVE : Olijfgroen
 LIGHT BEIGE : Beige
 LIGHT GREEN : Groen
@@ -99,6 +108,7 @@ COGNAC : Cognac
 OFF-WHITE : Off white
 WIDESPREAD : Widespread
 POLO COLLAR : Polo kraag
+OPEN COLLAR : Open kraag
 EXTRA CUTAWAY : Extra cutaway
 CREWNECK : Ronde hals
 CUTAWAY : Cutaway
@@ -110,15 +120,18 @@ BUTTON DOWN : Button down
 HALF ZIP : Half zip
 ONE PIECE : One piece
 ROLL-NECK : Coltrui
+BUTTON THROUGH : Knopenlijst
 HOODIE : Hoodie
 LONG SLEEVE : Lange mouw (normaal)
 NORMAL SLEEVE : Lange mouw (normaal)
 SHORT SLEEVE : Korte mouw
 MOCK-NECK : Mock neck
+LINEN COLLECTION : Linnen collectie
 FULL-ZIP COLLAR : Full zip
 EXTRA LONG SLEEVE : Extra lange mouw 72 cm
 NON IRON : Strijkvrij
 ULTIMATE NON IRON : Ultiem strijkvrij
+Tuxedo : Tuxedo smoking
 EASY CARE : Easy care
 shirts : Overhemden
 shirts_profuomo : Overhemden
@@ -137,6 +150,32 @@ trousers :
 belts : 
 99% METAL / 1% EPOXY : 99% metaal / 1% epoxy
 100% LEATHER : 100% leer
+100% BUFFALO LEATHER : 100% buffelleer
+100% COW LEATHER : 100% runderleer
+20% GRS POLYESTER : 20% GRS polyester
+30% OCS COTTON : 30% OCS katoen
+39% POLYESTER / 37% LINEN / 24% COTTON : 39% polyester / 37% linnen / 24% katoen
+50% OCS COTTON : 50% OCS katoen
+55% COTTON / 45% LINEN : 55% katoen / 45% linnen
+55% LINEN / 44% COTTON / 1% ELASTANE : 55% linnen / 44% katoen / 1% elastaan
+55% PRECIOUS METAL COATING / 45% WOOD : 55% edelmetaal coating / 45% hout
+57% COTTON / 43% POLYESTER : 57% katoen / 43% polyester
+57% POLYESTER / 43% COTTON : 57% polyester / 43% katoen
+63% COTTON / 37% POLYAMIDE : 63% katoen / 37% polyamide
+72% COTTON / 20% ELASTANE / 8% SILK : 72% katoen / 20% elastaan / 8% zijde
+80% POLYAMIDE / 10% / 10% COW LEATHER : 80% polyamide / 10% runderleer
+84% COTTON / 16% LINEN : 84% katoen / 16% linnen
+87% COTTON / 13% POLYAMIDE : 87% katoen / 13% polyamide
+90% COTTON / 10% SILK : 90% katoen / 10% zijde
+90% LYOCELL / 10% POLYESTER : 90% lyocell / 10% polyester
+94% COTTON / 6% POLYESTER : 94% katoen / 6% polyester
+99% COTTON / 1% ELASTANE : 99% katoen / 1% elastaan
+DONKER ZAND : Donker zand
+GREY BLUE : Grijs blauw
+RAW BEIGE : Mat beige
+RAW WHITE : Gebroken wit
+CUFF : Enkel manchet
+CLAY : Rood
 100% COTTON : 100% katoen
 56% LYOCELL / 20% COTTON / 20% POLYAMIDE / 4% SILK : 56% lyocell / 20% katoen / 20% polyamide / 4% zijde
 39% COTTON / 31% LINEN / 17% POLYESTER / 13% POLYAMIDE : 39% katoen / 31% linnen / 17% polyester / 13% polyamide
@@ -148,6 +187,7 @@ belts :
 87% POLYESTER / 13% ELASTINE : 87% polyester / 13% elastaan
 50% POLYESTER / 30% COTTON / 20% WOOL : 50% polyester / 30% katoen / 20% wol
 100% CALF LEATH : 100% kalfsleer
+100% CASHMERE : 100% Kasjmier
 55% WOOL / 45% COTTON : 55% wol / 45% katoen
 98% COTTON / 2% ELASTAN : 98% katoen / 2% elastaan
 75% METAL / 25% EPOXY : 75% metaal / 25% epoxy
@@ -181,9 +221,9 @@ NEW WOOL : Nieuw wol
 86% POLYESTER / 14% ELASTINE : 86% polyester / 14% elastaan
 56% POLYESTER / 26% LINEN / 16% VISCOSE / 2% ELAST : 56% polyester / 26% linnen / 16% viscose / 2% elastaan
 47% POLYESTER / 20% WOOL / 16% NYLON / 13% COTTON : 47% polyester / 20% wol / 16% nylon / 13% katoen
-80% POLYAMIDE / 10% ELASTODINE / 10% COW LEATHE : 80% polyamide / 10% elastodine / 10% runderleer
+80% POLYAMIDE / 10% ELASTODINE / 10% COW LEATHER : 80% polyamide / 10% elastodine / 10% runderleer
 70% VISCOSE / 25% POLYAMIDE / 5% NYLON : 70% viscose / 25% polyamide / 5% nylon
-100% COW LEATHE : 100% runderleer
+100% COW LEATHER : 100% runderleer
 50% COTTON / 40% WOOL / 10% POLYAMIDE : 50% katoen / 40% wol / 10% polyamide
 80% COTTON / 20% LINEN : 80% katoen / 20% linnen
 43% COTTON / 40% VIRGIN WOOL / 14% VISCOSE / 3% POLYESTER : 43% katoen / 40% virgin wol / 14% viscose / 3% polyester
@@ -192,6 +232,7 @@ NEW WOOL : Nieuw wol
 100% VIRGIN WOOL : 100% virgin wol
 60% WOOL / 40% POLYESTER : 60% wol / 40% polyester
 68% LYOCELL / 29% COTTON / 3% ELASTAN : 68% lyocell / 29% katoen / 3% elastaan
+68% Lyocell / 29% Cotton / 3% Elastane : 68% lyocell / 29% katoen / 3% elastaan
 55% WOOL / 19% CARBONATE / 16% POLYAMIDE / 6% POLY : 55% wol / 19% carbonaat / 16% polyamide / 6% poly
 100% COW SUEDE : 100% kalfssuède
 80% WOOL / 20% NYLON : 80% wol / 20% nylon
@@ -201,6 +242,7 @@ NEW WOOL : Nieuw wol
 65% WOOL / 35% POLYAMIDE : 65% wol / 35% polyamide
 51% COTTON / 49% POLYESTER : 51% katoen / 49% polyester
 58% WOOL / 42% POLYESTER : 58% wol / 42% polyester
+52% POLYESTER / 48% COTTON : 52% polyester / 48% katoen
 74% POLYESTER / 18% VISCOSE / 8% ELASTINE : 74% polyester / 18% viscose / 8% elastaan
 50% NEW WOOL / 30% POLYAMIDE / 20% MODAL : 50% nieuwe wol / 30% polyamide / 20% modal
 62% COTTON / 38% LINEN : 62% katoen / 38% linnen
@@ -238,3 +280,28 @@ NEW WOOL : Nieuw wol
 46% POLYESTER / 20% WOOL / 18% POLYAMIDE / 12% COTTON / 4% VISCOSE : 46% polyester / 20% wol / 18% polyamide/ 12% katoen / 4% viscose
 70% VIRGIN WOOL / 30% POLYAMIDE : 70% virgin wol / 30% polyamide
 70% WOOL / 30% POLYAMIDE : 70% wol / 30% polyamide
+39% COTTON / 37% WOOL / 13% POLYAMIDE / 11% POLYESTER : 39% katoen / 37% wol/ 13% polyamide / 11% polyester
+41% COTTON / 12% LINEN / 28% VISCOSE / 19% POLYESTER : 41% katoen / 12% linnen / 28% viscose / 19% polyester
+50% COTTON / 31% LYOCELL / 17% LINEN / 2% ELASTANE : 50% katoen / 31% lyocell / 17% linnen / 2% elastaan
+53% COTTON / 47% ACETATE : 53% katoen / 47% acetaat
+54% LINEN / 44% VISCOSE / 2% ELASTANE : 54% linnen / 44% viscose / 2% elastaan
+68% WOOL / 16% POLYAMIDE / 16% POLYESTER : 68% wol / 16% polyamide / 16% polyester
+73% COTTON / 27% POLYESTER : 73% katoen / 27% polyester
+78% COTTON / 22% POLYAMIDE : 78% katoen / 22% polyamide 
+83% COTTON / 17% POLYAMIDE : 83% katoen / 17% polyamide 
+90% WOOL / 10% CASHMERE : 90% wol / 10% cashmere
+98% COTTON / 2% ELASTANE : 98% katoen / 2% elastaan
+53% COTTON / 47% POLYESTER : 53% katoen / 47% polyester
+92% COTTON / 8% WOOL : 92% katoen / 8% wol
+47% WOOL / 31% POLYACRYLIC / 22% POLYAMIDE : 47% wol / 31% polyacryl / 22% polyamide
+50% WOOL / 30% POLYAMIDE / 20% MODAL : 50% wol / 30% polyamide / 20% modal
+50% WOOL / 28% COTTON / 21% POLYAMIDE / 1% ELASTANE : 50% wol / 28% katoen / 21% polyamide / 1% elastaan
+75% COTTON / 25% LINEN : 75% katoen / 25% linnen
+88% COTTON / 10% POLYAMIDE / 2% ELASTANE : 88% katoen / 10% polyamide/ 2% elastaan
+Flannel : Flanel
+FULL ZIP : Full zip
+ROLL NECK : Coltrui
+KENT : Kent
+MOCK NECK : Mock neck
+overshirt : Overshirt
+MESH : Mesh

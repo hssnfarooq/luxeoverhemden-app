@@ -5,7 +5,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('web', 'web'), ('automations', 'automations'), ('products', 'products'), ('config.py', '.'), ('input.csv', '.'), ('autoimport.txt', '.'), ('.env', '.')],
+    datas=[('web', 'web'), ('automations', 'automations'), ('products', 'products'), ('config.py', '.'), ('input.csv', '.'), ('autoimport.txt', '.'), ('translate_mapping.txt', '.'), ('.env', '.')],
     hiddenimports=['pkg_resources', 'backports', 'backports.tarfile'],
     hookspath=[],
     hooksconfig={},
@@ -19,9 +19,8 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
+    exclude_binaries=True,
     name='app',
     debug=False,
     bootloader_ignore_signals=False,
@@ -36,4 +35,14 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=['app.ico'],
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='app',
 )

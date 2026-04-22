@@ -5,15 +5,14 @@ import imaplib
 import email
 import datetime
 import sys
+from pathlib import Path
 
-# Load credentials from .env file
-if os.path.exists(".env"):
-    load_dotenv(".env")
 from io import StringIO
 
 from automations.magento import MagentoFiller, MagentoUploader
 from automations.sku_reset import SKUResetService
 from config import (
+    BASE_DIR,
     EMAIL_ADDRESS,
     PASSWORD,
     PRODUCTS_PATH,
@@ -29,7 +28,15 @@ if getattr(sys, "frozen", False):
 import eel
 
 
-eel.init("web")
+ENV_PATH = BASE_DIR / ".env"
+AUTOIMPORT_PATH = BASE_DIR / "autoimport.txt"
+CM_LAGERBESTAND_PATH = BASE_DIR / "CM Lagerbestand.xlsx"
+IMPORT_FILE_PATH = BASE_DIR / "import_file.csv"
+
+if ENV_PATH.exists():
+    load_dotenv(ENV_PATH)
+
+eel.init(str(BASE_DIR / "web"))
 
 
 @eel.expose
@@ -37,12 +44,12 @@ def download():
     status: dict[str, str | None] = {"message": None, "error": None}
     saved_file = False
     # if file exists, delete it
-    if os.path.exists("CM Lagerbestand.xlsx"):
-        os.remove("CM Lagerbestand.xlsx")
+    if CM_LAGERBESTAND_PATH.exists():
+        CM_LAGERBESTAND_PATH.unlink()
 
     try:
-        # Load credentials from .env file
-        load_dotenv(".env")
+        if ENV_PATH.exists():
+            load_dotenv(ENV_PATH)
 
         # Connect to Gmail using IMAP
         imap = imaplib.IMAP4_SSL("imap.gmail.com")
@@ -71,7 +78,7 @@ def download():
             filename = part.get_filename()
 
             if filename is not None and filename == "CM Lagerbestand.xlsx":
-                with open(filename, "wb") as f:
+                with CM_LAGERBESTAND_PATH.open("wb") as f:
                     f.write(part.get_payload(decode=True))  # type: ignore
                     saved_file = True
         if not email_found:
@@ -95,11 +102,15 @@ def merge(filename="CM Lagerbestand.xlsx"):
     status: dict[str, str | None] = {"message": None, "error": None}
     try:
         # if file exists, delete it
-        if os.path.exists("import_file.csv"):
-            os.remove("import_file.csv")
+        if IMPORT_FILE_PATH.exists():
+            IMPORT_FILE_PATH.unlink()
+
+        source_file = Path(filename)
+        if not source_file.is_absolute():
+            source_file = BASE_DIR / filename
 
         # read the Excel file into a pandas dataframe
-        excel_file = pd.read_excel(filename, sheet_name=[0, 1], dtype=str)
+        excel_file = pd.read_excel(source_file, sheet_name=[0, 1], dtype=str)
 
         # select the first tab and rename the columns to match the desired output
         tab1_df = excel_file[0][
@@ -117,7 +128,7 @@ def merge(filename="CM Lagerbestand.xlsx"):
 
         # write the new dataframe to a new csv file with this as a example: "ArtikelNr","Fb","Größe","GTIN/EAN","quantity"
         combined_df.to_csv(
-            "import_file.csv",
+            IMPORT_FILE_PATH,
             index=False,
             header=True,
             sep=",",
@@ -180,7 +191,7 @@ def health():
 
 
 def autoimport():
-    with open("autoimport.txt", "r") as f:
+    with AUTOIMPORT_PATH.open("r", encoding="utf-8") as f:
         urls = f.readlines()
     for url in urls:
         profuomo_scraper(url.strip())
