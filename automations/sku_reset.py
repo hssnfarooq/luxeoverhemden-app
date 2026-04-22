@@ -18,6 +18,8 @@ class FileChange:
 
 
 class SKUResetService:
+    PRODUCT_AGGREGATE_EXCLUDES = {"all.csv", "input.csv"}
+
     @staticmethod
     def _normalize_sku(sku: str) -> str:
         return (sku or "").strip().upper()
@@ -46,6 +48,13 @@ class SKUResetService:
             .strip()
             .upper()
         )
+
+    @classmethod
+    def _extract_sku_key(cls, value: object) -> str:
+        normalized = cls._normalize_cell_value(value)
+        if not normalized:
+            return ""
+        return normalized.split(",", 1)[0].strip()
 
     @classmethod
     def _remove_lines(cls, path: Path, matcher: Callable[[str], bool]) -> int:
@@ -93,13 +102,59 @@ class SKUResetService:
             return 0
 
         before = len(df)
-        normalized = df[matched_col].map(cls._normalize_cell_value)
-        drop_mask = normalized.eq(sku) | normalized.str.startswith(f"{sku}-")
+        sku_keys = df[matched_col].map(cls._extract_sku_key)
+        drop_mask = sku_keys.eq(sku) | sku_keys.str.startswith(f"{sku}-")
         filtered = df[~drop_mask]
         removed = before - len(filtered)
         if removed > 0:
             filtered.to_csv(path, index=False)
         return removed
+
+    @classmethod
+    def _iter_product_csvs_for_aggregate(cls, products_dir: Path):
+        if not products_dir.exists() or not products_dir.is_dir():
+            return
+        for path in sorted(
+            candidate
+            for candidate in products_dir.iterdir()
+            if candidate.is_file()
+            and candidate.suffix.lower() == ".csv"
+            and candidate.name.lower() not in cls.PRODUCT_AGGREGATE_EXCLUDES
+        ):
+            yield path
+
+    @classmethod
+    def _rebuild_all_csv(cls, products_dir: Path) -> bool:
+        all_path = products_dir / "all.csv"
+        frames: list[pd.DataFrame] = []
+
+        for csv_path in cls._iter_product_csvs_for_aggregate(products_dir):
+            try:
+                df = pd.read_csv(csv_path, dtype=str)
+            except Exception:
+                continue
+            if df.empty or "sku" not in df.columns:
+                continue
+            frames.append(df)
+
+        if not frames:
+            if all_path.exists():
+                try:
+                    existing = pd.read_csv(all_path, dtype=str)
+                    existing.head(0).to_csv(all_path, index=False)
+                except Exception:
+                    all_path.write_text("sku\n", encoding="utf-8")
+                return True
+            return False
+
+        merged = pd.concat(frames, ignore_index=True, sort=False)
+        normalized = merged["sku"].map(cls._extract_sku_key)
+        merged = merged.loc[normalized.ne("")]
+        merged = merged.assign(_normalized_sku=normalized.loc[merged.index])
+        merged = merged.drop_duplicates(subset=["_normalized_sku"], keep="first")
+        merged = merged.drop(columns=["_normalized_sku"]).reset_index(drop=True)
+        merged.to_csv(all_path, index=False)
+        return True
 
     @classmethod
     def _reset_one_sku(cls, sku: str) -> dict[str, object]:
@@ -120,6 +175,10 @@ class SKUResetService:
                 removed = cls._remove_rows_by_columns(csv_path, sku, ("sku",))
                 if removed:
                     changes.append(FileChange(str(csv_path), removed))
+            try:
+                cls._rebuild_all_csv(products_dir)
+            except Exception as exc:
+                warnings.append(f"Could not rebuild {Path(products_dir, 'all.csv')}: {exc}")
 
         # 2) Remove SKU rows from Magento/export and stock CSV files in project root
         root_csv_columns = ("SKU", "sku", "ArtikelNr", "id")
