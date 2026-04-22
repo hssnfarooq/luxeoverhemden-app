@@ -23711,3 +23711,23 @@ Stacktrace:
 	KERNEL32!BaseThreadInitThunk [0x7ffe1fa384d4+14]
 	ntdll!RtlUserThreadStart [0x7ffe20fc1d21+21]
 
+Critical error in scrape_profuomo: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e841cda5+78885]
+	GetHandleVerifier [0x0x7ff6e841ce00+78976]
+	(No symbol) [0x0x7ff6e81d99fc]
+	(No symbol) [0x0x7ff6e82207df]
+	(No symbol) [0x0x7ff6e8258a52]
+	(No symbol) [0x0x7ff6e8253413]
+	(No symbol) [0x0x7ff6e82524d9]
+	(No symbol) [0x0x7ff6e81a5d55]
+	GetHandleVerifier [0x0x7ff6e86f4eed+3061101]
+	GetHandleVerifier [0x0x7ff6e86ef33d+3037629]
+	GetHandleVerifier [0x0x7ff6e870e592+3165202]
+	GetHandleVerifier [0x0x7ff6e843730e+186766]
+	GetHandleVerifier [0x0x7ff6e843eb3f+217535]
+	(No symbol) [0x0x7ff6e81a4dca]
+	GetHandleVerifier [0x0x7ff6e88145e8+4238440]
+	BaseThreadInitThunk [0x0x7ffedeb87374+20]
+	RtlUserThreadStart [0x0x7ffedf3dcc91+33]
+

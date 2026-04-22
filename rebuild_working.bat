@@ -6,21 +6,21 @@ REM Clean previous builds
 if exist build rmdir /s /q build
 if exist dist rmdir /s /q dist
 
-REM Build the folder-based Windows app bundle
-pyinstaller --clean --noconfirm app.spec
+REM Build with the working spec file
+pyinstaller --clean --noconfirm app_working.spec
 
 REM Check if build was successful
-if exist dist\app\app.exe (
+if exist dist\app.exe (
     echo.
-    echo ✅ Build successful!
-    echo 📁 app.exe created in dist folder
-    echo 🚀 Ready to test
+    echo Build successful!
+    echo app.exe created in dist folder
+    echo Ready to test
     echo.
     echo Testing the executable...
-    dist\app\app.exe
+    dist\app.exe
 ) else (
     echo.
-    echo ❌ Build failed!
+    echo Build failed!
     echo Check the error messages above
 )
 

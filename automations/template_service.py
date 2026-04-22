@@ -6,8 +6,7 @@ Handles any product type with flexible attribute mapping.
 import logging
 import random
 from typing import Dict, Any, List
-
-from config import BASE_DIR
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +25,7 @@ class TemplateService:
         """Load translation mapping from file"""
         mapping = {}
         try:
-            with (BASE_DIR / "translate_mapping.txt").open("r", encoding="utf-8-sig") as f:
+            with open("translate_mapping.txt", "r", encoding="utf-8-sig") as f:
                 for line in f:
                     if ":" in line:
                         key, value = line.strip().split(":", 1)
@@ -268,4 +267,3 @@ class TemplateService:
                 break
         
         return meta_desc.strip() + "..."
-
