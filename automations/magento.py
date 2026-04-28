@@ -756,9 +756,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             )
             option.click()
         elif by == By.NAME:
-            element_input = driver.find_element(by, path)
-            element_input.clear()
-            element_input.send_keys(input)
+            cls._set_text_input(driver, path, input)
         elif by == "CLICKABLE":
             select, option = path.split("=")
             by, field = select.split(":")
@@ -774,6 +772,65 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 EC.element_to_be_clickable((by, path))
             )
             option.click()
+
+    @classmethod
+    def _set_text_input(
+        cls, driver: webdriver.Chrome, field_name: str, value: str | float | int
+    ) -> None:
+        value_text = "" if value is None else str(value)
+        last_error: Exception | None = None
+
+        for _ in range(3):
+            try:
+                element_input = WebDriverWait(driver, 10).until(
+                    EC.visibility_of_element_located((By.NAME, field_name))
+                )
+                driver.execute_script(
+                    "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+                    element_input,
+                )
+                cls.random_wait(1)
+                try:
+                    element_input.click()
+                except Exception:
+                    driver.execute_script("arguments[0].click();", element_input)
+                element_input.clear()
+                element_input.send_keys(value_text)
+                current_value = (element_input.get_attribute("value") or "").strip()
+                if current_value == value_text:
+                    return
+            except Exception as exc:
+                last_error = exc
+
+            try:
+                element_input = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.NAME, field_name))
+                )
+                driver.execute_script(
+                    """
+                    const el = arguments[0];
+                    const value = arguments[1];
+                    el.removeAttribute('readonly');
+                    el.removeAttribute('disabled');
+                    el.focus();
+                    el.value = '';
+                    el.value = value;
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                    el.dispatchEvent(new Event('blur', { bubbles: true }));
+                    """,
+                    element_input,
+                    value_text,
+                )
+                current_value = (element_input.get_attribute("value") or "").strip()
+                if current_value == value_text:
+                    return
+            except Exception as exc:
+                last_error = exc
+
+        if last_error is not None:
+            raise last_error
+        raise RuntimeError(f"Could not set Magento field: {field_name}")
 
     @classmethod
     def _image_dimensions(cls, image_path: Path) -> tuple[int, int] | None:
@@ -1298,7 +1355,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         counter = 0
         # wait until the element with the id 'product[name]' is present
         WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.NAME, "product[name]"))
+            EC.visibility_of_element_located((By.NAME, "product[name]"))
         )
         productnaam_nl = product["name"].replace("SC SF ", "").title()
         for key, value in data.items():

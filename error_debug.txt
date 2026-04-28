@@ -1,47 +1,47 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-04-22 16:56:59
-CSV Path: C:\robot\products\polos.csv
+Timestamp: 2026-04-28 22:55:23
+CSV Path: C:\Users\devbazar\Downloads\luxeoverhemden-app\products\all.csv
 Test Mode: False
-Total Products: 2
+Total Products: 262
 Translation Mappings Loaded: 303
 ================================================================================
 
 
 ============================================================
-PROCESSING PRODUCT: PPXD10014B
+PROCESSING PRODUCT: PPXD10005A
 ============================================================
-Product data: {'sku': 'PPXD10014B', 'name': 'PPXD10014B', 'category': 'Polos', 'wsp': nan, 'rrp': 129.95, 'material': '72% Cotton / 20% Elastane / 8% Silk', 'color': 'Beige', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '72% Cotton / 20% Elastane / 8% Silk', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo beige polo collar
+Product data: {'sku': 'PPXD10005A', 'name': 'PPXD10005A', 'category': 'Polos', 'wsp': nan, 'rrp': 99.95, 'material': '75% Cotton / 25% Linen', 'color': 'White', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '75% Cotton / 25% Linen', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo white polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo white polo collar
 Category: Polos
-Starting register_product for PPXD10014B
+Starting register_product for PPXD10005A
 
---- FILL_FORM for SKU: PPXD10014B ---
+--- FILL_FORM for SKU: PPXD10005A ---
 
---- FETCH_DATA for SKU: PPXD10014B ---
-Product data: {'sku': 'PPXD10014B', 'name': 'PPXD10014B', 'category': 'Polos', 'wsp': nan, 'rrp': 129.95, 'material': '72% Cotton / 20% Elastane / 8% Silk', 'color': 'Beige', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '72% Cotton / 20% Elastane / 8% Silk', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+--- FETCH_DATA for SKU: PPXD10005A ---
+Product data: {'sku': 'PPXD10005A', 'name': 'PPXD10005A', 'category': 'Polos', 'wsp': nan, 'rrp': 99.95, 'material': '75% Cotton / 25% Linen', 'color': 'White', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '75% Cotton / 25% Linen', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Short sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo white polo collar', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
 Category: Polos
 Available translation mappings: 303
   Processing field: name:product[name] for key: Productnaam
-    Original value: Profuomo beige polo collar
-    format_key called: field='name:product[name]', key='Profuomo beige polo collar', category='Polos'
-    format_key result: 'Profuomo beige polo collar'
-    format_key result: Profuomo beige polo collar
-    Added to data: Profuomo beige polo collar -> ('name', 'product[name]')
+    Original value: Profuomo white polo collar
+    format_key called: field='name:product[name]', key='Profuomo white polo collar', category='Polos'
+    format_key result: 'Profuomo white polo collar'
+    format_key result: Profuomo white polo collar
+    Added to data: Profuomo white polo collar -> ('name', 'product[name]')
   Processing field: name:product[sku] for key: sku
-    Original value: PPXD10014B
-    format_key called: field='name:product[sku]', key='PPXD10014B', category='Polos'
-    format_key result: 'PPXD10014B'
-    format_key result: PPXD10014B
-    Added to data: PPXD10014B -> ('name', 'product[sku]')
+    Original value: PPXD10005A
+    format_key called: field='name:product[sku]', key='PPXD10005A', category='Polos'
+    format_key result: 'PPXD10005A'
+    format_key result: PPXD10005A
+    Added to data: PPXD10005A -> ('name', 'product[sku]')
   Skipping ean: not in product or is nan/empty
   Processing field: name:product[price] for key: rrp
-    Original value: 129.95
-    format_key called: field='name:product[price]', key='129.95', category='Polos'
-    format_key result: '129.95'
-    format_key result: 129.95
-    Added to data: 129.95 -> ('name', 'product[price]')
+    Original value: 99.95
+    format_key called: field='name:product[price]', key='99.95', category='Polos'
+    format_key result: '99.95'
+    format_key result: 99.95
+    Added to data: 99.95 -> ('name', 'product[price]')
   Processing field: name:product[model]=option:data-title;capitalize for key: fit
     Original value: Regular fit
     format_key called: field='name:product[model]=option:data-title;capitalize', key='Regular fit', category='Polos'
@@ -67,18 +67,18 @@ Available translation mappings: 303
     Added to data: Katoen -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
   Skipping capsule: not in product or is nan/empty
   Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 72% Cotton / 20% Elastane / 8% Silk
-    format_key called: field='option:data-title;dutch', key='72% Cotton / 20% Elastane / 8% Silk', category='Polos'
+    Original value: 75% Cotton / 25% Linen
+    format_key called: field='option:data-title;dutch', key='75% Cotton / 25% Linen', category='Polos'
     Applying formatting: 'dutch'
-      get_mapped_key called: '72% Cotton / 20% Elastane / 8% Silk'
-      Looking for key.lower(): '72% cotton / 20% elastane / 8% silk'
+      get_mapped_key called: '75% Cotton / 25% Linen'
+      Looking for key.lower(): '75% cotton / 25% linen'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '72% katoen / 20% elastaan / 8% zijde'
-      SUCCESS: '72% Cotton / 20% Elastane / 8% Silk' -> '72% katoen / 20% elastaan / 8% zijde'
-    Dutch translation: '72% Cotton / 20% Elastane / 8% Silk' -> '72% katoen / 20% elastaan / 8% zijde'
-    format_key result: '72% katoen / 20% elastaan / 8% zijde'
-    format_key result: 72% katoen / 20% elastaan / 8% zijde
-    Added to data: 72% katoen / 20% elastaan / 8% zijde -> ('xpath', "//option[@data-title='{}']")
+      Translation result: '75% katoen / 25% linnen'
+      SUCCESS: '75% Cotton / 25% Linen' -> '75% katoen / 25% linnen'
+    Dutch translation: '75% Cotton / 25% Linen' -> '75% katoen / 25% linnen'
+    format_key result: '75% katoen / 25% linnen'
+    format_key result: 75% katoen / 25% linnen
+    Added to data: 75% katoen / 25% linnen -> ('xpath', "//option[@data-title='{}']")
   Processing field: option:data-title;dutch for key: sustainability
     Original value: Guaranteed fixed buttons
     format_key called: field='option:data-title;dutch', key='Guaranteed fixed buttons', category='Polos'
@@ -106,18 +106,18 @@ Available translation mappings: 303
     format_key result: Effen
     Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
   Processing field: option:data-title;dutch for key: color
-    Original value: Beige
-    format_key called: field='option:data-title;dutch', key='Beige', category='Polos'
+    Original value: White
+    format_key called: field='option:data-title;dutch', key='White', category='Polos'
     Applying formatting: 'dutch'
-      get_mapped_key called: 'Beige'
-      Looking for key.lower(): 'beige'
+      get_mapped_key called: 'White'
+      Looking for key.lower(): 'white'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Beige'
-      SUCCESS: 'Beige' -> 'Beige'
-    Dutch translation: 'Beige' -> 'Beige'
-    format_key result: 'Beige'
-    format_key result: Beige
-    Added to data: Beige -> ('xpath', "//option[@data-title='{}']")
+      Translation result: 'Wit'
+      SUCCESS: 'White' -> 'Wit'
+    Dutch translation: 'White' -> 'Wit'
+    format_key result: 'Wit'
+    format_key result: Wit
+    Added to data: Wit -> ('xpath', "//option[@data-title='{}']")
   Processing field: name:product[kraag]=option:data-title;dutch for key: collar
     Original value: Polo collar
     format_key called: field='name:product[kraag]=option:data-title;dutch', key='Polo collar', category='Polos'
@@ -144,13 +144,13 @@ Available translation mappings: 303
     format_key result: 'Korte mouw'
     format_key result: Korte mouw
     Added to data: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Profuomo beige polo collar': ('name', 'product[name]'), 'PPXD10014B': ('name', 'product[sku]'), '129.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '72% katoen / 20% elastaan / 8% zijde': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Beige': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+  Final data dict: {'Profuomo white polo collar': ('name', 'product[name]'), 'PPXD10005A': ('name', 'product[sku]'), '99.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '75% katoen / 25% linnen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
   Data entries: 10
-Data to fill: {'Profuomo beige polo collar': ('name', 'product[name]'), 'PPXD10014B': ('name', 'product[sku]'), '129.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '72% katoen / 20% elastaan / 8% zijde': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Beige': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+Data to fill: {'Profuomo white polo collar': ('name', 'product[name]'), 'PPXD10005A': ('name', 'product[sku]'), '99.95': ('name', 'product[price]'), 'Regular fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Katoen': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '75% katoen / 25% linnen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Polo kraag': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
 Number of fields to fill: 10
-  Filling field: Profuomo beige polo collar -> ('name', 'product[name]')
-  Filling field: PPXD10014B -> ('name', 'product[sku]')
-  Filling field: 129.95 -> ('name', 'product[price]')
+  Filling field: Profuomo white polo collar -> ('name', 'product[name]')
+  Filling field: PPXD10005A -> ('name', 'product[sku]')
+  Filling field: 99.95 -> ('name', 'product[price]')
   Filling field: Regular fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
       get_mapped_key called: 'Polos'
       Looking for key.lower(): 'polos'
@@ -158,9 +158,9 @@ Number of fields to fill: 10
       Translation result: 'Polo's'
       SUCCESS: 'Polos' -> 'Polo's'
   Filling field: Katoen -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 72% katoen / 20% elastaan / 8% zijde -> ('xpath', "//option[@data-title='{}']")
+  Filling field: 75% katoen / 25% linnen -> ('xpath', "//option[@data-title='{}']")
   Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Beige -> ('xpath', "//option[@data-title='{}']")
+  Filling field: Wit -> ('xpath', "//option[@data-title='{}']")
   Filling field: Polo kraag -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
   Filling field: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
       get_mapped_key called: 'Polos'
@@ -168,7 +168,343 @@ Number of fields to fill: 10
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Polo's'
       SUCCESS: 'Polos' -> 'Polo's'
-SUCCESS: Product PPXD10014B registered successfully
+SUCCESS: Product PPXD10005A registered successfully
+
+============================================================
+PROCESSING PRODUCT: PPXH10005D
+============================================================
+Product data: {'sku': 'PPXH10005D', 'name': 'PPXH10005D', 'category': 'Shirts', 'wsp': nan, 'rrp': 89.95, 'material': '100% Cotton', 'color': 'Green', 'stocklabel': 'januari 15, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Cutaway', 'fabriccomp': '100% Cotton', 'fit': 'Slim fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': '50% OCS Cotton | Cutaway | Guaranteed fixed buttons', 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': 'Also available in regular fit, PPXH10064B', 'Productnaam': 'Profuomo green cutaway', 'image_count': 1.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo green cutaway
+Category: Shirts
+SKIPPED: PPXH10005D has no valid images in products/PPXH10005D
+
+============================================================
+PROCESSING PRODUCT: PPXH10073A
+============================================================
+Product data: {'sku': 'PPXH10073A', 'name': 'PPXH10073A', 'category': 'Shirts', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'Blue', 'stocklabel': 'november 15, 2025', 'design': 'Fauxuni', 'capsule': nan, 'collar': 'Cutaway', 'fabriccomp': '100% Cotton', 'fit': 'Slim fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Extra long sleeve', 'sustainability': 'Cutaway | Guaranteed fixed buttons', 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo blue cutaway', 'image_count': 1.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo blue cutaway
+Category: Shirts
+SKIPPED: PPXH10073A has no valid images in products/PPXH10073A
+
+============================================================
+PROCESSING PRODUCT: PPXH10071A
+============================================================
+Product data: {'sku': 'PPXH10071A', 'name': 'PPXH10071A', 'category': 'Shirts', 'wsp': nan, 'rrp': 89.95, 'material': '100% Cotton', 'color': 'Blue', 'stocklabel': 'november 15, 2025', 'design': 'Solid', 'capsule': nan, 'collar': 'Cutaway', 'fabriccomp': '100% Cotton', 'fit': 'Slim fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Extra long sleeve', 'sustainability': 'Cutaway | Guaranteed fixed buttons', 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo blue cutaway', 'image_count': 1.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo blue cutaway
+Category: Shirts
+SKIPPED: PPXH10071A has no valid images in products/PPXH10071A
+
+============================================================
+PROCESSING PRODUCT: PPXH10058B
+============================================================
+Product data: {'sku': 'PPXH10058B', 'name': 'PPXH10058B', 'category': 'Shirts', 'wsp': nan, 'rrp': 139.95, 'material': '100% Cotton', 'color': 'Blue', 'stocklabel': 'januari 16, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Button Down', 'fabriccomp': '100% Cotton', 'fit': 'Relaxed Fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Albini fabric | Button down | Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo blue button down', 'image_count': 1.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo blue button down
+Category: Shirts
+SKIPPED: PPXH10058B has no valid images in products/PPXH10058B
+
+============================================================
+PROCESSING PRODUCT: PPXH10066B
+============================================================
+Product data: {'sku': 'PPXH10066B', 'name': 'PPXH10066B', 'category': 'Shirts', 'wsp': nan, 'rrp': 89.95, 'material': '80% Cotton / 20% Linen', 'color': 'Beige', 'stocklabel': 'februari 14, 2026', 'design': 'Solid', 'capsule': nan, 'collar': 'Cutaway', 'fabriccomp': '80% Cotton / 20% Linen', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Cotton linen blend | Regular fit | Guaranteed fixed buttons', 'sizes': "['39', '40', '41', '42', '43', '44', '45', '46', '47']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige katoen linnen overhemd', 'image_count': 2.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo beige katoen linnen overhemd
+Category: Shirts
+SKIPPED: PPXH10066B has no valid images in products/PPXH10066B
+
+============================================================
+PROCESSING PRODUCT: PPXH10031B
+============================================================
+Product data: {'sku': 'PPXH10031B', 'name': 'PPXH10031B', 'category': 'Shirts', 'wsp': nan, 'rrp': 129.95, 'material': '50% Cotton / 50% Polyester', 'color': 'Blue', 'stocklabel': 'januari 15, 2026', 'design': 'Solid', 'capsule': 'Japanese knitted', 'collar': 'Extreme cutaway', 'fabriccomp': '50% Cotton / 50% Polyester', 'fit': 'Slim fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Japanese fabric | Tech yarn | Guaranteed fixed buttons', 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo blauw japanese knitted overhemd', 'image_count': 2.0, 'has_images': True, 'cuff': 'Single cuff', 'noniron': nan}
+Productnaam: Profuomo blauw japanese knitted overhemd
+Category: Shirts
+SKIPPED: PPXH10031B has no valid images in products/PPXH10031B
+
+============================================================
+PROCESSING PRODUCT: PP2Q00001A
+============================================================
+Product data: {'sku': 'PP2Q00001A', 'name': 'PP2Q00001A', 'category': 'Sale', 'wsp': nan, 'rrp': 139.95, 'material': '68% Lyocell / 29% Cotton / 3% Elastane', 'color': nan, 'stocklabel': 'oktober 10, 2023', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '68% Lyocell / 29% Cotton / 3% Elastane', 'fit': 'Slim fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': nan, 'sustainability': 'Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord', 'sizes': "['46', '48', '50', '52', '54', '56']", 'item comment smc': nan, 'Productnaam': 'Profuomo army sportcord chino', 'image_count': 5.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo army sportcord chino
+Category: Sale
+SKIPPED: PP2Q00001A has no valid images in products/PP2Q00001A
+
+============================================================
+PROCESSING PRODUCT: PP2Q00001B
+============================================================
+Product data: {'sku': 'PP2Q00001B', 'name': 'PP2Q00001B', 'category': 'Sale', 'wsp': nan, 'rrp': 139.95, 'material': '68% Lyocell / 29% Cotton / 3% Elastane', 'color': 'Beige', 'stocklabel': 'oktober 10, 2023', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '68% Lyocell / 29% Cotton / 3% Elastane', 'fit': 'Slim fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': nan, 'sustainability': 'Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord', 'sizes': "['46', '48', '50', '52', '54', '56']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige sportcord chino', 'image_count': 5.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo beige sportcord chino
+Category: Sale
+SKIPPED: PP2Q00001B has no valid images in products/PP2Q00001B
+
+============================================================
+PROCESSING PRODUCT: PP2Q00001C
+============================================================
+Product data: {'sku': 'PP2Q00001C', 'name': 'PP2Q00001C', 'category': 'Sale', 'wsp': nan, 'rrp': 139.95, 'material': '68% Lyocell / 29% Cotton / 3% Elastane', 'color': 'Navy', 'stocklabel': 'oktober 10, 2023', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '68% Lyocell / 29% Cotton / 3% Elastane', 'fit': 'Slim fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': nan, 'sustainability': 'Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord', 'sizes': "['46', '48', '50', '52', '54', '56']", 'item comment smc': nan, 'Productnaam': 'Profuomo navy sportcord chino', 'image_count': 5.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy sportcord chino
+Category: Sale
+SKIPPED: PP2Q00001C has no valid images in products/PP2Q00001C
+
+============================================================
+PROCESSING PRODUCT: PP2Q00001D
+============================================================
+Product data: {'sku': 'PP2Q00001D', 'name': 'PP2Q00001D', 'category': 'Sale', 'wsp': nan, 'rrp': 139.95, 'material': '68% Lyocell / 29% Cotton / 3% Elastane', 'color': 'Grey', 'stocklabel': 'oktober 10, 2023', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '68% Lyocell / 29% Cotton / 3% Elastane', 'fit': 'Slim fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': nan, 'sustainability': 'Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord', 'sizes': "['46', '48', '50', '52', '54', '56']", 'item comment smc': nan, 'Productnaam': 'Profuomo grijze sportcord chino', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo grijze sportcord chino
+Category: Sale
+SKIPPED: PP2Q00001D has no valid images in products/PP2Q00001D
+
+============================================================
+PROCESSING PRODUCT: PP2T00002A
+============================================================
+Product data: {'sku': 'PP2T00002A', 'name': 'PP2T00002A', 'category': 'Sale', 'wsp': nan, 'rrp': 59.95, 'material': '100% Cotton', 'color': 'Beige', 'stocklabel': 'augustus 25, 2023', 'design': 'Solid', 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Pre-shrunk', 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo beige melange longsleeve t shirt', 'image_count': 5.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo beige melange longsleeve t shirt
+Category: Sale
+SKIPPED: PP2T00002A has no valid images in products/PP2T00002A
+
+============================================================
+PROCESSING PRODUCT: PP2T00002B
+============================================================
+Product data: {'sku': 'PP2T00002B', 'name': 'PP2T00002B', 'category': 'Sale', 'wsp': nan, 'rrp': 59.95, 'material': '100% Cotton', 'color': 'Navy', 'stocklabel': 'augustus 25, 2023', 'design': 'Solid', 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Pre-shrunk', 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo navy longsleeve t shirt', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy longsleeve t shirt
+Category: Sale
+SKIPPED: PP2T00002B has no valid images in products/PP2T00002B
+
+============================================================
+PROCESSING PRODUCT: PP2T00002C
+============================================================
+Product data: {'sku': 'PP2T00002C', 'name': 'PP2T00002C', 'category': 'Sale', 'wsp': nan, 'rrp': 59.95, 'material': '100% Cotton', 'color': 'Grey', 'stocklabel': 'november 3, 2023', 'design': 'Solid', 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Pre-shrunk', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo grijs melange longsleeve t shirt', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo grijs melange longsleeve t shirt
+Category: Sale
+SKIPPED: PP2T00002C has no valid images in products/PP2T00002C
+
+============================================================
+PROCESSING PRODUCT: PP2T00002D
+============================================================
+Product data: {'sku': 'PP2T00002D', 'name': 'PP2T00002D', 'category': 'Sale', 'wsp': nan, 'rrp': 59.95, 'material': '100% Cotton', 'color': 'Off-white', 'stocklabel': 'augustus 25, 2023', 'design': 'Solid', 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': 'Pre-shrunk', 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo off white longsleeve t shirt', 'image_count': 6.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo off white longsleeve t shirt
+Category: Sale
+SKIPPED: PP2T00002D has no valid images in products/PP2T00002D
+
+============================================================
+PROCESSING PRODUCT: PP2R00002D
+============================================================
+Product data: {'sku': 'PP2R00002D', 'name': 'PP2R00002D', 'category': 'Sale', 'wsp': nan, 'rrp': 39.95, 'material': '100% Buffalo leather', 'color': 'Green', 'stocklabel': 'september 9, 2024', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Buffalo leather', 'fit': nan, 'fabric': 'Buffalo Leather', 'quality': 'Buffalo Leather', 'sleeve': nan, 'sustainability': 'Vegetable tanned', 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo groene lederen riem', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo groene lederen riem
+Category: Sale
+SKIPPED: PP2R00002D has no valid images in products/PP2R00002D
+
+============================================================
+PROCESSING PRODUCT: PP2R00005A
+============================================================
+Product data: {'sku': 'PP2R00005A', 'name': 'PP2R00005A', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': 'Black', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'cow leather', 'quality': 'cow leather', 'sleeve': nan, 'sustainability': 'Vegetable tanned', 'sizes': "['85', '95', '105', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo zwart lederen riem', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo zwart lederen riem
+Category: Sale
+SKIPPED: PP2R00005A has no valid images in products/PP2R00005A
+
+============================================================
+PROCESSING PRODUCT: PP2R00005B
+============================================================
+Product data: {'sku': 'PP2R00005B', 'name': 'PP2R00005B', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': 'Brown', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'cow leather', 'quality': 'cow leather', 'sleeve': nan, 'sustainability': 'Vegetable tanned', 'sizes': "['85', '95', '105', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo bruin lederen riem', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo bruin lederen riem
+Category: Sale
+SKIPPED: PP2R00005B has no valid images in products/PP2R00005B
+
+============================================================
+PROCESSING PRODUCT: PP2Y00009A
+============================================================
+Product data: {'sku': 'PP2Y00009A', 'name': 'PP2Y00009A', 'category': 'Sale', 'wsp': nan, 'rrp': 199.95, 'material': '100% Cow suede', 'color': 'Beige', 'stocklabel': 'augustus 11, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow suede', 'fit': nan, 'fabric': 'Suede', 'quality': 'Suede', 'sleeve': nan, 'sustainability': nan, 'sizes': "['40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige chelsea boots', 'image_count': 3.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo beige chelsea boots
+Category: Sale
+SKIPPED: PP2Y00009A has no valid images in products/PP2Y00009A
+
+============================================================
+PROCESSING PRODUCT: PP3MAT912B
+============================================================
+Product data: {'sku': 'PP3MAT912B', 'name': 'PP3MAT912B', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': nan, 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo houten dasspeld', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo houten dasspeld
+Category: Sale
+SKIPPED: PP3MAT912B has no valid images in products/PP3MAT912B
+
+============================================================
+PROCESSING PRODUCT: PP5AA0006A
+============================================================
+Product data: {'sku': 'PP5AA0006A', 'name': 'PP5AA0006A', 'category': 'Sale', 'wsp': nan, 'rrp': 39.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'juni 3, 2025', 'design': 'Fauxuni', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo grijs zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo grijs zijden das
+Category: Sale
+SKIPPED: PP5AA0006A has no valid images in products/PP5AA0006A
+
+============================================================
+PROCESSING PRODUCT: PP5AA0016G
+============================================================
+Product data: {'sku': 'PP5AA0016G', 'name': 'PP5AA0016G', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo lime ribs zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo lime ribs zijden das
+Category: Sale
+SKIPPED: PP5AA0016G has no valid images in products/PP5AA0016G
+
+============================================================
+PROCESSING PRODUCT: PP5AA0016H
+============================================================
+Product data: {'sku': 'PP5AA0016H', 'name': 'PP5AA0016H', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Silk', 'color': 'Green', 'stocklabel': 'juli 29, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo army zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo army zijden das
+Category: Sale
+SKIPPED: PP5AA0016H has no valid images in products/PP5AA0016H
+
+============================================================
+PROCESSING PRODUCT: PP5AA0016T
+============================================================
+Product data: {'sku': 'PP5AA0016T', 'name': 'PP5AA0016T', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'oktober 22, 2024', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo coraal zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo coraal zijden das
+Category: Sale
+SKIPPED: PP5AA0016T has no valid images in products/PP5AA0016T
+
+============================================================
+PROCESSING PRODUCT: PP5AA0017B
+============================================================
+Product data: {'sku': 'PP5AA0017B', 'name': 'PP5AA0017B', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo blauw gebreide zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo blauw gebreide zijden das
+Category: Sale
+SKIPPED: PP5AA0017B has no valid images in products/PP5AA0017B
+
+============================================================
+PROCESSING PRODUCT: PP5AA0019C
+============================================================
+Product data: {'sku': 'PP5AA0019C', 'name': 'PP5AA0019C', 'category': 'Sale', 'wsp': nan, 'rrp': 29.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Graphic', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo rode zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo rode zijden das
+Category: Sale
+SKIPPED: PP5AA0019C has no valid images in products/PP5AA0019C
+
+============================================================
+PROCESSING PRODUCT: PP5AA0021C
+============================================================
+Product data: {'sku': 'PP5AA0021C', 'name': 'PP5AA0021C', 'category': 'Sale', 'wsp': nan, 'rrp': 29.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Fauxuni', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo rode zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo rode zijden das
+Category: Sale
+SKIPPED: PP5AA0021C has no valid images in products/PP5AA0021C
+
+============================================================
+PROCESSING PRODUCT: PP5N00001D
+============================================================
+Product data: {'sku': 'PP5N00001D', 'name': 'PP5N00001D', 'category': 'Sale', 'wsp': nan, 'rrp': 24.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo blauwe oxford zijden pochet', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo blauwe oxford zijden pochet
+Category: Sale
+SKIPPED: PP5N00001D has no valid images in products/PP5N00001D
+
+============================================================
+PROCESSING PRODUCT: PP5N00002D
+============================================================
+Product data: {'sku': 'PP5N00002D', 'name': 'PP5N00002D', 'category': 'Sale', 'wsp': nan, 'rrp': 24.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'juni 3, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo navy uni zijden pochet', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy uni zijden pochet
+Category: Sale
+SKIPPED: PP5N00002D has no valid images in products/PP5N00002D
+
+============================================================
+PROCESSING PRODUCT: PP5N00002E
+============================================================
+Product data: {'sku': 'PP5N00002E', 'name': 'PP5N00002E', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': nan, 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo blauwe uni zijden pochet', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo blauwe uni zijden pochet
+Category: Sale
+SKIPPED: PP5N00002E has no valid images in products/PP5N00002E
+
+============================================================
+PROCESSING PRODUCT: PP5N00002L
+============================================================
+Product data: {'sku': 'PP5N00002L', 'name': 'PP5N00002L', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': nan, 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo gele uni zijden pochet', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo gele uni zijden pochet
+Category: Sale
+SKIPPED: PP5N00002L has no valid images in products/PP5N00002L
+
+============================================================
+PROCESSING PRODUCT: PP5N00002O
+============================================================
+Product data: {'sku': 'PP5N00002O', 'name': 'PP5N00002O', 'category': 'Sale', 'wsp': nan, 'rrp': 24.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'december 6, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo rode uni zijden pochet', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo rode uni zijden pochet
+Category: Sale
+SKIPPED: PP5N00002O has no valid images in products/PP5N00002O
+
+============================================================
+PROCESSING PRODUCT: PP5N00002T
+============================================================
+Product data: {'sku': 'PP5N00002T', 'name': 'PP5N00002T', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': nan, 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo lila zijden pochet', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo lila zijden pochet
+Category: Sale
+SKIPPED: PP5N00002T has no valid images in products/PP5N00002T
+
+============================================================
+PROCESSING PRODUCT: PP5N00002V
+============================================================
+Product data: {'sku': 'PP5N00002V', 'name': 'PP5N00002V', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': nan, 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo anthra zijden pochet', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo anthra zijden pochet
+Category: Sale
+SKIPPED: PP5N00002V has no valid images in products/PP5N00002V
+
+============================================================
+PROCESSING PRODUCT: PP5N00002X
+============================================================
+Product data: {'sku': 'PP5N00002X', 'name': 'PP5N00002X', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Silk', 'color': 'Orange', 'stocklabel': 'oktober 22, 2024', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': nan, 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo koraal zijden pochet', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo koraal zijden pochet
+Category: Sale
+SKIPPED: PP5N00002X has no valid images in products/PP5N00002X
+
+============================================================
+PROCESSING PRODUCT: PP5V00001F
+============================================================
+Product data: {'sku': 'PP5V00001F', 'name': 'PP5V00001F', 'category': 'Sale', 'wsp': nan, 'rrp': 29.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'juni 3, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo rode oxford zijden strik', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo rode oxford zijden strik
+Category: Sale
+SKIPPED: PP5V00001F has no valid images in products/PP5V00001F
+
+============================================================
+PROCESSING PRODUCT: PP5V00003A
+============================================================
+Product data: {'sku': 'PP5V00003A', 'name': 'PP5V00003A', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': 'Black', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'cow leather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '95', '105', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo zwarte dot zijden strik', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo zwarte dot zijden strik
+Category: Sale
+SKIPPED: PP5V00003A has no valid images in products/PP5V00003A
+
+============================================================
+PROCESSING PRODUCT: PP5V00003B
+============================================================
+Product data: {'sku': 'PP5V00003B', 'name': 'PP5V00003B', 'category': 'Sale', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'Navy', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': 'Cutaway', 'fabriccomp': '100% Cotton', 'fit': 'Slim fit', 'fabric': nan, 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo navy dot zijden strik', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy dot zijden strik
+Category: Sale
+SKIPPED: PP5V00003B has no valid images in products/PP5V00003B
+
+============================================================
+PROCESSING PRODUCT: PP6AA0002H
+============================================================
+Product data: {'sku': 'PP6AA0002H', 'name': 'PP6AA0002H', 'category': 'Sale', 'wsp': nan, 'rrp': 59.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo paarse royal satijn zijden das', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo paarse royal satijn zijden das
+Category: Sale
+SKIPPED: PP6AA0002H has no valid images in products/PP6AA0002H
+
+============================================================
+PROCESSING PRODUCT: PP2A00001B
+============================================================
+Product data: {'sku': 'PP2A00001B', 'name': 'PP2A00001B', 'category': 'Sale', 'wsp': nan, 'rrp': 39.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'augustus 8, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo blauwe zijden das', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo blauwe zijden das
+Category: Sale
+SKIPPED: PP2A00001B has no valid images in products/PP2A00001B
+
+============================================================
+PROCESSING PRODUCT: PP2A00001C
+============================================================
+Product data: {'sku': 'PP2A00001C', 'name': 'PP2A00001C', 'category': 'Sale', 'wsp': nan, 'rrp': 39.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'augustus 8, 2025', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo roze zijden das', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo roze zijden das
+Category: Sale
+SKIPPED: PP2A00001C has no valid images in products/PP2A00001C
+
+============================================================
+PROCESSING PRODUCT: PP2A00001D
+============================================================
+Product data: {'sku': 'PP2A00001D', 'name': 'PP2A00001D', 'category': 'Sale', 'wsp': nan, 'rrp': 49.95, 'material': '100% Cow leather', 'color': 'Discount', 'stocklabel': nan, 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Cow leather', 'fit': nan, 'fabric': 'Cowleather', 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['85', '90', '95', '100', '105', '110', '115']", 'item comment smc': nan, 'Productnaam': 'Profuomo koraal zijden das', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo koraal zijden das
+Category: Sale
+SKIPPED: PP2A00001D has no valid images in products/PP2A00001D
+
+============================================================
+PROCESSING PRODUCT: PP2A00001H
+============================================================
+Product data: {'sku': 'PP2A00001H', 'name': 'PP2A00001H', 'category': 'Sale', 'wsp': nan, 'rrp': 39.95, 'material': '100% Silk', 'color': 'ONESIZE', 'stocklabel': 'april 8, 2024', 'design': 'Solid', 'capsule': nan, 'collar': nan, 'fabriccomp': '100% Silk', 'fit': nan, 'fabric': 'Silk', 'quality': 'Silk', 'sleeve': nan, 'sustainability': nan, 'sizes': '[]', 'item comment smc': nan, 'Productnaam': 'Profuomo licht groene zijden das', 'image_count': 2.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo licht groene zijden das
+Category: Sale
+SKIPPED: PP2A00001H has no valid images in products/PP2A00001H
 
 ============================================================
 PROCESSING PRODUCT: PPXD10030C
@@ -177,3 +513,27 @@ Product data: {'sku': 'PPXD10030C', 'name': 'PPXD10030C', 'category': 'Polos', '
 Productnaam: Profuomo lichtbruine aero ease streep polo
 Category: Polos
 SKIPPED: PPXD10030C has no valid images in products/PPXD10030C
+
+============================================================
+PROCESSING PRODUCT: PPXJ10005E
+============================================================
+Product data: {'sku': 'PPXJ10005E', 'name': 'PPXJ10005E', 'category': 'Knitwear', 'wsp': nan, 'rrp': 129.95, 'material': '56% Lyocell / 20% Cotton / 20% Polyamide / 4% Silk', 'color': 'Green', 'stocklabel': 'januari 22, 2026', 'design': 'Solid', 'capsule': 'Luxury basic', 'collar': 'One piece', 'fabriccomp': '56% Lyocell / 20% Cotton / 20% Polyamide / 4% Silk', 'fit': 'Regular fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': 'Long sleeve', 'sustainability': 'contains Lenzing™ lyocell | Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo green one piece', 'image_count': 4.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo green one piece
+Category: Knitwear
+SKIPPED: PPXJ10005E has no valid images in products/PPXJ10005E
+
+============================================================
+PROCESSING PRODUCT: PPXJ10008I
+============================================================
+Product data: {'sku': 'PPXJ10008I', 'name': 'PPXJ10008I', 'category': 'Knitwear', 'wsp': nan, 'rrp': 129.95, 'material': '56% Lyocell / 20% Cotton / 20% Polyamide / 4% Silk', 'color': 'Pink', 'stocklabel': 'januari 22, 2026', 'design': 'Solid', 'capsule': 'Luxury basic', 'collar': 'Half zip', 'fabriccomp': '56% Lyocell / 20% Cotton / 20% Polyamide / 4% Silk', 'fit': 'Regular fit', 'fabric': 'Lyocell', 'quality': 'Lyocell', 'sleeve': 'Long sleeve', 'sustainability': 'contains Lenzing™ lyocell', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo pink half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo pink half zip
+Category: Knitwear
+SKIPPED: PPXJ10008I has no valid images in products/PPXJ10008I
+
+============================================================
+PROCESSING PRODUCT: PPXJ10021A
+============================================================
+Product data: {'sku': 'PPXJ10021A', 'name': 'PPXJ10021A', 'category': 'Knitwear', 'wsp': nan, 'rrp': 129.95, 'material': '100% Cotton', 'color': 'Navy', 'stocklabel': 'januari 21, 2026', 'design': 'Solid', 'capsule': 'Aero Ease', 'collar': 'Polo collar', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo navy aero ease polo', 'image_count': 5.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy aero ease polo
+Category: Knitwear
+SKIPPED: PPXJ10021A has no valid images in products/PPXJ10021A
