@@ -8,7 +8,7 @@ from typing import Callable
 
 import pandas as pd
 
-from config import PRODUCTS_PATH
+from automations.supplier_profile import CASAMODA_VENTI_PROFILE, PROFUOMO_PROFILE, SupplierProfile
 
 
 @dataclass
@@ -19,6 +19,13 @@ class FileChange:
 
 class SKUResetService:
     PRODUCT_AGGREGATE_EXCLUDES = {"all.csv", "input.csv"}
+    SHARED_TEXT_PATHS = (
+        Path("input.csv"),
+        Path("urlerror.log"),
+        Path("notfound.txt"),
+        Path("notfound_copy.txt"),
+        Path("translation_errors.log"),
+    )
 
     @staticmethod
     def _normalize_sku(sku: str) -> str:
@@ -111,6 +118,49 @@ class SKUResetService:
         return removed
 
     @classmethod
+    def _profiles_for_supplier(cls, supplier: str | None) -> list[SupplierProfile]:
+        supplier_key = str(supplier or "auto").strip().lower()
+        if supplier_key in {"", "auto", "all"}:
+            return [PROFUOMO_PROFILE, CASAMODA_VENTI_PROFILE]
+        if supplier_key == "profuomo":
+            return [PROFUOMO_PROFILE]
+        if supplier_key in {"venti", "casamoda", "casamoda_venti"}:
+            return [CASAMODA_VENTI_PROFILE]
+        raise ValueError(
+            "Unknown supplier. Choose Auto, Profuomo, or VENTI."
+        )
+
+    @classmethod
+    def _profile_text_paths(cls, profile: SupplierProfile) -> tuple[Path, ...]:
+        return (
+            profile.input_csv_path,
+            profile.done_path,
+            profile.failed_path,
+            profile.translation_errors_path,
+        )
+
+    @staticmethod
+    def _unique_paths(paths: list[Path]) -> list[Path]:
+        unique: list[Path] = []
+        seen: set[str] = set()
+        for path in paths:
+            key = str(path)
+            if key not in seen:
+                seen.add(key)
+                unique.append(path)
+        return unique
+
+    @classmethod
+    def _line_matches_sku(cls, line: str, sku: str) -> bool:
+        normalized = cls._normalize_cell_value(line)
+        return (
+            normalized == sku
+            or normalized.startswith(f"{sku},")
+            or normalized.startswith(f"{sku}-")
+            or normalized.startswith(f"{sku};")
+        )
+
+    @classmethod
     def _iter_product_csvs_for_aggregate(cls, products_dir: Path):
         if not products_dir.exists() or not products_dir.is_dir():
             return
@@ -157,28 +207,35 @@ class SKUResetService:
         return True
 
     @classmethod
-    def _reset_one_sku(cls, sku: str) -> dict[str, object]:
+    def _reset_one_sku(
+        cls,
+        sku: str,
+        profiles: list[SupplierProfile],
+    ) -> dict[str, object]:
         if not sku:
             return {"message": "", "error": "SKU is required", "sku": ""}
 
         changes: list[FileChange] = []
         warnings: list[str] = []
 
-        # 1) Remove SKU rows from product CSVs (all/category files)
-        products_dir = Path(PRODUCTS_PATH)
-        if products_dir.exists() and products_dir.is_dir():
-            for csv_path in sorted(
-                path
-                for path in products_dir.iterdir()
-                if path.is_file() and path.suffix.lower() == ".csv"
-            ):
-                removed = cls._remove_rows_by_columns(csv_path, sku, ("sku",))
-                if removed:
-                    changes.append(FileChange(str(csv_path), removed))
-            try:
-                cls._rebuild_all_csv(products_dir)
-            except Exception as exc:
-                warnings.append(f"Could not rebuild {Path(products_dir, 'all.csv')}: {exc}")
+        # 1) Remove SKU rows from supplier product CSVs (all/category files)
+        for profile in profiles:
+            products_dir = profile.products_path
+            if products_dir.exists() and products_dir.is_dir():
+                for csv_path in sorted(
+                    path
+                    for path in products_dir.iterdir()
+                    if path.is_file() and path.suffix.lower() == ".csv"
+                ):
+                    removed = cls._remove_rows_by_columns(csv_path, sku, ("sku",))
+                    if removed:
+                        changes.append(FileChange(str(csv_path), removed))
+                try:
+                    cls._rebuild_all_csv(products_dir)
+                except Exception as exc:
+                    warnings.append(
+                        f"Could not rebuild {Path(products_dir, 'all.csv')}: {exc}"
+                    )
 
         # 2) Remove SKU rows from Magento/export and stock CSV files in project root
         root_csv_columns = ("SKU", "sku", "ArtikelNr", "id")
@@ -190,22 +247,14 @@ class SKUResetService:
                 changes.append(FileChange(str(csv_path), removed))
 
         # 3) Remove SKU from line-based state files
-        text_paths = [
-            Path("input.csv"),
-            Path(PRODUCTS_PATH, "input.csv"),
-            Path(PRODUCTS_PATH, "done.txt"),
-            Path(PRODUCTS_PATH, "failed.txt"),
-            Path("urlerror.log"),
-            Path("notfound.txt"),
-            Path("notfound_copy.txt"),
-            Path("translation_errors.log"),
-        ]
-        for txt_path in text_paths:
+        text_paths = list(cls.SHARED_TEXT_PATHS)
+        for profile in profiles:
+            text_paths.extend(cls._profile_text_paths(profile))
+        for txt_path in cls._unique_paths(text_paths):
             try:
                 removed = cls._remove_lines(
                     txt_path,
-                    lambda line, s=sku: line.strip().upper() == s
-                    or line.strip().upper().startswith(f"{s},"),
+                    lambda line, s=sku: cls._line_matches_sku(line, s),
                 )
                 if removed:
                     changes.append(FileChange(str(txt_path), removed))
@@ -214,14 +263,16 @@ class SKUResetService:
 
         # 4) Remove SKU image folder
         deleted_folders: list[str] = []
-        if products_dir.exists() and products_dir.is_dir():
-            for folder in (
-                path
-                for path in products_dir.iterdir()
-                if path.is_dir() and path.name.upper() == sku
-            ):
-                shutil.rmtree(folder, ignore_errors=True)
-                deleted_folders.append(str(folder))
+        for profile in profiles:
+            products_dir = profile.products_path
+            if products_dir.exists() and products_dir.is_dir():
+                for folder in (
+                    path
+                    for path in products_dir.iterdir()
+                    if path.is_dir() and path.name.upper() == sku
+                ):
+                    shutil.rmtree(folder, ignore_errors=True)
+                    deleted_folders.append(str(folder))
 
         if not changes and not deleted_folders:
             return {
@@ -243,15 +294,24 @@ class SKUResetService:
         }
 
     @classmethod
-    def reset_sku_everywhere(cls, raw_sku: str) -> dict[str, object]:
+    def reset_sku_everywhere(
+        cls,
+        raw_sku: str,
+        supplier: str | None = "auto",
+    ) -> dict[str, object]:
         skus = cls._parse_skus(raw_sku)
         if not skus:
             return {"message": "", "error": "SKU is required"}
 
-        if len(skus) == 1:
-            return cls._reset_one_sku(skus[0])
+        try:
+            profiles = cls._profiles_for_supplier(supplier)
+        except ValueError as exc:
+            return {"message": "", "error": str(exc)}
 
-        results = [cls._reset_one_sku(sku) for sku in skus]
+        if len(skus) == 1:
+            return cls._reset_one_sku(skus[0], profiles)
+
+        results = [cls._reset_one_sku(sku, profiles) for sku in skus]
         total_changes = sum(len(result.get("changes", [])) for result in results)
         total_deleted_folders = sum(len(result.get("deleted_folders", [])) for result in results)
         warnings: list[str] = []

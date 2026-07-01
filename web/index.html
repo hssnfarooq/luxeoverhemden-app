@@ -50,6 +50,12 @@
 					class="fa fa-download fa-lg"></i> Scrape VENTI</button>
 			<label for="automation-reset-sku-input">Reset product SKU</label><br>
 			<input type="text" name="automation-reset-sku-input" id="automation-reset-sku-input" placeholder="PPXF10016A, PPXH10041D">
+			<label for="automation-reset-sku-supplier">Supplier</label><br>
+			<select name="automation-reset-sku-supplier" id="automation-reset-sku-supplier">
+				<option value="auto" selected>Auto</option>
+				<option value="profuomo">Profuomo</option>
+				<option value="venti">VENTI</option>
+			</select>
 			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-reset-sku"><i
 					class="fa fa-trash fa-lg"></i> Reset SKU State</button>
 			<label for="automation-upload-csv-magento">CSV voor upload</label><br>
@@ -274,7 +280,8 @@
 				$('#info').text("Resetting SKU state...");
 				$('#message').text("");
 				$('#error').text("");
-				eel.reset_sku(sku)(function (status) {
+				const supplier = document.getElementById("automation-reset-sku-supplier").value;
+				eel.reset_sku(sku, supplier)(function (status) {
 					$('#info').text("");
 					if (status['message']) {
 						$('#message').text(status['message']);

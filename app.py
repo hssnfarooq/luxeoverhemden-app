@@ -260,8 +260,8 @@ def register_venti_products(csv_path: str = ""):
 
 
 @eel.expose
-def reset_sku(sku: str):
-    return SKUResetService.reset_sku_everywhere(sku)
+def reset_sku(sku: str, supplier: str = "auto"):
+    return SKUResetService.reset_sku_everywhere(sku, supplier=supplier)
 
 
 @eel.expose
