@@ -24,6 +24,7 @@ from config import (
 )
 from automations.casamoda import CasamodaScraper
 from automations.profuomo import ProfuomoDownloader, ProfuomoScraper
+from automations.supplier_profile import CASAMODA_VENTI_PROFILE
 
 if getattr(sys, "frozen", False):
     # we are running in a bundle
@@ -92,12 +93,12 @@ def _run_venti_scrape(url: str):
 def _latest_venti_products_csv() -> str:
     products_dir = Path(CASAMODA_PATH) / "products"
     candidates = []
-    all_csv = products_dir / "all.csv"
-    if all_csv.exists():
-        candidates.append(all_csv)
-    candidates.extend(products_dir.glob("all_merged_*.csv"))
+    venti_all_csv = products_dir / CASAMODA_VENTI_PROFILE.product_aggregate_filename
+    if venti_all_csv.exists():
+        candidates.append(venti_all_csv)
+    candidates.extend(products_dir.glob("venti_all_*.csv"))
     if not candidates:
-        return str(all_csv)
+        return str(venti_all_csv)
     return str(max(candidates, key=lambda path: path.stat().st_mtime))
 
 
@@ -299,7 +300,13 @@ def venti_autoimport(url: str = ""):
     )
     if scrape_status.get("error"):
         return scrape_status
-    return register_venti_products(os.path.join(CASAMODA_PATH, "products", "all.csv"))
+    return register_venti_products(
+        os.path.join(
+            CASAMODA_PATH,
+            "products",
+            CASAMODA_VENTI_PROFILE.product_aggregate_filename,
+        )
+    )
 
 
 if __name__ == "__main__":

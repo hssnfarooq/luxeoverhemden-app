@@ -396,15 +396,15 @@ class CasamodaScraperTests(unittest.TestCase):
             self.assertEqual(status["categories"], 2)
             self.assertEqual(
                 status["all_csv_path"],
-                str(Path(temp_dir) / "products" / "all.csv"),
+                str(Path(temp_dir) / "products" / "venti_all.csv"),
             )
 
-    def test_merge_category_csvs_refreshes_all_csv_when_no_category_rows_exist(self):
+    def test_merge_category_csvs_refreshes_venti_all_csv_when_no_category_rows_exist(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             products_dir = Path(temp_dir) / "products"
             products_dir.mkdir()
-            stale_all_csv = products_dir / "all.csv"
-            stale_all_csv.write_text('"sku"\n"old-sku"\n', encoding="utf-8")
+            stale_venti_all_csv = products_dir / "venti_all.csv"
+            stale_venti_all_csv.write_text('"sku"\n"old-sku"\n', encoding="utf-8")
             scraper = CasamodaScraper(
                 username="user",
                 password="pass",
@@ -413,10 +413,37 @@ class CasamodaScraperTests(unittest.TestCase):
 
             output_path = scraper._merge_category_csvs()
 
-            self.assertEqual(output_path, stale_all_csv)
-            all_csv_text = stale_all_csv.read_text(encoding="utf-8")
+            self.assertEqual(output_path, stale_venti_all_csv)
+            all_csv_text = stale_venti_all_csv.read_text(encoding="utf-8")
             self.assertIn("sku", all_csv_text)
             self.assertNotIn("old-sku", all_csv_text)
+            self.assertFalse((products_dir / "all.csv").exists())
+
+    def test_merge_category_csvs_removes_legacy_casamoda_all_csv(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            products_dir = Path(temp_dir) / "products"
+            products_dir.mkdir()
+            (products_dir / "all.csv").write_text(
+                '"sku"\n"legacy-sku"\n',
+                encoding="utf-8",
+            )
+            (products_dir / "venti_modern_fit.csv").write_text(
+                '"sku","name"\n"new-sku","New product"\n',
+                encoding="utf-8",
+            )
+            scraper = CasamodaScraper(
+                username="user",
+                password="pass",
+                base_dir=temp_dir,
+            )
+
+            output_path = scraper._merge_category_csvs()
+
+            self.assertEqual(output_path, products_dir / "venti_all.csv")
+            self.assertFalse((products_dir / "all.csv").exists())
+            merged_text = output_path.read_text(encoding="utf-8")
+            self.assertIn("new-sku", merged_text)
+            self.assertNotIn("legacy-sku", merged_text)
 
     def test_unknown_prices_are_written_to_central_file_only(self):
         with tempfile.TemporaryDirectory() as temp_dir:

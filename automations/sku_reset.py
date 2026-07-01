@@ -18,7 +18,7 @@ class FileChange:
 
 
 class SKUResetService:
-    PRODUCT_AGGREGATE_EXCLUDES = {"all.csv", "input.csv"}
+    PRODUCT_AGGREGATE_EXCLUDES = {"all.csv", "venti_all.csv", "input.csv"}
     SHARED_TEXT_PATHS = (
         Path("input.csv"),
         Path("urlerror.log"),
@@ -174,8 +174,9 @@ class SKUResetService:
             yield path
 
     @classmethod
-    def _rebuild_all_csv(cls, products_dir: Path) -> bool:
-        all_path = products_dir / "all.csv"
+    def _rebuild_aggregate_csv(cls, profile: SupplierProfile) -> bool:
+        products_dir = profile.products_path
+        all_path = products_dir / profile.product_aggregate_filename
         frames: list[pd.DataFrame] = []
 
         for csv_path in cls._iter_product_csvs_for_aggregate(products_dir):
@@ -231,10 +232,10 @@ class SKUResetService:
                     if removed:
                         changes.append(FileChange(str(csv_path), removed))
                 try:
-                    cls._rebuild_all_csv(products_dir)
+                    cls._rebuild_aggregate_csv(profile)
                 except Exception as exc:
                     warnings.append(
-                        f"Could not rebuild {Path(products_dir, 'all.csv')}: {exc}"
+                        f"Could not rebuild {Path(products_dir, profile.product_aggregate_filename)}: {exc}"
                     )
 
         # 2) Remove SKU rows from Magento/export and stock CSV files in project root

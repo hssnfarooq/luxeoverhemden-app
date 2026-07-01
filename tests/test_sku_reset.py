@@ -10,7 +10,12 @@ from automations.sku_reset import SKUResetService
 from automations.supplier_profile import SupplierProfile
 
 
-def make_profile(root: Path, key: str, products_folder: str) -> SupplierProfile:
+def make_profile(
+    root: Path,
+    key: str,
+    products_folder: str,
+    product_aggregate_filename: str = "all.csv",
+) -> SupplierProfile:
     base = root / key
     return SupplierProfile(
         key=key,
@@ -23,6 +28,7 @@ def make_profile(root: Path, key: str, products_folder: str) -> SupplierProfile:
         translation_errors_path=base / "logs" / "translation_errors.log",
         done_path=base / "done.txt",
         failed_path=base / "failed.txt",
+        product_aggregate_filename=product_aggregate_filename,
     )
 
 
@@ -46,7 +52,12 @@ class SKUResetServiceTests(unittest.TestCase):
         os.chdir(self.root)
 
         self.profuomo = make_profile(self.root, "profuomo", "products")
-        self.venti = make_profile(self.root, "casamoda_venti", "products")
+        self.venti = make_profile(
+            self.root,
+            "casamoda_venti",
+            "products",
+            product_aggregate_filename="venti_all.csv",
+        )
 
         self.profile_patch = patch.multiple(
             "automations.sku_reset",
@@ -70,7 +81,7 @@ class SKUResetServiceTests(unittest.TestCase):
             ],
         )
         write_csv(
-            self.venti.products_path / "all.csv",
+            self.venti.products_path / "venti_all.csv",
             [
                 {"sku": "001410-000", "name": "parent"},
                 {"sku": "001410-000-39", "name": "size"},
@@ -102,8 +113,9 @@ class SKUResetServiceTests(unittest.TestCase):
         self.assertEqual(result["error"], "")
         venti_rows = pd.read_csv(self.venti.products_path / "shirts.csv", dtype=str)
         self.assertEqual(venti_rows["sku"].tolist(), ["001410-001"])
-        rebuilt_all = pd.read_csv(self.venti.products_path / "all.csv", dtype=str)
+        rebuilt_all = pd.read_csv(self.venti.products_path / "venti_all.csv", dtype=str)
         self.assertEqual(rebuilt_all["sku"].tolist(), ["001410-001"])
+        self.assertFalse((self.venti.products_path / "all.csv").exists())
         self.assertEqual(
             self.venti.done_path.read_text(encoding="utf-8").splitlines(),
             ["001410-001"],

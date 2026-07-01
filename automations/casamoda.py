@@ -17,6 +17,7 @@ import pandas as pd
 import requests
 
 from config import BASE_DIR, CASAMODA_PASSWORD, CASAMODA_USERNAME
+from automations.supplier_profile import CASAMODA_VENTI_PROFILE
 
 
 BASE_URL = "https://b2b.casamoda.com"
@@ -649,7 +650,10 @@ class CasamodaScraper:
                 "unknown_prices": 0,
                 "categories": 0,
                 "csv_paths": [],
-                "all_csv_path": str(self.products_dir / "all.csv"),
+                "all_csv_path": str(
+                    self.products_dir
+                    / CASAMODA_VENTI_PROFILE.product_aggregate_filename
+                ),
             }
 
         total_products = 0
@@ -970,11 +974,13 @@ class CasamodaScraper:
         )
 
     def _merge_category_csvs(self) -> Path:
-        output_path = self.products_dir / "all.csv"
+        output_path = (
+            self.products_dir / CASAMODA_VENTI_PROFILE.product_aggregate_filename
+        )
         csv_files = sorted(
             path
             for path in self.products_dir.glob("venti_*.csv")
-            if path.name != "all.csv"
+            if path.name not in {"all.csv", "venti_all.csv"}
         )
         frames: list[pd.DataFrame] = []
         for csv_file in csv_files:
@@ -989,14 +995,16 @@ class CasamodaScraper:
             empty_frame = pd.DataFrame(columns=CASAMODA_PRODUCT_FIELDS)
             try:
                 empty_frame.to_csv(output_path, index=False, quoting=csv.QUOTE_ALL)
+                self._remove_legacy_all_csv()
                 return output_path
             except PermissionError:
                 fallback_path = (
-                    self.products_dir / f"all_merged_{int(time.time())}.csv"
+                    self.products_dir / f"venti_all_{int(time.time())}.csv"
                 )
                 empty_frame.to_csv(fallback_path, index=False, quoting=csv.QUOTE_ALL)
+                self._remove_legacy_all_csv()
                 self._progress(
-                    f"all.csv is locked; wrote empty merged VENTI CSV to {fallback_path.name} instead."
+                    f"{output_path.name} is locked; wrote empty merged VENTI CSV to {fallback_path.name} instead."
                 )
                 return fallback_path
 
@@ -1005,13 +1013,26 @@ class CasamodaScraper:
             merged = merged.drop_duplicates(subset=["sku"], keep="last")
         try:
             merged.to_csv(output_path, index=False, quoting=csv.QUOTE_ALL)
+            self._remove_legacy_all_csv()
             return output_path
         except PermissionError:
             fallback_path = (
-                self.products_dir / f"all_merged_{int(time.time())}.csv"
+                self.products_dir / f"venti_all_{int(time.time())}.csv"
             )
             merged.to_csv(fallback_path, index=False, quoting=csv.QUOTE_ALL)
+            self._remove_legacy_all_csv()
             self._progress(
-                f"all.csv is locked; wrote merged VENTI CSV to {fallback_path.name} instead."
+                f"{output_path.name} is locked; wrote merged VENTI CSV to {fallback_path.name} instead."
             )
             return fallback_path
+
+    def _remove_legacy_all_csv(self) -> None:
+        legacy_path = self.products_dir / "all.csv"
+        if not legacy_path.exists():
+            return
+        try:
+            legacy_path.unlink()
+        except PermissionError:
+            self._progress(
+                "Could not remove legacy Casamoda all.csv because it is locked."
+            )

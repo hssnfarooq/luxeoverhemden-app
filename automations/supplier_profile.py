@@ -18,6 +18,7 @@ class SupplierProfile:
     translation_errors_path: Path
     done_path: Path
     failed_path: Path
+    product_aggregate_filename: str = "all.csv"
     default_weight: str = "0.5"
     default_chest_pocket: str = "Zonder borstzak"
     default_size_table: str = ""
@@ -88,6 +89,7 @@ CASAMODA_VENTI_PROFILE = SupplierProfile(
     translation_errors_path=Path(BASE_DIR) / "Casamoda" / "logs" / "translation_errors.log",
     done_path=Path(BASE_DIR) / "Casamoda" / "done.txt",
     failed_path=Path(BASE_DIR) / "Casamoda" / "failed.txt",
+    product_aggregate_filename="venti_all.csv",
     default_size_table="Venti modern fit overhemden",
     size_tables={
         ("Overhemden", "MODERN FIT"): "Venti modern fit overhemden",

@@ -1926,7 +1926,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     @classmethod
     def get_products(cls, csv_path: str | Path | None = None) -> pd.DataFrame:
         if csv_path is None:
-            csv_path = cls.products_path() / "all.csv"
+            csv_path = cls.products_path() / cls.profile().product_aggregate_filename
         products = pd.read_csv(csv_path, sep=",", quotechar='"')
         try:
             with cls.profile().done_path.open(encoding="utf-8-sig") as f:
