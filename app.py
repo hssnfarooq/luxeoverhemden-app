@@ -5,6 +5,8 @@ import imaplib
 import email
 import datetime
 import sys
+import threading
+from pathlib import Path
 
 # Load credentials from .env file
 if os.path.exists(".env"):
@@ -14,11 +16,13 @@ from io import StringIO
 from automations.magento import MagentoFiller, MagentoUploader
 from automations.sku_reset import SKUResetService
 from config import (
+    CASAMODA_PATH,
     EMAIL_ADDRESS,
     PASSWORD,
     PRODUCTS_PATH,
     TEST,
 )
+from automations.casamoda import CasamodaScraper
 from automations.profuomo import ProfuomoDownloader, ProfuomoScraper
 
 if getattr(sys, "frozen", False):
@@ -30,6 +34,71 @@ import eel
 
 
 eel.init("web")
+
+VENTI_SCRAPE_LOCK = threading.Lock()
+VENTI_SCRAPE_STATUS: dict[str, str | bool | int] = {
+    "running": False,
+    "message": "",
+    "error": "",
+    "progress": "Idle",
+    "products": 0,
+    "unknown_prices": 0,
+    "categories": 0,
+    "csv_path": "",
+    "all_csv_path": "",
+}
+
+
+def _set_venti_scrape_status(**updates):
+    with VENTI_SCRAPE_LOCK:
+        VENTI_SCRAPE_STATUS.update(updates)
+        return dict(VENTI_SCRAPE_STATUS)
+
+
+def _get_venti_scrape_status():
+    with VENTI_SCRAPE_LOCK:
+        return dict(VENTI_SCRAPE_STATUS)
+
+
+def _run_venti_scrape(url: str):
+    def progress(message: str):
+        _set_venti_scrape_status(progress=message)
+
+    try:
+        status = CasamodaScraper.scrape_venti(
+            url or None,
+            progress_callback=progress,
+        )
+        _set_venti_scrape_status(
+            running=False,
+            message=str(status.get("message", "")),
+            error=str(status.get("error", "")),
+            progress="Finished",
+            products=int(status.get("products", 0)),
+            unknown_prices=int(status.get("unknown_prices", 0)),
+            categories=int(status.get("categories", 1 if status.get("csv_path") else 0)),
+            csv_path=str(status.get("csv_path", "")),
+            all_csv_path=str(status.get("all_csv_path", "")),
+        )
+    except Exception as ex:
+        _set_venti_scrape_status(
+            running=False,
+            message="",
+            error=str(ex),
+            progress="Failed",
+        )
+
+
+def _latest_venti_products_csv() -> str:
+    products_dir = Path(CASAMODA_PATH) / "products"
+    candidates = []
+    all_csv = products_dir / "all.csv"
+    if all_csv.exists():
+        candidates.append(all_csv)
+    candidates.extend(products_dir.glob("all_merged_*.csv"))
+    if not candidates:
+        return str(all_csv)
+    return str(max(candidates, key=lambda path: path.stat().st_mtime))
 
 
 @eel.expose
@@ -150,11 +219,44 @@ def profuomo_scraper(url: str):
 
 
 @eel.expose
-def register_products(csv_path: str):
+def venti_scraper(url: str = ""):
+    current_status = _get_venti_scrape_status()
+    if current_status.get("running"):
+        return current_status
+
+    _set_venti_scrape_status(
+        running=True,
+        message="VENTI scrape started. No browser will open; this runs in the background.",
+        error="",
+        progress="Starting...",
+        products=0,
+        unknown_prices=0,
+        categories=0,
+        csv_path="",
+        all_csv_path="",
+    )
+    thread = threading.Thread(target=_run_venti_scrape, args=(url,), daemon=True)
+    thread.start()
+    return _get_venti_scrape_status()
+
+
+@eel.expose
+def venti_scrape_status():
+    return _get_venti_scrape_status()
+
+
+@eel.expose
+def register_products(csv_path: str, supplier: str = "profuomo"):
     path = csv_path
     if not csv_path:
         path = None
-    return MagentoFiller.register_products(csv_path=path, test=TEST)
+    return MagentoFiller.register_products(csv_path=path, test=TEST, supplier=supplier)
+
+
+@eel.expose
+def register_venti_products(csv_path: str = ""):
+    path = csv_path or _latest_venti_products_csv()
+    return MagentoFiller.register_products(csv_path=path, test=TEST, supplier="venti")
 
 
 @eel.expose
@@ -164,14 +266,17 @@ def reset_sku(sku: str):
 
 @eel.expose
 def get_csvs() -> list[str]:
-    try:
-        return [
-            os.path.join(PRODUCTS_PATH, csv)
-            for csv in os.listdir(PRODUCTS_PATH)
-            if csv.endswith(".csv")
-        ]
-    except Exception:
-        return []
+    csvs: list[str] = []
+    for folder in (PRODUCTS_PATH, os.path.join(CASAMODA_PATH, "products")):
+        try:
+            csvs.extend(
+                os.path.join(folder, csv)
+                for csv in os.listdir(folder)
+                if csv.endswith(".csv")
+            )
+        except Exception:
+            continue
+    return sorted(csvs, key=lambda path: os.path.getmtime(path), reverse=True)
 
 
 @eel.expose
@@ -187,6 +292,16 @@ def autoimport():
     register_products(csv_path=os.path.join(PRODUCTS_PATH, "all.csv"))
 
 
+def venti_autoimport(url: str = ""):
+    scrape_status = CasamodaScraper.scrape_venti(
+        url or None,
+        progress_callback=print,
+    )
+    if scrape_status.get("error"):
+        return scrape_status
+    return register_venti_products(os.path.join(CASAMODA_PATH, "products", "all.csv"))
+
+
 if __name__ == "__main__":
     # check if app is executed with the 'cron' argument
     if len(sys.argv) > 1:
@@ -200,6 +315,21 @@ if __name__ == "__main__":
                 upload(False, True, headless=True)
             case "autoimport":
                 autoimport()
+            case "venti_scrape":
+                print(
+                    CasamodaScraper.scrape_venti(
+                        sys.argv[2] if len(sys.argv) > 2 else None,
+                        progress_callback=print,
+                    )
+                )
+            case "venti_register":
+                print(
+                    register_venti_products(
+                        sys.argv[2] if len(sys.argv) > 2 else ""
+                    )
+                )
+            case "venti_autoimport":
+                print(venti_autoimport(sys.argv[2] if len(sys.argv) > 2 else ""))
 
     else:
         eel.start("index.html", size=(420, 520))

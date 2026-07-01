@@ -1,0 +1,9 @@
+Missing Popeline NOS: Ja
+123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
+123942200-000, Kent kraag, ('CLICKABLE', 'name:product[kraag]=option:data-title')
+123942200-000, Lange mouw, ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
+123942200-000, Kent kraag, ('CLICKABLE', 'name:product[kraag]=option:data-title')
+123942200-000, Lange mouw, ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
+Missing t-shirts

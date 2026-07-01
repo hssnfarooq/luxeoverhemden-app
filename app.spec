@@ -9,7 +9,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('web', 'web'), ('automations', 'automations'), ('products', 'products'), ('config.py', '.'), ('input.csv', '.'), ('autoimport.txt', '.'), ('.env', '.')],
+    datas=[('web', 'web'), ('automations', 'automations'), ('products', 'products'), ('Casamoda', 'Casamoda'), ('config.py', '.'), ('input.csv', '.'), ('autoimport.txt', '.'), ('.env', '.')],
     hiddenimports=['pkg_resources', 'backports', 'backports.tarfile', *selenium_hiddenimports],
     hookspath=[],
     hooksconfig={},

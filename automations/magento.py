@@ -1,5 +1,7 @@
 from pathlib import Path
 import ast
+import csv
+import json
 import time
 import re
 import pandas as pd
@@ -18,6 +20,7 @@ from selenium.common.exceptions import (
 from urllib3.exceptions import ReadTimeoutError
 
 from automations.scraper import BaseScraper
+from automations.supplier_profile import SupplierProfile, get_supplier_profile
 from config import (
     MAGENTO_PASSWORD,
     MAGENTO_TEST_PASSWORD,
@@ -259,6 +262,24 @@ class MagentoUploader(Magento):
 
 class MagentoFiller(Magento):
     PLACEHOLDER_IMAGE_DIMENSIONS = (256, 256)
+    ACTIVE_PROFILE: SupplierProfile = get_supplier_profile("profuomo")
+    XPATH_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    XPATH_LOWER = "abcdefghijklmnopqrstuvwxyz"
+    FIT_OPTION_TITLES = {
+        "basic circular knit": "Modern fit",
+        "body fit": "Body slim fit",
+        "comfort fit": "Comfort fit",
+        "modern fit": "Modern fit",
+    }
+    MISSING_SPEC_FIELDS = [
+        "timestamp",
+        "sku",
+        "field",
+        "source_value",
+        "mapped_value",
+        "target",
+        "reason",
+    ]
 
     FORM_MAPPING = {
         "Productnaam": "name:product[name]",
@@ -299,6 +320,78 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         "fabriccomp": ("fabriccomp", "fabric composition"),
         "rrp": ("rrp", "rsp", "price"),
     }
+
+    @classmethod
+    def configure_supplier(cls, supplier: str | None = None) -> SupplierProfile:
+        cls.ACTIVE_PROFILE = get_supplier_profile(supplier)
+        cls.ACTIVE_PROFILE.ensure_directories()
+        return cls.ACTIVE_PROFILE
+
+    @classmethod
+    def profile(cls) -> SupplierProfile:
+        return cls.ACTIVE_PROFILE
+
+    @classmethod
+    def products_path(cls) -> Path:
+        return cls.profile().products_path
+
+    @classmethod
+    def debug_log_path(cls) -> Path:
+        path = cls.profile().debug_log_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @classmethod
+    def translation_errors_path(cls) -> Path:
+        path = cls.profile().translation_errors_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @classmethod
+    def missing_specs_path(cls) -> Path:
+        path = cls.translation_errors_path().parent / "missing_magento_specs.csv"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @classmethod
+    def reset_missing_specs_report(cls) -> None:
+        path = cls.missing_specs_path()
+        with path.open("w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=cls.MISSING_SPEC_FIELDS)
+            writer.writeheader()
+
+    @classmethod
+    def log_missing_magento_spec(
+        cls,
+        *,
+        sku: object,
+        field: object,
+        source_value: object,
+        mapped_value: object = "",
+        target: object = "",
+        reason: object = "",
+    ) -> None:
+        path = cls.missing_specs_path()
+        write_header = not path.exists() or path.stat().st_size == 0
+        with path.open("a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=cls.MISSING_SPEC_FIELDS)
+            if write_header:
+                writer.writeheader()
+            writer.writerow(
+                {
+                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    "sku": str(sku),
+                    "field": str(field),
+                    "source_value": str(source_value),
+                    "mapped_value": str(mapped_value),
+                    "target": str(target),
+                    "reason": str(reason),
+                }
+            )
+
+    @classmethod
+    def input_csv_path(cls) -> Path:
+        return cls.profile().input_csv_path
 
     @staticmethod
     def download_current_products(driver: webdriver.Chrome):
@@ -440,15 +533,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     @classmethod
     def _get_mapping(cls) -> None:
         try:
-            # Use the same path resolution as config.py
-            if getattr(sys, "frozen", False):
-                # Running as PyInstaller executable
-                BASE_DIR = Path(sys.executable).parent
-            else:
-                # Running as Python script
-                BASE_DIR = Path(__file__).parent.parent
-            
-            mapping_file = BASE_DIR / "translate_mapping.txt"
+            mapping_file = cls.profile().translation_mapping_path
             print(f"Loading translation mapping from: {mapping_file.resolve()}")
             print(f"File exists: {mapping_file.exists()}")
             print(f"Current working directory: {os.getcwd()}")
@@ -459,11 +544,13 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 file = f.read()
                 try:
                     for line in file.split("\n"):
-                        if line != "":
-                            key, value = line.strip().split(":")
-                            mapping[key.strip().lower()] = value.strip()
-                except ValueError:
-                    pass
+                        stripped_line = line.strip()
+                        if not stripped_line:
+                            continue
+                        key, separator, value = stripped_line.partition(":")
+                        if not separator:
+                            continue
+                        mapping[key.strip().lower()] = value.strip()
                 finally:
                     cls.TRANSLATE_MAPPING = mapping
                     print(f"Successfully loaded {len(mapping)} translation mappings")
@@ -591,9 +678,10 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     def fetch_data(cls, product: pd.Series) -> dict[str, tuple[str, str]]:
         data = {}
         sku = product.get("sku", "UNKNOWN")
+        debug_log = cls.debug_log_path()
         
         # Log to debug file
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"\n--- FETCH_DATA for SKU: {sku} ---\n")
             f.write(f"Product data: {dict(product)}\n")
             f.write(f"Category: {product.get('category', 'UNKNOWN')}\n")
@@ -613,12 +701,18 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 # Special handling for overshirts: if collar is empty/nan, use "overshirt"
                 if key == "collar" and product["category"] == "Overshirts":
                     raw_value = "overshirt"
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"  Special handling for overshirts collar: set to 'overshirt'\n")
                 else:
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"  Skipping {key}: not in product or is nan/empty\n")
                     continue
+
+            raw_value = cls.normalize_attribute_value(key, raw_value)
+            if not str(raw_value).strip():
+                with debug_log.open("a", encoding="utf-8") as f:
+                    f.write(f"  Skipping {key}: normalized value is empty\n")
+                continue
                     
             if "|" in value:
                 fields = value.split("|")
@@ -626,39 +720,48 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 fields = [value]
                 
             for field in fields:
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"  Processing field: {field} for key: {key}\n")
                     f.write(f"    Original value: {raw_value}\n")
                 
                 if field == "Productnaam":
                     value_text = str(raw_value)
-                    if not value_text.lower().startswith("profuomo "):
-                        value_text = "Profuomo " + value_text
+                    profile_prefix = cls.profile().name_prefix
+                    if profile_prefix and not value_text.lower().startswith(profile_prefix.lower() + " "):
+                        value_text = profile_prefix + " " + value_text
                     value_text = value_text.replace("SC SF ", "")
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"    Productnaam processed: {value_text}\n")
                     # Product name should not be translated, use as-is
                     element = cls.get_element(field)
                     data[value_text] = element
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"    Added to data: {value_text} -> {element}\n")
                     continue
                     
                 k = cls.format_key(field, str(raw_value), product["category"])
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    format_key result: {k}\n")
                 
                 if k is None or not str(k).strip():
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"    SKIPPED: format_key returned empty/None\n")
+                    cls.log_missing_magento_spec(
+                        sku=sku,
+                        field=key,
+                        source_value=raw_value,
+                        mapped_value=k or "",
+                        target=field,
+                        reason="missing translation mapping",
+                    )
                     continue
                     
                 element = cls.get_element(field)
                 data[k] = element
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    Added to data: {k} -> {element}\n")
         
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"  Final data dict: {data}\n")
             f.write(f"  Data entries: {len(data)}\n")
         
@@ -695,9 +798,21 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             case _:
                 raise NotImplementedError
 
+    @staticmethod
+    def spec_field_from_element(element: object) -> str:
+        if isinstance(element, tuple) and len(element) == 2:
+            target = str(element[1])
+        else:
+            target = str(element)
+        match = re.search(r"product\[([^\]]+)\]", target)
+        if match:
+            return match.group(1)
+        return target
+
     @classmethod
     def format_key(cls, field: str, key: str, category: str = None) -> str | None:
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        debug_log = cls.debug_log_path()
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"    format_key called: field='{field}', key='{key}', category='{category}'\n")
         
         formattings = field.split(";")[1:]
@@ -705,41 +820,44 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         if field.startswith("in"):
             constants = field.split("[")[-1].split("]")[0].split(",")
             if key not in constants:
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    SKIPPED: key '{key}' not in constants {constants}\n")
                 return None
                 
         for formatting in formattings:
-            with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+            with debug_log.open("a", encoding="utf-8") as f:
                 f.write(f"    Applying formatting: '{formatting}'\n")
             
             if formatting == "capitalize":
                 key = key.capitalize()
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    After capitalize: '{key}'\n")
             elif formatting == "dutch":
                 original_key = key
                 key = cls.get_mapped_key(key)
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    Dutch translation: '{original_key}' -> '{key}'\n")
             elif formatting.startswith("constant"):
                 constant = formatting.split(":")[-1]
                 if constant != key:
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(f"    SKIPPED: constant '{constant}' != key '{key}'\n")
                     return None
                     
         if category == "Shirts":
             if key == "Normal fit":
                 key = "Regular fit"
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    Shirts category adjustment: Normal fit -> Regular fit\n")
             elif key == "Loose fit":
                 key = "Comfort fit"
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    Shirts category adjustment: Loose fit -> Comfort fit\n")
+
+        if "product[model]" in field:
+            key = cls.FIT_OPTION_TITLES.get(key.lower(), key)
         
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"    format_key result: '{key}'\n")
         
         return key
@@ -750,28 +868,40 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         if by == By.XPATH:
             if input.isupper():
                 input = input.title()
+            select_name = cls.select_name_from_option_xpath(path)
+            if select_name:
+                cls.set_select_option_by_title(driver, select_name, input)
+                return
             path = path.format(input)
             option = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((by, path))
+                EC.presence_of_element_located((by, path))
             )
-            option.click()
+            cls.click_element_safely(driver, option)
         elif by == By.NAME:
             cls._set_text_input(driver, path, input)
         elif by == "CLICKABLE":
             select, option = path.split("=")
             by, field = select.split(":")
+            if by == "name":
+                cls.set_select_option_by_title(driver, field, input)
+                return
             select_element = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((by, field))
             )
-            select_element.click()
+            cls.click_element_safely(driver, select_element)
             by, path = cls.get_element(option)
             select = "=".join((select.split(":")[0], f"'{select.split(':')[1]}'"))
             path = path.format(input)
             path = f"//select[@{select}]{path}"
             option = WebDriverWait(driver, 2).until(
-                EC.element_to_be_clickable((by, path))
+                EC.presence_of_element_located((by, path))
             )
-            option.click()
+            cls.click_element_safely(driver, option)
+
+    @staticmethod
+    def select_name_from_option_xpath(path: str) -> str | None:
+        match = re.search(r"//select\[@name=(['\"])(.*?)\1\]//option", path)
+        return match.group(2) if match else None
 
     @classmethod
     def _set_text_input(
@@ -917,7 +1047,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
     @classmethod
     def _get_uploadable_images(cls, sku: str) -> list[Path]:
-        images_path = Path(PRODUCTS_PATH, sku)
+        images_path = cls.products_path() / sku
         if not images_path.exists() or not images_path.is_dir():
             return []
 
@@ -943,10 +1073,10 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
     @classmethod
     def insert_images(cls, driver: webdriver.Chrome, sku: str):
-        images_path = Path(PRODUCTS_PATH, sku)
+        images_path = cls.products_path() / sku
         print(f"Looking for images in: {images_path.resolve()}")
         print(f"Images path exists: {images_path.exists()}")
-        print(f"PRODUCTS_PATH: {PRODUCTS_PATH}")
+        print(f"PRODUCTS_PATH: {cls.products_path()}")
         print(f"Current working directory: {os.getcwd()}")
 
         images_path.mkdir(exist_ok=True, parents=True)
@@ -1239,37 +1369,221 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         return True
 
     @classmethod
-    def input_default(cls, driver: webdriver.Chrome, product: pd.Series):
-        weight_input = driver.find_element(By.NAME, "product[weight]")
-        weight_input.clear()
-        weight_input.send_keys("0.5")
-        merk_select = driver.find_element(By.NAME, "product[manufacturer]")
-        merk_select.click()
-        profuomo_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//option[@data-title='Profuomo']"))
-        )
-        profuomo_option.click()
-        borstzak_select = driver.find_element(By.NAME, "product[borstzak]")
-        borstzak_select.click()
-        zonder_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable(
-                (
-                    By.XPATH,
-                    "//option[@data-title='Zonder borstzak']",
+    def parse_variant_prices(cls, product: pd.Series) -> dict[str, str]:
+        raw_value = product.get("variant_prices", None)
+        if raw_value is None or str(raw_value) == "nan" or str(raw_value).strip() == "":
+            return {}
+        if isinstance(raw_value, dict):
+            parsed = raw_value
+        else:
+            text = str(raw_value)
+            try:
+                parsed = json.loads(text)
+            except Exception:
+                parsed = ast.literal_eval(text)
+        if not isinstance(parsed, dict):
+            return {}
+
+        prices: dict[str, str] = {}
+        for size, price in parsed.items():
+            price_text = str(price).replace("\u20ac", "").strip().replace(",", ".")
+            try:
+                price_text = f"{float(price_text):.2f}"
+            except ValueError:
+                pass
+            prices[str(size).strip()] = price_text
+        return prices
+
+    @classmethod
+    def update_variant_prices(cls, driver: webdriver.Chrome, product: pd.Series) -> None:
+        variant_prices = cls.parse_variant_prices(product)
+        if not variant_prices:
+            return
+
+        debug_log = cls.debug_log_path()
+        with debug_log.open("a", encoding="utf-8") as f:
+            f.write(f"Updating variant prices for {product.get('sku')}: {variant_prices}\n")
+
+        expected_sizes = set(variant_prices)
+        try:
+            row_matches = WebDriverWait(driver, 60).until(
+                lambda current_driver: cls.ready_variant_row_matches(
+                    current_driver,
+                    expected_sizes,
                 )
             )
+        except TimeoutException as ex:
+            all_rows = driver.find_elements(
+                By.CSS_SELECTOR,
+                "table.data-grid tbody tr, tr.data-row",
+            )
+            snapshots = [
+                cls.row_text(driver, row).replace("\n", " ")[:300]
+                for row in all_rows[:10]
+            ]
+            with debug_log.open("a", encoding="utf-8") as f:
+                f.write(
+                    "Could not find generated variant rows for expected sizes. "
+                    f"Rows seen: {len(all_rows)}. Snapshots: {snapshots}\n"
+                )
+            raise Exception(
+                "Could not find generated variant rows for sizes: "
+                + ", ".join(sorted(expected_sizes))
+            ) from ex
+
+        matched_sizes: set[str] = set()
+        for row, size in row_matches:
+            inputs = []
+            for input_element in row.find_elements(By.CSS_SELECTOR, "input"):
+                try:
+                    if input_element.is_displayed() and input_element.is_enabled():
+                        inputs.append(input_element)
+                except Exception:
+                    continue
+
+            price_input = cls._find_variant_price_input(inputs)
+            if price_input is None:
+                with debug_log.open("a", encoding="utf-8") as f:
+                    f.write(f"Could not find price input for size {size}\n")
+                continue
+
+            price_value = variant_prices[size]
+            try:
+                price_input.clear()
+                price_input.send_keys(price_value)
+                driver.execute_script(
+                    "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
+                    price_input,
+                )
+                matched_sizes.add(size)
+                with debug_log.open("a", encoding="utf-8") as f:
+                    f.write(f"Set size {size} price to {price_value}\n")
+            except Exception as ex:
+                with debug_log.open("a", encoding="utf-8") as f:
+                    f.write(f"Failed to set size {size} price to {price_value}: {ex}\n")
+
+        missing_sizes = sorted(set(variant_prices) - matched_sizes)
+        if missing_sizes:
+            raise Exception(
+                "Could not update variant prices for sizes: "
+                + ", ".join(missing_sizes)
+            )
+
+    @classmethod
+    def ready_variant_row_matches(
+        cls,
+        driver: webdriver.Chrome,
+        expected_sizes: set[str],
+    ) -> list[tuple[object, str]] | bool:
+        rows = driver.find_elements(
+            By.CSS_SELECTOR,
+            "table.data-grid tbody tr, tr.data-row",
         )
-        zonder_option.click()
+        matches = cls.matching_variant_rows(driver, rows, expected_sizes)
+        matched_sizes = {size for _, size in matches}
+        return matches if matched_sizes == expected_sizes else False
+
+    @classmethod
+    def matching_variant_rows(
+        cls,
+        driver: webdriver.Chrome | None,
+        rows: list,
+        expected_sizes: set[str],
+    ) -> list[tuple[object, str]]:
+        matches: list[tuple[object, str]] = []
+        seen_sizes: set[str] = set()
+        for row in rows:
+            size = cls.variant_size_from_row_text(
+                cls.row_text(driver, row),
+                expected_sizes,
+            )
+            if not size or size in seen_sizes:
+                continue
+            matches.append((row, size))
+            seen_sizes.add(size)
+        return matches
+
+    @classmethod
+    def row_text(cls, driver: webdriver.Chrome | None, row) -> str:
+        parts = []
+        try:
+            parts.append(row.text or "")
+        except Exception:
+            pass
+        if driver is not None:
+            try:
+                parts.append(
+                    driver.execute_script(
+                        "return arguments[0].innerText || arguments[0].textContent || '';",
+                        row,
+                    )
+                    or ""
+                )
+            except Exception:
+                pass
+        try:
+            parts.append(row.get_attribute("textContent") or "")
+        except Exception:
+            pass
+        return "\n".join(part for part in parts if part)
+
+    @staticmethod
+    def variant_size_from_row_text(row_text: str, expected_sizes: set[str]) -> str | None:
+        text = re.sub(r"\s+", " ", str(row_text or "")).strip()
+        if not text:
+            return None
+
+        size_match = re.search(r"\bMaat\s*:?\s*([A-Za-z0-9./-]+)", text, re.IGNORECASE)
+        if size_match and size_match.group(1).strip() in expected_sizes:
+            return size_match.group(1).strip()
+
+        for candidate in sorted(expected_sizes, key=len, reverse=True):
+            if re.search(rf"(?<!\d){re.escape(candidate)}(?!\d)", text):
+                return candidate
+        return None
+
+    @staticmethod
+    def _find_variant_price_input(inputs: list) -> object | None:
+        for input_element in inputs:
+            attributes = []
+            for attr in ("name", "data-bind", "data-role", "aria-label", "id", "class"):
+                try:
+                    attributes.append(input_element.get_attribute(attr) or "")
+                except Exception:
+                    pass
+            joined = " ".join(attributes).lower()
+            if "price" in joined or "prijs" in joined or "preis" in joined:
+                return input_element
+        if len(inputs) >= 3:
+            return inputs[2]
+        return inputs[0] if inputs else None
+
+    @classmethod
+    def input_default(cls, driver: webdriver.Chrome, product: pd.Series):
+        profile = cls.profile()
+        weight_input = driver.find_element(By.NAME, "product[weight]")
+        weight_input.clear()
+        weight_input.send_keys(profile.default_weight)
+        cls.select_option_by_title(
+            driver,
+            "product[manufacturer]",
+            profile.manufacturer_title,
+        )
+        cls.select_option_by_title(
+            driver,
+            "product[borstzak]",
+            profile.default_chest_pocket,
+        )
         categories_select = driver.find_element(
             By.XPATH,
             "//div[@class='admin__action-multiselect-text' and text()='Select...']",
         )
-        categories_select.click()
+        cls.click_element_safely(driver, categories_select)
         path = "//label[@class='admin__action-multiselect-label']//span[@data-bind='text: option.label' and text()='Assortiment']"
         assortimant_label = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, path))
         )
-        assortimant_label.click()
+        cls.click_element_safely(driver, assortimant_label)
         path = (
             '//label[@class="admin__action-multiselect-label" and text()="{}"]'.format(
                 cls.get_mapped_key(product["category"])
@@ -1278,7 +1592,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         category_label = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, path))
         )
-        category_label.click()
+        cls.click_element_safely(driver, category_label)
         close_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(
                 (
@@ -1287,29 +1601,130 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 )
             )
         )
-        close_button.click()
+        cls.click_element_safely(driver, close_button)
+
+    @classmethod
+    def normalize_attribute_value(cls, field_key: str, value: object) -> str:
+        text = "" if value is None else str(value).strip()
+        if field_key == "quality":
+            text = re.split(r"\s+NOS\s*:", text, maxsplit=1, flags=re.IGNORECASE)[0]
+        elif field_key == "Productnaam":
+            text = re.sub(r"\s+nos\s*:\s*ja\b", "", text, flags=re.IGNORECASE)
+        return text.strip()
+
+    @classmethod
+    def option_title_xpath(cls, select_name: str, title: str) -> str:
+        target = str(title).strip().lower()
+        name_literal = cls.xpath_literal(select_name)
+        title_literal = cls.xpath_literal(target)
+        data_title = (
+            "translate(normalize-space(@data-title), "
+            f"{cls.xpath_literal(cls.XPATH_UPPER)}, {cls.xpath_literal(cls.XPATH_LOWER)})"
+        )
+        option_text = (
+            "translate(normalize-space(.), "
+            f"{cls.xpath_literal(cls.XPATH_UPPER)}, {cls.xpath_literal(cls.XPATH_LOWER)})"
+        )
+        return (
+            f"//select[@name={name_literal}]//option["
+            f"{data_title}={title_literal} or {option_text}={title_literal}]"
+        )
+
+    @staticmethod
+    def xpath_literal(value: str) -> str:
+        text = str(value)
+        if '"' not in text:
+            return f'"{text}"'
+        if "'" not in text:
+            return f"'{text}'"
+        parts = text.split('"')
+        return "concat(" + ', \'"\', '.join(f'"{part}"' for part in parts) + ")"
+
+    @classmethod
+    def select_option_by_title(
+        cls,
+        driver: webdriver.Chrome,
+        select_name: str,
+        title: str,
+        timeout: int = 10,
+    ) -> None:
+        cls.set_select_option_by_title(driver, select_name, title, timeout=timeout)
+
+    @classmethod
+    def set_select_option_by_title(
+        cls,
+        driver: webdriver.Chrome,
+        select_name: str,
+        title: str,
+        timeout: int = 10,
+    ) -> None:
+        select_element = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.NAME, select_name))
+        )
+        driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+            select_element,
+        )
+        target = str(title).strip().lower()
+        WebDriverWait(driver, timeout).until(
+            lambda current_driver: current_driver.execute_script(
+                """
+                const select = arguments[0];
+                const target = arguments[1];
+                const normalize = (value) => (value || '').trim().toLowerCase();
+                const options = Array.from(select.options || select.querySelectorAll('option'));
+                const option = options.find((item) =>
+                    normalize(item.getAttribute('data-title')) === target ||
+                    normalize(item.textContent) === target
+                );
+                if (!option) {
+                    return false;
+                }
+                option.selected = true;
+                select.value = option.value;
+                select.dispatchEvent(new Event('input', { bubbles: true }));
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+                select.dispatchEvent(new Event('blur', { bubbles: true }));
+                return true;
+                """,
+                select_element,
+                target,
+            )
+        )
+
+    @staticmethod
+    def click_element_safely(driver: webdriver.Chrome, element) -> None:
+        driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
+            element,
+        )
+        try:
+            element.click()
+        except ElementClickInterceptedException:
+            driver.execute_script("arguments[0].click();", element)
 
     @classmethod
     def get_mapped_key(cls, key: str) -> str:
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        debug_log = cls.debug_log_path()
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"      get_mapped_key called: '{key}'\n")
             f.write(f"      Looking for key.lower(): '{key.lower()}'\n")
             f.write(f"      Available keys: {list(cls.TRANSLATE_MAPPING.keys())[:10]}...\n")
         
         value = cls.TRANSLATE_MAPPING.get(key.lower(), "").strip()
         
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"      Translation result: '{value}'\n")
         
         if not value:
             print(f"Key not found: {key}")
-            with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+            with debug_log.open("a", encoding="utf-8") as f:
                 f.write(f"      ERROR: Key '{key}' not found in translation mapping!\n")
             # write to file
-            with Path("translation_errors.log").open("a", encoding="utf-8") as log_file:
+            with cls.translation_errors_path().open("a", encoding="utf-8") as log_file:
                 log_file.write(f"Missing {key}\n")
         else:
-            with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+            with debug_log.open("a", encoding="utf-8") as f:
                 f.write(f"      SUCCESS: '{key}' -> '{value}'\n")
         
         return value
@@ -1344,11 +1759,12 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     @classmethod
     def fill_form(cls, driver: webdriver.Chrome, product: pd.Series):
         sku = product.get("sku", "UNKNOWN")
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        debug_log = cls.debug_log_path()
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"\n--- FILL_FORM for SKU: {sku} ---\n")
         
         data = cls.fetch_data(product)
-        with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+        with debug_log.open("a", encoding="utf-8") as f:
             f.write(f"Data to fill: {data}\n")
             f.write(f"Number of fields to fill: {len(data)}\n")
         
@@ -1359,7 +1775,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         )
         productnaam_nl = product["name"].replace("SC SF ", "").title()
         for key, value in data.items():
-            with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+            with debug_log.open("a", encoding="utf-8") as f:
                 f.write(f"  Filling field: {key} -> {value}\n")
             try:
                 if value == "cuff" and product["cuff"] == "NO CUFF":
@@ -1390,7 +1806,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     meta_description_input.clear()
                     meta_description_input.send_keys(meta_description)
             except Exception as e:
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"    ERROR filling field {key}: {e}\n")
                     f.write(f"    Field value: {value}\n")
                     f.write(f"    Exception type: {type(e).__name__}\n")
@@ -1400,10 +1816,18 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 print(f"Error filling field {key} for product {product['sku']}: {e}")
                 print(f"Field value: {value}")
                 # also write to file
-                with Path("translation_errors.log").open(
+                with cls.translation_errors_path().open(
                     "a", encoding="utf-8"
                 ) as log_file:
                     log_file.write(f"{product['sku']}, {key}, {value}\n")
+                cls.log_missing_magento_spec(
+                    sku=product["sku"],
+                    field=cls.spec_field_from_element(value),
+                    source_value=key,
+                    mapped_value=key,
+                    target=value,
+                    reason=f"{type(e).__name__}: {e}",
+                )
                 
                 # For critical fields, raise the exception to stop processing
                 critical_input_targets = {"product[name]", "product[sku]", "product[price]"}
@@ -1414,7 +1838,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     and value[1] in critical_input_targets
                 )
                 if is_critical:
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log.open("a", encoding="utf-8") as f:
                         f.write(
                             f"    CRITICAL FIELD FAILURE: target={value} input='{key}' - stopping product upload\n"
                         )
@@ -1426,36 +1850,15 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             counter += 1
             if counter == 4:
                 cls.input_default(driver, product)
-        match cls.get_mapped_key(product["category"]):
-            case "Truien":
-                fit_value = str(product.get("fit", "")).upper().strip()
-                match fit_value:
-                    case "SLIM FIT":
-                        cls.change_maattabel(driver, "Profuomo slim fit truien")
-                    case "NORMAL FIT":
-                        cls.change_maattabel(driver, "Profuomo normal fit truien")
-                    case "REGULAR FIT":
-                        cls.change_maattabel(driver, "Profuomo regular fit truien")
-                    case _:
-                        cls.change_maattabel(driver, "Profuomo slim fit truien")
-
-            case "Overhemden":
-                fit_value = str(product.get("fit", "")).upper().strip()
-                match fit_value:
-                    case "RELAXED FIT":
-                        cls.change_maattabel(driver, "Profuomo relaxed fit overhemden")
-                    case "REGULAR FIT":
-                        cls.change_maattabel(driver, "Profuomo regular fit overhemden")
-                    case "SUPER SLIM FIT":
-                        cls.change_maattabel(driver, "Profuomo super slim fit overhemden")
-                    case _:
-                        cls.change_maattabel(driver, "Profuomo slim fit overhemden")
-
-            case "Overshirts":
-                cls.change_maattabel(driver, "Profuomo overshirt normal fit")
-
-            case "Polo's":
-                cls.change_maattabel(driver, "Profuomo polo normal fit")
+        mapped_category = cls.get_mapped_key(product["category"])
+        size_table = cls.profile().size_table_for(
+            source_category=product["category"],
+            fit=product.get("fit", ""),
+            mapped_category=mapped_category,
+            sleeve=product.get("sleeve", ""),
+        )
+        if size_table:
+            cls.change_maattabel(driver, size_table)
 
         if TEST:
             cls.blank_color(driver)
@@ -1467,10 +1870,11 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         while not added_sizes and tries < 3:
             added_sizes = cls.add_sizes(driver, product["sizes"])
             tries += 1
-            if tries < 3:
+            if not added_sizes and tries < 3:
                 time.sleep(0.5)
-            else:
-                raise Exception("Sizes not added")
+        if not added_sizes:
+            raise Exception("Sizes not added")
+        cls.update_variant_prices(driver, product)
 
     @staticmethod
     def save_product(driver: webdriver.Chrome):
@@ -1522,10 +1926,10 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     @classmethod
     def get_products(cls, csv_path: str | Path | None = None) -> pd.DataFrame:
         if csv_path is None:
-            csv_path = Path(PRODUCTS_PATH, "all.csv")
+            csv_path = cls.products_path() / "all.csv"
         products = pd.read_csv(csv_path, sep=",", quotechar='"')
         try:
-            with Path(PRODUCTS_PATH, "done.txt").open(encoding="utf-8-sig") as f:
+            with cls.profile().done_path.open(encoding="utf-8-sig") as f:
                 done = f.read().splitlines()
         except FileNotFoundError:
             done = []
@@ -1550,7 +1954,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             f"{product['sku']},{get_sizes(product)}"
             for _, product in done_products.iterrows()
         }
-        input_csv_path = Path(PRODUCTS_PATH, "input.csv")
+        input_csv_path = cls.input_csv_path()
         if input_csv_path.exists():
             with input_csv_path.open(encoding="utf-8-sig") as existing_products:
                 lines.update(line.strip() for line in existing_products)
@@ -1575,7 +1979,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 
                 # Read and deduplicate existing lines once
                 lines = set()
-                if (input_csv := Path("input.csv")).exists():
+                input_csv = cls.input_csv_path()
+                if input_csv.exists():
                     with input_csv.open(encoding="utf-8-sig") as existing_products:
                         lines.update(line.strip() for line in existing_products)
 
@@ -1674,7 +2079,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                         lines = set()
                         new_line = product["sku"] + "," + sizes
                         # Read existing lines and add them to the set (deduplicates)
-                        if (input_csv := Path("input.csv")).exists():
+                        input_csv = cls.input_csv_path()
+                        if input_csv.exists():
                             with input_csv.open(
                                 encoding="utf-8-sig"
                             ) as existing_products:
@@ -1702,23 +2108,33 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     def has_valid_images(cls, sku: str) -> bool:
         return len(cls._get_uploadable_images(sku)) > 0
 
+    @staticmethod
+    def is_magento_ready(product: pd.Series) -> bool:
+        raw_value = product.get("magento_ready", True)
+        if raw_value is None or str(raw_value) == "nan" or str(raw_value).strip() == "":
+            return True
+        return str(raw_value).strip().lower() not in {"false", "0", "no", "nee"}
+
     @classmethod
     def register_products(
-        cls, csv_path: str | None = None, test: bool = False
+        cls, csv_path: str | None = None, test: bool = False, supplier: str = "profuomo"
     ) -> dict[str, str]:
+        profile = cls.configure_supplier(supplier)
         cls._get_mapping()
         data = {"message": "", "error": ""}
+        cls.reset_missing_specs_report()
 
         products = cls.get_products(csv_path)
         
         # Create debug log file
-        debug_log_path = Path("error_debug.txt")
+        debug_log_path = cls.debug_log_path()
         with debug_log_path.open("w", encoding="utf-8") as f:
             f.write("=" * 80 + "\n")
             f.write("PRODUCT UPLOAD DEBUG LOG\n")
             f.write("=" * 80 + "\n")
             f.write(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"CSV Path: {csv_path}\n")
+            f.write(f"Supplier: {profile.key}\n")
             f.write(f"Test Mode: {test}\n")
             f.write(f"Total Products: {len(products)}\n")
             f.write(f"Translation Mappings Loaded: {len(cls.TRANSLATE_MAPPING)}\n")
@@ -1744,8 +2160,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             # driver.implicitly_wait(1800)
 
             cls.magento_login(driver, test=test)
-            done_path = Path(PRODUCTS_PATH, "done.txt")
-            failed_path = Path(PRODUCTS_PATH, "failed.txt")
+            done_path = profile.done_path
+            failed_path = profile.failed_path
 
             cls.go_to_product_catalogue(driver)
 
@@ -1759,33 +2175,44 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             success_count = 0
             failed_count = 0
             skipped_no_images_count = 0
+            skipped_not_ready_count = 0
 
             for _, product in filter(
                 lambda product: product[1].get("Productnaam")
                 and str(product[1].get("Productnaam")) != "nan",
                 products.iterrows(),
-            ):
+                ):
                 processed_count += 1
                 sku = product["sku"]
-                with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                with debug_log_path.open("a", encoding="utf-8") as f:
                     f.write(f"\n{'='*60}\n")
                     f.write(f"PROCESSING PRODUCT: {sku}\n")
                     f.write(f"{'='*60}\n")
                     f.write(f"Product data: {dict(product)}\n")
                     f.write(f"Productnaam: {product.get('Productnaam', 'MISSING')}\n")
                     f.write(f"Category: {product.get('category', 'MISSING')}\n")
+                if not cls.is_magento_ready(product):
+                    with debug_log_path.open("a", encoding="utf-8") as f:
+                        f.write(
+                            "SKIPPED: "
+                            f"{sku} is not marked magento_ready. "
+                            f"Reason: {product.get('blocked_reason', '')}\n"
+                        )
+                    print(f"Skipping {sku}: not marked magento_ready")
+                    skipped_not_ready_count += 1
+                    continue
                 if not cls.has_valid_images(sku):
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
-                        f.write(f"SKIPPED: {sku} has no valid images in products/{sku}\n")
+                    with debug_log_path.open("a", encoding="utf-8") as f:
+                        f.write(f"SKIPPED: {sku} has no valid images in {cls.products_path() / sku}\n")
                     print(f"Skipping {sku}: no valid images found")
                     skipped_no_images_count += 1
                     continue
                 
                 try:
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log_path.open("a", encoding="utf-8") as f:
                         f.write(f"Starting register_product for {sku}\n")
                     cls.register_product(driver, product)
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log_path.open("a", encoding="utf-8") as f:
                         f.write(f"SUCCESS: Product {sku} registered successfully\n")
                     success_count += 1
                     with done_path.open("a", encoding="utf-8") as f:
@@ -1800,7 +2227,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     lines = set()
                     new_line = product["sku"] + "," + sizes
                     # Read existing lines and add them to the set (deduplicates)
-                    if (input_csv := Path("input.csv")).exists():
+                    input_csv = cls.input_csv_path()
+                    if input_csv.exists():
                         with input_csv.open(encoding="utf-8-sig") as existing_products:
                             lines.update(line.strip() for line in existing_products)
 
@@ -1811,7 +2239,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     with input_csv.open("w", encoding="utf-8") as f:
                         f.write("\n".join(lines) + "\n")
                 except Exception as e:
-                    with Path("error_debug.txt").open("a", encoding="utf-8") as f:
+                    with debug_log_path.open("a", encoding="utf-8") as f:
                         f.write(f"ERROR: Product {sku} failed with exception: {e}\n")
                         f.write(f"Exception type: {type(e).__name__}\n")
                         import traceback
@@ -1827,7 +2255,9 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             data["message"] = (
                 "File uploaded successfully "
                 f"({success_count} succeeded, {failed_count} failed, "
-                f"{skipped_no_images_count} skipped no images, {processed_count} processed)"
+                f"{skipped_no_images_count} skipped no images, "
+                f"{skipped_not_ready_count} skipped not ready, "
+                f"{processed_count} processed)"
             )
 
         except Exception as ex:

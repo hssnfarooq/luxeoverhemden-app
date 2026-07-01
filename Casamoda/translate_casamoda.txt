@@ -141,7 +141,7 @@ overshirts : Overshirts
 jackets : 
 polos : Polo's
 accessories : 
-t-shirts : 
+t-shirts : Ondershirts
 outerwear : 
 wedding : 
 ties : 
@@ -334,16 +334,18 @@ Oxford : Oxford
 Seersucker : Seersucker
 Garment Dyed Strick/Wirk : Garment Dyed gebreide/geribbelde stof
 Piqué : Piqué
+gestrickt / gewirkt : Knitted
 Button-Down-Kragen : Button down
-Kent-Kragen : Kent kraag
+Kent-Kragen : Kent
 Nicht relevant : Niet relevant
 Stehbundkragen : Opstaande kraag
 Hai-Kragen : Haaienkraag
 Polo : Polo
 Rundhals : Ronde hals
-V:Ausschnitt : V:hals
+V:Ausschnitt : V-hals
+V-Ausschnitt : V-hals
 Troyer : Coltrui
-Kläppchen-Kragen : Opstaande kraag
+Kläppchen-Kragen : Wing Collar
 Gestreift : Gestreept
 Kariert : Geruit
 Print : Print
@@ -376,10 +378,10 @@ Gemustert : Geprint
 66 % Polyester, 32 % Viskose, 2 % Elasthan : 66% polyester, 32% viscose, 2% elastaan
 60 % Polyester, 34 % Viskose, 6 % Elasthan : 60% polyester, 34% viscose
 Extra kurz 58cm : Extra kort 58cm
-Extra lang 69cm : Extra lang 69cm
-Extra lang 72cm : Extra lang 72cm
+Extra lang 69cm : Extra lange mouw 69 cm
+Extra lang 72cm : Extra lange mouw 72 cm
 Kurzarm : Korte mouw
-Langarm : Lange mouw
+Langarm : Lange mouw (normaal)
 Anthrazit : Antraciet
 Aqua bis petrol : Aqua tot petrol
 Beige : Beige
@@ -395,3 +397,20 @@ Schwarz : Zwart
 Silber : Zilver
 Türkis : Turkoois
 Weiß : Wit
+Wit : Wit
+Blauw : Blauw
+Aqua : Aqua
+Groen : Groen
+Geel : Geel
+Oranje : Oranje
+Rood : Rood
+Roze : Roze
+Paars : Paars
+Bruin : Bruin
+Beige : Beige
+Zwart : Zwart
+Grijs : Grijs
+Zilver : Zilver
+Goud : Goud
+Meerkleurig : Meerkleurig
+Overig : Meerkleurig

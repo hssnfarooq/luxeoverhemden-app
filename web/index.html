@@ -44,6 +44,10 @@
 		<input type="text" name="automation-scrape-profuomo-url" id="automation-scrape-profuomo-url" placeholder="https://b2b.profuomo.com/.../Shirts">
 			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-profuomo"><i
 					class="fa fa-download fa-lg"></i>Scrape URL</button>
+			<label for="automation-scrape-venti-url">VENTI Category URL (optional)</label><br>
+			<input type="text" name="automation-scrape-venti-url" id="automation-scrape-venti-url" placeholder="Leave empty to scrape Casamoda/autoimport.txt">
+			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-venti"><i
+					class="fa fa-download fa-lg"></i> Scrape VENTI</button>
 			<label for="automation-reset-sku-input">Reset product SKU</label><br>
 			<input type="text" name="automation-reset-sku-input" id="automation-reset-sku-input" placeholder="PPXF10016A, PPXH10041D">
 			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-reset-sku"><i
@@ -54,6 +58,8 @@
 		</select>
 		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-products"><i
 				class="fa fa-upload fa-lg"></i> Upload Products</button>
+		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-venti-products"><i
+				class="fa fa-upload fa-lg"></i> Upload VENTI Products</button>
 		<div id="info"></div>
 		<div id="message"></div>
 		<div id="error"></div>
@@ -163,6 +169,67 @@
 			});
 		});
 
+		let ventiScrapePoller = null;
+
+		function renderVentiScrapeStatus(status) {
+			const scrapeButton = document.getElementById("automation-scrape-venti");
+			const running = Boolean(status && status['running']);
+			scrapeButton.disabled = running;
+
+			if (!status) {
+				return;
+			}
+
+			if (status['error']) {
+				$('#info').text("");
+				$('#message').text("");
+				$('#error').text(status['error']);
+				return;
+			}
+
+			if (running) {
+				$('#info').text(status['progress'] || status['message'] || "VENTI scraping in background...");
+				$('#message').text(status['message'] || "No browser will open; the scraper runs in the background.");
+				$('#error').text("");
+				return;
+			}
+
+			$('#info').text("");
+			if (status['message']) {
+				const unknownPrices = Number(status['unknown_prices'] || 0);
+				const suffix = unknownPrices > 0 ? " Unknown prices: " + unknownPrices + "." : "";
+				$('#message').text(status['message'] + suffix);
+				fillCsvOptions();
+			}
+		}
+
+		function startVentiScrapePolling() {
+			if (ventiScrapePoller) {
+				clearInterval(ventiScrapePoller);
+			}
+			ventiScrapePoller = setInterval(function () {
+				eel.venti_scrape_status()(function (status) {
+					renderVentiScrapeStatus(status);
+					if (!status || !status['running']) {
+						clearInterval(ventiScrapePoller);
+						ventiScrapePoller = null;
+					}
+				});
+			}, 2000);
+		}
+
+		document.getElementById("automation-scrape-venti").addEventListener("click", function () {
+			console.log("VENTI scrape button clicked");
+			url = document.getElementById("automation-scrape-venti-url").value;
+			$('#info').text("VENTI scraper starten...");
+			$('#message').text("");
+			$('#error').text("");
+			eel.venti_scraper(url)(function (status) {
+				renderVentiScrapeStatus(status);
+				startVentiScrapePolling();
+			});
+		});
+
 			document.getElementById("automation-register-products").addEventListener("click", function () {
 				// code to handle scrape button click
 				console.log("Register products button clicked");
@@ -170,7 +237,24 @@
 				$('#message').text("");
 				$('#error').text("");
 				csvPath = document.getElementById("automation-upload-csv-magento").value;
-				eel.register_products(csvPath)(function (status) {
+				supplier = csvPath.toLowerCase().includes("casamoda") ? "venti" : "profuomo";
+				eel.register_products(csvPath, supplier)(function (status) {
+					$('#info').text("");
+					if (status['message']) {
+						$('#message').text(status['message']);
+					} else {
+						$('#error').text(status['error']);
+					}
+				});
+			});
+
+			document.getElementById("automation-register-venti-products").addEventListener("click", function () {
+				console.log("Register VENTI products button clicked");
+				$('#info').text("VENTI producten registreren...");
+				$('#message').text("");
+				$('#error').text("");
+				csvPath = document.getElementById("automation-upload-csv-magento").value;
+				eel.register_venti_products(csvPath)(function (status) {
 					$('#info').text("");
 					if (status['message']) {
 						$('#message').text(status['message']);
@@ -206,7 +290,7 @@
 					options.forEach(function (option) {
 						$('#automation-upload-csv-magento').append($('<option>', {
 							value: option,
-							text: option.split('/').pop()
+							text: option.split(/[\\/]/).pop()
 						}));
 					});
 				});
