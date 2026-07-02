@@ -3,9 +3,8 @@
 
 <head>
 	<title>AUTOMATION</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/icon.ico">
-	<!-- moved styles to styles.css -->
-	<link rel="stylesheet" href="styles.css">
 
 	<!-- Favicon CSS -->
 	<link rel="icon" type="img/png" sizes="32x32" href="assets/images/favicon.png">
@@ -28,47 +27,54 @@
 </head>
 
 <body>
-	<form>
-		<h1>SUPPLIERSTOCK</h1>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-download-csv"><i
-				class="fa fa-download fa-lg"></i> Download bestand</button>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-merge-csv"><i
-				class="fa fa-cog fa-lg"></i> Bestand samenvoegen</button>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-download-profuomo"><i
-				class="fa fa-download fa-lg"></i> Profuomo voorraad</button>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-upload-csv"><i
-				class="fa fa-upload fa-lg"></i> Upload Stock</button>
-		<label>CM Lagerbestand<input type="checkbox" id="cmlagerbestand" checked></label><br>
-		<label>Profuomo voorraad<input type="checkbox" id="profuomo_products" checked></label><br>
-		<label for="automation-scrape-profuomo-url">URL Scraper</label><br>
-		<input type="text" name="automation-scrape-profuomo-url" id="automation-scrape-profuomo-url" placeholder="https://b2b.profuomo.com/.../Shirts">
-			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-profuomo"><i
-					class="fa fa-download fa-lg"></i>Scrape URL</button>
-			<label for="automation-scrape-venti-url">VENTI Category URL (optional)</label><br>
-			<input type="text" name="automation-scrape-venti-url" id="automation-scrape-venti-url" placeholder="Leave empty to scrape Casamoda/autoimport.txt">
-			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-scrape-venti"><i
-					class="fa fa-download fa-lg"></i> Scrape VENTI</button>
-			<label for="automation-reset-sku-input">Reset product SKU</label><br>
-			<input type="text" name="automation-reset-sku-input" id="automation-reset-sku-input" placeholder="PPXF10016A, PPXH10041D">
-			<label for="automation-reset-sku-supplier">Supplier</label><br>
-			<select name="automation-reset-sku-supplier" id="automation-reset-sku-supplier">
-				<option value="auto" selected>Auto</option>
-				<option value="profuomo">Profuomo</option>
-				<option value="venti">VENTI</option>
-			</select>
-			<button type="button" class="btn-secondary" style="width: 300px;" id="automation-reset-sku"><i
-					class="fa fa-trash fa-lg"></i> Reset SKU State</button>
-			<label for="automation-upload-csv-magento">CSV voor upload</label><br>
-			<select name="automation-upload-csv-magento" id="automation-upload-csv-magento">
-				<!-- CSV Options here -->
-		</select>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-products"><i
-				class="fa fa-upload fa-lg"></i> Upload Products</button>
-		<button type="button" class="btn-secondary" style="width: 300px;" id="automation-register-venti-products"><i
-				class="fa fa-upload fa-lg"></i> Upload VENTI Products</button>
-		<div id="info"></div>
-		<div id="message"></div>
-		<div id="error"></div>
+	<form class="robot-shell">
+		<div class="robot-grid">
+			<section class="robot-panel">
+				<h1>SUPPLIERSTOCK</h1>
+				<button type="button" class="btn-secondary" id="automation-download-csv"><i
+						class="fa fa-download fa-lg"></i> Download bestand</button>
+				<button type="button" class="btn-secondary" id="automation-merge-csv"><i
+						class="fa fa-cog fa-lg"></i> Bestand samenvoegen</button>
+				<button type="button" class="btn-secondary" id="automation-download-profuomo"><i
+						class="fa fa-download fa-lg"></i> Profuomo voorraad</button>
+				<button type="button" class="btn-secondary" id="automation-upload-csv"><i
+						class="fa fa-upload fa-lg"></i> Upload Stock</button>
+				<label class="checkbox-row">CM Lagerbestand<input type="checkbox" id="cmlagerbestand" checked></label>
+				<label class="checkbox-row">Profuomo voorraad<input type="checkbox" id="profuomo_products" checked></label>
+				<label for="automation-scrape-profuomo-url">URL Scraper</label>
+				<input type="text" name="automation-scrape-profuomo-url" id="automation-scrape-profuomo-url" placeholder="https://b2b.profuomo.com/.../Shirts">
+				<button type="button" class="btn-secondary" id="automation-scrape-profuomo"><i
+						class="fa fa-download fa-lg"></i> Scrape URL</button>
+			</section>
+
+			<section class="robot-panel">
+				<label for="automation-scrape-venti-url">VENTI Category URL (optional)</label>
+				<input type="text" name="automation-scrape-venti-url" id="automation-scrape-venti-url" placeholder="Leave empty to scrape Casamoda/autoimport.txt">
+				<button type="button" class="btn-secondary" id="automation-scrape-venti"><i
+						class="fa fa-download fa-lg"></i> Scrape VENTI</button>
+				<label for="automation-reset-sku-input">Reset product SKU</label>
+				<input type="text" name="automation-reset-sku-input" id="automation-reset-sku-input" placeholder="PPXF10016A, PPXH10041D">
+				<label for="automation-reset-sku-supplier">Supplier</label>
+				<select name="automation-reset-sku-supplier" id="automation-reset-sku-supplier">
+					<option value="auto" selected>Auto</option>
+					<option value="profuomo">Profuomo</option>
+					<option value="venti">VENTI</option>
+				</select>
+				<button type="button" class="btn-secondary" id="automation-reset-sku"><i
+						class="fa fa-trash fa-lg"></i> Reset SKU State</button>
+				<label for="automation-upload-csv-magento">CSV voor upload</label>
+				<select name="automation-upload-csv-magento" id="automation-upload-csv-magento">
+					<!-- CSV Options here -->
+				</select>
+				<button type="button" class="btn-secondary" id="automation-register-products"><i
+						class="fa fa-upload fa-lg"></i> Upload Products</button>
+				<button type="button" class="btn-secondary" id="automation-register-venti-products"><i
+						class="fa fa-upload fa-lg"></i> Upload VENTI Products</button>
+				<div id="info"></div>
+				<div id="message"></div>
+				<div id="error"></div>
+			</section>
+		</div>
 	</form>
 	<!-- Jquery -->
 	<script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
@@ -84,10 +90,6 @@
 	<script src="assets/js/script.js"></script>
 	<script src="assets/js/interface.js"></script>
 	<script>
-		$(document).ready(function () {
-			window.resizeTo(420, 820);
-		});
-
 		// onclick handlers for the buttons
 		document.getElementById("automation-download-csv").addEventListener("click", function () {
 			// code to handle download button click

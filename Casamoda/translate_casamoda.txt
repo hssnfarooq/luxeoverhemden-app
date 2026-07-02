@@ -400,6 +400,7 @@ Weiß : Wit
 Wit : Wit
 Blauw : Blauw
 Aqua : Aqua
+Aqua tot petrol : Aqua tot petrol
 Groen : Groen
 Geel : Geel
 Oranje : Oranje
@@ -411,6 +412,9 @@ Beige : Beige
 Zwart : Zwart
 Grijs : Grijs
 Zilver : Zilver
+Antraciet : Antraciet
+Turquoise : Turkoois
+Pruim : Pruim (paars)
 Goud : Goud
 Meerkleurig : Meerkleurig
 Overig : Meerkleurig

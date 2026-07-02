@@ -1,0 +1,3 @@
+timestamp,sku,field,source_value,mapped_value,target,reason
+2026-07-02 20:50:53,123942200-001,materiaal,Popeline,Popeline,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+"

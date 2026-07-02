@@ -339,4 +339,4 @@ if __name__ == "__main__":
                 print(venti_autoimport(sys.argv[2] if len(sys.argv) > 2 else ""))
 
     else:
-        eel.start("index.html", size=(420, 520))
+        eel.start("index.html", size=(840, 720))

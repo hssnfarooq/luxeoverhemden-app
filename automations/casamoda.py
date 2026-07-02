@@ -10,7 +10,7 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from html import unescape
 from pathlib import Path
 from typing import Callable, Iterable
-from urllib.parse import parse_qs, urljoin, urlparse
+from urllib.parse import parse_qs, unquote, urljoin, urlparse
 
 import openpyxl
 import pandas as pd
@@ -46,6 +46,7 @@ CASAMODA_PRODUCT_FIELDS = (
     "farbnummer",
     "color",
     "color_name",
+    "color_missing",
     "fit",
     "collar",
     "design",
@@ -130,6 +131,84 @@ class PriceMiss:
     source_url: str
 
 
+@dataclass
+class CasamodaColorMiss:
+    article_number: str
+    farbnummer: str
+    source_url: str
+
+
+@dataclass(frozen=True)
+class CasamodaColorRange:
+    start: int
+    end: int
+    color: str
+
+
+class CasamodaColorMap:
+    DEFAULT_RANGES = (
+        CasamodaColorRange(0, 99, "Wit"),
+        CasamodaColorRange(100, 149, "Blauw"),
+        CasamodaColorRange(150, 199, "Aqua tot petrol"),
+        CasamodaColorRange(200, 299, "Bruin"),
+        CasamodaColorRange(300, 349, "Groen"),
+        CasamodaColorRange(350, 399, "Turquoise"),
+        CasamodaColorRange(400, 449, "Rood"),
+        CasamodaColorRange(450, 499, "Oranje"),
+        CasamodaColorRange(500, 599, "Geel"),
+        CasamodaColorRange(600, 699, "Beige"),
+        CasamodaColorRange(700, 749, "Zilver"),
+        CasamodaColorRange(750, 799, "Antraciet"),
+        CasamodaColorRange(800, 899, "Zwart"),
+        CasamodaColorRange(900, 949, "Lila"),
+        CasamodaColorRange(950, 999, "Pruim"),
+    )
+
+    def __init__(self, ranges: Iterable[CasamodaColorRange]):
+        self.ranges = tuple(ranges)
+
+    @classmethod
+    def default(cls) -> "CasamodaColorMap":
+        return cls(cls.DEFAULT_RANGES)
+
+    @classmethod
+    def from_rows(cls, rows: Iterable[Iterable[object]]) -> "CasamodaColorMap":
+        ranges: list[CasamodaColorRange] = []
+        for row in rows:
+            values = list(row)
+            if len(values) < 3:
+                continue
+            try:
+                start = int(str(values[0]).strip())
+                end = int(str(values[1]).strip())
+            except (TypeError, ValueError):
+                continue
+
+            color_value = values[3] if len(values) >= 4 and values[3] else values[2]
+            color = str(color_value).strip()
+            if not color:
+                continue
+            ranges.append(CasamodaColorRange(start, end, color))
+        return cls(ranges)
+
+    @classmethod
+    def from_excel(cls, path: str | Path) -> "CasamodaColorMap":
+        workbook = openpyxl.load_workbook(path, data_only=True)
+        worksheet = workbook.active
+        return cls.from_rows(worksheet.iter_rows(values_only=True))
+
+    def lookup(self, farbnummer: str) -> str | None:
+        try:
+            code = int(str(farbnummer).strip())
+        except (TypeError, ValueError):
+            return None
+
+        for color_range in self.ranges:
+            if color_range.start <= code <= color_range.end:
+                return color_range.color
+        return None
+
+
 class CasamodaPriceList:
     PROMPT_DEFAULTS = {
         Decimal("25.45"): "64.99",
@@ -193,8 +272,17 @@ class CasamodaParser:
 
     DETAIL_STOP_LABELS = DETAIL_LABELS + ("NOS",)
 
-    def __init__(self, price_list: CasamodaPriceList):
+    def __init__(
+        self,
+        price_list: CasamodaPriceList,
+        *,
+        color_map: CasamodaColorMap | None = None,
+        missing_color_callback: Callable[[CasamodaColorMiss], None] | None = None,
+    ):
         self.price_list = price_list
+        self.color_map = color_map if color_map is not None else CasamodaColorMap.default()
+        self.missing_color_callback = missing_color_callback
+        self._reported_missing_colors: set[tuple[str, str, str]] = set()
 
     @staticmethod
     def parse_listing_links(html_text: str, base_url: str = BASE_URL) -> list[str]:
@@ -215,7 +303,6 @@ class CasamodaParser:
     def parse_product_detail(self, html_text: str, source_url: str) -> list[dict[str, str]]:
         article_number = self._article_number(html_text)
         details = self._product_details(html_text)
-        image_urls = self._image_urls(html_text, source_url)
         description = self._description(html_text)
         page_name = self._page_name(html_text)
         rows: list[dict[str, str]] = []
@@ -278,7 +365,16 @@ class CasamodaParser:
                 continue
 
             retail_values = [_amount(value) for value in variant_prices.values()]
-            color_group = self.color_group_for_farbnummer(farbnummer)
+            color_group, color_missing = self._color_group_for_row(
+                article_number,
+                farbnummer,
+                source_url,
+            )
+            image_urls = self._image_urls_for_farbnummer(
+                html_text,
+                source_url,
+                farbnummer,
+            )
             quality = details.get("Stoffart", "")
             product_name = self._product_name(color_group, quality)
             sku = f"{article_number}-{farbnummer}"
@@ -295,6 +391,7 @@ class CasamodaParser:
                     "farbnummer": farbnummer,
                     "color": color_group,
                     "color_name": color_name,
+                    "color_missing": color_missing,
                     "fit": details.get("Passform", ""),
                     "collar": details.get("Kragenform", ""),
                     "design": self._normalize_design(details.get("Muster", "")),
@@ -326,34 +423,29 @@ class CasamodaParser:
 
     @classmethod
     def color_group_for_farbnummer(cls, farbnummer: str) -> str:
-        try:
-            code = int(farbnummer)
-        except ValueError:
-            return "Meerkleurig"
+        return CasamodaColorMap.default().lookup(farbnummer) or "Meerkleurig"
 
-        ranges = (
-            (0, 99, "Wit"),
-            (100, 149, "Blauw"),
-            (150, 199, "Aqua"),
-            (200, 249, "Groen"),
-            (250, 299, "Geel"),
-            (300, 349, "Oranje"),
-            (350, 399, "Rood"),
-            (400, 449, "Roze"),
-            (450, 499, "Paars"),
-            (500, 549, "Bruin"),
-            (550, 599, "Beige"),
-            (600, 649, "Zwart"),
-            (650, 699, "Grijs"),
-            (700, 749, "Zilver"),
-            (750, 799, "Goud"),
-            (800, 899, "Meerkleurig"),
-            (900, 999, "Overig"),
-        )
-        for start, end, color in ranges:
-            if start <= code <= end:
-                return color
-        return "Meerkleurig"
+    def _color_group_for_row(
+        self,
+        article_number: str,
+        farbnummer: str,
+        source_url: str,
+    ) -> tuple[str, str]:
+        color = self.color_map.lookup(farbnummer)
+        if color:
+            return color, "False"
+
+        key = (article_number, farbnummer, source_url)
+        if self.missing_color_callback is not None and key not in self._reported_missing_colors:
+            self._reported_missing_colors.add(key)
+            self.missing_color_callback(
+                CasamodaColorMiss(
+                    article_number=article_number,
+                    farbnummer=farbnummer,
+                    source_url=source_url,
+                )
+            )
+        return "", "True"
 
     @classmethod
     def _article_number(cls, html_text: str) -> str:
@@ -449,6 +541,31 @@ class CasamodaParser:
             data[2]
             for data in sorted(selected.values(), key=lambda item: item[1])
         ]
+
+    @classmethod
+    def _image_urls_for_farbnummer(
+        cls,
+        html_text: str,
+        source_url: str,
+        farbnummer: str,
+    ) -> list[str]:
+        image_urls = cls._image_urls(html_text, source_url)
+        matching_urls = [
+            image_url
+            for image_url in image_urls
+            if cls._url_mentions_farbnummer(image_url, farbnummer)
+        ]
+        return matching_urls or image_urls
+
+    @staticmethod
+    def _url_mentions_farbnummer(image_url: str, farbnummer: str) -> bool:
+        code = str(farbnummer).strip()
+        if not code:
+            return False
+
+        parsed_url = urlparse(image_url)
+        url_text = unquote(parsed_url.path)
+        return re.search(rf"(?<!\d){re.escape(code)}(?!\d)", url_text) is not None
 
     @staticmethod
     def _image_url_score(query: str) -> int:
@@ -573,7 +690,9 @@ class CasamodaScraper:
         self.products_dir = self.base_dir / "products"
         self.logs_dir = self.base_dir / "logs"
         self.price_list_path = self.base_dir / "prijzen.xlsx"
+        self.color_map_path = self.base_dir / "kleurcodes.xlsx"
         self.unknown_prices_path = self.base_dir / "unknown_prices.csv"
+        self.missing_color_codes_path = self.logs_dir / "missing_color_codes.csv"
         self.autoimport_path = self.base_dir / "autoimport.txt"
         self.progress_callback = progress_callback
         self.session = session or requests.Session()
@@ -648,6 +767,7 @@ class CasamodaScraper:
                 "error": "No VENTI autoimport categories configured",
                 "products": 0,
                 "unknown_prices": 0,
+                "missing_color_codes": 0,
                 "categories": 0,
                 "csv_paths": [],
                 "all_csv_path": str(
@@ -658,18 +778,25 @@ class CasamodaScraper:
 
         total_products = 0
         total_unknown_prices = 0
+        total_missing_color_codes = 0
         csv_paths: list[str] = []
 
         self._write_unknown_prices([], reset=True)
+        self._write_missing_color_codes([], reset=True)
         self._progress(f"Scraping {len(scrape_urls)} VENTI categories...")
         for index, category_url in enumerate(scrape_urls, start=1):
             category_slug = self._category_slug_from_url(category_url)
             self._progress(
                 f"Scraping VENTI category {index}/{len(scrape_urls)}: {category_slug}"
             )
-            status = self.scrape_category(category_url, reset_unknown_prices=False)
+            status = self.scrape_category(
+                category_url,
+                reset_unknown_prices=False,
+                reset_missing_color_codes=False,
+            )
             total_products += int(status.get("products", 0))
             total_unknown_prices += int(status.get("unknown_prices", 0))
+            total_missing_color_codes += int(status.get("missing_color_codes", 0))
             csv_path = str(status.get("csv_path", ""))
             if csv_path:
                 csv_paths.append(csv_path)
@@ -683,6 +810,7 @@ class CasamodaScraper:
             "error": "" if total_products else "No VENTI products were scraped",
             "products": total_products,
             "unknown_prices": total_unknown_prices,
+            "missing_color_codes": total_missing_color_codes,
             "categories": len(scrape_urls),
             "csv_paths": csv_paths,
             "all_csv_path": str(all_output_path),
@@ -693,12 +821,28 @@ class CasamodaScraper:
         url: str = VENTI_MODERN_FIT_URL,
         *,
         reset_unknown_prices: bool = True,
+        reset_missing_color_codes: bool = True,
     ) -> dict[str, str | int]:
         self._ensure_dirs()
         category_slug = self._category_slug_from_url(url)
         self._progress("Loading Casamoda price list...")
         price_list = self._load_price_list()
-        parser = CasamodaParser(price_list)
+        color_map = self._load_color_map()
+        missing_color_codes: list[CasamodaColorMiss] = []
+        missing_color_seen: set[tuple[str, str, str]] = set()
+
+        def add_missing_color(miss: CasamodaColorMiss) -> None:
+            key = (miss.article_number, miss.farbnummer, miss.source_url)
+            if key in missing_color_seen:
+                return
+            missing_color_seen.add(key)
+            missing_color_codes.append(miss)
+
+        parser = CasamodaParser(
+            price_list,
+            color_map=color_map,
+            missing_color_callback=add_missing_color,
+        )
         self._progress("Logging in to Casamoda...")
         self.login()
 
@@ -757,9 +901,17 @@ class CasamodaScraper:
             category_slug,
             reset=reset_unknown_prices,
         )
+        self._write_missing_color_codes(
+            missing_color_codes,
+            reset=reset_missing_color_codes,
+        )
         if unknown_prices:
             self._progress(
                 f"Wrote {len(unknown_prices)} unknown price rows to unknown_prices.csv."
+            )
+        if missing_color_codes:
+            self._progress(
+                f"Wrote {len(missing_color_codes)} missing color-code rows to logs/missing_color_codes.csv."
             )
 
         return {
@@ -767,6 +919,7 @@ class CasamodaScraper:
             "error": "" if rows else "No VENTI products were scraped",
             "products": len(rows),
             "unknown_prices": len(unknown_prices),
+            "missing_color_codes": len(missing_color_codes),
             "csv_path": str(output_path),
             "all_csv_path": str(all_output_path),
         }
@@ -833,6 +986,11 @@ class CasamodaScraper:
             f"Casamoda price list not found: {self.price_list_path}"
         )
 
+    def _load_color_map(self) -> CasamodaColorMap:
+        if self.color_map_path.exists():
+            return CasamodaColorMap.from_excel(self.color_map_path)
+        return CasamodaColorMap.default()
+
     def _download_images(self, sku: str, image_urls: list[str]) -> int:
         product_dir = self.products_dir / sku
         product_dir.mkdir(parents=True, exist_ok=True)
@@ -886,6 +1044,35 @@ class CasamodaScraper:
         except PermissionError:
             raise PermissionError(
                 f"{self.unknown_prices_path} is locked. Close it and run the scrape again."
+            )
+
+    def _write_missing_color_codes(
+        self,
+        misses: list[CasamodaColorMiss],
+        *,
+        reset: bool = False,
+    ) -> None:
+        fieldnames = [
+            "article_number",
+            "farbnummer",
+            "source_url",
+        ]
+        write_header = reset or not self.missing_color_codes_path.exists()
+        mode = "w" if reset else "a"
+        try:
+            with self.missing_color_codes_path.open(
+                mode,
+                encoding="utf-8",
+                newline="",
+            ) as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                if write_header:
+                    writer.writeheader()
+                for miss in misses:
+                    writer.writerow(miss.__dict__)
+        except PermissionError:
+            raise PermissionError(
+                f"{self.missing_color_codes_path} is locked. Close it and run the scrape again."
             )
 
     @staticmethod
@@ -945,6 +1132,7 @@ class CasamodaScraper:
         }:
             row["category"] = "shirts"
             row["magento_ready"] = "True"
+            CasamodaScraper._block_missing_color(row)
             return
 
         if category_slug == "venti_polos_shirts":
@@ -959,18 +1147,35 @@ class CasamodaScraper:
                 row["category"] = "t-shirts"
                 row["fit"] = "Modern Fit"
                 row["magento_ready"] = "True"
+                CasamodaScraper._block_missing_color(row)
+                return
             else:
                 row["category"] = "review"
                 row["blocked_reason"] = (
                     "Polos/Shirts category is scraped for review only; "
                     "Magento mapping is not approved yet."
                 )
+            CasamodaScraper._block_missing_color(row)
             return
 
         row["category"] = "review"
         row["blocked_reason"] = (
             f"Category {category_slug} is scraped for review only; "
             "Magento mapping is not approved yet."
+        )
+        CasamodaScraper._block_missing_color(row)
+
+    @staticmethod
+    def _block_missing_color(row: dict[str, str]) -> None:
+        if str(row.get("color_missing", "")).strip().lower() != "true":
+            return
+
+        row["magento_ready"] = "False"
+        farbnummer = str(row.get("farbnummer", "")).strip() or "unknown"
+        reason = f"Color code {farbnummer} is missing from kleurcodes.xlsx."
+        existing_reason = row.get("blocked_reason", "")
+        row["blocked_reason"] = (
+            f"{existing_reason} {reason}".strip() if existing_reason else reason
         )
 
     def _merge_category_csvs(self) -> Path:

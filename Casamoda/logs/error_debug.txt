@@ -1,29 +1,29 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-06-30 23:14:36
-CSV Path: C:\Users\devbazar\Downloads\luxeoverhemden-app\Casamoda\products\venti_test_one.csv
+Timestamp: 2026-07-02 20:48:45
+CSV Path: Casamoda\products\venti_smoke_one.csv
 Supplier: casamoda_venti
 Test Mode: False
 Total Products: 1
-Translation Mappings Loaded: 405
+Translation Mappings Loaded: 411
 ================================================================================
 
 
 ============================================================
-PROCESSING PRODUCT: 123942200-000
+PROCESSING PRODUCT: 123942200-001
 ============================================================
-Product data: {'sku': '123942200-000', 'Productnaam': 'Venti wit popeline nos: ja', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 123942200, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline NOS: Ja', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "0", "37": "111", "38": "202", "39": "108", "40": "97", "41": "177", "42": "18", "43": "23", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/3901/50', 'source_description': 'Das Herrenhemd als Businesshemd bietet Ihnen durch die moderne, schlanke Passform in Modern Fit eine zeitgemäße Silhouette, ohne auf Tragekomfort zu verzichten. Die fein gewebte Popeline aus reiner Baumwolle sorgt für eine glatte Oberfläche mit einem dezenten Glanz, was nicht nur edel wirkt, sondern auch angenehm auf der Haut liegt. Mit dem klassischen Kent-Kragen gestalten Sie Ihr Auftreten stets formell und gepflegt, wodurch Sie besonders im beruflichen Alltag überzeugen. Das zeitlose Design macht dieses Businesshemd zu einem vielseitigen Begleiter – es lässt sich hervorragend mit einem Sakko oder einer Stoffhose kombinieren und passt zu geschäftlichen Meetings ebenso wie zu offiziellen Veranstaltungen. Die Langarm-Variante passt bestens zu allen Jahreszeiten und unterstreicht eine seriöse Ausstrahlung. Mit diesem Herrenhemd setzen Sie auf hohen Tragekomfort und eine solide Lösung für den Berufsalltag.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2fb7f74148e36d501d5cba11f870c4c3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/1/1fc74865b7cdc32c90ff34fa2878f8cd.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/243e8f09a310bfbc5bdca34061fdf5a3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/6/67129e64107de2d6d78004425bbfbad0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline nos: ja
+Product data: {'sku': '123942200-001', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 123942200, 'farbnummer': 1, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "1", "37": "39", "38": "49", "39": "95", "40": "146", "41": "93", "42": "60", "43": "83", "44": "10", "45": "6", "46": "0", "47": "1", "48": "1"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/3901/50', 'source_description': 'Das Herrenhemd als Businesshemd bietet Ihnen durch die moderne, schlanke Passform in Modern Fit eine zeitgemäße Silhouette, ohne auf Tragekomfort zu verzichten. Die fein gewebte Popeline aus reiner Baumwolle sorgt für eine glatte Oberfläche mit einem dezenten Glanz, was nicht nur edel wirkt, sondern auch angenehm auf der Haut liegt. Mit dem klassischen Kent-Kragen gestalten Sie Ihr Auftreten stets formell und gepflegt, wodurch Sie besonders im beruflichen Alltag überzeugen. Das zeitlose Design macht dieses Businesshemd zu einem vielseitigen Begleiter – es lässt sich hervorragend mit einem Sakko oder einer Stoffhose kombinieren und passt zu geschäftlichen Meetings ebenso wie zu offiziellen Veranstaltungen. Die Langarm-Variante passt bestens zu allen Jahreszeiten und unterstreicht eine seriöse Ausstrahlung. Mit diesem Herrenhemd setzen Sie auf hohen Tragekomfort und eine solide Lösung für den Berufsalltag.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2fb7f74148e36d501d5cba11f870c4c3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/1/1fc74865b7cdc32c90ff34fa2878f8cd.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/243e8f09a310bfbc5bdca34061fdf5a3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/6/67129e64107de2d6d78004425bbfbad0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
+Productnaam: Venti wit popeline
 Category: shirts
-Starting register_product for 123942200-000
+Starting register_product for 123942200-001
 
---- FILL_FORM for SKU: 123942200-000 ---
+--- FILL_FORM for SKU: 123942200-001 ---
 
---- FETCH_DATA for SKU: 123942200-000 ---
-Product data: {'sku': '123942200-000', 'Productnaam': 'Venti wit popeline nos: ja', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 123942200, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline NOS: Ja', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "0", "37": "111", "38": "202", "39": "108", "40": "97", "41": "177", "42": "18", "43": "23", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/3901/50', 'source_description': 'Das Herrenhemd als Businesshemd bietet Ihnen durch die moderne, schlanke Passform in Modern Fit eine zeitgemäße Silhouette, ohne auf Tragekomfort zu verzichten. Die fein gewebte Popeline aus reiner Baumwolle sorgt für eine glatte Oberfläche mit einem dezenten Glanz, was nicht nur edel wirkt, sondern auch angenehm auf der Haut liegt. Mit dem klassischen Kent-Kragen gestalten Sie Ihr Auftreten stets formell und gepflegt, wodurch Sie besonders im beruflichen Alltag überzeugen. Das zeitlose Design macht dieses Businesshemd zu einem vielseitigen Begleiter – es lässt sich hervorragend mit einem Sakko oder einer Stoffhose kombinieren und passt zu geschäftlichen Meetings ebenso wie zu offiziellen Veranstaltungen. Die Langarm-Variante passt bestens zu allen Jahreszeiten und unterstreicht eine seriöse Ausstrahlung. Mit diesem Herrenhemd setzen Sie auf hohen Tragekomfort und eine solide Lösung für den Berufsalltag.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2fb7f74148e36d501d5cba11f870c4c3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/1/1fc74865b7cdc32c90ff34fa2878f8cd.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/243e8f09a310bfbc5bdca34061fdf5a3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/6/67129e64107de2d6d78004425bbfbad0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
+--- FETCH_DATA for SKU: 123942200-001 ---
+Product data: {'sku': '123942200-001', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 123942200, 'farbnummer': 1, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "1", "37": "39", "38": "49", "39": "95", "40": "146", "41": "93", "42": "60", "43": "83", "44": "10", "45": "6", "46": "0", "47": "1", "48": "1"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/3901/50', 'source_description': 'Das Herrenhemd als Businesshemd bietet Ihnen durch die moderne, schlanke Passform in Modern Fit eine zeitgemäße Silhouette, ohne auf Tragekomfort zu verzichten. Die fein gewebte Popeline aus reiner Baumwolle sorgt für eine glatte Oberfläche mit einem dezenten Glanz, was nicht nur edel wirkt, sondern auch angenehm auf der Haut liegt. Mit dem klassischen Kent-Kragen gestalten Sie Ihr Auftreten stets formell und gepflegt, wodurch Sie besonders im beruflichen Alltag überzeugen. Das zeitlose Design macht dieses Businesshemd zu einem vielseitigen Begleiter – es lässt sich hervorragend mit einem Sakko oder einer Stoffhose kombinieren und passt zu geschäftlichen Meetings ebenso wie zu offiziellen Veranstaltungen. Die Langarm-Variante passt bestens zu allen Jahreszeiten und unterstreicht eine seriöse Ausstrahlung. Mit diesem Herrenhemd setzen Sie auf hohen Tragekomfort und eine solide Lösung für den Berufsalltag.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2fb7f74148e36d501d5cba11f870c4c3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/1/1fc74865b7cdc32c90ff34fa2878f8cd.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/243e8f09a310bfbc5bdca34061fdf5a3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/6/67129e64107de2d6d78004425bbfbad0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
 Category: shirts
-Available translation mappings: 405
+Available translation mappings: 411
   Processing field: name:product[name] for key: Productnaam
     Original value: Venti wit popeline
     format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
@@ -31,11 +31,11 @@ Available translation mappings: 405
     format_key result: Venti wit popeline
     Added to data: Venti wit popeline -> ('name', 'product[name]')
   Processing field: name:product[sku] for key: sku
-    Original value: 123942200-000
-    format_key called: field='name:product[sku]', key='123942200-000', category='shirts'
-    format_key result: '123942200-000'
-    format_key result: 123942200-000
-    Added to data: 123942200-000 -> ('name', 'product[sku]')
+    Original value: 123942200-001
+    format_key called: field='name:product[sku]', key='123942200-001', category='shirts'
+    format_key result: '123942200-001'
+    format_key result: 123942200-001
+    Added to data: 123942200-001 -> ('name', 'product[sku]')
   Skipping ean: not in product or is nan/empty
   Processing field: name:product[price] for key: rrp
     Original value: 59.99
@@ -145,12 +145,12 @@ Available translation mappings: 405
     format_key result: 'Lange mouw (normaal)'
     format_key result: Lange mouw (normaal)
     Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '123942200-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Popeline': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '123942200-001': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Popeline': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
   Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '123942200-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Popeline': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '123942200-001': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Popeline': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('xpath', "//option[@data-title='{}']"), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
 Number of fields to fill: 11
   Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 123942200-000 -> ('name', 'product[sku]')
+  Filling field: 123942200-001 -> ('name', 'product[sku]')
   Filling field: 59.99 -> ('name', 'product[price]')
   Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
       get_mapped_key called: 'shirts'
@@ -165,13 +165,13 @@ Number of fields to fill: 11
     Field value: ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
     Exception type: TimeoutException
     Traceback: Traceback (most recent call last):
-  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 1699, in fill_form
+  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 1807, in fill_form
     cls.input_data(driver, key, value)
     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 789, in input_data
+  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 873, in input_data
     cls.set_select_option_by_title(driver, select_name, input)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 1585, in set_select_option_by_title
+  File "C:\Users\devbazar\Downloads\luxeoverhemden-app\automations\magento.py", line 1693, in set_select_option_by_title
     WebDriverWait(driver, timeout).until(
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
         lambda current_driver: current_driver.execute_script(
@@ -196,7 +196,7 @@ selenium.common.exceptions.TimeoutException: Message:
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Overhemden'
       SUCCESS: 'shirts' -> 'Overhemden'
-Updating variant prices for 123942200-000: {'35': '59.99', '36': '59.99', '37': '59.99', '38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99'}
+Updating variant prices for 123942200-001: {'35': '59.99', '36': '59.99', '37': '59.99', '38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99'}
 Set size 35 price to 59.99
 Set size 36 price to 59.99
 Set size 37 price to 59.99
@@ -211,308 +211,7 @@ Set size 45 price to 59.99
 Set size 46 price to 59.99
 Set size 47 price to 64.99
 Set size 48 price to 64.99
-SUCCESS: Product 123942200-000 registered successfully
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lang 72cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lang 72cm'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: ''
-      ERROR: Key 't-shirts' not found in translation mapping!
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Basic circular knit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
+SUCCESS: Product 123942200-001 registered successfully
       get_mapped_key called: 'Kent-Kragen'
       Looking for key.lower(): 'kent-kragen'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...

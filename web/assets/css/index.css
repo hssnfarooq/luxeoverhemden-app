@@ -4,28 +4,58 @@ body {
 }
 
 body {
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
+	margin: 0;
 	background-color: #16a085 !important;
 	overflow-y: auto;
-	padding: 16px 0;
+	padding: 16px 16px 96px;
 }
 
-form {
+.robot-shell {
 	margin: 0 auto;
-	width: 340px;
-	max-height: calc(100vh - 32px);
-	overflow-y: auto;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 0px 0px 10px #888;
+	width: min(100%, 920px);
+	padding: 0;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
 	box-sizing: border-box;
 }
 
+.robot-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(300px, 1fr));
+	gap: 24px;
+	align-items: start;
+}
+
+.robot-panel {
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #888;
+	box-sizing: border-box;
+}
+
+.robot-panel h1 {
+	margin-bottom: 8px;
+}
+
+.robot-panel label {
+	display: block;
+	margin-top: 8px;
+	font-weight: 500;
+}
+
+.robot-panel .checkbox-row {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin: 4px 0;
+	font-weight: 400;
+}
+
 input[type=text],
-input[type=password] {
+input[type=password],
+select {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -33,6 +63,11 @@ input[type=password] {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+}
+
+select {
+	padding: 8px 12px;
+	min-height: 38px;
 }
 
 button[type=submit] {
@@ -57,6 +92,11 @@ button[type=button] {
 	width: 100%;
 }
 
+button[type=button] .fa,
+button[type=submit] .fa {
+	margin-right: 6px;
+}
+
 button[type=submit]:hover {
 	background-color: #138e72;
 }
@@ -74,4 +114,34 @@ button[type=submit]:hover {
 #info {
 	color: gray;
 	font-weight: normal;
+}
+
+@media (max-width: 720px) {
+	body {
+		padding: 12px 12px 180px;
+	}
+
+	.robot-grid {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.robot-panel {
+		padding: 16px;
+	}
+}
+
+@media (max-width: 380px) {
+	body {
+		padding: 8px 8px 180px;
+	}
+
+	.robot-panel {
+		padding: 14px;
+	}
+
+	button[type=button],
+	button[type=submit] {
+		padding: 12px 14px;
+	}
 }

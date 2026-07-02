@@ -1443,6 +1443,17 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
             price_input = cls._find_variant_price_input(inputs)
             if price_input is None:
+                if cls.variant_price_can_inherit_parent_price(
+                    product,
+                    variant_prices[size],
+                ):
+                    matched_sizes.add(size)
+                    with debug_log.open("a", encoding="utf-8") as f:
+                        f.write(
+                            f"No price input for size {size}; "
+                            "using inherited parent price.\n"
+                        )
+                    continue
                 with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"Could not find price input for size {size}\n")
                 continue
@@ -1468,6 +1479,19 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 "Could not update variant prices for sizes: "
                 + ", ".join(missing_sizes)
             )
+
+    @classmethod
+    def variant_price_can_inherit_parent_price(
+        cls,
+        product: pd.Series,
+        variant_price: object,
+    ) -> bool:
+        try:
+            parent_price = f"{float(str(product.get('rrp', '')).replace(',', '.')):.2f}"
+            child_price = f"{float(str(variant_price).replace(',', '.')):.2f}"
+        except ValueError:
+            return False
+        return parent_price == child_price
 
     @classmethod
     def ready_variant_row_matches(

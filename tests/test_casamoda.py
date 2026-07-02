@@ -4,6 +4,8 @@ import unittest
 from pathlib import Path
 
 from automations.casamoda import (
+    CasamodaColorMiss,
+    CasamodaColorMap,
     CasamodaParser,
     CasamodaPriceList,
     CasamodaScraper,
@@ -107,6 +109,28 @@ class CasamodaParserTests(unittest.TestCase):
             ],
         )
 
+    def test_image_urls_for_farbnummer_prefer_matching_color_code(self):
+        html = """
+        <img src="/articles/123955800_000_front.jpg?auto=format">
+        <img src="/articles/123955800_000_detail.jpg?auto=format">
+        <img src="/articles/123955800_100_front.jpg?auto=format">
+        <img src="/articles/123955800_100_detail.jpg?auto=format">
+        """
+
+        urls = CasamodaParser._image_urls_for_farbnummer(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/50",
+            "100",
+        )
+
+        self.assertEqual(
+            urls,
+            [
+                "https://b2b.casamoda.com/articles/123955800_100_front.jpg?auto=format",
+                "https://b2b.casamoda.com/articles/123955800_100_detail.jpg?auto=format",
+            ],
+        )
+
     def test_listing_links_keep_color_specific_urls(self):
         links = CasamodaParser.parse_listing_links(
             """
@@ -206,6 +230,121 @@ class CasamodaParserTests(unittest.TestCase):
         self.assertEqual([row["sku"] for row in rows], ["123942200-000", "123942200-100"])
         self.assertEqual(rows[1]["color"], "Blauw")
         self.assertEqual(json.loads(rows[1]["purchase_prices"])["36"], "26.95")
+
+    def test_color_map_from_rows_controls_farbnummer_color(self):
+        html = DETAIL_HTML.replace(
+            'data-item-size="36"',
+            'data-article-price-block="23100-250-1" data-item-size="36"',
+        )
+        html = html.replace(
+            'data-item-size="37"',
+            'data-article-price-block="23100-250-1" data-item-size="37"',
+        )
+        html = html.replace(
+            'data-item-size="47"',
+            'data-article-price-block="25450-250-1" data-item-size="47"',
+        )
+        color_map = CasamodaColorMap.from_rows(
+            [
+                ("Van", "Tot", "Kleur (Duits)", "Kleur (Nederlands)"),
+                ("200", "299", "braun", "Bruin"),
+            ]
+        )
+        price_list = CasamodaPriceList.from_rows(
+            [("23.10", "59.99"), ("25.45", "64.99")]
+        )
+
+        rows = CasamodaParser(price_list, color_map=color_map).parse_product_detail(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/50",
+        )
+
+        self.assertEqual(rows[0]["farbnummer"], "250")
+        self.assertEqual(rows[0]["color"], "Bruin")
+
+    def test_missing_color_code_is_marked_and_reported(self):
+        html = DETAIL_HTML.replace(
+            'data-item-size="36"',
+            'data-article-price-block="23100-999-1" data-item-size="36"',
+        )
+        html = html.replace(
+            'data-item-size="37"',
+            'data-article-price-block="23100-999-1" data-item-size="37"',
+        )
+        html = html.replace(
+            'data-item-size="47"',
+            'data-article-price-block="25450-999-1" data-item-size="47"',
+        )
+        misses = []
+        price_list = CasamodaPriceList.from_rows(
+            [("23.10", "59.99"), ("25.45", "64.99")]
+        )
+
+        rows = CasamodaParser(
+            price_list,
+            color_map=CasamodaColorMap.from_rows([]),
+            missing_color_callback=misses.append,
+        ).parse_product_detail(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/50",
+        )
+
+        self.assertEqual(rows[0]["farbnummer"], "999")
+        self.assertEqual(rows[0]["color"], "")
+        self.assertEqual(rows[0]["color_missing"], "True")
+        self.assertEqual(len(misses), 1)
+        self.assertEqual(misses[0].article_number, "123942200")
+        self.assertEqual(misses[0].farbnummer, "999")
+
+    def test_parse_detail_assigns_color_specific_images_to_each_row(self):
+        html = DETAIL_HTML.replace(
+            '<img src="/media/catalog/product/front.jpg" />',
+            """
+            <img src="/media/catalog/product/123942200_000_front.jpg?auto=format" />
+            <img src="/media/catalog/product/123942200_100_front.jpg?auto=format" />
+            """,
+        )
+        html = html.replace(
+            'data-item-size="36"', 'data-article-price-block="23100-000-1" data-item-size="36"'
+        )
+        html = html.replace(
+            'data-item-size="37"', 'data-article-price-block="23100-000-1" data-item-size="37"'
+        )
+        html = html.replace(
+            'data-item-size="47"', 'data-article-price-block="25450-000-1" data-item-size="47"'
+        )
+        html = html.replace(
+            "      </div>\n    </div>\n  </body>",
+            """
+        <input data-quantity data-variant-id="blue36"
+               data-article-price-block="26950-100-1" data-item-size="36"
+               max="3" data-item-list-price=""
+               data-item-selling-price="26950" data-item-retail-price="69990" />
+      </div>
+    </div>
+  </body>""",
+        )
+        price_list = CasamodaPriceList.from_rows(
+            [("23.10", "59.99"), ("25.45", "64.99"), ("26.95", "69.99")]
+        )
+
+        rows = CasamodaParser(price_list).parse_product_detail(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/50",
+        )
+
+        self.assertEqual(
+            json.loads(rows[0]["image_urls"]),
+            [
+                "https://b2b.casamoda.com/media/catalog/product/123942200_000_front.jpg?auto=format"
+            ],
+        )
+        self.assertEqual(
+            json.loads(rows[1]["image_urls"]),
+            [
+                "https://b2b.casamoda.com/media/catalog/product/123942200_100_front.jpg?auto=format"
+            ],
+        )
 
     def test_parse_detail_blocks_when_any_size_price_is_unknown(self):
         price_list = CasamodaPriceList.from_rows(
@@ -516,6 +655,47 @@ class CasamodaScraperTests(unittest.TestCase):
             self.assertEqual(central_text.count("article_number"), 1)
             self.assertIn("modern", central_text)
             self.assertIn("body", central_text)
+
+    def test_missing_color_code_blocks_magento_ready_row(self):
+        row = {
+            "name": "Businesshemd",
+            "fit": "Modern Fit",
+            "farbnummer": "999",
+            "color_missing": "True",
+        }
+
+        CasamodaScraper._apply_category_metadata(
+            row,
+            "venti_modern_fit",
+            "https://example/modern-fit",
+        )
+
+        self.assertEqual(row["category"], "shirts")
+        self.assertEqual(row["magento_ready"], "False")
+        self.assertIn("kleurcodes.xlsx", row["blocked_reason"])
+        self.assertIn("999", row["blocked_reason"])
+
+    def test_missing_color_codes_are_written_to_log_file(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            scraper = CasamodaScraper(
+                username="user",
+                password="pass",
+                base_dir=temp_dir,
+            )
+            scraper._ensure_dirs()
+            miss = CasamodaColorMiss(
+                article_number="123942200",
+                farbnummer="999",
+                source_url="https://example.test/product",
+            )
+
+            scraper._write_missing_color_codes([miss], reset=True)
+
+            report_path = Path(temp_dir) / "logs" / "missing_color_codes.csv"
+            self.assertTrue(report_path.exists())
+            report_text = report_path.read_text(encoding="utf-8")
+            self.assertIn("123942200", report_text)
+            self.assertIn("999", report_text)
 
     def test_shirt_family_categories_are_magento_ready(self):
         ready_slugs = [

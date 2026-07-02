@@ -225,6 +225,16 @@ class MagentoFillerTests(unittest.TestCase):
         self.assertFalse(incomplete)
         self.assertEqual([size for _, size in complete], ["35", "47"])
 
+    def test_variant_price_can_inherit_parent_price_only_when_prices_match(self):
+        product = pd.Series({"rrp": "59.99"})
+
+        self.assertTrue(
+            MagentoFiller.variant_price_can_inherit_parent_price(product, "59.99")
+        )
+        self.assertFalse(
+            MagentoFiller.variant_price_can_inherit_parent_price(product, "64.99")
+        )
+
     def test_click_element_safely_falls_back_to_javascript_click_when_intercepted(self):
         class InterceptedElement:
             def __init__(self):
