@@ -131,6 +131,52 @@ class CasamodaParserTests(unittest.TestCase):
             ],
         )
 
+    def test_image_urls_for_unlinked_color_use_swatch_image(self):
+        html = """
+        <div class="color-bullet checked">
+          <img title="100 blau" data-article-url="/de/de/article/3901/3">
+        </div>
+        <img src="/articles/blue-gallery.jpg?auto=format">
+        <a title="700 silber">
+          <span style="background-image: url(https://casamoda-b2b-production.imgix.net/articles/202605/7/silver.jpg?auto=format&amp;h=50&amp;w=50)"></span>
+        </a>
+        """
+
+        urls = CasamodaParser._image_urls_for_farbnummer(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/3",
+            "700",
+        )
+
+        self.assertEqual(
+            urls,
+            [
+                "https://casamoda-b2b-production.imgix.net/articles/202605/7/silver.jpg?auto=format"
+            ],
+        )
+
+    def test_selected_color_keeps_page_gallery_when_swatch_exists(self):
+        html = """
+        <div class="color-bullet checked">
+          <img title="100 blau" data-article-url="/de/de/article/3901/3">
+        </div>
+        <img src="/articles/blue-gallery.jpg?auto=format">
+        <a title="100 blau">
+          <span style="background-image: url(https://casamoda-b2b-production.imgix.net/articles/202605/7/blue-swatch.jpg?auto=format&amp;h=50&amp;w=50)"></span>
+        </a>
+        """
+
+        urls = CasamodaParser._image_urls_for_farbnummer(
+            html,
+            "https://b2b.casamoda.com/de/de/article/3901/3",
+            "100",
+        )
+
+        self.assertEqual(
+            urls,
+            ["https://b2b.casamoda.com/articles/blue-gallery.jpg?auto=format"],
+        )
+
     def test_listing_links_keep_color_specific_urls(self):
         links = CasamodaParser.parse_listing_links(
             """
@@ -147,6 +193,18 @@ class CasamodaParserTests(unittest.TestCase):
                 "https://b2b.casamoda.com/de/de/article/3901/51",
             ],
         )
+
+    def test_selected_farbnummer_uses_checked_color_bullet(self):
+        html = """
+        <div class="color-bullet">
+          <img title="000 weiss" data-article-url="/de/de/article/3901/50">
+        </div>
+        <div class="color-bullet checked">
+          <img title="100 blau" data-article-url="/de/de/article/3901/3">
+        </div>
+        """
+
+        self.assertEqual(CasamodaParser._selected_farbnummer(html), "100")
 
     def test_parse_detail_uses_normal_net_price_per_size(self):
         price_list = CasamodaPriceList.from_rows(
@@ -362,6 +420,51 @@ class CasamodaParserTests(unittest.TestCase):
 
 
 class CasamodaScraperTests(unittest.TestCase):
+    @staticmethod
+    def _detail_html_with_selected_color(selected_farbnummer: str, image_name: str) -> str:
+        html = DETAIL_HTML.replace(
+            '<img src="/media/catalog/product/front.jpg" />',
+            f'<img src="/media/catalog/product/{image_name}.jpg?auto=format" />',
+        )
+        html = html.replace(
+            'data-item-size="36"', 'data-article-price-block="23100-000-1" data-item-size="36"'
+        )
+        html = html.replace(
+            'data-item-size="37"', 'data-article-price-block="23100-000-1" data-item-size="37"'
+        )
+        html = html.replace(
+            'data-item-size="47"', 'data-article-price-block="25450-000-1" data-item-size="47"'
+        )
+        html = html.replace(
+            "      <section>",
+            f"""
+      <div class="color-bullet {'checked' if selected_farbnummer == '000' else ''}">
+        <img title="000 weiss" data-article-url="https://b2b.casamoda.com/de/de/article/3901/50">
+      </div>
+      <div class="color-bullet {'checked' if selected_farbnummer == '100' else ''}">
+        <img title="100 blau" data-article-url="https://b2b.casamoda.com/de/de/article/3901/3">
+      </div>
+      <a title="700 silber">
+        <span style="background-image: url(https://casamoda-b2b-production.imgix.net/articles/202605/7/silver-front.jpg?auto=format&amp;h=50&amp;w=50)"></span>
+      </a>
+      <section>""",
+        )
+        return html.replace(
+            "      </div>\n    </div>\n  </body>",
+            """
+        <input data-quantity data-variant-id="blue36"
+               data-article-price-block="23100-100-1" data-item-size="36"
+               max="3" data-item-list-price="23100"
+               data-item-selling-price="13860" data-item-retail-price="59990" />
+        <input data-quantity data-variant-id="silver36"
+               data-article-price-block="23100-700-1" data-item-size="36"
+               max="4" data-item-list-price="23100"
+               data-item-selling-price="13860" data-item-retail-price="59990" />
+      </div>
+    </div>
+  </body>""",
+        )
+
     def test_category_slug_from_url(self):
         self.assertEqual(
             CasamodaScraper._category_slug_from_url(
@@ -536,6 +639,81 @@ class CasamodaScraperTests(unittest.TestCase):
             self.assertEqual(
                 status["all_csv_path"],
                 str(Path(temp_dir) / "products" / "venti_all.csv"),
+            )
+
+    def test_scrape_category_uses_each_color_page_for_that_color_images(self):
+        category_url = (
+            "https://b2b.casamoda.com/de/de/article_collection/"
+            "product-list-venti--jerseyflex"
+        )
+        white_url = "https://b2b.casamoda.com/de/de/article/3901/50"
+        blue_url = "https://b2b.casamoda.com/de/de/article/3901/3"
+        listing_html = f"""
+        <a href="{white_url}">white</a>
+        """
+
+        class Response:
+            def __init__(self, text: str):
+                self.text = text
+
+        class FakeScraper(CasamodaScraper):
+            downloaded: dict[str, list[str]]
+
+            def login(self):
+                return None
+
+            def _collect_listing_pages(self, first_url: str):
+                return [first_url]
+
+            def _get(self, url: str, timeout: int = 90):
+                pages = {
+                    category_url: listing_html,
+                    white_url: CasamodaScraperTests._detail_html_with_selected_color(
+                        "000", "white-front"
+                    ),
+                    blue_url: CasamodaScraperTests._detail_html_with_selected_color(
+                        "100", "blue-front"
+                    ),
+                }
+                return Response(pages[url])
+
+            def _load_price_list(self):
+                return CasamodaPriceList.from_rows(
+                    [("23.10", "59.99"), ("25.45", "64.99")]
+                )
+
+            def _download_images(self, sku: str, image_urls: list[str]) -> int:
+                self.downloaded[sku] = image_urls
+                return len(image_urls)
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            scraper = FakeScraper(
+                username="user",
+                password="pass",
+                base_dir=temp_dir,
+            )
+            scraper.downloaded = {}
+
+            status = scraper.scrape_category(category_url)
+
+            self.assertEqual(status["products"], 3)
+            self.assertEqual(
+                scraper.downloaded["123942200-000"],
+                [
+                    "https://b2b.casamoda.com/media/catalog/product/white-front.jpg?auto=format"
+                ],
+            )
+            self.assertEqual(
+                scraper.downloaded["123942200-100"],
+                [
+                    "https://b2b.casamoda.com/media/catalog/product/blue-front.jpg?auto=format"
+                ],
+            )
+            self.assertEqual(
+                scraper.downloaded["123942200-700"],
+                [
+                    "https://casamoda-b2b-production.imgix.net/articles/202605/7/silver-front.jpg?auto=format"
+                ],
             )
 
     def test_merge_category_csvs_refreshes_venti_all_csv_when_no_category_rows_exist(self):

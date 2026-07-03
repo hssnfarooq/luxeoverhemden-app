@@ -292,6 +292,19 @@ class CasamodaParser:
         return sorted(links)
 
     @staticmethod
+    def parse_article_color_links(html_text: str, base_url: str = BASE_URL) -> list[str]:
+        links: set[str] = set()
+        for raw_url in re.findall(
+            r"data-article-url\s*=\s*['\"]([^'\"]+)['\"]",
+            html_text,
+            re.IGNORECASE,
+        ):
+            clean_url = unescape(raw_url).split("#")[0]
+            if re.search(r"/article/\d+/\d+", clean_url):
+                links.add(urljoin(base_url, clean_url))
+        return sorted(links)
+
+    @staticmethod
     def group_article_urls(urls: Iterable[str]) -> list[str]:
         grouped: dict[str, str] = {}
         for url in urls:
@@ -300,7 +313,13 @@ class CasamodaParser:
             grouped.setdefault(article_key, url)
         return list(grouped.values())
 
-    def parse_product_detail(self, html_text: str, source_url: str) -> list[dict[str, str]]:
+    def parse_product_detail(
+        self,
+        html_text: str,
+        source_url: str,
+        *,
+        only_farbnummer: str | Iterable[str] | None = None,
+    ) -> list[dict[str, str]]:
         article_number = self._article_number(html_text)
         details = self._product_details(html_text)
         description = self._description(html_text)
@@ -308,6 +327,15 @@ class CasamodaParser:
         rows: list[dict[str, str]] = []
         missing_prices: list[PriceMiss] = []
         missing_seen: set[tuple[str, str, str, str]] = set()
+        selected_farbnummers: set[str] = set()
+        if isinstance(only_farbnummer, str):
+            selected_farbnummers = {only_farbnummer.strip()} if only_farbnummer.strip() else set()
+        elif only_farbnummer:
+            selected_farbnummers = {
+                str(farbnummer).strip()
+                for farbnummer in only_farbnummer
+                if str(farbnummer).strip()
+            }
 
         def add_missing(farbnummer: str, size: str, purchase_price: str) -> None:
             key = (article_number, farbnummer, size, purchase_price)
@@ -332,6 +360,8 @@ class CasamodaParser:
             ]
 
         for farbnummer, color_name, variants in variant_groups:
+            if selected_farbnummers and farbnummer not in selected_farbnummers:
+                continue
             if not variants:
                 continue
 
@@ -555,7 +585,81 @@ class CasamodaParser:
             for image_url in image_urls
             if cls._url_mentions_farbnummer(image_url, farbnummer)
         ]
-        return matching_urls or image_urls
+        if matching_urls:
+            return matching_urls
+
+        selected_farbnummer = cls._selected_farbnummer(html_text, source_url)
+        if selected_farbnummer == farbnummer:
+            return image_urls
+
+        swatch_urls = cls._swatch_image_urls_for_farbnummer(
+            html_text,
+            source_url,
+            farbnummer,
+        )
+        if swatch_urls:
+            return swatch_urls
+
+        if selected_farbnummer and selected_farbnummer != farbnummer:
+            return []
+
+        return image_urls
+
+    @classmethod
+    def _swatch_image_urls_for_farbnummer(
+        cls,
+        html_text: str,
+        source_url: str,
+        farbnummer: str,
+    ) -> list[str]:
+        urls: list[str] = []
+        for match in re.finditer(
+            r"title\s*=\s*['\"]\s*(\d{3})\b[^'\"]*['\"]",
+            html_text,
+            re.IGNORECASE,
+        ):
+            if match.group(1) != farbnummer:
+                continue
+            end_candidates = [
+                end_index
+                for end_index in (
+                    html_text.find("</a>", match.end()),
+                    html_text.find("</div>", match.end()),
+                )
+                if end_index >= 0
+            ]
+            snippet_end = min(end_candidates) if end_candidates else match.start() + 800
+            snippet = html_text[match.start() : snippet_end]
+            raw_urls = re.findall(
+                r"background-image\s*:\s*url\(([^)]+)\)",
+                snippet,
+                re.IGNORECASE,
+            )
+            raw_urls.extend(
+                re.findall(
+                    r"(?:src|data-src)\s*=\s*['\"]([^'\"]+\.(?:jpg|jpeg|png|webp)(?:\?[^'\"]*)?)['\"]",
+                    snippet,
+                    re.IGNORECASE,
+                )
+            )
+            for raw_url in raw_urls:
+                image_url = cls._normalize_swatch_image_url(raw_url, source_url)
+                if image_url and image_url not in urls:
+                    urls.append(image_url)
+        return urls
+
+    @staticmethod
+    def _normalize_swatch_image_url(raw_url: str, source_url: str) -> str:
+        clean_url = unescape(raw_url).strip().strip("'\"")
+        if not clean_url:
+            return ""
+        absolute_url = urljoin(source_url, clean_url)
+        parsed_url = urlparse(absolute_url)
+        if not re.search(r"\.(?:jpg|jpeg|png|webp)$", parsed_url.path, re.IGNORECASE):
+            return ""
+        if parsed_url.query:
+            return parsed_url._replace(query="auto=format").geturl()
+        return absolute_url
 
     @staticmethod
     def _url_mentions_farbnummer(image_url: str, farbnummer: str) -> bool:
@@ -648,6 +752,80 @@ class CasamodaParser:
             if match:
                 titles.setdefault(match.group(1), match.group(2).strip())
         return titles
+
+    @classmethod
+    def _selected_farbnummer(cls, html_text: str, source_url: str = "") -> str:
+        for opening_tag, content in cls._color_bullet_blocks(html_text):
+            classes = _parse_attrs(opening_tag).get("class", "").lower().split()
+            if "checked" not in classes:
+                continue
+            farbnummer = cls._farbnummer_from_color_block(content)
+            if farbnummer:
+                return farbnummer
+
+        if source_url:
+            target_path = urlparse(source_url).path.rstrip("/")
+            for _, content in cls._color_bullet_blocks(html_text):
+                article_url = cls._color_block_article_url(content, source_url)
+                if not article_url:
+                    continue
+                if urlparse(article_url).path.rstrip("/") != target_path:
+                    continue
+                farbnummer = cls._farbnummer_from_color_block(content)
+                if farbnummer:
+                    return farbnummer
+
+        return ""
+
+    @classmethod
+    def _linked_farbnummer_codes(cls, html_text: str, source_url: str = BASE_URL) -> set[str]:
+        farbnummers: set[str] = set()
+        for _, content in cls._color_bullet_blocks(html_text):
+            if not cls._color_block_article_url(content, source_url):
+                continue
+            farbnummer = cls._farbnummer_from_color_block(content)
+            if farbnummer:
+                farbnummers.add(farbnummer)
+        return farbnummers
+
+    @classmethod
+    def _variant_farbnummer_codes(cls, html_text: str) -> set[str]:
+        return {
+            farbnummer
+            for farbnummer, _, variants in cls._variant_groups(html_text)
+            if variants
+        }
+
+    @staticmethod
+    def _color_bullet_blocks(html_text: str) -> list[tuple[str, str]]:
+        blocks: list[tuple[str, str]] = []
+        for match in re.finditer(
+            r"(<div\b[^>]*class\s*=\s*['\"][^'\"]*\bcolor-bullet\b[^'\"]*['\"][^>]*>)",
+            html_text,
+            re.IGNORECASE,
+        ):
+            content_start = match.end()
+            content_end = html_text.find("</div>", content_start)
+            if content_end < 0:
+                content_end = min(len(html_text), content_start + 1000)
+            blocks.append((match.group(1), html_text[content_start:content_end]))
+        return blocks
+
+    @staticmethod
+    def _farbnummer_from_color_block(content: str) -> str:
+        match = re.search(r"title\s*=\s*['\"]\s*(\d{3})\b", content, re.IGNORECASE)
+        return match.group(1) if match else ""
+
+    @staticmethod
+    def _color_block_article_url(content: str, base_url: str) -> str:
+        match = re.search(
+            r"data-article-url\s*=\s*['\"]([^'\"]+)['\"]",
+            content,
+            re.IGNORECASE,
+        )
+        if not match:
+            return ""
+        return urljoin(base_url, unescape(match.group(1)).split("#")[0])
 
     @staticmethod
     def _purchase_price_source(variant: dict[str, str]) -> str:
@@ -856,23 +1034,44 @@ class CasamodaScraper:
             response = self._get(listing_url)
             detail_urls.extend(parser.parse_listing_links(response.text, listing_url))
 
-        grouped_detail_urls = parser.group_article_urls(detail_urls)
-        self._progress(f"Found {len(grouped_detail_urls)} VENTI articles to scan.")
+        detail_queue = list(dict.fromkeys(detail_urls))
+        self._progress(f"Found {len(detail_queue)} VENTI color pages to scan.")
         rows: list[dict[str, str]] = []
         seen_skus: set[str] = set()
+        scanned_detail_urls: set[str] = set()
         unknown_prices: list[PriceMiss] = []
 
-        for article_index, detail_url in enumerate(grouped_detail_urls, start=1):
+        while detail_queue:
+            detail_url = detail_queue.pop(0)
+            if detail_url in scanned_detail_urls:
+                continue
+            scanned_detail_urls.add(detail_url)
+            page_index = len(scanned_detail_urls)
+            total_pages = page_index + len(detail_queue)
             self._progress(
-                f"Scanning VENTI article {article_index}/{len(grouped_detail_urls)}..."
+                f"Scanning VENTI color page {page_index}/{total_pages}..."
             )
             response = self._get(detail_url)
+            for linked_url in parser.parse_article_color_links(response.text, detail_url):
+                if linked_url in scanned_detail_urls or linked_url in detail_queue:
+                    continue
+                detail_queue.append(linked_url)
+            selected_farbnummer = parser._selected_farbnummer(response.text, detail_url)
+            linked_farbnummers = parser._linked_farbnummer_codes(response.text, detail_url)
+            variant_farbnummers = parser._variant_farbnummer_codes(response.text)
+            allowed_farbnummers = variant_farbnummers - linked_farbnummers
+            if selected_farbnummer:
+                allowed_farbnummers.add(selected_farbnummer)
             try:
-                product_rows = parser.parse_product_detail(response.text, detail_url)
+                product_rows = parser.parse_product_detail(
+                    response.text,
+                    detail_url,
+                    only_farbnummer=allowed_farbnummers or None,
+                )
             except UnknownPriceError as ex:
                 unknown_prices.extend(self._unknown_prices_from_error(str(ex), detail_url))
                 self._progress(
-                    f"Skipped article {article_index}: unknown price found."
+                    f"Skipped color page {page_index}: unknown price found."
                 )
                 continue
             for row in product_rows:
