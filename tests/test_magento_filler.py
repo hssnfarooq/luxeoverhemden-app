@@ -1,9 +1,11 @@
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import pandas as pd
 from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.webdriver.common.by import By
 
 from automations.magento import MagentoFiller
 from automations.supplier_profile import CASAMODA_VENTI_PROFILE, SupplierProfile
@@ -260,6 +262,82 @@ class MagentoFillerTests(unittest.TestCase):
         self.assertEqual(len(driver.scripts), 2)
         self.assertIn("scrollIntoView", driver.scripts[0][0])
         self.assertIn("click", driver.scripts[1][0])
+
+    def test_wait_for_magento_admin_idle_requires_consecutive_quiet_polls(self):
+        class FakeDriver:
+            def __init__(self):
+                self.states = [False, True, False, True, True]
+                self.calls = 0
+
+            def execute_script(self, script):
+                self.calls += 1
+                return self.states.pop(0)
+
+        driver = FakeDriver()
+
+        with patch("automations.magento.time.sleep"):
+            self.assertTrue(
+                MagentoFiller.wait_for_magento_admin_idle(
+                    driver,
+                    timeout=1,
+                    poll=0.01,
+                    stable_polls=2,
+                )
+            )
+
+        self.assertEqual(driver.calls, 5)
+
+    def test_save_product_waits_for_admin_idle_before_clicking_save(self):
+        class FakeElement:
+            def __init__(self, name, clicks):
+                self.name = name
+                self.clicks = clicks
+
+            def is_displayed(self):
+                return True
+
+            def is_enabled(self):
+                return True
+
+            def click(self):
+                self.clicks.append(self.name)
+
+        class FakeDriver:
+            def __init__(self):
+                self.clicks = []
+
+            def find_element(self, by, value):
+                if by == By.XPATH and value == "//button[@data-ui-id='save-button-dropdown']":
+                    return FakeElement("save_dropdown", self.clicks)
+                if by == By.ID and value == "save_and_new":
+                    return FakeElement("save_and_new", self.clicks)
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+            def execute_script(self, script, element):
+                return None
+
+        calls = []
+
+        def fake_wait(cls, driver, **kwargs):
+            calls.append(kwargs.get("context"))
+            return True
+
+        with patch.object(
+            MagentoFiller,
+            "wait_for_magento_admin_idle",
+            new=classmethod(fake_wait),
+        ):
+            driver = FakeDriver()
+            MagentoFiller.save_product(driver)
+
+        self.assertEqual(
+            calls,
+            [
+                "before opening product save menu",
+                "after product save click",
+            ],
+        )
+        self.assertEqual(driver.clicks, ["save_dropdown", "save_and_new"])
 
 
 if __name__ == "__main__":

@@ -1728,6 +1728,66 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             driver.execute_script("arguments[0].click();", element)
 
     @classmethod
+    def wait_for_magento_admin_idle(
+        cls,
+        driver: webdriver.Chrome,
+        *,
+        timeout: float = 90.0,
+        poll: float = 0.5,
+        stable_polls: int = 3,
+        context: str = "Magento admin",
+    ) -> bool:
+        deadline = time.monotonic() + timeout
+        quiet_polls = 0
+        last_error: Exception | None = None
+        idle_script = """
+            const visible = (element) => {
+                if (!element) {
+                    return false;
+                }
+                const style = window.getComputedStyle(element);
+                const rect = element.getBoundingClientRect();
+                return style.display !== 'none' &&
+                    style.visibility !== 'hidden' &&
+                    Number(style.opacity || 1) !== 0 &&
+                    rect.width > 0 &&
+                    rect.height > 0;
+            };
+            const loaderSelectors = [
+                '.loading-mask',
+                '.admin__data-grid-loading-mask',
+                '.popup-loading',
+                '[data-role="loader"]',
+                '.process-loading'
+            ];
+            const hasVisibleLoader = loaderSelectors.some((selector) =>
+                Array.from(document.querySelectorAll(selector)).some(visible)
+            );
+            const hasActiveAjax = Boolean(window.jQuery && window.jQuery.active);
+            return document.readyState === 'complete' &&
+                !hasVisibleLoader &&
+                !hasActiveAjax;
+        """
+
+        while time.monotonic() < deadline:
+            try:
+                if driver.execute_script(idle_script):
+                    quiet_polls += 1
+                    if quiet_polls >= stable_polls:
+                        return True
+                else:
+                    quiet_polls = 0
+            except Exception as ex:
+                last_error = ex
+                quiet_polls = 0
+            time.sleep(poll)
+
+        details = f" Last driver error: {last_error}" if last_error else ""
+        raise TimeoutException(
+            f"Timed out waiting for {context} to become idle.{details}"
+        )
+
+    @classmethod
     def get_mapped_key(cls, key: str) -> str:
         debug_log = cls.debug_log_path()
         with debug_log.open("a", encoding="utf-8") as f:
@@ -1900,8 +1960,12 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             raise Exception("Sizes not added")
         cls.update_variant_prices(driver, product)
 
-    @staticmethod
-    def save_product(driver: webdriver.Chrome):
+    @classmethod
+    def save_product(cls, driver: webdriver.Chrome):
+        cls.wait_for_magento_admin_idle(
+            driver,
+            context="before opening product save menu",
+        )
         # Wait for the button with data-ui-id="save-button-dropdown" to be clickable and click on it
         save_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(
@@ -1911,12 +1975,18 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 )
             )
         )
-        save_button.click()
+        cls.click_element_safely(driver, save_button)
 
         save_and_new_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, "save_and_new"))
         )
-        save_and_new_button.click()
+        cls.click_element_safely(driver, save_and_new_button)
+        cls.wait_for_magento_admin_idle(
+            driver,
+            timeout=180.0,
+            stable_polls=2,
+            context="after product save click",
+        )
 
     @classmethod
     def register_product(cls, driver: webdriver.Chrome, product: pd.Series):
