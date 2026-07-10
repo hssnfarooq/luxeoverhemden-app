@@ -714,10 +714,11 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                     f.write(f"  Skipping {key}: normalized value is empty\n")
                 continue
                     
-            if "|" in value:
-                fields = value.split("|")
+            field_mapping = cls.form_mapping_for_key(key, value)
+            if "|" in field_mapping:
+                fields = field_mapping.split("|")
             else:
-                fields = [value]
+                fields = [field_mapping]
                 
             for field in fields:
                 with debug_log.open("a", encoding="utf-8") as f:
@@ -766,6 +767,12 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             f.write(f"  Data entries: {len(data)}\n")
         
         return data
+
+    @classmethod
+    def form_mapping_for_key(cls, key: str, field_mapping: str) -> str:
+        if cls.profile().key == "casamoda_venti" and key == "color":
+            return "option:data-title[name-'product[color]']"
+        return field_mapping
 
     @classmethod
     def get_element(cls, field: str) -> tuple[str, str]:

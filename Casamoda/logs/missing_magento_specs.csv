@@ -1,3 +1,18 @@
 timestamp,sku,field,source_value,mapped_value,target,reason
-2026-07-02 20:50:53,123942200-001,materiaal,Popeline,Popeline,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
-"
+2026-07-10 12:12:27,226110550-000,color,Wit,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:14:57,226110550-300,color,Groen,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:17:34,226110600-100,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:20:12,226111301-102,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:22:40,226111301-100,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:25:01,226111301-800,color,Zwart,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:27:42,226111301-000,color,Wit,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:30:18,123955800-101,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:32:53,123955800-750,color,Antraciet,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:35:17,123963800-750,color,Antraciet,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:37:45,144226500-100,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:40:13,226110530-100,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:42:40,226110530-101,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:44:58,226110570-101,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:47:52,226110570-750,color,Antraciet,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:50:35,226110550-100,color,Blauw,,option:data-title;dutch,missing translation mapping
+2026-07-10 12:53:07,226110550-101,color,Blauw,,option:data-title;dutch,missing translation mapping

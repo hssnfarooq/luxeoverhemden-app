@@ -207,10 +207,10 @@ CLAY : Rood
 38% NEW WOOL / 37% COTTON / 25% POLYESTER : 38% nieuwe wol / 37% katoen / 25% polyester
 55% POLYESTER / 45% LINEN : 55% polyester / 45% linnen
 56% LYOCELL / 20% COTTON / 20% SILK / 4% POLYAMIDE : 56% lyocell / 20% katoen / 20% zijde / 4% polyamide
-37% COTTON / 28% CARBONATE / 25% POLYESTER / 10% W : 37% katoen / 28% carbonaat / 25% polyester / 10% w
+37% COTTON / 28% CARBONATE / 25% POLYESTER / 10% W : 37% katoen / 28% carbonaat / 25% polyester / 10% wol
 56% COTTON / 44% POLYESTER : 56% katoen / 44% polyester
-80% COTTON / 18% POLYAMIDE / 2% ELATINE : 80% katoen / 18% polyamide / 2% elatine
-46% POLYESTER / 43% WOOL / 8% NEW WOOL / 3% POLYAM : 46% polyester / 43% wol / 8% nieuwe wol / 3% polyam
+80% COTTON / 18% POLYAMIDE / 2% ELATINE : 80% katoen / 18% polyamide / 2% elastaan
+46% POLYESTER / 43% WOOL / 8% NEW WOOL / 3% POLYAM : 46% polyester / 43% wol / 8% nieuwe wol / 3% polyamide
 100% WOOL : 100% wol
 NEW WOOL : Nieuw wol
 53% COTTON / 47% : 53% katoen / 47% lyocell
@@ -265,10 +265,10 @@ NEW WOOL : Nieuw wol
 100% COWLEATHER : 100% runderleer
 69% MODAL / 28% COTTON / 3% ELASTAN : 69% modal / 28% katoen / 3% elastaan
 55% LINEN / 45% COTTON : 55% linnen / 45% katoen
-63% POLYAMIDE / 15% POLYESTER / 12% ELASTAN / 10% : 63% polyamide / 15% polyester / 12% elastaan / 10%
+63% POLYAMIDE / 15% POLYESTER / 12% ELASTAN / 10% LEATHER : 63% polyamide / 15% polyester / 12% elastaan / 10% leer
 97% METAL / 3% EPOXY : 97% metaal / 3% epoxy
 62% POLYESTER / 33% VISCOSE / 5% ELASTAN : 62% polyester / 33% viscose / 5% elastaan
-46% COTTON / 33% POLYESTER / 18% VISCOSE / 3% ELAS : 46% katoen / 33% polyester / 18% viscose / 3% elas
+46% COTTON / 33% POLYESTER / 18% VISCOSE / 3% ELAS : 46% katoen / 33% polyester / 18% viscose / 3% elastaan
 50% WOOL / 30% NYLON / 20% MODAL : 50% wol / 30% nylon / 20% modal
 98% METAL / 2% EPOXY : 98% metaal / 2% epoxy
 53% POLYESTER / 47% COTTON : 53% polyester / 47% katoen
@@ -280,7 +280,7 @@ NEW WOOL : Nieuw wol
 46% POLYESTER / 20% WOOL / 18% POLYAMIDE / 12% COTTON / 4% VISCOSE : 46% polyester / 20% wol / 18% polyamide/ 12% katoen / 4% viscose
 70% VIRGIN WOOL / 30% POLYAMIDE : 70% virgin wol / 30% polyamide
 70% WOOL / 30% POLYAMIDE : 70% wol / 30% polyamide
-39% COTTON / 37% WOOL / 13% POLYAMIDE / 11% POLYESTER : 39% katoen / 37% wol/ 13% polyamide / 11% polyester
+39% COTTON / 37% WOOL / 13% POLYAMIDE / 11% POLYESTER : 39% katoen / 37% wol / 13% polyamide / 11% polyester
 41% COTTON / 12% LINEN / 28% VISCOSE / 19% POLYESTER : 41% katoen / 12% linnen / 28% viscose / 19% polyester
 50% COTTON / 31% LYOCELL / 17% LINEN / 2% ELASTANE : 50% katoen / 31% lyocell / 17% linnen / 2% elastaan
 53% COTTON / 47% ACETATE : 53% katoen / 47% acetaat
@@ -297,7 +297,7 @@ NEW WOOL : Nieuw wol
 50% WOOL / 30% POLYAMIDE / 20% MODAL : 50% wol / 30% polyamide / 20% modal
 50% WOOL / 28% COTTON / 21% POLYAMIDE / 1% ELASTANE : 50% wol / 28% katoen / 21% polyamide / 1% elastaan
 75% COTTON / 25% LINEN : 75% katoen / 25% linnen
-88% COTTON / 10% POLYAMIDE / 2% ELASTANE : 88% katoen / 10% polyamide/ 2% elastaan
+88% COTTON / 10% POLYAMIDE / 2% ELASTANE : 88% katoen / 10% polyamide / 2% elastaan
 Flannel : Flanel
 FULL ZIP : Full zip
 ROLL NECK : Coltrui
@@ -308,7 +308,7 @@ MESH : Mesh
 Chambray : Chambray
 Dobby : Dobby
 Druck : Print
-Fil á Fil : Fil:à:fil
+Fil á Fil : Fil à Fil
 Flanell : Flanel
 Jersey : Jersey
 Mouliné : Mouliné
@@ -334,54 +334,64 @@ Oxford : Oxford
 Seersucker : Seersucker
 Garment Dyed Strick/Wirk : Garment Dyed gebreide/geribbelde stof
 Piqué : Piqué
+ 
 gestrickt / gewirkt : Knitted
+
 Button-Down-Kragen : Button down
 Kent-Kragen : Kent
+
 Nicht relevant : Niet relevant
 Stehbundkragen : Opstaande kraag
 Hai-Kragen : Haaienkraag
 Polo : Polo
 Rundhals : Ronde hals
 V:Ausschnitt : V-hals
+
 V-Ausschnitt : V-hals
+
 Troyer : Coltrui
 Kläppchen-Kragen : Wing Collar
-Gestreift : Gestreept
+
+Gestreift : Streep
 Kariert : Geruit
 Print : Print
 Uni : Effen
 Gemustert : Geprint
 100 % Baumwolle : 100% katoen
-95 % Baumwolle, 5 % Elasthan : 95% katoen, 5% elastaan
+95 % Baumwolle, 5 % Elasthan : 95% katoen / 5% elastaan
 100 % Seide : 100% zijde
-97 % Baumwolle, 3 % Elasthan : 97% katoen, 3% elastaan
-50 % Polyester, 50 % Seide : 50% polyester, 50% zijde
-88 % Baumwolle, 12 % Elasthan : 88% katoen, 12% elastaan
-70 % Polyester, 30 % Seide : 70% polyester, 30% zijde
-82 % Seide, 18 % Viskose : 82% zijde, 18% viscose
-88 % Baumwolle, 12 % Elasthan (Lycra) : 88% katoen, 12% elastaan (Lycra)
+97 % Baumwolle, 3 % Elasthan : 97% katoen / 3% elastaan
+50 % Polyester, 50 % Seide : 50% polyester / 50% zijde
+88 % Baumwolle, 12 % Elasthan : 88% katoen / 12% elastaan
+70 % Polyester, 30 % Seide : 70% polyester / 30% zijde
+82 % Seide, 18 % Viskose : 82% zijde / 18% viscose
+88 % Baumwolle, 12 % Elasthan (Lycra) : 88% katoen / 12% elastaan (Lycra)
 100 % Polyester : 100% polyester
-50 % Viskose, 50 % Seide : 50% viscose, 50% zijde
-70 % Seide, 30 % Polyester : 70% zijde, 30% polyester
-90 % Baumwolle, 10 % Elasthan : 90% katoen, 10% elastaan
-89 % Polyester, 6 % Elasthan, 5 % Viskose : 89% polyester, 6% elastaan, 5% viscose
-61 % Polyester, 35 % Viskose, 4 % Elasthan : 61% polyester, 35% viscose, 4% elastaan
-53 % Polyester, 43 % Viskose, 4 % Elasthan : 53% polyester, 43% viscose, 4% elastaan
-90 % Baumwolle, 10 % Elasthan (Lycra) : 90% katoen, 10% elastaan (Lycra)
-60 % Polyester, 35 % Viskose, 5 % Elasthan : 60% polyester, 35% viscose, 5% elastaan
-86 % Polyester, 14 % Viskose : 86% polyester, 14% viscose
-64 % Polyester, 32 % Viskose, 4 % Elasthan : 64% polyester, 32% viscose, 4% elastaan
-64 % Polyester, 35 % Viskose, 1 % Elasthan : 64% polyester, 35% viscose, 1% elastaan
-83 % Polyester, 15 % Baumwolle, 2 % Elasthan : 83% polyester, 15% katoen, 2% elastaan
-89 % Baumwolle, 11 % Elasthan : 89% katoen, 11% elastaan
-79 % Polyester, 21 % Viskose : 79% polyester, 21% viscose
-66 % Polyester, 32 % Viskose, 2 % Elasthan : 66% polyester, 32% viscose, 2% elastaan
-60 % Polyester, 34 % Viskose, 6 % Elasthan : 60% polyester, 34% viscose
+50 % Viskose, 50 % Seide : 50% viscose / 50% zijde
+70 % Seide, 30 % Polyester : 70% zijde / 30% polyester
+90 % Baumwolle, 10 % Elasthan : 90% katoen / 10% elastaan
+89 % Polyester, 6 % Elasthan, 5 % Viskose : 89% polyester / 6% elastaan / 5% viscose
+61 % Polyester, 35 % Viskose, 4 % Elasthan : 61% polyester / 35% viscose / 4% elastaan
+53 % Polyester, 43 % Viskose, 4 % Elasthan : 53% polyester / 43% viscose / 4% elastaan
+90 % Baumwolle, 10 % Elasthan (Lycra) : 90% katoen / 10% elastaan (Lycra)
+60 % Polyester, 35 % Viskose, 5 % Elasthan : 60% polyester / 35% viscose / 5% elastaan
+86 % Polyester, 14 % Viskose : 86% polyester / 14% viscose
+64 % Polyester, 32 % Viskose, 4 % Elasthan : 64% polyester / 32% viscose / 4% elastaan
+64 % Polyester, 35 % Viskose, 1 % Elasthan : 64% polyester / 35% viscose / 1% elastaan
+83 % Polyester, 15 % Baumwolle, 2 % Elasthan : 83% polyester / 15% katoen / 2% elastaan
+89 % Baumwolle, 11 % Elasthan : 89% katoen / 11% elastaan
+79 % Polyester, 21 % Viskose : 79% polyester / 21% viscose
+66 % Polyester, 32 % Viskose, 2 % Elasthan : 66% polyester / 32% viscose / 2% elastaan
+60 % Polyester, 34 % Viskose, 6 % Elasthan : 60% polyester / 34% viscose / 6% elastaan
+55 % Baumwolle, 45 % Polyester : 55% katoen / 45% polyester
 Extra kurz 58cm : Extra kort 58cm
 Extra lang 69cm : Extra lange mouw 69 cm
+
 Extra lang 72cm : Extra lange mouw 72 cm
+
 Kurzarm : Korte mouw
 Langarm : Lange mouw (normaal)
+
 Anthrazit : Antraciet
 Aqua bis petrol : Aqua tot petrol
 Beige : Beige
@@ -397,24 +407,4 @@ Schwarz : Zwart
 Silber : Zilver
 Türkis : Turkoois
 Weiß : Wit
-Wit : Wit
-Blauw : Blauw
-Aqua : Aqua
-Aqua tot petrol : Aqua tot petrol
-Groen : Groen
-Geel : Geel
-Oranje : Oranje
-Rood : Rood
-Roze : Roze
-Paars : Paars
-Bruin : Bruin
-Beige : Beige
-Zwart : Zwart
-Grijs : Grijs
-Zilver : Zilver
-Antraciet : Antraciet
-Turquoise : Turkoois
-Pruim : Pruim (paars)
-Goud : Goud
-Meerkleurig : Meerkleurig
-Overig : Meerkleurig
+

@@ -143,6 +143,54 @@ class MagentoFillerTests(unittest.TestCase):
         self.assertIn("Niet bestaande stof", report)
         self.assertIn("missing translation mapping", report)
 
+    def test_venti_color_from_color_code_map_does_not_need_translation(self):
+        old_profile = MagentoFiller.ACTIVE_PROFILE
+        old_mapping = getattr(MagentoFiller, "TRANSLATE_MAPPING", {}).copy()
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            profile = SupplierProfile(
+                key="casamoda_venti",
+                name_prefix="Venti",
+                manufacturer_title="VENTI",
+                products_path=base / "products",
+                translation_mapping_path=base / "translate.txt",
+                input_csv_path=base / "input.csv",
+                debug_log_path=base / "logs" / "debug.txt",
+                translation_errors_path=base / "logs" / "translation_errors.log",
+                done_path=base / "done.txt",
+                failed_path=base / "failed.txt",
+            )
+            profile.translation_mapping_path.write_text("Blau : Blauw\n", encoding="utf-8")
+            MagentoFiller.ACTIVE_PROFILE = profile
+            MagentoFiller.TRANSLATE_MAPPING = {"blau": "Blauw"}
+
+            try:
+                data = MagentoFiller.fetch_data(
+                    pd.Series(
+                        {
+                            "sku": "226110600-100",
+                            "category": "shirts",
+                            "color": "Blauw",
+                        }
+                    )
+                )
+            finally:
+                MagentoFiller.ACTIVE_PROFILE = old_profile
+                MagentoFiller.TRANSLATE_MAPPING = old_mapping
+
+            report_path = base / "logs" / "missing_magento_specs.csv"
+
+        self.assertIn("Blauw", data)
+        self.assertEqual(
+            data["Blauw"],
+            (
+                By.XPATH,
+                "//select[@name='product[color]']//option[@data-title='{}']",
+            ),
+        )
+        self.assertFalse(report_path.exists())
+
     def test_normalize_attribute_value_removes_embedded_nos_marker_from_product_name(self):
         value = MagentoFiller.normalize_attribute_value(
             "Productnaam",

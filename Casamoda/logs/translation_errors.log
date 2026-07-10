@@ -1,9 +1,54 @@
-Missing Popeline NOS: Ja
-123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-123942200-000, Kent kraag, ('CLICKABLE', 'name:product[kraag]=option:data-title')
-123942200-000, Lange mouw, ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-123942200-000, Kent kraag, ('CLICKABLE', 'name:product[kraag]=option:data-title')
-123942200-000, Lange mouw, ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-123942200-000, Popeline, ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-Missing t-shirts
+Missing Blauw
+Missing Zilver
+123955800-700, Venti zilver jersey, ('name', 'product[name]')
+Missing Zilver
+Missing Blauw
+Missing Zwart
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Zilver
+Missing Blauw
+Missing Zwart
+Missing Wit
+123963800-000, Venti wit jersey, ('name', 'product[name]')
+Missing Wit
+Missing Groen
+123963800-300, Venti groen jersey, ('name', 'product[name]')
+Missing Groen
+Missing Blauw
+Missing Blauw
+Missing Groen
+Missing Groen
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Zwart
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Groen
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Zwart
+Missing Wit
+Missing Blauw
+Missing Antraciet
+Missing Antraciet
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Antraciet
+Missing Blauw
+Missing Blauw
