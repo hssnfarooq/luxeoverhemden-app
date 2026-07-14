@@ -1,6 +1,5 @@
 Missing Blauw
 Missing Zilver
-123955800-700, Venti zilver jersey, ('name', 'product[name]')
 Missing Zilver
 Missing Blauw
 Missing Zwart
@@ -11,30 +10,18 @@ Missing Zilver
 Missing Blauw
 Missing Zwart
 Missing Wit
-123963800-000, Venti wit jersey, ('name', 'product[name]')
 Missing Wit
 Missing Groen
-123963800-300, Venti groen jersey, ('name', 'product[name]')
 Missing Groen
 Missing Blauw
 Missing Blauw
 Missing Groen
 Missing Groen
-Missing Wit
-Missing Groen
-Missing Blauw
-Missing Blauw
-Missing Blauw
 Missing Wit
 Missing Groen
 Missing Blauw
 Missing Blauw
 Missing Blauw
-Missing Zwart
-Missing Wit
-Missing Groen
-Missing Blauw
-Missing Groen
 Missing Wit
 Missing Groen
 Missing Blauw
@@ -42,6 +29,16 @@ Missing Blauw
 Missing Blauw
 Missing Zwart
 Missing Wit
+Missing Groen
+Missing Blauw
+Missing Groen
+Missing Wit
+Missing Groen
+Missing Blauw
+Missing Blauw
+Missing Blauw
+Missing Zwart
+Missing Wit
 Missing Blauw
 Missing Antraciet
 Missing Antraciet
@@ -52,3 +49,113 @@ Missing Blauw
 Missing Antraciet
 Missing Blauw
 Missing Blauw
+123955800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226200-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226200-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226500-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110540-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110560-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110580-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110580-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110600-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226500-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226200-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226200-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226500-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110540-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110560-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110590-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110580-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110580-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110600-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226111301-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+144226500-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110530-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110570-750, Antraciet, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+226110550-101, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-700, Zilver, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-100, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-800, Zwart, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-000, Wit, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123955800-102, Blauw, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")
+123963800-300, Groen, ('xpath', "//select[@name='product[color]']//option[@data-title='{}']")

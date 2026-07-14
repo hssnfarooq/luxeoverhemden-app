@@ -4,8 +4,13 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
-from selenium.common.exceptions import ElementClickInterceptedException
+from selenium.common.exceptions import (
+    ElementClickInterceptedException,
+    NoSuchElementException,
+    TimeoutException,
+)
 from selenium.webdriver.common.by import By
+from urllib3.exceptions import ReadTimeoutError
 
 from automations.magento import MagentoFiller
 from automations.supplier_profile import CASAMODA_VENTI_PROFILE, SupplierProfile
@@ -185,11 +190,41 @@ class MagentoFillerTests(unittest.TestCase):
         self.assertEqual(
             data["Blauw"],
             (
-                By.XPATH,
-                "//select[@name='product[color]']//option[@data-title='{}']",
+                "LABEL_SELECT",
+                "Kleuren",
             ),
         )
         self.assertFalse(report_path.exists())
+
+    def test_labeled_select_option_finds_field_by_visible_label(self):
+        class FakeSelect:
+            pass
+
+        class FakeDriver:
+            def __init__(self):
+                self.select = FakeSelect()
+                self.calls = []
+
+            def execute_script(self, script, *args):
+                self.calls.append((script, args))
+                if "document.querySelectorAll" in script:
+                    return self.select
+                if "scrollIntoView" in script:
+                    return None
+                if "const select = arguments[0]" in script:
+                    return args == (self.select, "groen")
+                raise AssertionError("Unexpected script")
+
+        driver = FakeDriver()
+
+        MagentoFiller.set_labeled_select_option_by_title(
+            driver,
+            "Kleuren",
+            "Groen",
+            timeout=1,
+        )
+
+        self.assertEqual(len(driver.calls), 3)
 
     def test_normalize_attribute_value_removes_embedded_nos_marker_from_product_name(self):
         value = MagentoFiller.normalize_attribute_value(
@@ -335,11 +370,42 @@ class MagentoFillerTests(unittest.TestCase):
 
         self.assertEqual(driver.calls, 5)
 
-    def test_save_product_waits_for_admin_idle_before_clicking_save(self):
+    def test_wait_for_product_save_result_accepts_saved_edit_url(self):
+        class FakeDriver:
+            current_url = "https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/"
+
+            def find_elements(self, by, value):
+                return []
+
+        result = MagentoFiller.wait_for_product_save_result(
+            FakeDriver(),
+            "https://luxeoverhemden.nl/admin/catalog/product/new/",
+            timeout=1,
+        )
+
+        self.assertEqual(result, "saved")
+
+    def test_wait_for_product_save_result_reports_driver_read_timeout(self):
+        class FakeDriver:
+            current_url = "https://luxeoverhemden.nl/admin/catalog/product/new/"
+
+            def find_elements(self, by, value):
+                raise ReadTimeoutError(None, None, "driver did not respond")
+
+        result = MagentoFiller.wait_for_product_save_result(
+            FakeDriver(),
+            "https://luxeoverhemden.nl/admin/catalog/product/new/",
+            timeout=1,
+        )
+
+        self.assertEqual(result, "driver_timeout")
+
+    def test_save_product_uses_primary_save_and_recovers_stuck_loader(self):
         class FakeElement:
-            def __init__(self, name, clicks):
+            def __init__(self, name, clicks, driver):
                 self.name = name
                 self.clicks = clicks
+                self.driver = driver
 
             def is_displayed(self):
                 return True
@@ -349,20 +415,89 @@ class MagentoFillerTests(unittest.TestCase):
 
             def click(self):
                 self.clicks.append(self.name)
+                self.driver.current_url = (
+                    "https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/"
+                )
 
         class FakeDriver:
             def __init__(self):
                 self.clicks = []
+                self.current_url = "https://luxeoverhemden.nl/admin/catalog/product/new/"
+                self.refreshes = 0
 
             def find_element(self, by, value):
-                if by == By.XPATH and value == "//button[@data-ui-id='save-button-dropdown']":
-                    return FakeElement("save_dropdown", self.clicks)
-                if by == By.ID and value == "save_and_new":
-                    return FakeElement("save_and_new", self.clicks)
+                if by == By.CSS_SELECTOR and value == "#save, button[data-ui-id='save-button']":
+                    return FakeElement("save", self.clicks, self)
                 raise AssertionError(f"Unexpected locator: {by}={value}")
 
             def execute_script(self, script, element):
                 return None
+
+            def refresh(self):
+                self.refreshes += 1
+
+        calls = []
+
+        def fake_wait(cls, driver, **kwargs):
+            calls.append(kwargs.get("context"))
+            if kwargs.get("context") == "after product save click":
+                raise TimeoutException("loader stayed visible")
+            return True
+
+        with patch.object(
+            MagentoFiller,
+            "wait_for_magento_admin_idle",
+            new=classmethod(fake_wait),
+        ), patch.object(
+            MagentoFiller,
+            "wait_for_product_save_result",
+            return_value="saved",
+        ):
+            driver = FakeDriver()
+            MagentoFiller.save_product(driver)
+
+        self.assertEqual(
+            calls,
+            [
+                "before opening product save menu",
+                "after product save click",
+                "after product save refresh",
+            ],
+        )
+        self.assertEqual(driver.clicks, ["save"])
+        self.assertEqual(driver.refreshes, 1)
+
+    def test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout(self):
+        class FakeElement:
+            def __init__(self, clicks):
+                self.clicks = clicks
+
+            def is_displayed(self):
+                return True
+
+            def is_enabled(self):
+                return True
+
+            def click(self):
+                self.clicks.append("save")
+
+        class FakeDriver:
+            current_url = "https://luxeoverhemden.nl/admin/catalog/product/new/"
+
+            def __init__(self):
+                self.clicks = []
+                self.refreshes = 0
+
+            def find_element(self, by, value):
+                if by == By.CSS_SELECTOR and value == "#save, button[data-ui-id='save-button']":
+                    return FakeElement(self.clicks)
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+            def execute_script(self, script, element):
+                return None
+
+            def refresh(self):
+                self.refreshes += 1
 
         calls = []
 
@@ -374,6 +509,10 @@ class MagentoFillerTests(unittest.TestCase):
             MagentoFiller,
             "wait_for_magento_admin_idle",
             new=classmethod(fake_wait),
+        ), patch.object(
+            MagentoFiller,
+            "wait_for_product_save_result",
+            return_value="driver_timeout",
         ):
             driver = FakeDriver()
             MagentoFiller.save_product(driver)
@@ -382,10 +521,42 @@ class MagentoFillerTests(unittest.TestCase):
             calls,
             [
                 "before opening product save menu",
-                "after product save click",
+                "after product save refresh",
             ],
         )
-        self.assertEqual(driver.clicks, ["save_dropdown", "save_and_new"])
+        self.assertEqual(driver.clicks, ["save"])
+        self.assertEqual(driver.refreshes, 1)
+
+    def test_register_product_reopens_form_after_primary_save(self):
+        class FakeElement:
+            pass
+
+        class FakeDriver:
+            def find_element(self, by, value):
+                if by == By.NAME and value == "product[name]":
+                    return FakeElement()
+                if by == By.CSS_SELECTOR and value == "[data-ui-id='messages-message-error']":
+                    raise NoSuchElementException()
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+        calls = []
+
+        with patch.object(MagentoFiller, "fill_form", side_effect=lambda *_: calls.append("fill")), patch.object(
+            MagentoFiller,
+            "save_product",
+            side_effect=lambda *_: calls.append("save"),
+        ), patch.object(
+            MagentoFiller,
+            "go_to_product_catalogue",
+            side_effect=lambda *_: calls.append("catalogue"),
+        ), patch.object(
+            MagentoFiller,
+            "go_to_form",
+            side_effect=lambda *_: calls.append("form"),
+        ), patch("automations.magento.time.sleep"):
+            MagentoFiller.register_product(FakeDriver(), pd.Series({"sku": "226110550-101"}))
+
+        self.assertEqual(calls, ["fill", "save", "catalogue", "form"])
 
 
 if __name__ == "__main__":

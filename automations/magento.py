@@ -771,7 +771,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     @classmethod
     def form_mapping_for_key(cls, key: str, field_mapping: str) -> str:
         if cls.profile().key == "casamoda_venti" and key == "color":
-            return "option:data-title[name-'product[color]']"
+            return "label:Kleuren"
         return field_mapping
 
     @classmethod
@@ -785,6 +785,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         match element:
             case "name":
                 return (By.NAME, value)
+            case "label":
+                return ("LABEL_SELECT", value)
             case "option":
                 if "[" not in value:
                     t = (By.XPATH, f"//option[@{value}='()']".replace("()", "{}"))
@@ -886,6 +888,8 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             cls.click_element_safely(driver, option)
         elif by == By.NAME:
             cls._set_text_input(driver, path, input)
+        elif by == "LABEL_SELECT":
+            cls.set_labeled_select_option_by_title(driver, path, input)
         elif by == "CLICKABLE":
             select, option = path.split("=")
             by, field = select.split(":")
@@ -1692,6 +1696,64 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         select_element = WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located((By.NAME, select_name))
         )
+        cls.set_select_element_option_by_title(
+            driver,
+            select_element,
+            title,
+            timeout=timeout,
+        )
+
+    @classmethod
+    def set_labeled_select_option_by_title(
+        cls,
+        driver: webdriver.Chrome,
+        label: str,
+        title: str,
+        timeout: int = 10,
+    ) -> None:
+        target_label = str(label).strip().lower()
+        select_element = WebDriverWait(driver, timeout).until(
+            lambda current_driver: current_driver.execute_script(
+                """
+                const target = arguments[0];
+                const normalize = (value) => (value || '').trim().toLowerCase();
+                const labels = Array.from(document.querySelectorAll(
+                    'label, .admin__field-label'
+                ));
+                for (const label of labels) {
+                    if (normalize(label.textContent) !== target) {
+                        continue;
+                    }
+                    const field = label.closest('.admin__field, .field');
+                    const labelFor = label.getAttribute('for');
+                    let select = labelFor ? document.getElementById(labelFor) : null;
+                    if (!select && field) {
+                        select = field.querySelector('select');
+                    }
+                    if (select && select.tagName.toLowerCase() === 'select') {
+                        return select;
+                    }
+                }
+                return null;
+                """,
+                target_label,
+            )
+        )
+        cls.set_select_element_option_by_title(
+            driver,
+            select_element,
+            title,
+            timeout=timeout,
+        )
+
+    @classmethod
+    def set_select_element_option_by_title(
+        cls,
+        driver: webdriver.Chrome,
+        select_element,
+        title: str,
+        timeout: int = 10,
+    ) -> None:
         driver.execute_script(
             "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});",
             select_element,
@@ -1792,6 +1854,46 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         details = f" Last driver error: {last_error}" if last_error else ""
         raise TimeoutException(
             f"Timed out waiting for {context} to become idle.{details}"
+        )
+
+    @classmethod
+    def wait_for_product_save_result(
+        cls,
+        driver: webdriver.Chrome,
+        original_url: str,
+        timeout: float = 240.0,
+    ) -> str:
+        def save_result(current_driver: webdriver.Chrome) -> str | bool:
+            try:
+                current_url = current_driver.current_url
+                if (
+                    current_url
+                    and current_url != original_url
+                    and "/catalog/product/edit" in current_url
+                ):
+                    return "saved"
+                if current_driver.find_elements(
+                    By.CSS_SELECTOR, "[data-ui-id='messages-message-error']"
+                ):
+                    return "error"
+                if current_driver.find_elements(
+                    By.CSS_SELECTOR, "[data-ui-id='messages-message-success']"
+                ):
+                    return "saved"
+            except ReadTimeoutError:
+                return "driver_timeout"
+            return False
+
+        return WebDriverWait(driver, timeout).until(save_result)
+
+    @classmethod
+    def recover_after_product_save_timeout(cls, driver: webdriver.Chrome) -> None:
+        driver.refresh()
+        cls.wait_for_magento_admin_idle(
+            driver,
+            timeout=120.0,
+            stable_polls=2,
+            context="after product save refresh",
         )
 
     @classmethod
@@ -1973,27 +2075,31 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             driver,
             context="before opening product save menu",
         )
-        # Wait for the button with data-ui-id="save-button-dropdown" to be clickable and click on it
+        original_url = driver.current_url
         save_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(
                 (
-                    By.XPATH,
-                    "//button[@data-ui-id='save-button-dropdown']",
+                    By.CSS_SELECTOR,
+                    "#save, button[data-ui-id='save-button']",
                 )
             )
         )
         cls.click_element_safely(driver, save_button)
-
-        save_and_new_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "save_and_new"))
-        )
-        cls.click_element_safely(driver, save_and_new_button)
-        cls.wait_for_magento_admin_idle(
-            driver,
-            timeout=180.0,
-            stable_polls=2,
-            context="after product save click",
-        )
+        save_result = cls.wait_for_product_save_result(driver, original_url)
+        if save_result == "driver_timeout":
+            cls.recover_after_product_save_timeout(driver)
+            return
+        try:
+            cls.wait_for_magento_admin_idle(
+                driver,
+                timeout=180.0,
+                stable_polls=2,
+                context="after product save click",
+            )
+        except TimeoutException:
+            if save_result == "error":
+                raise
+            cls.recover_after_product_save_timeout(driver)
 
     @classmethod
     def register_product(cls, driver: webdriver.Chrome, product: pd.Series):
@@ -2023,6 +2129,11 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             raise RuntimeError
         except NoSuchElementException:
             pass
+        cls.go_to_product_catalogue(driver)
+        cls.go_to_form(driver)
+        WebDriverWait(driver, 30).until(
+            EC.presence_of_element_located((By.NAME, "product[name]"))
+        )
 
     @classmethod
     def get_products(cls, csv_path: str | Path | None = None) -> pd.DataFrame:
