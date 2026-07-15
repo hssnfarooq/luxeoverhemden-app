@@ -45,6 +45,24 @@ class ProductFoundException(Exception):
 
 
 class Magento(BaseScraper):
+    SELENIUM_COMMAND_TIMEOUT_SECONDS = int(
+        os.getenv("SELENIUM_COMMAND_TIMEOUT_SECONDS", "600")
+    )
+
+    @classmethod
+    def apply_selenium_command_timeout(cls, driver: webdriver.Chrome) -> None:
+        try:
+            driver.command_executor._client_config.timeout = (
+                cls.SELENIUM_COMMAND_TIMEOUT_SECONDS
+            )
+        except Exception:
+            try:
+                driver.command_executor.set_timeout(
+                    cls.SELENIUM_COMMAND_TIMEOUT_SECONDS
+                )
+            except Exception:
+                pass
+
     @classmethod
     def magento_login(cls, driver: webdriver.Chrome, test: bool = False):
         url = (
@@ -230,10 +248,7 @@ class MagentoUploader(Magento):
             if headless:
                 options.add_argument("headless")
             driver = webdriver.Chrome(options=options)
-            try:
-                driver.command_executor.set_timeout(cls.SELENIUM_COMMAND_TIMEOUT_SECONDS)
-            except Exception:
-                pass
+            cls.apply_selenium_command_timeout(driver)
             cls.magento_login(driver)
             files_to_upload: list[str] = []
             if cmlagerbestand:
@@ -2084,7 +2099,12 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 )
             )
         )
-        cls.click_element_safely(driver, save_button)
+        driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});"
+            "const button = arguments[0];"
+            "window.setTimeout(() => button.click(), 0);",
+            save_button,
+        )
         save_result = cls.wait_for_product_save_result(driver, original_url)
         if save_result == "driver_timeout":
             cls.recover_after_product_save_timeout(driver)
@@ -2366,6 +2386,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
 
         driver = webdriver.Chrome(options=options)
         try:
+            cls.apply_selenium_command_timeout(driver)
             # set selenium wait time to 15 minutes
             driver.implicitly_wait(10)
             driver.maximize_window()
