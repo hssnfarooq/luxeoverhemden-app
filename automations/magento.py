@@ -280,6 +280,9 @@ class MagentoFiller(Magento):
     ACTIVE_PROFILE: SupplierProfile = get_supplier_profile("profuomo")
     XPATH_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     XPATH_LOWER = "abcdefghijklmnopqrstuvwxyz"
+    SAVE_DIAGNOSTICS_LOG = "save_diagnostics.log"
+    SAVE_NETWORK_LOG = "save_network.log"
+    SAVE_BROWSER_LOG = "save_browser.log"
     FIT_OPTION_TITLES = {
         "basic circular knit": "Modern fit",
         "body fit": "Body slim fit",
@@ -355,6 +358,258 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         path = cls.profile().debug_log_path
         path.parent.mkdir(parents=True, exist_ok=True)
         return path
+
+    @classmethod
+    def save_diagnostics_path(cls) -> Path:
+        path = cls.debug_log_path().parent / cls.SAVE_DIAGNOSTICS_LOG
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @classmethod
+    def save_network_path(cls) -> Path:
+        path = cls.debug_log_path().parent / cls.SAVE_NETWORK_LOG
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @classmethod
+    def save_browser_path(cls) -> Path:
+        path = cls.debug_log_path().parent / cls.SAVE_BROWSER_LOG
+        path.parent.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @staticmethod
+    def _diag_timestamp() -> str:
+        return time.strftime("%Y-%m-%d %H:%M:%S") + f".{int((time.time() % 1) * 1000):03d}"
+
+    @classmethod
+    def reset_save_diagnostics_reports(cls) -> None:
+        cls.save_diagnostics_path().write_text(
+            "timestamp,sku,stage,elapsed_seconds,details\n",
+            encoding="utf-8",
+        )
+        cls.save_network_path().write_text("", encoding="utf-8")
+        cls.save_browser_path().write_text("", encoding="utf-8")
+
+    @classmethod
+    def log_save_diag(
+        cls,
+        stage: str,
+        *,
+        sku: object = "",
+        elapsed: float | None = None,
+        details: object = "",
+    ) -> None:
+        elapsed_text = "" if elapsed is None else f"{elapsed:.3f}"
+        detail_text = str(details).replace("\r", " ").replace("\n", " ")[:4000]
+        with cls.save_diagnostics_path().open("a", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(
+                [
+                    cls._diag_timestamp(),
+                    str(sku),
+                    stage,
+                    elapsed_text,
+                    detail_text,
+                ]
+            )
+
+    @classmethod
+    def timed_save_call(
+        cls,
+        label: str,
+        callback,
+        *,
+        sku: object = "",
+        result_formatter=None,
+    ):
+        cls.log_save_diag(f"{label} START", sku=sku)
+        started = time.monotonic()
+        try:
+            result = callback()
+        except Exception as exc:
+            cls.log_save_diag(
+                f"{label} ERROR",
+                sku=sku,
+                elapsed=time.monotonic() - started,
+                details=f"{type(exc).__name__}: {exc}",
+            )
+            raise
+        details = ""
+        if result_formatter:
+            try:
+                details = result_formatter(result)
+            except Exception as exc:
+                details = f"Could not format result: {type(exc).__name__}: {exc}"
+        cls.log_save_diag(
+            f"{label} END",
+            sku=sku,
+            elapsed=time.monotonic() - started,
+            details=details,
+        )
+        return result
+
+    @classmethod
+    def capture_magento_state(cls, driver: webdriver.Chrome, *, sku: object, stage: str) -> None:
+        state_script = """
+            const visible = (element) => {
+                if (!element) {
+                    return false;
+                }
+                const style = window.getComputedStyle(element);
+                const rect = element.getBoundingClientRect();
+                return style.display !== 'none' &&
+                    style.visibility !== 'hidden' &&
+                    Number(style.opacity || 1) !== 0 &&
+                    rect.width > 0 &&
+                    rect.height > 0;
+            };
+            const loaderSelectors = [
+                '.loading-mask',
+                '.admin__data-grid-loading-mask',
+                '.popup-loading',
+                '[data-role="loader"]',
+                '.process-loading'
+            ];
+            const loaders = [];
+            for (const selector of loaderSelectors) {
+                for (const element of document.querySelectorAll(selector)) {
+                    if (visible(element)) {
+                        loaders.push({
+                            selector,
+                            text: (element.innerText || '').trim().slice(0, 160),
+                            className: element.className || '',
+                            id: element.id || ''
+                        });
+                    }
+                }
+            }
+            const messages = Array.from(
+                document.querySelectorAll('[data-ui-id^="messages-message"]')
+            ).map((element) => ({
+                uiId: element.getAttribute('data-ui-id') || '',
+                text: (element.innerText || '').trim().slice(0, 240)
+            }));
+            const saveButton = document.querySelector('#save, button[data-ui-id="save-button"]');
+            return {
+                href: window.location.href,
+                title: document.title,
+                readyState: document.readyState,
+                jqueryActive: window.jQuery ? window.jQuery.active : null,
+                visibleLoaderCount: loaders.length,
+                loaders,
+                messages,
+                saveButtonDisabled: saveButton ? Boolean(saveButton.disabled) : null
+            };
+        """
+
+        def collect_state():
+            return driver.execute_script(state_script)
+
+        cls.timed_save_call(
+            f"STATE {stage}",
+            collect_state,
+            sku=sku,
+            result_formatter=lambda value: json.dumps(value, ensure_ascii=True),
+        )
+
+    @classmethod
+    def drain_save_logs(cls, driver: webdriver.Chrome, *, sku: object, stage: str) -> None:
+        cls.log_save_diag(f"DRAIN LOGS {stage} START", sku=sku)
+        started = time.monotonic()
+        browser_error = ""
+        network_error = ""
+
+        try:
+            browser_entries = driver.get_log("browser")
+            with cls.save_browser_path().open("a", encoding="utf-8") as f:
+                for entry in browser_entries:
+                    f.write(
+                        json.dumps(
+                            {
+                                "timestamp": cls._diag_timestamp(),
+                                "sku": str(sku),
+                                "stage": stage,
+                                "entry": entry,
+                            },
+                            ensure_ascii=True,
+                        )
+                        + "\n"
+                    )
+        except Exception as exc:
+            browser_error = f"browser_log_error={type(exc).__name__}: {exc}"
+
+        try:
+            perf_entries = driver.get_log("performance")
+            with cls.save_network_path().open("a", encoding="utf-8") as f:
+                for entry in perf_entries:
+                    try:
+                        message = json.loads(entry.get("message", "{}")).get(
+                            "message", {}
+                        )
+                    except Exception:
+                        continue
+                    method = message.get("method", "")
+                    params = message.get("params", {})
+                    log_record = None
+                    if method == "Network.requestWillBeSent":
+                        request = params.get("request", {})
+                        url = request.get("url", "")
+                        if "luxeoverhemden.nl" in url:
+                            log_record = {
+                                "event": method,
+                                "requestId": params.get("requestId"),
+                                "requestMethod": request.get("method"),
+                                "url": url,
+                                "type": params.get("type"),
+                            }
+                    elif method == "Network.responseReceived":
+                        response = params.get("response", {})
+                        url = response.get("url", "")
+                        if "luxeoverhemden.nl" in url:
+                            log_record = {
+                                "event": method,
+                                "requestId": params.get("requestId"),
+                                "status": response.get("status"),
+                                "mimeType": response.get("mimeType"),
+                                "url": url,
+                                "type": params.get("type"),
+                            }
+                    elif method == "Network.loadingFailed":
+                        log_record = {
+                            "event": method,
+                            "requestId": params.get("requestId"),
+                            "errorText": params.get("errorText"),
+                            "blockedReason": params.get("blockedReason"),
+                            "type": params.get("type"),
+                        }
+                    elif method.startswith("Page."):
+                        log_record = {
+                            "event": method,
+                            "params": params,
+                        }
+                    if log_record:
+                        f.write(
+                            json.dumps(
+                                {
+                                    "timestamp": cls._diag_timestamp(),
+                                    "sku": str(sku),
+                                    "stage": stage,
+                                    **log_record,
+                                },
+                                ensure_ascii=True,
+                            )
+                            + "\n"
+                        )
+        except Exception as exc:
+            network_error = f"performance_log_error={type(exc).__name__}: {exc}"
+
+        details = "; ".join(part for part in (browser_error, network_error) if part)
+        cls.log_save_diag(
+            f"DRAIN LOGS {stage} END",
+            sku=sku,
+            elapsed=time.monotonic() - started,
+            details=details,
+        )
 
     @classmethod
     def translation_errors_path(cls) -> Path:
@@ -1877,38 +2132,103 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         driver: webdriver.Chrome,
         original_url: str,
         timeout: float = 240.0,
+        sku: object = "",
     ) -> str:
         def save_result(current_driver: webdriver.Chrome) -> str | bool:
             try:
-                current_url = current_driver.current_url
+                current_url = cls.timed_save_call(
+                    "SAVE_RESULT current_url",
+                    lambda: current_driver.current_url,
+                    sku=sku,
+                    result_formatter=lambda value: value,
+                )
                 if (
                     current_url
                     and current_url != original_url
                     and "/catalog/product/edit" in current_url
                 ):
+                    cls.log_save_diag(
+                        "SAVE_RESULT saved_by_url",
+                        sku=sku,
+                        details=f"original_url={original_url}; current_url={current_url}",
+                    )
                     return "saved"
-                if current_driver.find_elements(
-                    By.CSS_SELECTOR, "[data-ui-id='messages-message-error']"
-                ):
+                error_messages = cls.timed_save_call(
+                    "SAVE_RESULT error_messages",
+                    lambda: current_driver.find_elements(
+                        By.CSS_SELECTOR, "[data-ui-id='messages-message-error']"
+                    ),
+                    sku=sku,
+                    result_formatter=lambda value: f"count={len(value)}",
+                )
+                if error_messages:
+                    cls.log_save_diag("SAVE_RESULT error_message_found", sku=sku)
                     return "error"
-                if current_driver.find_elements(
-                    By.CSS_SELECTOR, "[data-ui-id='messages-message-success']"
-                ):
+                success_messages = cls.timed_save_call(
+                    "SAVE_RESULT success_messages",
+                    lambda: current_driver.find_elements(
+                        By.CSS_SELECTOR, "[data-ui-id='messages-message-success']"
+                    ),
+                    sku=sku,
+                    result_formatter=lambda value: f"count={len(value)}",
+                )
+                if success_messages:
+                    cls.log_save_diag("SAVE_RESULT success_message_found", sku=sku)
                     return "saved"
             except ReadTimeoutError:
+                cls.log_save_diag("SAVE_RESULT driver_timeout", sku=sku)
                 return "driver_timeout"
             return False
 
-        return WebDriverWait(driver, timeout).until(save_result)
+        cls.log_save_diag(
+            "SAVE_RESULT wait START",
+            sku=sku,
+            details=f"timeout={timeout}; original_url={original_url}",
+        )
+        started = time.monotonic()
+        try:
+            result = WebDriverWait(
+                driver,
+                timeout,
+                poll_frequency=5,
+            ).until(save_result)
+        except Exception as exc:
+            cls.log_save_diag(
+                "SAVE_RESULT wait ERROR",
+                sku=sku,
+                elapsed=time.monotonic() - started,
+                details=f"{type(exc).__name__}: {exc}",
+            )
+            cls.drain_save_logs(driver, sku=sku, stage="save-result-error")
+            raise
+        cls.log_save_diag(
+            "SAVE_RESULT wait END",
+            sku=sku,
+            elapsed=time.monotonic() - started,
+            details=f"result={result}",
+        )
+        cls.drain_save_logs(driver, sku=sku, stage=f"save-result-{result}")
+        return result
 
     @classmethod
-    def recover_after_product_save_timeout(cls, driver: webdriver.Chrome) -> None:
-        driver.refresh()
-        cls.wait_for_magento_admin_idle(
-            driver,
-            timeout=120.0,
-            stable_polls=2,
-            context="after product save refresh",
+    def recover_after_product_save_timeout(
+        cls,
+        driver: webdriver.Chrome,
+        *,
+        sku: object = "",
+    ) -> None:
+        cls.capture_magento_state(driver, sku=sku, stage="before-save-timeout-refresh")
+        cls.timed_save_call("RECOVER refresh", driver.refresh, sku=sku)
+        cls.capture_magento_state(driver, sku=sku, stage="after-save-timeout-refresh")
+        cls.timed_save_call(
+            "RECOVER wait idle after refresh",
+            lambda: cls.wait_for_magento_admin_idle(
+                driver,
+                timeout=120.0,
+                stable_polls=2,
+                context="after product save refresh",
+            ),
+            sku=sku,
         )
 
     @classmethod
@@ -2085,58 +2405,120 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         cls.update_variant_prices(driver, product)
 
     @classmethod
-    def save_product(cls, driver: webdriver.Chrome):
-        cls.wait_for_magento_admin_idle(
-            driver,
-            context="before opening product save menu",
+    def save_product(cls, driver: webdriver.Chrome, *, sku: object = ""):
+        cls.log_save_diag("SAVE_PRODUCT START", sku=sku)
+        cls.capture_magento_state(driver, sku=sku, stage="before-pre-save-idle")
+        cls.timed_save_call(
+            "SAVE_PRODUCT wait idle before click",
+            lambda: cls.wait_for_magento_admin_idle(
+                driver,
+                context="before opening product save menu",
+            ),
+            sku=sku,
         )
-        original_url = driver.current_url
-        save_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable(
-                (
-                    By.CSS_SELECTOR,
-                    "#save, button[data-ui-id='save-button']",
+        original_url = cls.timed_save_call(
+            "SAVE_PRODUCT original_url",
+            lambda: driver.current_url,
+            sku=sku,
+            result_formatter=lambda value: value,
+        )
+        cls.drain_save_logs(driver, sku=sku, stage="before-save-click")
+        save_button = cls.timed_save_call(
+            "SAVE_PRODUCT find save button",
+            lambda: WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable(
+                    (
+                        By.CSS_SELECTOR,
+                        "#save, button[data-ui-id='save-button']",
+                    )
                 )
-            )
+            ),
+            sku=sku,
         )
-        driver.execute_script(
-            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});"
-            "const button = arguments[0];"
-            "window.setTimeout(() => button.click(), 0);",
-            save_button,
+        cls.timed_save_call(
+            "SAVE_PRODUCT click save",
+            lambda: driver.execute_script(
+                "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});"
+                "const button = arguments[0];"
+                "window.setTimeout(() => button.click(), 0);",
+                save_button,
+            ),
+            sku=sku,
         )
-        save_result = cls.wait_for_product_save_result(driver, original_url)
+        cls.capture_magento_state(driver, sku=sku, stage="after-save-click")
+        cls.drain_save_logs(driver, sku=sku, stage="after-save-click")
+        save_result = cls.wait_for_product_save_result(
+            driver,
+            original_url,
+            sku=sku,
+        )
         if save_result == "driver_timeout":
-            cls.recover_after_product_save_timeout(driver)
+            cls.recover_after_product_save_timeout(driver, sku=sku)
+            cls.log_save_diag(
+                "SAVE_PRODUCT END",
+                sku=sku,
+                details="driver_timeout_recovered",
+            )
             return
         try:
-            cls.wait_for_magento_admin_idle(
-                driver,
-                timeout=180.0,
-                stable_polls=2,
-                context="after product save click",
+            cls.timed_save_call(
+                "SAVE_PRODUCT wait idle after click",
+                lambda: cls.wait_for_magento_admin_idle(
+                    driver,
+                    timeout=180.0,
+                    stable_polls=2,
+                    context="after product save click",
+                ),
+                sku=sku,
             )
         except TimeoutException:
+            cls.capture_magento_state(driver, sku=sku, stage="after-save-idle-timeout")
+            cls.drain_save_logs(driver, sku=sku, stage="after-save-idle-timeout")
             if save_result == "error":
                 raise
-            cls.recover_after_product_save_timeout(driver)
+            cls.recover_after_product_save_timeout(driver, sku=sku)
+        cls.capture_magento_state(driver, sku=sku, stage="save-product-end")
+        cls.log_save_diag("SAVE_PRODUCT END", sku=sku, details=f"result={save_result}")
 
     @classmethod
     def register_product(cls, driver: webdriver.Chrome, product: pd.Series):
-        cls.fill_form(driver, product)
+        sku = product.get("sku", "")
+        cls.log_save_diag("REGISTER_PRODUCT START", sku=sku)
+        cls.timed_save_call(
+            "REGISTER_PRODUCT fill_form",
+            lambda: cls.fill_form(driver, product),
+            sku=sku,
+        )
 
-        cls.save_product(driver)
+        cls.timed_save_call(
+            "REGISTER_PRODUCT save_product",
+            lambda: cls.save_product(driver, sku=sku),
+            sku=sku,
+        )
 
+        cls.log_save_diag("REGISTER_PRODUCT post-save sleep START", sku=sku)
         time.sleep(10)
+        cls.log_save_diag("REGISTER_PRODUCT post-save sleep END", sku=sku, elapsed=10.0)
 
+        wait_started = time.monotonic()
         while True:
             try:
+                cls.log_save_diag("REGISTER_PRODUCT wait product name poll START", sku=sku)
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.NAME, "product[name]"))
                 )
+                cls.log_save_diag(
+                    "REGISTER_PRODUCT wait product name END",
+                    sku=sku,
+                    elapsed=time.monotonic() - wait_started,
+                )
                 break
-            except Exception:
-                pass
+            except Exception as exc:
+                cls.log_save_diag(
+                    "REGISTER_PRODUCT wait product name poll ERROR",
+                    sku=sku,
+                    details=f"{type(exc).__name__}: {exc}",
+                )
         try:
             driver.find_element(
                 By.CSS_SELECTOR, "[data-ui-id='messages-message-error']"
@@ -2149,11 +2531,25 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             raise RuntimeError
         except NoSuchElementException:
             pass
-        cls.go_to_product_catalogue(driver)
-        cls.go_to_form(driver)
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.NAME, "product[name]"))
+        cls.capture_magento_state(driver, sku=sku, stage="before-go-to-catalogue")
+        cls.timed_save_call(
+            "REGISTER_PRODUCT go_to_product_catalogue",
+            lambda: cls.go_to_product_catalogue(driver),
+            sku=sku,
         )
+        cls.timed_save_call(
+            "REGISTER_PRODUCT go_to_form",
+            lambda: cls.go_to_form(driver),
+            sku=sku,
+        )
+        cls.timed_save_call(
+            "REGISTER_PRODUCT wait new form product name",
+            lambda: WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.NAME, "product[name]"))
+            ),
+            sku=sku,
+        )
+        cls.log_save_diag("REGISTER_PRODUCT END", sku=sku)
 
     @classmethod
     def get_products(cls, csv_path: str | Path | None = None) -> pd.DataFrame:
@@ -2355,6 +2751,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         cls._get_mapping()
         data = {"message": "", "error": ""}
         cls.reset_missing_specs_report()
+        cls.reset_save_diagnostics_reports()
 
         products = cls.get_products(csv_path)
         
@@ -2383,6 +2780,16 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             "safebrowsing.enabled": False,
         }
         options.add_experimental_option("prefs", prefs)
+        try:
+            options.set_capability(
+                "goog:loggingPrefs",
+                {
+                    "browser": "ALL",
+                    "performance": "ALL",
+                },
+            )
+        except Exception:
+            pass
 
         driver = webdriver.Chrome(options=options)
         try:
