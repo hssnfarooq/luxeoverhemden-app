@@ -2257,17 +2257,68 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         
         return value
 
-    @staticmethod
+    @classmethod
     def change_maattabel(
-        driver: webdriver.Chrome, value: str = "Profuomo slim fit truien"
+        cls, driver: webdriver.Chrome, value: str = "Profuomo slim fit truien"
     ):
-        sizetable_select = driver.find_element(By.NAME, "product[sizetable]")
-        sizetable_select.click()
+        def find_matching_option(current_driver):
+            select = current_driver.find_element(By.NAME, "product[sizetable]")
+            for option in select.find_elements(By.TAG_NAME, "option"):
+                option_title = (option.get_attribute("data-title") or "").strip()
+                option_text = (option.text or "").strip()
+                if option_title == value or option_text == value:
+                    return select, option
+            return False
 
-        maattabel_option = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, f"//option[@data-title='{value}']"))
+        sizetable_select, maattabel_option = WebDriverWait(driver, 20).until(
+            find_matching_option
         )
-        maattabel_option.click()
+        option_value = maattabel_option.get_attribute("value")
+        option_title = (
+            maattabel_option.get_attribute("data-title")
+            or maattabel_option.text
+            or value
+        ).strip()
+
+        driver.execute_script(
+            """
+            const select = arguments[0];
+            const value = arguments[1];
+            select.value = value;
+            select.dispatchEvent(new Event('input', { bubbles: true }));
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            if (window.jQuery) {
+                window.jQuery(select).trigger('change');
+            }
+            """,
+            sizetable_select,
+            option_value,
+        )
+
+        WebDriverWait(driver, 10).until(
+            lambda current_driver: current_driver.execute_script(
+                """
+                const select = arguments[0];
+                const optionValue = arguments[1];
+                const optionTitle = arguments[2];
+                const selected = select.options[select.selectedIndex];
+                return selected && (
+                    selected.value === optionValue ||
+                    selected.getAttribute('data-title') === optionTitle ||
+                    selected.text.trim() === optionTitle
+                );
+                """,
+                sizetable_select,
+                option_value,
+                option_title,
+            )
+        )
+
+        with cls.debug_log_path().open("a", encoding="utf-8") as f:
+            f.write(
+                f"      Maattabel selected without viewport click: "
+                f"'{option_title}' ({option_value})\n"
+            )
 
     @classmethod
     def blank_color(cls, driver: webdriver.Chrome):
