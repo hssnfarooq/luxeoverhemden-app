@@ -12,6 +12,7 @@ DOT : Dot
 COTTON : Katoen
 LINEN : Linnen
 WOOL : Wol
+Popline : Poplin
 POLYESTER : Polyester
 METAL : Metaal
 BUFFALO LEATHER : Buffelleer
@@ -120,6 +121,7 @@ BUTTON DOWN : Button down
 HALF ZIP : Half zip
 ONE PIECE : One piece
 ROLL-NECK : Coltrui
+Nicht relevant : Niet relevant
 BUTTON THROUGH : Knopenlijst
 HOODIE : Hoodie
 LONG SLEEVE : Lange mouw (normaal)
@@ -312,7 +314,7 @@ Fil á Fil : Fil à Fil
 Flanell : Flanel
 Jersey : Jersey
 Mouliné : Mouliné
-Popeline : Popeline
+Popeline : Poplin
 Slub : Onregelmatigheid
 Struktur : Structuur
 Twill : Keperstof
@@ -356,7 +358,7 @@ Gestreift : Streep
 Kariert : Geruit
 Print : Print
 Uni : Effen
-Gemustert : Geprint
+Gemustert : Patroon print
 100 % Baumwolle : 100% katoen
 95 % Baumwolle, 5 % Elasthan : 95% katoen / 5% elastaan
 100 % Seide : 100% zijde

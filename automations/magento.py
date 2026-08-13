@@ -276,6 +276,9 @@ class MagentoUploader(Magento):
 
 
 class MagentoFiller(Magento):
+    MAGENTO_EXPORT_MIN_SKUS = int(
+        os.getenv("MAGENTO_PRODUCT_EXPORT_MIN_SKUS", "1000")
+    )
     PLACEHOLDER_IMAGE_DIMENSIONS = (256, 256)
     ACTIVE_PROFILE: SupplierProfile = get_supplier_profile("profuomo")
     XPATH_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -664,7 +667,177 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         return cls.profile().input_csv_path
 
     @staticmethod
-    def download_current_products(driver: webdriver.Chrome):
+    def normalize_sku(value: object) -> str:
+        if value is None or pd.isna(value):
+            return ""
+        return str(value).replace("\ufeff", "").strip().upper()
+
+    @classmethod
+    def load_existing_magento_skus(
+        cls,
+        export_path: str | Path,
+        *,
+        minimum_skus: int = 1,
+        require_product_types: bool = False,
+    ) -> set[str]:
+        path = Path(export_path)
+        if not path.exists() or not path.is_file():
+            raise ValueError(f"Magento product export does not exist: {path}")
+
+        try:
+            products = pd.read_csv(path, dtype=str)
+        except Exception as exc:
+            raise ValueError(f"Could not read Magento product export {path}: {exc}") from exc
+
+        column_lookup = {str(column).strip().lower(): column for column in products.columns}
+        sku_column = column_lookup.get("sku")
+        if sku_column is None:
+            raise ValueError(f"Magento product export {path} has no SKU column")
+
+        existing_skus = {
+            normalized
+            for normalized in products[sku_column].map(cls.normalize_sku)
+            if normalized
+        }
+        if len(existing_skus) < max(1, minimum_skus):
+            raise ValueError(
+                f"Magento product export {path} is incomplete: "
+                f"found {len(existing_skus)} SKUs, expected at least {max(1, minimum_skus)}"
+            )
+
+        if require_product_types:
+            type_column = column_lookup.get("type")
+            if type_column is None:
+                raise ValueError(f"Magento product export {path} has no Type column")
+            product_types = {
+                str(value).strip().lower()
+                for value in products[type_column].dropna()
+                if str(value).strip()
+            }
+            required_types = {"configurable product", "simple product"}
+            if not required_types.issubset(product_types):
+                raise ValueError(
+                    f"Magento product export {path} appears filtered or incomplete: "
+                    "both Configurable Product and Simple Product rows are required"
+                )
+
+        return existing_skus
+
+    @classmethod
+    def partition_products_by_existing_sku(
+        cls,
+        products: pd.DataFrame,
+        existing_skus: set[str],
+    ) -> tuple[pd.DataFrame, pd.DataFrame]:
+        normalized_existing = {
+            normalized
+            for normalized in (cls.normalize_sku(value) for value in existing_skus)
+            if normalized
+        }
+
+        def collides(value: object) -> bool:
+            sku = cls.normalize_sku(value)
+            if not sku:
+                return True
+            return sku in normalized_existing or any(
+                existing.startswith(f"{sku}-") for existing in normalized_existing
+            )
+
+        blocked_mask = products["sku"].map(collides)
+        new_products = products.loc[~blocked_mask].copy()
+        new_products["_normalized_sku"] = new_products["sku"].map(cls.normalize_sku)
+        new_products = new_products.drop_duplicates(
+            subset=["_normalized_sku"],
+            keep="first",
+        ).drop(columns=["_normalized_sku"])
+        return (
+            new_products,
+            products.loc[blocked_mask].copy(),
+        )
+
+    @staticmethod
+    def _csv_snapshot(directories: list[Path]) -> dict[Path, tuple[int, int]]:
+        snapshot: dict[Path, tuple[int, int]] = {}
+        for directory in directories:
+            if not directory.exists() or not directory.is_dir():
+                continue
+            for path in directory.glob("*.csv"):
+                try:
+                    resolved = path.resolve()
+                    stat = path.stat()
+                    snapshot[resolved] = (stat.st_mtime_ns, stat.st_size)
+                except OSError:
+                    continue
+        return snapshot
+
+    @classmethod
+    def _find_valid_downloaded_export(
+        cls,
+        directories: list[Path],
+        before: dict[Path, tuple[int, int]],
+        *,
+        timeout: float = 30.0,
+    ) -> tuple[Path, set[str]]:
+        deadline = time.monotonic() + timeout
+        validation_errors: list[str] = []
+        while time.monotonic() < deadline:
+            candidates: list[Path] = []
+            for directory in directories:
+                if not directory.exists() or not directory.is_dir():
+                    continue
+                for path in directory.glob("*.csv"):
+                    try:
+                        resolved = path.resolve()
+                        stat = path.stat()
+                        state = (stat.st_mtime_ns, stat.st_size)
+                    except OSError:
+                        continue
+                    if before.get(resolved) != state:
+                        candidates.append(path)
+
+            candidates.sort(key=lambda path: path.stat().st_mtime_ns, reverse=True)
+            validation_errors.clear()
+            for candidate in candidates:
+                try:
+                    skus = cls.load_existing_magento_skus(
+                        candidate,
+                        minimum_skus=(
+                            cls.MAGENTO_EXPORT_MIN_SKUS
+                            if cls.profile().key == "profuomo"
+                            else 1
+                        ),
+                        require_product_types=True,
+                    )
+                    return candidate, skus
+                except ValueError as exc:
+                    validation_errors.append(str(exc))
+            time.sleep(0.5)
+
+        details = "; ".join(validation_errors[-3:]) or "no new CSV download detected"
+        raise RuntimeError(f"Magento catalog export validation failed: {details}")
+
+    @classmethod
+    def download_current_products(cls, driver: webdriver.Chrome) -> Path:
+        download_path = Path("magento_products.csv")
+        download_directories = [Path.cwd()]
+        if getattr(sys, "frozen", False):
+            downloads_path = Path.home() / "Downloads"
+            if downloads_path.resolve() != Path.cwd().resolve():
+                download_directories.append(downloads_path)
+        before_download = cls._csv_snapshot(download_directories)
+        previous_sku_count = 0
+        if download_path.exists():
+            try:
+                previous_sku_count = len(
+                    cls.load_existing_magento_skus(
+                        download_path,
+                        minimum_skus=1,
+                        require_product_types=True,
+                    )
+                )
+            except ValueError:
+                previous_sku_count = 0
+
         # Wait for the page to load
         time.sleep(2)
 
@@ -687,8 +860,11 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 )
                 reset_button.click()
                 time.sleep(2)
-        except Exception:
-            pass
+        except Exception as exc:
+            raise RuntimeError(
+                "Could not reset Magento product-grid filters; "
+                "catalog export was cancelled to prevent duplicate products"
+            ) from exc
 
         # Select all products
         select_all_button = WebDriverWait(driver, 20).until(
@@ -756,49 +932,26 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             )
         )
 
-        # Get the downloaded file and save it in the current working directory
-        download_path = Path("magento_products.csv")
-        time.sleep(5)
-        
-        # Handle file download with better error handling
-        print("Handling file download...")
-        
-        try:
-            # Look for the most recent CSV file in current directory
-            csv_files = list(Path().glob("*.csv"))
-            if csv_files:
-                latest_file = max(csv_files, key=lambda path: path.stat().st_ctime)
-                print(f"Found latest CSV file: {latest_file}")
-                
-                # Only rename if it's not already the target file
-                if latest_file.name != "magento_products.csv":
-                    # Remove existing magento_products.csv if it exists
-                    download_path.unlink(missing_ok=True)
-                    # Rename the latest file to magento_products.csv
-                    latest_file.rename(download_path)
-                    print(f"Renamed {latest_file} to {download_path}")
-                else:
-                    print(f"File {download_path} already exists and is up to date")
-            else:
-                raise FileNotFoundError("No CSV file found for download")
-                
-        except Exception as e:
-            print(f"Error handling file download: {e}")
-            # If running as PyInstaller build, try Downloads folder as fallback
-            if getattr(sys, "frozen", False):
-                print("Trying Downloads folder as fallback...")
-                downloads_path = Path.home() / "Downloads"
-                csv_files = list(downloads_path.glob("*.csv"))
-                if csv_files:
-                    latest_file = max(csv_files, key=lambda path: path.stat().st_ctime)
-                    print(f"Found CSV file in Downloads: {latest_file}")
-                    download_path.unlink(missing_ok=True)
-                    latest_file.rename(download_path)
-                    print(f"Renamed {latest_file} to {download_path}")
-                else:
-                    raise FileNotFoundError("No CSV file found in current directory or Downloads folder")
-            else:
-                raise e
+        print("Validating Magento catalog export download...")
+        downloaded_export, downloaded_skus = cls._find_valid_downloaded_export(
+            download_directories,
+            before_download,
+        )
+        if previous_sku_count and len(downloaded_skus) < int(previous_sku_count * 0.9):
+            raise RuntimeError(
+                "Magento catalog export validation failed: "
+                f"new export has {len(downloaded_skus)} SKUs, "
+                f"previous export had {previous_sku_count}"
+            )
+
+        if downloaded_export.resolve() != download_path.resolve():
+            download_path.unlink(missing_ok=True)
+            downloaded_export.replace(download_path)
+        print(
+            f"Validated Magento catalog export: {download_path} "
+            f"({len(downloaded_skus)} SKUs)"
+        )
+        return download_path
 
     @classmethod
     def _get_mapping(cls) -> None:
@@ -2603,10 +2756,48 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         cls.log_save_diag("REGISTER_PRODUCT END", sku=sku)
 
     @classmethod
+    def sanitize_profuomo_products(cls, products: pd.DataFrame) -> pd.DataFrame:
+        from automations.profuomo import ProfuomoScraper
+
+        sanitized_rows: list[pd.Series] = []
+        for _, product in products.iterrows():
+            raw_sizes = product.get("sizes", "")
+            try:
+                parsed_sizes = ast.literal_eval(str(raw_sizes))
+            except (SyntaxError, ValueError):
+                parsed_sizes = [
+                    token.strip().strip("'\"")
+                    for token in str(raw_sizes).strip("[]").split(",")
+                    if token.strip()
+                ]
+            if not isinstance(parsed_sizes, list):
+                parsed_sizes = [parsed_sizes]
+
+            valid_sizes = ProfuomoScraper.sanitize_sizes_for_category(
+                str(product.get("category", "")),
+                [str(size) for size in parsed_sizes],
+            )
+            if not valid_sizes:
+                print(
+                    f"Skipping {product.get('sku', 'UNKNOWN')}: "
+                    "no valid Profuomo sizes remain"
+                )
+                continue
+            cleaned_product = product.copy()
+            cleaned_product["sizes"] = repr(valid_sizes)
+            sanitized_rows.append(cleaned_product)
+
+        if not sanitized_rows:
+            return products.iloc[0:0].copy()
+        return pd.DataFrame(sanitized_rows).reset_index(drop=True)
+
+    @classmethod
     def get_products(cls, csv_path: str | Path | None = None) -> pd.DataFrame:
         if csv_path is None:
             csv_path = cls.products_path() / cls.profile().product_aggregate_filename
         products = pd.read_csv(csv_path, sep=",", quotechar='"')
+        if cls.profile().key == "profuomo":
+            products = cls.sanitize_profuomo_products(products)
         try:
             with cls.profile().done_path.open(encoding="utf-8-sig") as f:
                 done = f.read().splitlines()
@@ -2644,144 +2835,48 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
     def check_existing(
         cls, driver: webdriver.Chrome, products: pd.DataFrame, done_path: Path
     ) -> pd.DataFrame:
-        # check if the mangento_products.csv file exists, if so, use that to determine.
-        # the header of the file is ID,Thumbnail,Name,Type,"Attribute Set",SKU,Price,"Quantity per Source","Salable Quantity",Visibility,Status,Websites,Maat,"Kraag type",Mouwlengte,"Default Original Qty",Materiaal,Borstzak,EAN,Capsule,Samenstelling,Duurzaamheid,"Creation Date"
         magento_products_path = Path("magento_products.csv")
-        if magento_products_path.exists():
-            print(f"Found existing magento_products.csv with {magento_products_path.stat().st_size} bytes")
-            try:
-                existing_products = pd.read_csv(magento_products_path)
-                existing_skus = set(existing_products["SKU"])
-                print(f"Found {len(existing_skus)} existing SKUs in magento_products.csv")
-                products = products[~products["sku"].isin(existing_skus)]
-                print(f"Filtered products to {len(products)} new products")
-                
-                # Read and deduplicate existing lines once
-                lines = set()
-                input_csv = cls.input_csv_path()
-                if input_csv.exists():
-                    with input_csv.open(encoding="utf-8-sig") as existing_products:
-                        lines.update(line.strip() for line in existing_products)
+        existing_skus = cls.load_existing_magento_skus(
+            magento_products_path,
+            minimum_skus=(
+                cls.MAGENTO_EXPORT_MIN_SKUS
+                if cls.profile().key == "profuomo"
+                else 1
+            ),
+            require_product_types=True,
+        )
+        new_products, blocked_products = cls.partition_products_by_existing_sku(
+            products,
+            existing_skus,
+        )
 
-                # Collect new lines for all products
-                new_lines = []
-                for _, product in products.iterrows():
-                    sizes = (
-                        product["sizes"]
-                        .replace("[", "")
-                        .replace("]", "")
-                        .replace(" ", "")
-                        .replace("'", "")
-                    )
-                    new_line = product["sku"] + "," + sizes
-                    new_lines.append(new_line)
+        if not blocked_products.empty:
+            done_path.parent.mkdir(parents=True, exist_ok=True)
+            existing_done: set[str] = set()
+            if done_path.exists():
+                existing_done.update(
+                    cls.normalize_sku(line)
+                    for line in done_path.read_text(
+                        encoding="utf-8-sig",
+                        errors="ignore",
+                    ).splitlines()
+                    if cls.normalize_sku(line)
+                )
+            existing_done.update(
+                cls.normalize_sku(value) for value in blocked_products["sku"]
+            )
+            done_path.write_text(
+                "\n".join(sorted(existing_done)) + "\n",
+                encoding="utf-8",
+            )
+            cls.update_input_csv(blocked_products)
 
-                # Combine and write once
-                lines.update(new_lines)
-                with input_csv.open("w", encoding="utf-8") as f:
-                    f.write("\n".join(lines) + "\n")
-                return products
-            except Exception as e:
-                print(f"Error reading magento_products.csv: {e}")
-                print("Continuing without existing product check...")
-                return products
-        existing = []
-        for _, product in products.iterrows():
-            try:
-                cls.random_wait()
-                while True:
-                    # first check if the button with data-action="grid-filter-reset" exists:
-                    try:
-                        driver.execute_script("window.scrollTo(0, 0);")
-                        reset_buttons = driver.find_elements(
-                            By.CSS_SELECTOR, "[data-action='grid-filter-reset']"
-                        )
-                        if reset_buttons:
-                            # scroll to the top of the page
-                            # wait until the button wiht data-action="grid-filter-reset" us clickable and click on it
-                            time.sleep(0.2)
-                            reset_button = WebDriverWait(driver, 60).until(
-                                EC.element_to_be_clickable(
-                                    (
-                                        By.XPATH,
-                                        "(//button[@data-action='grid-filter-reset'])[1]",
-                                    )
-                                )
-                            )
-                            reset_button.click()
-                    except Exception:
-                        pass
-                    time.sleep(2)
-                    input_field = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.ID, "fulltext"))
-                    )
-                    input_field.clear()
-                    input_field.send_keys(product["sku"])
-                    search_button = WebDriverWait(driver, 30).until(
-                        EC.element_to_be_clickable(
-                            (
-                                By.XPATH,
-                                "//button[@aria-label='Search']",
-                            )
-                        )
-                    )
-                    search_button.click()
-                    time.sleep(2)
-                    try:
-                        input_field = WebDriverWait(driver, 60).until(
-                            EC.element_to_be_clickable((By.ID, "fulltext"))
-                        )
-                        # find element: <div class="data-grid-cell-content white-space-preserved" data-bind="html: $col.getLabelUnsanitizedHtml($row())">PPVH30043D</div>
-                        tds = driver.find_elements(
-                            By.XPATH,
-                            "//div[@class='data-grid-cell-content white-space-preserved']",
-                        )
-                        for sku in tds:
-                            if sku.text == product["sku"]:
-                                raise ProductFoundException("Product already exists")
-                        #  find element: "//tr[@class='data-grid-tr-no-data']"
-                        driver.find_element(
-                            By.XPATH, "//tr[@class='data-grid-tr-no-data']"
-                        )
-                        break
-                    except ProductFoundException:
-                        existing.append(product)
-                        with done_path.open("a", encoding="utf-8") as f:
-                            f.write(product["sku"] + "\n")
-                        sizes = (
-                            product["sizes"]
-                            .replace("[", "")
-                            .replace("]", "")
-                            .replace(" ", "")
-                            .replace("'", "")
-                        )
-                        lines = set()
-                        new_line = product["sku"] + "," + sizes
-                        # Read existing lines and add them to the set (deduplicates)
-                        input_csv = cls.input_csv_path()
-                        if input_csv.exists():
-                            with input_csv.open(
-                                encoding="utf-8-sig"
-                            ) as existing_products:
-                                lines.update(line.strip() for line in existing_products)
-
-                        # Add the new product line to the set
-                        lines.add(new_line)
-
-                        # Write the unique lines back to the file
-                        with input_csv.open("w", encoding="utf-8") as f:
-                            f.write("\n".join(lines) + "\n")
-                        break
-                    except ElementClickInterceptedException:
-                        pass
-                    except NoSuchElementException:
-                        pass
-                    except Exception:
-                        pass
-            except Exception:
-                pass
-        products = products[~products["sku"].isin(existing)]
-        return products
+        print(
+            f"Validated {len(existing_skus)} Magento SKUs; "
+            f"blocked {len(blocked_products)} existing/colliding products; "
+            f"{len(new_products)} products remain"
+        )
+        return new_products
 
     @classmethod
     def has_valid_images(cls, sku: str) -> bool:

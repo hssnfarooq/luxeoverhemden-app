@@ -1,1537 +1,13 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-08-05 19:44:47
+Timestamp: 2026-08-06 18:34:40
 CSV Path: C:\robot\Casamoda\products\venti_evening.csv
 Supplier: casamoda_venti
 Test Mode: False
-Total Products: 14
+Total Products: 2
 Translation Mappings Loaded: 394
 ================================================================================
-
-
-============================================================
-PROCESSING PRODUCT: 001840-002
-============================================================
-Product data: {'sku': '001840-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1840, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "7", "37": "39", "38": "72", "39": "92", "40": "97", "41": "78", "42": "59", "43": "46", "44": "35", "45": "5", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/449/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/f/f7f74e6af30784869b522e786da2dad3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/9/9429a23ba48af10c09e5abde473767ff.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/715e8392983a8fe57e9b371c8c883f59.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/8/83f918a3a2c1aeabd17433d90d9b9b1c.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001840-002
-
---- FILL_FORM for SKU: 001840-002 ---
-
---- FETCH_DATA for SKU: 001840-002 ---
-Product data: {'sku': '001840-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1840, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "7", "37": "39", "38": "72", "39": "92", "40": "97", "41": "78", "42": "59", "43": "46", "44": "35", "45": "5", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/449/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/f/f7f74e6af30784869b522e786da2dad3.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/9/9429a23ba48af10c09e5abde473767ff.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/715e8392983a8fe57e9b371c8c883f59.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/8/83f918a3a2c1aeabd17433d90d9b9b1c.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001840-002
-    format_key called: field='name:product[sku]', key='001840-002', category='shirts'
-    format_key result: '001840-002'
-    format_key result: 001840-002
-    Added to data: 001840-002 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Modern Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key result: Modern fit
-    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001840-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001840-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001840-002 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001840-002 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="AJUPSEW" aria-describedby="notice-AJUPSEW" aria-label="notice-AJUPSEW">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="AJUPSEW" aria-describedby="notice-AJUPSEW" aria-label="notice-AJUPSEW">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
-
-============================================================
-PROCESSING PRODUCT: 001840-000
-============================================================
-Product data: {'sku': '001840-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1840, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "7", "37": "40", "38": "54", "39": "43", "40": "84", "41": "59", "42": "112", "43": "64", "44": "57", "45": "14", "46": "27", "47": "1", "48": "5"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/449/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/9/92dc0bc29241666a71b0dcb1dc3418f5.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a7345295a533c1413d35be1b4d42acd5.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/28e4dc4c80f26386c3ce233c16f39049.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a9196f6c7f7e1b2f5dab09cc7ffc0866.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001840-000
-
---- FILL_FORM for SKU: 001840-000 ---
-
---- FETCH_DATA for SKU: 001840-000 ---
-Product data: {'sku': '001840-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1840, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "7", "37": "40", "38": "54", "39": "43", "40": "84", "41": "59", "42": "112", "43": "64", "44": "57", "45": "14", "46": "27", "47": "1", "48": "5"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/449/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/9/92dc0bc29241666a71b0dcb1dc3418f5.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a7345295a533c1413d35be1b4d42acd5.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/2/28e4dc4c80f26386c3ce233c16f39049.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a9196f6c7f7e1b2f5dab09cc7ffc0866.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001840-000
-    format_key called: field='name:product[sku]', key='001840-000', category='shirts'
-    format_key result: '001840-000'
-    format_key result: 001840-000
-    Added to data: 001840-000 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Modern Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key result: Modern fit
-    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001840-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001840-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001840-000 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001840-000 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="PVFJH2S" aria-describedby="notice-PVFJH2S" aria-label="notice-PVFJH2S">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="PVFJH2S" aria-describedby="notice-PVFJH2S" aria-label="notice-PVFJH2S">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
-
-============================================================
-PROCESSING PRODUCT: 001842-002
-============================================================
-Product data: {'sku': '001842-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd extra langer Arm 72cm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1842, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Nicht relevant', 'design': 'gemustert', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Extra lang 72cm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 64.99, 'variant_prices': '{"38": "64.99", "39": "64.99", "40": "64.99", "41": "64.99", "42": "64.99", "43": "64.99", "44": "64.99", "45": "64.99", "46": "64.99", "47": "74.99", "48": "74.99"}', 'purchase_prices': '{"38": "25.00", "39": "25.00", "40": "25.00", "41": "25.00", "42": "25.00", "43": "25.00", "44": "25.00", "45": "25.00", "46": "25.00", "47": "27.50", "48": "27.50"}', 'variant_stocks': '{"38": "51", "39": "60", "40": "59", "41": "53", "42": "48", "43": "1", "44": "0", "45": "2", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/450/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2f36771b2eb3a36cb7dfb6472525a03d.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/f/f60fdc2de8f1d8dca65a513bc1e1172d.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/8/8205463ded033ab45dcd215e6cd2e9a6.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/c/c3a3356c2a617b76338ebbc3d9810104.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/3/3c6dcf177fc13089923ccb15cb16c38e.jpg?auto=format"]', 'image_count': 5, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001842-002
-
---- FILL_FORM for SKU: 001842-002 ---
-
---- FETCH_DATA for SKU: 001842-002 ---
-Product data: {'sku': '001842-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd extra langer Arm 72cm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1842, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Nicht relevant', 'design': 'gemustert', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Extra lang 72cm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 64.99, 'variant_prices': '{"38": "64.99", "39": "64.99", "40": "64.99", "41": "64.99", "42": "64.99", "43": "64.99", "44": "64.99", "45": "64.99", "46": "64.99", "47": "74.99", "48": "74.99"}', 'purchase_prices': '{"38": "25.00", "39": "25.00", "40": "25.00", "41": "25.00", "42": "25.00", "43": "25.00", "44": "25.00", "45": "25.00", "46": "25.00", "47": "27.50", "48": "27.50"}', 'variant_stocks': '{"38": "51", "39": "60", "40": "59", "41": "53", "42": "48", "43": "1", "44": "0", "45": "2", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/450/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/2/2f36771b2eb3a36cb7dfb6472525a03d.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/f/f60fdc2de8f1d8dca65a513bc1e1172d.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/8/8205463ded033ab45dcd215e6cd2e9a6.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/c/c3a3356c2a617b76338ebbc3d9810104.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/3/3c6dcf177fc13089923ccb15cb16c38e.jpg?auto=format"]', 'image_count': 5, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001842-002
-    format_key called: field='name:product[sku]', key='001842-002', category='shirts'
-    format_key result: '001842-002'
-    format_key result: 001842-002
-    Added to data: 001842-002 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 64.99
-    format_key called: field='name:product[price]', key='64.99', category='shirts'
-    format_key result: '64.99'
-    format_key result: 64.99
-    Added to data: 64.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Modern Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key result: Modern fit
-    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: gemustert
-    format_key called: field='option:data-title;dutch', key='gemustert', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'gemustert'
-      Looking for key.lower(): 'gemustert'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Patroon print'
-      SUCCESS: 'gemustert' -> 'Patroon print'
-    Dutch translation: 'gemustert' -> 'Patroon print'
-    format_key result: 'Patroon print'
-    format_key result: Patroon print
-    Added to data: Patroon print -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Nicht relevant
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Nicht relevant', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Nicht relevant'
-      Looking for key.lower(): 'nicht relevant'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Niet relevant'
-      SUCCESS: 'Nicht relevant' -> 'Niet relevant'
-    Dutch translation: 'Nicht relevant' -> 'Niet relevant'
-    format_key result: 'Niet relevant'
-    format_key result: Niet relevant
-    Added to data: Niet relevant -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Extra lang 72cm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Extra lang 72cm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-    Dutch translation: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-    format_key result: 'Extra lange mouw 72 cm'
-    format_key result: Extra lange mouw 72 cm
-    Added to data: Extra lange mouw 72 cm -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001842-002': ('name', 'product[sku]'), '64.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Patroon print': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Niet relevant': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Extra lange mouw 72 cm': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001842-002': ('name', 'product[sku]'), '64.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Patroon print': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Niet relevant': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Extra lange mouw 72 cm': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001842-002 -> ('name', 'product[sku]')
-  Filling field: 64.99 -> ('name', 'product[price]')
-  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Patroon print -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Niet relevant -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Extra lange mouw 72 cm -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001842-002 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="L7HIMQB" aria-describedby="notice-L7HIMQB" aria-label="notice-L7HIMQB">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="L7HIMQB" aria-describedby="notice-L7HIMQB" aria-label="notice-L7HIMQB">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
-
-============================================================
-PROCESSING PRODUCT: 001980-000
-============================================================
-Product data: {'sku': '001980-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1980, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "8", "37": "2", "38": "12", "39": "21", "40": "19", "41": "24", "42": "36", "43": "6", "44": "10", "45": "0", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/454/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202107/3/30490c50621186519eb125b243c49e7a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/6/6e64b792d2891cdddd735420c5bdf218.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/3/3dffae828dc957cad551e28a47eedb00.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/a/a9e0896c85f3f65c80e60b5986048310.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001980-000
-
---- FILL_FORM for SKU: 001980-000 ---
-
---- FETCH_DATA for SKU: 001980-000 ---
-Product data: {'sku': '001980-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1980, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45"}', 'variant_stocks': '{"35": "0", "36": "8", "37": "2", "38": "12", "39": "21", "40": "19", "41": "24", "42": "36", "43": "6", "44": "10", "45": "0", "46": "0", "47": "0", "48": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/454/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202107/3/30490c50621186519eb125b243c49e7a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/6/6e64b792d2891cdddd735420c5bdf218.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/3/3dffae828dc957cad551e28a47eedb00.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202107/a/a9e0896c85f3f65c80e60b5986048310.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001980-000
-    format_key called: field='name:product[sku]', key='001980-000', category='shirts'
-    format_key result: '001980-000'
-    format_key result: 001980-000
-    Added to data: 001980-000 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Modern Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key result: Modern fit
-    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001980-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001980-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001980-000 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001980-000 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="CBR8UFI" aria-describedby="notice-CBR8UFI" aria-label="notice-CBR8UFI">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="CBR8UFI" aria-describedby="notice-CBR8UFI" aria-label="notice-CBR8UFI">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
-
-============================================================
-PROCESSING PRODUCT: 001950-002
-============================================================
-Product data: {'sku': '001950-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1950, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Body Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10"}', 'variant_stocks': '{"35": "0", "36": "5", "37": "23", "38": "17", "39": "13", "40": "135", "41": "20", "42": "57", "43": "9", "44": "14"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/460/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/4/48491a136b93f7c84840411725345f67.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/e/e4cb578efcf6756e3df902fb1066cfaf.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/79283df2990c711fd9e495397511b14b.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/4/4737791c842e7f5b9a41889c992d7337.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001950-002
-
---- FILL_FORM for SKU: 001950-002 ---
-
---- FETCH_DATA for SKU: 001950-002 ---
-Product data: {'sku': '001950-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1950, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Body Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10"}', 'variant_stocks': '{"35": "0", "36": "5", "37": "23", "38": "17", "39": "13", "40": "135", "41": "20", "42": "57", "43": "9", "44": "14"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/460/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/4/48491a136b93f7c84840411725345f67.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/e/e4cb578efcf6756e3df902fb1066cfaf.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/79283df2990c711fd9e495397511b14b.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/4/4737791c842e7f5b9a41889c992d7337.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001950-002
-    format_key called: field='name:product[sku]', key='001950-002', category='shirts'
-    format_key result: '001950-002'
-    format_key result: 001950-002
-    Added to data: 001950-002 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Body Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key result: Body slim fit
-    Added to data: Body slim fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001950-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Body slim fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001950-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Body slim fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001950-002 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Body slim fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001950-002 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="JET0NUD" aria-describedby="notice-JET0NUD" aria-label="notice-JET0NUD">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="JET0NUD" aria-describedby="notice-JET0NUD" aria-label="notice-JET0NUD">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
-
-============================================================
-PROCESSING PRODUCT: 001950-000
-============================================================
-Product data: {'sku': '001950-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1950, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Body Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10"}', 'variant_stocks': '{"35": "0", "36": "11", "37": "21", "38": "19", "39": "10", "40": "40", "41": "1", "42": "0", "43": "0", "44": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/460/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/0/0bd620fbdace308193ba380b0186fa05.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/e/ed098f4d2b07d8e8affd09fec71698f8.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a3a7e174bd731f6ca541d3adc71a99a4.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/71c117cde2e6ff81e1d9b7118cfc5ac9.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
-Category: shirts
-Starting register_product for 001950-000
-
---- FILL_FORM for SKU: 001950-000 ---
-
---- FETCH_DATA for SKU: 001950-000 ---
-Product data: {'sku': '001950-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1950, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Body Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['35', '36', '37', '38', '39', '40', '41', '42', '43', '44']", 'rrp': 59.99, 'variant_prices': '{"35": "59.99", "36": "59.99", "37": "59.99", "38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99"}', 'purchase_prices': '{"35": "23.10", "36": "23.10", "37": "23.10", "38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10"}', 'variant_stocks': '{"35": "0", "36": "11", "37": "21", "38": "19", "39": "10", "40": "40", "41": "1", "42": "0", "43": "0", "44": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/460/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/0/0bd620fbdace308193ba380b0186fa05.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/e/ed098f4d2b07d8e8affd09fec71698f8.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/a/a3a7e174bd731f6ca541d3adc71a99a4.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/7/71c117cde2e6ff81e1d9b7118cfc5ac9.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Category: shirts
-Available translation mappings: 394
-  Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
-  Processing field: name:product[sku] for key: sku
-    Original value: 001950-000
-    format_key called: field='name:product[sku]', key='001950-000', category='shirts'
-    format_key result: '001950-000'
-    format_key result: 001950-000
-    Added to data: 001950-000 -> ('name', 'product[sku]')
-  Skipping ean: not in product or is nan/empty
-  Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
-  Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Body Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key result: Body slim fit
-    Added to data: Body slim fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-  Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
-    Original value: SINGLE CUFF
-    format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'SINGLE CUFF'
-      Looking for key.lower(): 'single cuff'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Enkel manchet'
-      SUCCESS: 'SINGLE CUFF' -> 'Enkel manchet'
-    Dutch translation: 'SINGLE CUFF' -> 'Enkel manchet'
-    format_key result: 'Enkel manchet'
-    format_key result: Enkel manchet
-    Added to data: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Skipping noniron: not in product or is nan/empty
-  Processing field: option:data-title[name-'product[materiaal]'];dutch for key: quality
-    Original value: Popeline
-    format_key called: field='option:data-title[name-'product[materiaal]'];dutch', key='Popeline', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Popeline'
-      Looking for key.lower(): 'popeline'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Poplin'
-      SUCCESS: 'Popeline' -> 'Poplin'
-    Dutch translation: 'Popeline' -> 'Poplin'
-    format_key result: 'Poplin'
-    format_key result: Poplin
-    Added to data: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Skipping capsule: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: fabriccomp
-    Original value: 100 % Baumwolle
-    format_key called: field='option:data-title;dutch', key='100 % Baumwolle', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: '100 % Baumwolle'
-      Looking for key.lower(): '100 % baumwolle'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: '100% katoen'
-      SUCCESS: '100 % Baumwolle' -> '100% katoen'
-    Dutch translation: '100 % Baumwolle' -> '100% katoen'
-    format_key result: '100% katoen'
-    format_key result: 100% katoen
-    Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Skipping sustainability: not in product or is nan/empty
-  Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
-  Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
-    Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '001950-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Body slim fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-  Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '001950-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Body slim fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
-Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 001950-000 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Body slim fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-  Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
-  Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
-  Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-      get_mapped_key called: 'shirts'
-      Looking for key.lower(): 'shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Overhemden'
-      SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 001950-000 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="RV8U4SH" aria-describedby="notice-RV8U4SH" aria-label="notice-RV8U4SH">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="RV8U4SH" aria-describedby="notice-RV8U4SH" aria-label="notice-RV8U4SH">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
 
 
 ============================================================
@@ -1687,111 +163,38 @@ Number of fields to fill: 11
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Overhemden'
       SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 002340-002 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="CDUHCJO" aria-describedby="notice-CDUHCJO" aria-label="notice-CDUHCJO">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
+Updating variant prices for 002340-002: {'38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99', '49': '69.99', '50': '69.99', '52': '69.99', '54': '69.99'}
+Set size 38 price to 59.99
+Set size 39 price to 59.99
+Set size 40 price to 59.99
+Set size 41 price to 59.99
+Set size 42 price to 59.99
+Set size 43 price to 59.99
+Set size 44 price to 59.99
+Set size 45 price to 59.99
+Set size 46 price to 59.99
+Set size 47 price to 64.99
+Set size 48 price to 64.99
+Set size 49 price to 69.99
+Set size 50 price to 69.99
+Set size 52 price to 69.99
+Set size 54 price to 69.99
+ERROR: Product 002340-002 failed with exception: 
+Exception type: RuntimeError
 Traceback:
 Traceback (most recent call last):
   File "automations\magento.py", line 2447, in register_products
     cls.register_product(driver, product)
     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="CDUHCJO" aria-describedby="notice-CDUHCJO" aria-label="notice-CDUHCJO">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
+  File "automations\magento.py", line 2149, in register_product
+    raise RuntimeError
+RuntimeError
 
 
 ============================================================
 PROCESSING PRODUCT: 002340-000
 ============================================================
-Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "47", "44": "121", "45": "104", "46": "155", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
+Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "46", "44": "119", "45": "103", "46": "153", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
 Productnaam: Venti wit popeline
 Category: shirts
 Starting register_product for 002340-000
@@ -1799,7 +202,7 @@ Starting register_product for 002340-000
 --- FILL_FORM for SKU: 002340-000 ---
 
 --- FETCH_DATA for SKU: 002340-000 ---
-Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "47", "44": "121", "45": "104", "46": "155", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
+Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "46", "44": "119", "45": "103", "46": "153", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
 Category: shirts
 Available translation mappings: 394
   Processing field: name:product[name] for key: Productnaam
@@ -1941,103 +344,377 @@ Number of fields to fill: 11
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Overhemden'
       SUCCESS: 'shirts' -> 'Overhemden'
-ERROR: Product 002340-000 failed with exception: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="L8NJ8G1" aria-describedby="notice-L8NJ8G1" aria-label="notice-L8NJ8G1">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-Exception type: ElementClickInterceptedException
-Traceback:
-Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
-    cls.register_product(driver, product)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2126, in register_product
-    cls.fill_form(driver, product)
-    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2069, in fill_form
-    cls.change_maattabel(driver, size_table)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1945, in change_maattabel
-    sizetable_select.click()
-    ~~~~~~~~~~~~~~~~~~~~~~^^
-  File "selenium\webdriver\remote\webelement.py", line 114, in click
-  File "selenium\webdriver\remote\webelement.py", line 508, in _execute
-  File "selenium\webdriver\remote\webdriver.py", line 450, in execute
-  File "selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <select class="admin__control-select" data-bind="
-    attr: {
-        name: inputName,
-        id: uid,
-        disabled: disabled,
-        'aria-describedby': noticeId,
-        'aria-label': noticeId
-    },
-    hasFocus: focused,
-    optgroup: options,
-    value: value,
-    optionsCaption: caption,
-    optionsValue: 'value',
-    optionsText: 'label'" name="product[sizetable]" id="L8NJ8G1" aria-describedby="notice-L8NJ8G1" aria-label="notice-L8NJ8G1">...</select> is not clickable at point (567, 42). Other element would receive the click: <div class="page-actions _fixed" data-ui-id="page-actions-toolbar-content-header">...</div>
-  (Session info: chrome=150.0.7871.187); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff7e1090d25+155a5]
-	chromedriver!GetHandleVerifier [0x7ff7e1090d80+15600]
-	chromedriver!(No symbol) [0x7ff7e0be594d]
-	chromedriver!(No symbol) [0x7ff7e0c48575]
-	chromedriver!(No symbol) [0x7ff7e0c46193]
-	chromedriver!(No symbol) [0x7ff7e0c434e7]
-	chromedriver!(No symbol) [0x7ff7e0c423a0]
-	chromedriver!(No symbol) [0x7ff7e0c34d98]
-	chromedriver!(No symbol) [0x7ff7e0c691ca]
-	chromedriver!(No symbol) [0x7ff7e0c34616]
-	chromedriver!(No symbol) [0x7ff7e0c8e01b]
-	chromedriver!(No symbol) [0x7ff7e0c32e6c]
-	chromedriver!(No symbol) [0x7ff7e0c33d93]
-	chromedriver!GetHandleVerifier [0x7ff7e1676431+5facb1]
-	chromedriver!GetHandleVerifier [0x7ff7e1670a9b+5f531b]
-	chromedriver!GetHandleVerifier [0x7ff7e1695865+61a0e5]
-	chromedriver!GetHandleVerifier [0x7ff7e10adace+3234e]
-	chromedriver!GetHandleVerifier [0x7ff7e10b661c+3ae9c]
-	chromedriver!GetHandleVerifier [0x7ff7e109ab74+1f3f4]
-	chromedriver!GetHandleVerifier [0x7ff7e109ad04+1f584]
-	chromedriver!GetHandleVerifier [0x7ff7e107d9d7+2257]
-	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
-	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
-
-
+Updating variant prices for 002340-000: {'38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99', '49': '69.99', '50': '69.99', '52': '69.99', '54': '69.99'}
+Set size 38 price to 59.99
+Set size 39 price to 59.99
+Set size 40 price to 59.99
+Set size 41 price to 59.99
+Set size 42 price to 59.99
+Set size 43 price to 59.99
+Set size 44 price to 59.99
+Set size 45 price to 59.99
+Set size 46 price to 59.99
+Set size 47 price to 64.99
+Set size 48 price to 64.99
+Set size 49 price to 69.99
+Set size 50 price to 69.99
+Set size 52 price to 69.99
+Set size 54 price to 69.99
+SUCCESS: Product 002340-000 registered successfully
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'
+      get_mapped_key called: 'Kent-Kragen'
+      Looking for key.lower(): 'kent-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Kent'
+      SUCCESS: 'Kent-Kragen' -> 'Kent'
+      get_mapped_key called: 'Langarm'
+      Looking for key.lower(): 'langarm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Lange mouw (normaal)'
+      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
+      get_mapped_key called: 'Extra lang 72cm'
+      Looking for key.lower(): 'extra lang 72cm'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Extra lange mouw 72 cm'
+      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
+      get_mapped_key called: 'Kläppchen-Kragen'
+      Looking for key.lower(): 'kläppchen-kragen'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Wing Collar'
+      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
+      get_mapped_key called: 't-shirts'
+      Looking for key.lower(): 't-shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Ondershirts'
+      SUCCESS: 't-shirts' -> 'Ondershirts'
+      get_mapped_key called: 'V-Ausschnitt'
+      Looking for key.lower(): 'v-ausschnitt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'V-hals'
+      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
+      get_mapped_key called: 'gestrickt / gewirkt'
+      Looking for key.lower(): 'gestrickt / gewirkt'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Knitted'
+      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Body fit'
+    format_key result: 'Body slim fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Comfort fit'
+    format_key result: 'Comfort fit'
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
+    Applying formatting: 'capitalize'
+    After capitalize: 'Basic circular knit'
+    format_key result: 'Modern fit'

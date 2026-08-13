@@ -1,4 +1,5 @@
 from functools import cache
+import hashlib
 import html
 import json
 import os
@@ -41,6 +42,7 @@ class Profuomo(BaseScraper):
         "0 results",
     )
     MIN_IMAGE_BYTES = int(os.getenv("PROFUOMO_MIN_IMAGE_BYTES", "5000"))
+    MAX_PRODUCT_IMAGES = int(os.getenv("PROFUOMO_MAX_PRODUCT_IMAGES", "8"))
     STOCK_RETRY_COUNT = int(os.getenv("PROFUOMO_STOCK_RETRY_COUNT", "2"))
     INTER_SKU_DELAY_SECONDS = float(os.getenv("PROFUOMO_INTER_SKU_DELAY_SECONDS", "0.05"))
     SEARCH_INPUT_TIMEOUT_SECONDS = float(os.getenv("PROFUOMO_SEARCH_INPUT_TIMEOUT_SECONDS", "4"))
@@ -208,6 +210,34 @@ class Profuomo(BaseScraper):
             return text
         match = re.search(r"\b(XXXL|XXL|XL|L|M|S|XS|\d{2,3}[A-Z]?)\b", text)
         return match.group(1).upper() if match else ""
+
+    @classmethod
+    def sanitize_sizes_for_category(
+        cls,
+        category: str,
+        sizes: list[str],
+    ) -> list[str]:
+        category_key = cls._clean_text(category).lower()
+        alpha_sizes = {"XS", "S", "M", "L", "XL", "XXL", "XXXL"}
+        cleaned: list[str] = []
+        seen: set[str] = set()
+
+        for raw_size in sizes:
+            size = cls._normalize_size(raw_size)
+            if not size or size in seen:
+                continue
+
+            if category_key == "shirts":
+                if not size.isdigit() or not 35 <= int(size) <= 50:
+                    continue
+            elif category_key in {"knitwear", "polos", "overshirts"}:
+                if size not in alpha_sizes:
+                    continue
+
+            seen.add(size)
+            cleaned.append(size)
+
+        return cleaned
 
     @classmethod
     def _extract_sku_from_text(cls, text: str | None) -> str:
@@ -3074,6 +3104,27 @@ class ProfuomoScraper(Profuomo):
         return urls
 
     @classmethod
+    def _image_url_matches_target(cls, url: str, target_sku: str) -> bool:
+        target = cls._clean_text(target_sku).upper()
+        if not target:
+            return True
+        found_skus = {
+            match.group(1).upper()
+            for match in cls.SKU_REGEX.finditer(cls._clean_text(url).upper())
+        }
+        if not found_skus:
+            return True
+        return target in found_skus or cls._sku_base(target) in found_skus
+
+    @classmethod
+    def _clear_sku_images(cls, sku_folder: Path) -> None:
+        image_suffixes = {".jpg", ".jpeg", ".png", ".webp", ".avif"}
+        for existing in sku_folder.iterdir():
+            if not existing.is_file() or existing.suffix.lower() not in image_suffixes:
+                continue
+            existing.unlink(missing_ok=True)
+
+    @classmethod
     def download_images(
         cls,
         driver: webdriver.Chrome,
@@ -3081,18 +3132,10 @@ class ProfuomoScraper(Profuomo):
         strict_gallery: bool = True,
         target_sku: str | None = None,
     ) -> int:
-        sku_folder = os.path.join(PRODUCTS_PATH, sku)
-        os.makedirs(sku_folder, exist_ok=True)
+        sku_folder = Path(PRODUCTS_PATH, sku)
+        sku_folder.mkdir(parents=True, exist_ok=True)
+        cls._clear_sku_images(sku_folder)
         downloaded_count = 0
-        existing_valid_count = 0
-        for existing in Path(sku_folder).glob("*"):
-            if not existing.is_file():
-                continue
-            try:
-                if existing.stat().st_size >= cls.MIN_IMAGE_BYTES:
-                    existing_valid_count += 1
-            except OSError:
-                continue
 
         session = requests.Session()
         session.headers.update(
@@ -3133,11 +3176,14 @@ class ProfuomoScraper(Profuomo):
 
         sanitized_urls: list[str] = []
         seen_urls: set[str] = set()
+        target = target_sku or sku
         for raw in image_urls:
-            candidate = cls._normalize_download_image_url(raw, target_sku=target_sku or sku)
+            candidate = cls._normalize_download_image_url(raw, target_sku=target)
             if not candidate or not candidate.startswith("http"):
                 continue
             if cls._is_variant_image_url(candidate):
+                continue
+            if not cls._image_url_matches_target(candidate, target):
                 continue
             if candidate in seen_urls:
                 continue
@@ -3147,7 +3193,10 @@ class ProfuomoScraper(Profuomo):
         if not sanitized_urls and image_urls:
             print(f"Warning: image candidates normalized to zero for {sku}")
 
-        for index, img_url in enumerate(sanitized_urls):
+        seen_payloads: set[str] = set()
+        for img_url in sanitized_urls:
+            if downloaded_count >= cls.MAX_PRODUCT_IMAGES:
+                break
             try:
                 response = session.get(img_url, timeout=20)
                 if response.status_code != 200:
@@ -3167,24 +3216,30 @@ class ProfuomoScraper(Profuomo):
             if not img_data:
                 continue
 
-            img_path = os.path.join(sku_folder, f"{sku}_{index}.jpg")
-            with open(img_path, "wb") as img_file:
+            payload_hash = hashlib.sha256(img_data).hexdigest()
+            if payload_hash in seen_payloads:
+                continue
+            seen_payloads.add(payload_hash)
+
+            img_path = sku_folder / f"{sku}_{downloaded_count}.jpg"
+            with img_path.open("wb") as img_file:
                 img_file.write(img_data)
 
-            if os.path.getsize(img_path) < cls.MIN_IMAGE_BYTES:
-                os.remove(img_path)
-                print(f"Warning: Image too small for {sku}_{index}.jpg, skipping...")
+            if img_path.stat().st_size < cls.MIN_IMAGE_BYTES:
+                img_path.unlink(missing_ok=True)
+                print(
+                    f"Warning: Image too small for {sku}_{downloaded_count}.jpg, "
+                    "skipping..."
+                )
                 continue
             downloaded_count += 1
 
-        if downloaded_count > 0:
-            return downloaded_count
-        if existing_valid_count == 0:
+        if downloaded_count == 0:
             print(
                 f"Warning: no valid downloaded images for {sku} "
                 f"(strict_gallery={strict_gallery}, candidates={len(sanitized_urls)})"
             )
-        return existing_valid_count
+        return downloaded_count
 
     @classmethod
     def _ensure_product_detail_context(cls, driver: webdriver.Chrome, sku: str) -> None:
@@ -3352,6 +3407,11 @@ class ProfuomoScraper(Profuomo):
             if fallback_sizes:
                 product["sizes"] = fallback_sizes
 
+        product["sizes"] = cls.sanitize_sizes_for_category(
+            category,
+            list(product.get("sizes") or []),
+        )
+
         return product
 
     @classmethod
@@ -3444,6 +3504,16 @@ class ProfuomoScraper(Profuomo):
                     product_sku = cls._clean_text(str(product.get("sku", ""))).upper()
                     if product_sku:
                         run_seen_skus.add(product_sku)
+                    if not product.get("sizes"):
+                        msg = (
+                            f"Skipped {product.get('sku', 'Unknown SKU')}: "
+                            f"no valid {category} sizes found"
+                        )
+                        print(f"Warning: {msg}")
+                        with open("scraping_errors.log", "a", encoding="utf-8") as f:
+                            f.write(msg + "\n")
+                        failed_count += 1
+                        continue
                     if not product.get("has_images", False):
                         msg = (
                             f"Skipped {product.get('sku', 'Unknown SKU')}: "

@@ -17,6 +17,109 @@ from automations.supplier_profile import CASAMODA_VENTI_PROFILE, SupplierProfile
 
 
 class MagentoFillerTests(unittest.TestCase):
+    def test_load_existing_magento_skus_rejects_export_without_sku_column(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            export_path = Path(temp_dir) / "export.csv"
+            pd.DataFrame({"Name": ["Existing product"]}).to_csv(
+                export_path,
+                index=False,
+            )
+
+            with self.assertRaisesRegex(ValueError, "SKU"):
+                MagentoFiller.load_existing_magento_skus(export_path)
+
+    def test_load_existing_magento_skus_normalizes_values(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            export_path = Path(temp_dir) / "export.csv"
+            pd.DataFrame(
+                {
+                    "SKU": [" PP2HC10008 ", "pp2j00001c-s", ""],
+                    "Type": [
+                        "Configurable Product",
+                        "Simple Product",
+                        "Simple Product",
+                    ],
+                }
+            ).to_csv(export_path, index=False)
+
+            existing_skus = MagentoFiller.load_existing_magento_skus(
+                export_path,
+                require_product_types=True,
+            )
+
+        self.assertEqual(
+            existing_skus,
+            {"PP2HC10008", "PP2J00001C-S"},
+        )
+
+    def test_load_existing_magento_skus_rejects_filtered_single_type_export(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            export_path = Path(temp_dir) / "export.csv"
+            pd.DataFrame(
+                {
+                    "SKU": ["PP2HC10008", "PP2HC10012"],
+                    "Type": ["Configurable Product", "Configurable Product"],
+                }
+            ).to_csv(export_path, index=False)
+
+            with self.assertRaisesRegex(ValueError, "filtered or incomplete"):
+                MagentoFiller.load_existing_magento_skus(
+                    export_path,
+                    require_product_types=True,
+                )
+
+    def test_partition_products_blocks_parent_when_parent_or_child_sku_exists(self):
+        products = pd.DataFrame(
+            {
+                "sku": ["PP2HC10008", "PP2J00001C", "PPNEW0001"],
+                "sizes": ["['37']", "['S']", "['M']"],
+            }
+        )
+
+        new_products, blocked_products = MagentoFiller.partition_products_by_existing_sku(
+            products,
+            {"PP2HC10008", "PP2J00001C-S"},
+        )
+
+        self.assertEqual(new_products["sku"].tolist(), ["PPNEW0001"])
+        self.assertEqual(
+            blocked_products["sku"].tolist(),
+            ["PP2HC10008", "PP2J00001C"],
+        )
+
+    def test_partition_products_keeps_one_row_per_new_parent_sku(self):
+        products = pd.DataFrame(
+            {
+                "sku": ["PPNEW0001", " ppnew0001 ", "PPNEW0002"],
+                "sizes": ["['M']", "['L']", "['XL']"],
+            }
+        )
+
+        new_products, blocked_products = MagentoFiller.partition_products_by_existing_sku(
+            products,
+            set(),
+        )
+
+        self.assertEqual(new_products["sku"].tolist(), ["PPNEW0001", "PPNEW0002"])
+        self.assertTrue(blocked_products.empty)
+
+    def test_sanitize_profuomo_products_removes_stale_invalid_sizes(self):
+        products = pd.DataFrame(
+            {
+                "sku": ["PP2HC10008", "PP2HCINVALID"],
+                "category": ["Shirts", "Shirts"],
+                "sizes": [
+                    "['37', '38', 'M', '20']",
+                    "['M', '20']",
+                ],
+            }
+        )
+
+        sanitized = MagentoFiller.sanitize_profuomo_products(products)
+
+        self.assertEqual(sanitized["sku"].tolist(), ["PP2HC10008"])
+        self.assertEqual(sanitized.iloc[0]["sizes"], "['37', '38']")
+
     def test_venti_collar_and_sleeve_map_to_existing_magento_options(self):
         MagentoFiller.configure_supplier("venti")
         MagentoFiller._get_mapping()
@@ -333,7 +436,7 @@ class MagentoFillerTests(unittest.TestCase):
             def __init__(self):
                 self.scripts = []
 
-            def execute_script(self, script, element):
+            def execute_script(self, script, element=None):
                 self.scripts.append((script, element))
 
         element = InterceptedElement()
@@ -430,7 +533,9 @@ class MagentoFillerTests(unittest.TestCase):
                     return FakeElement("save", self.clicks, self)
                 raise AssertionError(f"Unexpected locator: {by}={value}")
 
-            def execute_script(self, script, element):
+            def execute_script(self, script, element=None):
+                if element is not None and "button.click" in script:
+                    element.click()
                 return None
 
             def refresh(self):
@@ -493,7 +598,9 @@ class MagentoFillerTests(unittest.TestCase):
                     return FakeElement(self.clicks)
                 raise AssertionError(f"Unexpected locator: {by}={value}")
 
-            def execute_script(self, script, element):
+            def execute_script(self, script, element=None):
+                if element is not None and "button.click" in script:
+                    element.click()
                 return None
 
             def refresh(self):
@@ -539,20 +646,23 @@ class MagentoFillerTests(unittest.TestCase):
                     raise NoSuchElementException()
                 raise AssertionError(f"Unexpected locator: {by}={value}")
 
+            def execute_script(self, script):
+                return {}
+
         calls = []
 
-        with patch.object(MagentoFiller, "fill_form", side_effect=lambda *_: calls.append("fill")), patch.object(
+        with patch.object(MagentoFiller, "fill_form", side_effect=lambda *_, **__: calls.append("fill")), patch.object(
             MagentoFiller,
             "save_product",
-            side_effect=lambda *_: calls.append("save"),
+            side_effect=lambda *_, **__: calls.append("save"),
         ), patch.object(
             MagentoFiller,
             "go_to_product_catalogue",
-            side_effect=lambda *_: calls.append("catalogue"),
+            side_effect=lambda *_, **__: calls.append("catalogue"),
         ), patch.object(
             MagentoFiller,
             "go_to_form",
-            side_effect=lambda *_: calls.append("form"),
+            side_effect=lambda *_, **__: calls.append("form"),
         ), patch("automations.magento.time.sleep"):
             MagentoFiller.register_product(FakeDriver(), pd.Series({"sku": "226110550-101"}))
 

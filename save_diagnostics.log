@@ -1,0 +1,338 @@
+2026-08-13 23:32:57.059,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:32:57.060,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:32:57.061,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:32:57.062,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:32:57.063,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
+2026-08-13 23:32:58.714,,SAVE_PRODUCT START,,
+2026-08-13 23:32:58.715,,STATE before-pre-save-idle START,,
+2026-08-13 23:32:58.716,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:32:58.719,,SAVE_PRODUCT START,,
+2026-08-13 23:32:58.720,,STATE before-pre-save-idle START,,
+2026-08-13 23:32:58.721,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:34:48.232,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:34:48.233,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:34:48.234,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:34:48.235,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:34:48.237,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
+2026-08-13 23:34:48.247,,SAVE_PRODUCT START,,
+2026-08-13 23:34:48.248,,STATE before-pre-save-idle START,,
+2026-08-13 23:34:48.249,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:34:48.253,,SAVE_PRODUCT START,,
+2026-08-13 23:34:48.254,,STATE before-pre-save-idle START,,
+2026-08-13 23:34:48.255,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:35:01.733,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:35:01.735,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:35:01.736,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:35:01.737,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:35:01.738,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
+2026-08-13 23:35:01.749,,SAVE_PRODUCT START,,
+2026-08-13 23:35:01.751,,STATE before-pre-save-idle START,,
+2026-08-13 23:35:01.752,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:35:01.755,,SAVE_PRODUCT START,,
+2026-08-13 23:35:01.757,,STATE before-pre-save-idle START,,
+2026-08-13 23:35:01.759,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
+2026-08-13 23:35:38.855,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:35:38.856,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:35:38.857,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:35:38.859,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:35:38.862,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-13 23:35:38.863,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-13 23:35:38.865,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-13 23:35:38.867,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-13 23:35:38.868,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-13 23:35:38.869,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-13 23:35:38.870,226110550-101,STATE before-go-to-catalogue ERROR,0.000,AttributeError: 'FakeDriver' object has no attribute 'execute_script'
+2026-08-13 23:35:38.880,,SAVE_PRODUCT START,,
+2026-08-13 23:35:38.881,,STATE before-pre-save-idle START,,
+2026-08-13 23:35:38.882,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:35:38.883,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:35:38.884,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:35:38.885,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:35:38.886,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:35:38.887,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:35:38.888,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:35:38.889,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:35:38.890,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:35:38.890,,SAVE_PRODUCT click save START,,
+2026-08-13 23:35:38.892,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:35:38.893,,STATE after-save-click START,,
+2026-08-13 23:35:38.894,,STATE after-save-click END,0.000,null
+2026-08-13 23:35:38.895,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:35:38.896,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:35:38.897,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:35:38.898,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:35:38.899,,RECOVER refresh START,,
+2026-08-13 23:35:38.900,,RECOVER refresh END,0.000,
+2026-08-13 23:35:38.901,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:35:38.902,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:35:38.903,,RECOVER wait idle after refresh START,,
+2026-08-13 23:35:38.904,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:35:38.905,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-13 23:35:38.910,,SAVE_PRODUCT START,,
+2026-08-13 23:35:38.913,,STATE before-pre-save-idle START,,
+2026-08-13 23:35:38.914,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:35:38.915,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:35:38.916,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:35:38.917,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:35:38.918,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:35:38.919,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:35:38.920,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:35:38.921,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:35:38.922,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:35:38.923,,SAVE_PRODUCT click save START,,
+2026-08-13 23:35:38.924,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:35:38.928,,STATE after-save-click START,,
+2026-08-13 23:35:38.929,,STATE after-save-click END,0.000,null
+2026-08-13 23:35:38.930,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:35:38.931,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:35:38.932,,SAVE_PRODUCT wait idle after click START,,
+2026-08-13 23:35:38.933,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-13 23:35:38.934,,STATE after-save-idle-timeout START,,
+2026-08-13 23:35:38.934,,STATE after-save-idle-timeout END,0.000,null
+2026-08-13 23:35:38.935,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-13 23:35:38.936,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:35:38.937,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:35:38.938,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:35:38.939,,RECOVER refresh START,,
+2026-08-13 23:35:38.940,,RECOVER refresh END,0.000,
+2026-08-13 23:35:38.941,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:35:38.945,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:35:38.946,,RECOVER wait idle after refresh START,,
+2026-08-13 23:35:38.947,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:35:38.948,,STATE save-product-end START,,
+2026-08-13 23:35:38.949,,STATE save-product-end END,0.000,null
+2026-08-13 23:35:38.950,,SAVE_PRODUCT END,,result=saved
+2026-08-13 23:36:11.016,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:36:11.017,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:36:11.018,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:36:11.019,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:36:11.020,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-13 23:36:11.021,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-13 23:36:11.022,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-13 23:36:11.023,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-13 23:36:11.025,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-13 23:36:11.026,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-13 23:36:11.027,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-13 23:36:11.028,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-13 23:36:11.029,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-13 23:36:11.030,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-13 23:36:11.032,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-13 23:36:11.033,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-13 23:36:11.034,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-13 23:36:11.035,226110550-101,REGISTER_PRODUCT END,,
+2026-08-13 23:36:11.040,,SAVE_PRODUCT START,,
+2026-08-13 23:36:11.041,,STATE before-pre-save-idle START,,
+2026-08-13 23:36:11.043,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:36:11.043,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:36:11.044,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:36:11.045,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:36:11.047,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:36:11.048,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:36:11.049,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:36:11.050,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:36:11.052,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:36:11.052,,SAVE_PRODUCT click save START,,
+2026-08-13 23:36:11.053,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:36:11.054,,STATE after-save-click START,,
+2026-08-13 23:36:11.055,,STATE after-save-click END,0.000,null
+2026-08-13 23:36:11.056,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:36:11.057,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:36:11.059,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:36:11.060,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:36:11.062,,RECOVER refresh START,,
+2026-08-13 23:36:11.063,,RECOVER refresh END,0.000,
+2026-08-13 23:36:11.064,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:36:11.065,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:36:11.066,,RECOVER wait idle after refresh START,,
+2026-08-13 23:36:11.067,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:36:11.068,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-13 23:36:11.069,,SAVE_PRODUCT START,,
+2026-08-13 23:36:11.070,,STATE before-pre-save-idle START,,
+2026-08-13 23:36:11.071,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:36:11.072,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:36:11.074,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:36:11.076,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:36:11.077,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:36:11.078,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:36:11.079,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:36:11.115,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:36:11.116,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:36:11.117,,SAVE_PRODUCT click save START,,
+2026-08-13 23:36:11.118,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:36:11.121,,STATE after-save-click START,,
+2026-08-13 23:36:11.122,,STATE after-save-click END,0.000,null
+2026-08-13 23:36:11.123,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:36:11.124,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:36:11.126,,SAVE_PRODUCT wait idle after click START,,
+2026-08-13 23:36:11.128,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-13 23:36:11.129,,STATE after-save-idle-timeout START,,
+2026-08-13 23:36:11.130,,STATE after-save-idle-timeout END,0.000,null
+2026-08-13 23:36:11.131,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-13 23:36:11.132,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:36:11.133,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:36:11.134,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:36:11.135,,RECOVER refresh START,,
+2026-08-13 23:36:11.136,,RECOVER refresh END,0.000,
+2026-08-13 23:36:11.137,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:36:11.138,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:36:11.139,,RECOVER wait idle after refresh START,,
+2026-08-13 23:36:11.141,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:36:11.143,,STATE save-product-end START,,
+2026-08-13 23:36:11.144,,STATE save-product-end END,0.000,null
+2026-08-13 23:36:11.146,,SAVE_PRODUCT END,,result=saved
+2026-08-13 23:37:41.603,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:37:41.604,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:37:41.605,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:37:41.606,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:37:41.609,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-13 23:37:41.611,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-13 23:37:41.612,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-13 23:37:41.613,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-13 23:37:41.615,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-13 23:37:41.616,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-13 23:37:41.617,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-13 23:37:41.618,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-13 23:37:41.619,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-13 23:37:41.620,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-13 23:37:41.621,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-13 23:37:41.623,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-13 23:37:41.624,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-13 23:37:41.626,226110550-101,REGISTER_PRODUCT END,,
+2026-08-13 23:37:41.630,,SAVE_PRODUCT START,,
+2026-08-13 23:37:41.631,,STATE before-pre-save-idle START,,
+2026-08-13 23:37:41.632,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:37:41.634,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:37:41.635,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:37:41.636,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:37:41.637,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:37:41.638,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:37:41.640,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:37:41.641,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:37:41.644,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:37:41.646,,SAVE_PRODUCT click save START,,
+2026-08-13 23:37:41.647,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:37:41.648,,STATE after-save-click START,,
+2026-08-13 23:37:41.649,,STATE after-save-click END,0.000,null
+2026-08-13 23:37:41.650,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:37:41.651,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:37:41.652,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:37:41.653,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:37:41.653,,RECOVER refresh START,,
+2026-08-13 23:37:41.655,,RECOVER refresh END,0.000,
+2026-08-13 23:37:41.656,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:37:41.659,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:37:41.661,,RECOVER wait idle after refresh START,,
+2026-08-13 23:37:41.662,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:37:41.663,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-13 23:37:41.665,,SAVE_PRODUCT START,,
+2026-08-13 23:37:41.666,,STATE before-pre-save-idle START,,
+2026-08-13 23:37:41.667,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:37:41.668,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:37:41.669,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:37:41.670,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:37:41.672,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:37:41.673,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:37:41.674,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:37:41.676,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:37:41.677,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:37:41.678,,SAVE_PRODUCT click save START,,
+2026-08-13 23:37:41.679,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:37:41.680,,STATE after-save-click START,,
+2026-08-13 23:37:41.682,,STATE after-save-click END,0.000,null
+2026-08-13 23:37:41.683,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:37:41.684,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:37:41.688,,SAVE_PRODUCT wait idle after click START,,
+2026-08-13 23:37:41.689,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-13 23:37:41.690,,STATE after-save-idle-timeout START,,
+2026-08-13 23:37:41.691,,STATE after-save-idle-timeout END,0.000,null
+2026-08-13 23:37:41.693,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-13 23:37:41.694,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:37:41.695,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:37:41.696,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:37:41.698,,RECOVER refresh START,,
+2026-08-13 23:37:41.699,,RECOVER refresh END,0.000,
+2026-08-13 23:37:41.700,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:37:41.701,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:37:41.702,,RECOVER wait idle after refresh START,,
+2026-08-13 23:37:41.703,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:37:41.704,,STATE save-product-end START,,
+2026-08-13 23:37:41.705,,STATE save-product-end END,0.000,null
+2026-08-13 23:37:41.706,,SAVE_PRODUCT END,,result=saved
+2026-08-13 23:40:54.787,226110550-101,REGISTER_PRODUCT START,,
+2026-08-13 23:40:54.788,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-13 23:40:54.789,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-13 23:40:54.790,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-13 23:40:54.791,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-13 23:40:54.792,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-13 23:40:54.794,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-13 23:40:54.795,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-13 23:40:54.796,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-13 23:40:54.797,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-13 23:40:54.798,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-13 23:40:54.799,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-13 23:40:54.800,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-13 23:40:54.801,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-13 23:40:54.802,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-13 23:40:54.803,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-13 23:40:54.804,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-13 23:40:54.804,226110550-101,REGISTER_PRODUCT END,,
+2026-08-13 23:40:54.808,,SAVE_PRODUCT START,,
+2026-08-13 23:40:54.810,,STATE before-pre-save-idle START,,
+2026-08-13 23:40:54.811,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:40:54.812,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:40:54.813,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:40:54.815,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:40:54.815,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:40:54.816,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:40:54.817,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:40:54.818,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:40:54.819,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:40:54.820,,SAVE_PRODUCT click save START,,
+2026-08-13 23:40:54.821,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:40:54.821,,STATE after-save-click START,,
+2026-08-13 23:40:54.822,,STATE after-save-click END,0.000,null
+2026-08-13 23:40:54.823,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:40:54.824,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:40:54.825,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:40:54.827,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:40:54.828,,RECOVER refresh START,,
+2026-08-13 23:40:54.829,,RECOVER refresh END,0.000,
+2026-08-13 23:40:54.830,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:40:54.830,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:40:54.831,,RECOVER wait idle after refresh START,,
+2026-08-13 23:40:54.832,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:40:54.833,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-13 23:40:54.834,,SAVE_PRODUCT START,,
+2026-08-13 23:40:54.835,,STATE before-pre-save-idle START,,
+2026-08-13 23:40:54.836,,STATE before-pre-save-idle END,0.000,null
+2026-08-13 23:40:54.837,,SAVE_PRODUCT wait idle before click START,,
+2026-08-13 23:40:54.838,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-13 23:40:54.839,,SAVE_PRODUCT original_url START,,
+2026-08-13 23:40:54.840,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-13 23:40:54.841,,DRAIN LOGS before-save-click START,,
+2026-08-13 23:40:54.843,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:40:54.844,,SAVE_PRODUCT find save button START,,
+2026-08-13 23:40:54.845,,SAVE_PRODUCT find save button END,0.000,
+2026-08-13 23:40:54.846,,SAVE_PRODUCT click save START,,
+2026-08-13 23:40:54.847,,SAVE_PRODUCT click save END,0.000,
+2026-08-13 23:40:54.848,,STATE after-save-click START,,
+2026-08-13 23:40:54.849,,STATE after-save-click END,0.000,null
+2026-08-13 23:40:54.850,,DRAIN LOGS after-save-click START,,
+2026-08-13 23:40:54.851,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:40:54.852,,SAVE_PRODUCT wait idle after click START,,
+2026-08-13 23:40:54.853,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-13 23:40:54.854,,STATE after-save-idle-timeout START,,
+2026-08-13 23:40:54.855,,STATE after-save-idle-timeout END,0.000,null
+2026-08-13 23:40:54.855,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-13 23:40:54.856,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-13 23:40:54.857,,STATE before-save-timeout-refresh START,,
+2026-08-13 23:40:54.858,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-13 23:40:54.861,,RECOVER refresh START,,
+2026-08-13 23:40:54.862,,RECOVER refresh END,0.000,
+2026-08-13 23:40:54.862,,STATE after-save-timeout-refresh START,,
+2026-08-13 23:40:54.863,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-13 23:40:54.864,,RECOVER wait idle after refresh START,,
+2026-08-13 23:40:54.865,,RECOVER wait idle after refresh END,0.000,
+2026-08-13 23:40:54.866,,STATE save-product-end START,,
+2026-08-13 23:40:54.867,,STATE save-product-end END,0.000,null
+2026-08-13 23:40:54.868,,SAVE_PRODUCT END,,result=saved
