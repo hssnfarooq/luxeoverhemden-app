@@ -42,12 +42,14 @@ ORGANIC CONTENT STANDARD : Organic Content Standard
 RESPONSIBLE WOOL STANDARD : Responsible Wool Standard
 GLOBAL ORGANIC TEXTILE STANDARD : Global Organic Textile Standard
 LENZING TENCEL LYOCELL : Lenzing Tencel Lyocell
+Overshirt | Guaranteed fixed buttons : Overshirt | Guaranteed fixed buttons
 OCS BLEND 50 : OCS Blend 50
 OCS BLEND 70 : OCS Blend 70
 OCS BLEND 30 : OCS Blend 30
 RESPONSIBLE WOOL STANDARD 100 : Responsible Wool Standard 100
 RESPONSIBLE WOOL STANDARD 80 : Responsible Wool Standard 80
 RESPONSIBLE WOOL STANDARD 50 : Responsible Wool Standard 50
+will be smaller in production : Niet relevant
 ORGANIC : Organic
 BLUE : Blauw
 DARK BLUE : Blauw

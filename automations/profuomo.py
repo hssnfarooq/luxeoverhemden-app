@@ -17,6 +17,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from automations.scraper import BaseScraper
+from automations.supplier_profile import PROFUOMO_PROFILE
 from config import (
     PRODUCTS_PATH,
     PROFUOMO_PASSWORD,
@@ -508,7 +509,7 @@ class ProfuomoDownloader(Profuomo):
     @staticmethod
     def get_skus() -> list[dict[str, str | list[str]]]:
         skus = []
-        with open("input.csv", "r", encoding="utf-8") as file:
+        with PROFUOMO_PROFILE.input_csv_path.open("r", encoding="utf-8-sig") as file:
             for line in file:
                 line = line.strip().replace('"', "")
                 parts = line.split(",")

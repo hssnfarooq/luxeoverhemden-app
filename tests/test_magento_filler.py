@@ -384,6 +384,84 @@ class MagentoFillerTests(unittest.TestCase):
 
         self.assertEqual([size for _, size in matches], ["35", "47"])
 
+    def test_matching_variant_rows_keeps_duplicate_size_rows_for_actionable_fallback(self):
+        class FakeRow:
+            def __init__(self, text):
+                self.text = text
+
+            def get_attribute(self, name):
+                if name == "textContent":
+                    return self.text
+                return ""
+
+        rows = [
+            FakeRow("Upload Image € Enabled Maat: 47 Select"),
+            FakeRow("Upload Image € Enabled Maat: 47 Select"),
+        ]
+
+        matches = MagentoFiller.matching_variant_rows(None, rows, {"47"})
+
+        self.assertEqual([size for _, size in matches], ["47", "47"])
+
+    def test_update_visible_variant_price_rows_uses_later_duplicate_with_price_input(self):
+        class FakeInput:
+            def __init__(self):
+                self.value = ""
+                self.cleared = False
+
+            def is_displayed(self):
+                return True
+
+            def is_enabled(self):
+                return True
+
+            def get_attribute(self, name):
+                if name == "name":
+                    return "product[configurable-matrix][47][price]"
+                return ""
+
+            def clear(self):
+                self.cleared = True
+                self.value = ""
+
+            def send_keys(self, value):
+                self.value += value
+
+        class FakeRow:
+            def __init__(self, inputs):
+                self.inputs = inputs
+
+            def find_elements(self, by, selector):
+                return self.inputs
+
+        class FakeDriver:
+            def __init__(self):
+                self.scripts = []
+
+            def execute_script(self, script, *args):
+                self.scripts.append((script, args))
+
+        price_input = FakeInput()
+        matched_sizes = set()
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            debug_log = Path(temp_dir) / "debug.txt"
+            MagentoFiller.update_visible_variant_price_rows(
+                FakeDriver(),
+                pd.Series({"rrp": "49.99"}),
+                {"47": "59.99"},
+                [
+                    (FakeRow([]), "47"),
+                    (FakeRow([price_input]), "47"),
+                ],
+                matched_sizes,
+                debug_log,
+            )
+
+        self.assertEqual(matched_sizes, {"47"})
+        self.assertTrue(price_input.cleared)
+        self.assertEqual(price_input.value, "59.99")
+
     def test_ready_variant_row_matches_waits_for_all_expected_sizes(self):
         class FakeRow:
             def __init__(self, text):

@@ -1835,38 +1835,92 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             return
 
         debug_log = cls.debug_log_path()
+        sku = product.get("sku")
         with debug_log.open("a", encoding="utf-8") as f:
-            f.write(f"Updating variant prices for {product.get('sku')}: {variant_prices}\n")
+            f.write(f"Updating variant prices for {sku}: {variant_prices}\n")
 
         expected_sizes = set(variant_prices)
-        try:
-            row_matches = WebDriverWait(driver, 60).until(
-                lambda current_driver: cls.ready_variant_row_matches(
-                    current_driver,
-                    expected_sizes,
-                )
-            )
-        except TimeoutException as ex:
-            all_rows = driver.find_elements(
-                By.CSS_SELECTOR,
-                "table.data-grid tbody tr, tr.data-row",
-            )
-            snapshots = [
-                cls.row_text(driver, row).replace("\n", " ")[:300]
-                for row in all_rows[:10]
-            ]
-            with debug_log.open("a", encoding="utf-8") as f:
-                f.write(
-                    "Could not find generated variant rows for expected sizes. "
-                    f"Rows seen: {len(all_rows)}. Snapshots: {snapshots}\n"
-                )
-            raise Exception(
-                "Could not find generated variant rows for sizes: "
-                + ", ".join(sorted(expected_sizes))
-            ) from ex
-
         matched_sizes: set[str] = set()
+        deadline = time.monotonic() + 180
+        last_missing: tuple[str, ...] | None = None
+        stalled_passes = 0
+
+        cls.expand_variant_grid_page_size(driver, len(expected_sizes), debug_log)
+
+        while time.monotonic() < deadline:
+            missing_sizes = expected_sizes - matched_sizes
+            if not missing_sizes:
+                return
+
+            try:
+                row_matches = WebDriverWait(driver, 45).until(
+                    lambda current_driver: cls.visible_variant_row_matches(
+                        current_driver,
+                        missing_sizes,
+                    )
+                )
+            except TimeoutException:
+                cls.log_variant_row_snapshot(
+                    driver,
+                    debug_log,
+                    "Could not find generated variant rows for remaining sizes",
+                    missing_sizes,
+                )
+                break
+
+            before = set(matched_sizes)
+            cls.update_visible_variant_price_rows(
+                driver,
+                product,
+                variant_prices,
+                row_matches,
+                matched_sizes,
+                debug_log,
+            )
+            if expected_sizes - matched_sizes:
+                if cls.expand_variant_grid_page_size(driver, len(expected_sizes), debug_log):
+                    time.sleep(1)
+                    continue
+                if cls.go_to_next_variant_grid_page(driver, debug_log):
+                    time.sleep(1)
+                    continue
+
+            current_missing = tuple(sorted(expected_sizes - matched_sizes))
+            if current_missing == last_missing and matched_sizes == before:
+                stalled_passes += 1
+            else:
+                stalled_passes = 0
+                last_missing = current_missing
+            if stalled_passes >= 2:
+                break
+            time.sleep(1)
+
+        missing_sizes = sorted(expected_sizes - matched_sizes)
+        if missing_sizes:
+            cls.log_variant_row_snapshot(
+                driver,
+                debug_log,
+                "Could not update all variant prices",
+                set(missing_sizes),
+            )
+            raise Exception(
+                "Could not update variant prices for sizes: "
+                + ", ".join(missing_sizes)
+            )
+
+    @classmethod
+    def update_visible_variant_price_rows(
+        cls,
+        driver: webdriver.Chrome,
+        product: pd.Series,
+        variant_prices: dict[str, str],
+        row_matches: list[tuple[object, str]],
+        matched_sizes: set[str],
+        debug_log: Path,
+    ) -> None:
         for row, size in row_matches:
+            if size in matched_sizes:
+                continue
             inputs = []
             for input_element in row.find_elements(By.CSS_SELECTOR, "input"):
                 try:
@@ -1907,13 +1961,6 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 with debug_log.open("a", encoding="utf-8") as f:
                     f.write(f"Failed to set size {size} price to {price_value}: {ex}\n")
 
-        missing_sizes = sorted(set(variant_prices) - matched_sizes)
-        if missing_sizes:
-            raise Exception(
-                "Could not update variant prices for sizes: "
-                + ", ".join(missing_sizes)
-            )
-
     @classmethod
     def variant_price_can_inherit_parent_price(
         cls,
@@ -1942,6 +1989,23 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         return matches if matched_sizes == expected_sizes else False
 
     @classmethod
+    def visible_variant_row_matches(
+        cls,
+        driver: webdriver.Chrome,
+        expected_sizes: set[str],
+    ) -> list[tuple[object, str]] | bool:
+        rows = cls.find_variant_grid_rows(driver)
+        matches = cls.matching_variant_rows(driver, rows, expected_sizes)
+        return matches or False
+
+    @staticmethod
+    def find_variant_grid_rows(driver: webdriver.Chrome) -> list:
+        return driver.find_elements(
+            By.CSS_SELECTOR,
+            "table.data-grid tbody tr, tr.data-row",
+        )
+
+    @classmethod
     def matching_variant_rows(
         cls,
         driver: webdriver.Chrome | None,
@@ -1949,17 +2013,172 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         expected_sizes: set[str],
     ) -> list[tuple[object, str]]:
         matches: list[tuple[object, str]] = []
-        seen_sizes: set[str] = set()
         for row in rows:
             size = cls.variant_size_from_row_text(
                 cls.row_text(driver, row),
                 expected_sizes,
             )
-            if not size or size in seen_sizes:
+            if not size:
                 continue
             matches.append((row, size))
-            seen_sizes.add(size)
         return matches
+
+    @classmethod
+    def log_variant_row_snapshot(
+        cls,
+        driver: webdriver.Chrome,
+        debug_log: Path,
+        message: str,
+        missing_sizes: set[str],
+    ) -> None:
+        all_rows = cls.find_variant_grid_rows(driver)
+        snapshots = [
+            cls.row_text(driver, row).replace("\n", " ")[:300]
+            for row in all_rows[:10]
+        ]
+        matched = {
+            size
+            for _, size in cls.matching_variant_rows(driver, all_rows, set(missing_sizes))
+        }
+        with debug_log.open("a", encoding="utf-8") as f:
+            f.write(
+                f"{message}. Rows seen: {len(all_rows)}. "
+                f"Matched remaining sizes: {sorted(matched)}. "
+                f"Still missing: {sorted(set(missing_sizes) - matched)}. "
+                f"Snapshots: {snapshots}\n"
+            )
+
+    @classmethod
+    def expand_variant_grid_page_size(
+        cls,
+        driver: webdriver.Chrome,
+        expected_count: int,
+        debug_log: Path,
+    ) -> bool:
+        try:
+            result = driver.execute_script(
+                """
+                const expected = Number(arguments[0] || 0);
+                const visible = (element) => {
+                    if (!element) {
+                        return false;
+                    }
+                    const style = window.getComputedStyle(element);
+                    const rect = element.getBoundingClientRect();
+                    return style.display !== 'none' &&
+                        style.visibility !== 'hidden' &&
+                        Number(style.opacity || 1) !== 0 &&
+                        rect.width > 0 &&
+                        rect.height > 0;
+                };
+                const roots = Array.from(document.querySelectorAll([
+                    '.admin__data-grid-pager-wrap',
+                    '.data-grid-pager-wrap',
+                    '.admin__data-grid-toolbar',
+                    '.admin__data-grid-wrap'
+                ].join(','))).filter(visible);
+                const selects = Array.from(document.querySelectorAll('select'))
+                    .filter((select) => visible(select) &&
+                        roots.some((root) => root.contains(select)));
+                for (const select of selects) {
+                    const options = Array.from(select.options || []);
+                    const numeric = options
+                        .map((option) => ({
+                            value: option.value,
+                            label: (option.textContent || '').trim(),
+                            number: Number((option.textContent || option.value || '')
+                                .replace(/[^0-9]/g, ''))
+                        }))
+                        .filter((option) => Number.isFinite(option.number) && option.number > 0)
+                        .sort((left, right) => left.number - right.number);
+                    if (!numeric.length) {
+                        continue;
+                    }
+                    const currentOption = select.options[select.selectedIndex];
+                    const current = Number(
+                        ((currentOption && currentOption.textContent) || select.value || '')
+                            .replace(/[^0-9]/g, '')
+                    ) || 0;
+                    const target = numeric.find((option) => option.number >= expected) ||
+                        numeric[numeric.length - 1];
+                    if (target.number > current) {
+                        select.value = target.value;
+                        select.dispatchEvent(new Event('input', { bubbles: true }));
+                        select.dispatchEvent(new Event('change', { bubbles: true }));
+                        return { changed: true, from: current, to: target.number };
+                    }
+                }
+                return { changed: false };
+                """,
+                expected_count,
+            )
+            if isinstance(result, dict) and result.get("changed"):
+                with debug_log.open("a", encoding="utf-8") as f:
+                    f.write(
+                        "Changed variant grid page size "
+                        f"from {result.get('from')} to {result.get('to')}\n"
+                    )
+                return True
+        except Exception as ex:
+            with debug_log.open("a", encoding="utf-8") as f:
+                f.write(f"Could not change variant grid page size: {ex}\n")
+        return False
+
+    @classmethod
+    def go_to_next_variant_grid_page(
+        cls,
+        driver: webdriver.Chrome,
+        debug_log: Path,
+    ) -> bool:
+        try:
+            next_button = driver.execute_script(
+                """
+                const visible = (element) => {
+                    if (!element) {
+                        return false;
+                    }
+                    const style = window.getComputedStyle(element);
+                    const rect = element.getBoundingClientRect();
+                    return style.display !== 'none' &&
+                        style.visibility !== 'hidden' &&
+                        Number(style.opacity || 1) !== 0 &&
+                        rect.width > 0 &&
+                        rect.height > 0;
+                };
+                const roots = Array.from(document.querySelectorAll([
+                    '.admin__data-grid-pager-wrap',
+                    '.data-grid-pager-wrap',
+                    '.admin__data-grid-toolbar'
+                ].join(','))).filter(visible);
+                const candidates = [];
+                for (const root of roots) {
+                    candidates.push(...Array.from(root.querySelectorAll([
+                        'button.action-next',
+                        'button[title*="Next"]',
+                        'button[title*="Volgende"]',
+                        'button[aria-label*="Next"]',
+                        'button[aria-label*="Volgende"]',
+                        'a.action-next'
+                    ].join(','))));
+                }
+                return candidates.find((element) =>
+                    visible(element) &&
+                    !element.disabled &&
+                    element.getAttribute('aria-disabled') !== 'true' &&
+                    !/(disabled|_disabled)/i.test(element.className || '')
+                ) || null;
+                """
+            )
+            if next_button is None:
+                return False
+            cls.click_element_safely(driver, next_button)
+            with debug_log.open("a", encoding="utf-8") as f:
+                f.write("Moved to next variant grid page\n")
+            return True
+        except Exception as ex:
+            with debug_log.open("a", encoding="utf-8") as f:
+                f.write(f"Could not move to next variant grid page: {ex}\n")
+        return False
 
     @classmethod
     def row_text(cls, driver: webdriver.Chrome | None, row) -> str:

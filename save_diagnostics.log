@@ -1,338 +1,472 @@
-2026-08-13 23:32:57.059,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:32:57.060,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:32:57.061,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:32:57.062,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:32:57.063,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
-2026-08-13 23:32:58.714,,SAVE_PRODUCT START,,
-2026-08-13 23:32:58.715,,STATE before-pre-save-idle START,,
-2026-08-13 23:32:58.716,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:32:58.719,,SAVE_PRODUCT START,,
-2026-08-13 23:32:58.720,,STATE before-pre-save-idle START,,
-2026-08-13 23:32:58.721,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:34:48.232,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:34:48.233,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:34:48.234,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:34:48.235,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:34:48.237,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
-2026-08-13 23:34:48.247,,SAVE_PRODUCT START,,
-2026-08-13 23:34:48.248,,STATE before-pre-save-idle START,,
-2026-08-13 23:34:48.249,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:34:48.253,,SAVE_PRODUCT START,,
-2026-08-13 23:34:48.254,,STATE before-pre-save-idle START,,
-2026-08-13 23:34:48.255,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:35:01.733,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:35:01.735,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:35:01.736,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:35:01.737,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:35:01.738,226110550-101,REGISTER_PRODUCT save_product ERROR,0.000,TypeError: MagentoFillerTests.test_register_product_reopens_form_after_primary_save.<locals>.<lambda>() got an unexpected keyword argument 'sku'
-2026-08-13 23:35:01.749,,SAVE_PRODUCT START,,
-2026-08-13 23:35:01.751,,STATE before-pre-save-idle START,,
-2026-08-13 23:35:01.752,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_refreshes_immediately_when_save_poll_hits_driver_timeout.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:35:01.755,,SAVE_PRODUCT START,,
-2026-08-13 23:35:01.757,,STATE before-pre-save-idle START,,
-2026-08-13 23:35:01.759,,STATE before-pre-save-idle ERROR,0.000,TypeError: MagentoFillerTests.test_save_product_uses_primary_save_and_recovers_stuck_loader.<locals>.FakeDriver.execute_script() missing 1 required positional argument: 'element'
-2026-08-13 23:35:38.855,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:35:38.856,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:35:38.857,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:35:38.859,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:35:38.862,226110550-101,REGISTER_PRODUCT save_product END,0.000,
-2026-08-13 23:35:38.863,226110550-101,REGISTER_PRODUCT post-save sleep START,,
-2026-08-13 23:35:38.865,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
-2026-08-13 23:35:38.867,226110550-101,REGISTER_PRODUCT wait product name poll START,,
-2026-08-13 23:35:38.868,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
-2026-08-13 23:35:38.869,226110550-101,STATE before-go-to-catalogue START,,
-2026-08-13 23:35:38.870,226110550-101,STATE before-go-to-catalogue ERROR,0.000,AttributeError: 'FakeDriver' object has no attribute 'execute_script'
-2026-08-13 23:35:38.880,,SAVE_PRODUCT START,,
-2026-08-13 23:35:38.881,,STATE before-pre-save-idle START,,
-2026-08-13 23:35:38.882,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:35:38.883,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:35:38.884,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:35:38.885,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:35:38.886,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:38.887,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:35:38.888,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.889,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:35:38.890,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:35:38.890,,SAVE_PRODUCT click save START,,
-2026-08-13 23:35:38.892,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:35:38.893,,STATE after-save-click START,,
-2026-08-13 23:35:38.894,,STATE after-save-click END,0.000,null
-2026-08-13 23:35:38.895,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:35:38.896,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.897,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:35:38.898,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:35:38.899,,RECOVER refresh START,,
-2026-08-13 23:35:38.900,,RECOVER refresh END,0.000,
-2026-08-13 23:35:38.901,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:35:38.902,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:35:38.903,,RECOVER wait idle after refresh START,,
-2026-08-13 23:35:38.904,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:35:38.905,,SAVE_PRODUCT END,,driver_timeout_recovered
-2026-08-13 23:35:38.910,,SAVE_PRODUCT START,,
-2026-08-13 23:35:38.913,,STATE before-pre-save-idle START,,
-2026-08-13 23:35:38.914,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:35:38.915,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:35:38.916,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:35:38.917,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:35:38.918,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:38.919,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:35:38.920,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.921,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:35:38.922,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:35:38.923,,SAVE_PRODUCT click save START,,
-2026-08-13 23:35:38.924,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:35:38.928,,STATE after-save-click START,,
-2026-08-13 23:35:38.929,,STATE after-save-click END,0.000,null
-2026-08-13 23:35:38.930,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:35:38.931,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.932,,SAVE_PRODUCT wait idle after click START,,
-2026-08-13 23:35:38.933,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
-2026-08-13 23:35:38.934,,STATE after-save-idle-timeout START,,
-2026-08-13 23:35:38.934,,STATE after-save-idle-timeout END,0.000,null
-2026-08-13 23:35:38.935,,DRAIN LOGS after-save-idle-timeout START,,
-2026-08-13 23:35:38.936,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.937,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:35:38.938,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:35:38.939,,RECOVER refresh START,,
-2026-08-13 23:35:38.940,,RECOVER refresh END,0.000,
-2026-08-13 23:35:38.941,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:35:38.945,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:35:38.946,,RECOVER wait idle after refresh START,,
-2026-08-13 23:35:38.947,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:35:38.948,,STATE save-product-end START,,
-2026-08-13 23:35:38.949,,STATE save-product-end END,0.000,null
-2026-08-13 23:35:38.950,,SAVE_PRODUCT END,,result=saved
-2026-08-13 23:36:11.016,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:36:11.017,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:36:11.018,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:36:11.019,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:36:11.020,226110550-101,REGISTER_PRODUCT save_product END,0.000,
-2026-08-13 23:36:11.021,226110550-101,REGISTER_PRODUCT post-save sleep START,,
-2026-08-13 23:36:11.022,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
-2026-08-13 23:36:11.023,226110550-101,REGISTER_PRODUCT wait product name poll START,,
-2026-08-13 23:36:11.025,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
-2026-08-13 23:36:11.026,226110550-101,STATE before-go-to-catalogue START,,
-2026-08-13 23:36:11.027,226110550-101,STATE before-go-to-catalogue END,0.000,{}
-2026-08-13 23:36:11.028,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
-2026-08-13 23:36:11.029,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
-2026-08-13 23:36:11.030,226110550-101,REGISTER_PRODUCT go_to_form START,,
-2026-08-13 23:36:11.032,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
-2026-08-13 23:36:11.033,226110550-101,REGISTER_PRODUCT wait new form product name START,,
-2026-08-13 23:36:11.034,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
-2026-08-13 23:36:11.035,226110550-101,REGISTER_PRODUCT END,,
-2026-08-13 23:36:11.040,,SAVE_PRODUCT START,,
-2026-08-13 23:36:11.041,,STATE before-pre-save-idle START,,
-2026-08-13 23:36:11.043,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:36:11.043,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:36:11.044,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:36:11.045,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:36:11.047,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:36:11.048,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:36:11.049,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.050,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:36:11.052,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:36:11.052,,SAVE_PRODUCT click save START,,
-2026-08-13 23:36:11.053,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:36:11.054,,STATE after-save-click START,,
-2026-08-13 23:36:11.055,,STATE after-save-click END,0.000,null
-2026-08-13 23:36:11.056,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:36:11.057,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.059,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:36:11.060,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:36:11.062,,RECOVER refresh START,,
-2026-08-13 23:36:11.063,,RECOVER refresh END,0.000,
-2026-08-13 23:36:11.064,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:36:11.065,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:36:11.066,,RECOVER wait idle after refresh START,,
-2026-08-13 23:36:11.067,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:36:11.068,,SAVE_PRODUCT END,,driver_timeout_recovered
-2026-08-13 23:36:11.069,,SAVE_PRODUCT START,,
-2026-08-13 23:36:11.070,,STATE before-pre-save-idle START,,
-2026-08-13 23:36:11.071,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:36:11.072,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:36:11.074,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:36:11.076,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:36:11.077,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:36:11.078,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:36:11.079,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.115,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:36:11.116,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:36:11.117,,SAVE_PRODUCT click save START,,
-2026-08-13 23:36:11.118,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:36:11.121,,STATE after-save-click START,,
-2026-08-13 23:36:11.122,,STATE after-save-click END,0.000,null
-2026-08-13 23:36:11.123,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:36:11.124,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.126,,SAVE_PRODUCT wait idle after click START,,
-2026-08-13 23:36:11.128,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
-2026-08-13 23:36:11.129,,STATE after-save-idle-timeout START,,
-2026-08-13 23:36:11.130,,STATE after-save-idle-timeout END,0.000,null
-2026-08-13 23:36:11.131,,DRAIN LOGS after-save-idle-timeout START,,
-2026-08-13 23:36:11.132,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.133,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:36:11.134,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:36:11.135,,RECOVER refresh START,,
-2026-08-13 23:36:11.136,,RECOVER refresh END,0.000,
-2026-08-13 23:36:11.137,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:36:11.138,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:36:11.139,,RECOVER wait idle after refresh START,,
-2026-08-13 23:36:11.141,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:36:11.143,,STATE save-product-end START,,
-2026-08-13 23:36:11.144,,STATE save-product-end END,0.000,null
-2026-08-13 23:36:11.146,,SAVE_PRODUCT END,,result=saved
-2026-08-13 23:37:41.603,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:37:41.604,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:37:41.605,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:37:41.606,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:37:41.609,226110550-101,REGISTER_PRODUCT save_product END,0.000,
-2026-08-13 23:37:41.611,226110550-101,REGISTER_PRODUCT post-save sleep START,,
-2026-08-13 23:37:41.612,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
-2026-08-13 23:37:41.613,226110550-101,REGISTER_PRODUCT wait product name poll START,,
-2026-08-13 23:37:41.615,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
-2026-08-13 23:37:41.616,226110550-101,STATE before-go-to-catalogue START,,
-2026-08-13 23:37:41.617,226110550-101,STATE before-go-to-catalogue END,0.000,{}
-2026-08-13 23:37:41.618,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
-2026-08-13 23:37:41.619,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
-2026-08-13 23:37:41.620,226110550-101,REGISTER_PRODUCT go_to_form START,,
-2026-08-13 23:37:41.621,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
-2026-08-13 23:37:41.623,226110550-101,REGISTER_PRODUCT wait new form product name START,,
-2026-08-13 23:37:41.624,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
-2026-08-13 23:37:41.626,226110550-101,REGISTER_PRODUCT END,,
-2026-08-13 23:37:41.630,,SAVE_PRODUCT START,,
-2026-08-13 23:37:41.631,,STATE before-pre-save-idle START,,
-2026-08-13 23:37:41.632,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:37:41.634,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:37:41.635,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:37:41.636,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:37:41.637,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:37:41.638,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:37:41.640,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.641,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:37:41.644,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:37:41.646,,SAVE_PRODUCT click save START,,
-2026-08-13 23:37:41.647,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:37:41.648,,STATE after-save-click START,,
-2026-08-13 23:37:41.649,,STATE after-save-click END,0.000,null
-2026-08-13 23:37:41.650,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:37:41.651,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.652,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:37:41.653,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:37:41.653,,RECOVER refresh START,,
-2026-08-13 23:37:41.655,,RECOVER refresh END,0.000,
-2026-08-13 23:37:41.656,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:37:41.659,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:37:41.661,,RECOVER wait idle after refresh START,,
-2026-08-13 23:37:41.662,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:37:41.663,,SAVE_PRODUCT END,,driver_timeout_recovered
-2026-08-13 23:37:41.665,,SAVE_PRODUCT START,,
-2026-08-13 23:37:41.666,,STATE before-pre-save-idle START,,
-2026-08-13 23:37:41.667,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:37:41.668,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:37:41.669,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:37:41.670,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:37:41.672,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:37:41.673,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:37:41.674,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.676,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:37:41.677,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:37:41.678,,SAVE_PRODUCT click save START,,
-2026-08-13 23:37:41.679,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:37:41.680,,STATE after-save-click START,,
-2026-08-13 23:37:41.682,,STATE after-save-click END,0.000,null
-2026-08-13 23:37:41.683,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:37:41.684,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.688,,SAVE_PRODUCT wait idle after click START,,
-2026-08-13 23:37:41.689,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
-2026-08-13 23:37:41.690,,STATE after-save-idle-timeout START,,
-2026-08-13 23:37:41.691,,STATE after-save-idle-timeout END,0.000,null
-2026-08-13 23:37:41.693,,DRAIN LOGS after-save-idle-timeout START,,
-2026-08-13 23:37:41.694,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.695,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:37:41.696,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:37:41.698,,RECOVER refresh START,,
-2026-08-13 23:37:41.699,,RECOVER refresh END,0.000,
-2026-08-13 23:37:41.700,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:37:41.701,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:37:41.702,,RECOVER wait idle after refresh START,,
-2026-08-13 23:37:41.703,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:37:41.704,,STATE save-product-end START,,
-2026-08-13 23:37:41.705,,STATE save-product-end END,0.000,null
-2026-08-13 23:37:41.706,,SAVE_PRODUCT END,,result=saved
-2026-08-13 23:40:54.787,226110550-101,REGISTER_PRODUCT START,,
-2026-08-13 23:40:54.788,226110550-101,REGISTER_PRODUCT fill_form START,,
-2026-08-13 23:40:54.789,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
-2026-08-13 23:40:54.790,226110550-101,REGISTER_PRODUCT save_product START,,
-2026-08-13 23:40:54.791,226110550-101,REGISTER_PRODUCT save_product END,0.000,
-2026-08-13 23:40:54.792,226110550-101,REGISTER_PRODUCT post-save sleep START,,
-2026-08-13 23:40:54.794,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
-2026-08-13 23:40:54.795,226110550-101,REGISTER_PRODUCT wait product name poll START,,
-2026-08-13 23:40:54.796,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
-2026-08-13 23:40:54.797,226110550-101,STATE before-go-to-catalogue START,,
-2026-08-13 23:40:54.798,226110550-101,STATE before-go-to-catalogue END,0.000,{}
-2026-08-13 23:40:54.799,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
-2026-08-13 23:40:54.800,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
-2026-08-13 23:40:54.801,226110550-101,REGISTER_PRODUCT go_to_form START,,
-2026-08-13 23:40:54.802,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
-2026-08-13 23:40:54.803,226110550-101,REGISTER_PRODUCT wait new form product name START,,
-2026-08-13 23:40:54.804,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
-2026-08-13 23:40:54.804,226110550-101,REGISTER_PRODUCT END,,
-2026-08-13 23:40:54.808,,SAVE_PRODUCT START,,
-2026-08-13 23:40:54.810,,STATE before-pre-save-idle START,,
-2026-08-13 23:40:54.811,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:40:54.812,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:40:54.813,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:40:54.815,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:40:54.815,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:40:54.816,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:40:54.817,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.818,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:40:54.819,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:40:54.820,,SAVE_PRODUCT click save START,,
-2026-08-13 23:40:54.821,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:40:54.821,,STATE after-save-click START,,
-2026-08-13 23:40:54.822,,STATE after-save-click END,0.000,null
-2026-08-13 23:40:54.823,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:40:54.824,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.825,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:40:54.827,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:40:54.828,,RECOVER refresh START,,
-2026-08-13 23:40:54.829,,RECOVER refresh END,0.000,
-2026-08-13 23:40:54.830,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:40:54.830,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:40:54.831,,RECOVER wait idle after refresh START,,
-2026-08-13 23:40:54.832,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:40:54.833,,SAVE_PRODUCT END,,driver_timeout_recovered
-2026-08-13 23:40:54.834,,SAVE_PRODUCT START,,
-2026-08-13 23:40:54.835,,STATE before-pre-save-idle START,,
-2026-08-13 23:40:54.836,,STATE before-pre-save-idle END,0.000,null
-2026-08-13 23:40:54.837,,SAVE_PRODUCT wait idle before click START,,
-2026-08-13 23:40:54.838,,SAVE_PRODUCT wait idle before click END,0.000,
-2026-08-13 23:40:54.839,,SAVE_PRODUCT original_url START,,
-2026-08-13 23:40:54.840,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:40:54.841,,DRAIN LOGS before-save-click START,,
-2026-08-13 23:40:54.843,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.844,,SAVE_PRODUCT find save button START,,
-2026-08-13 23:40:54.845,,SAVE_PRODUCT find save button END,0.000,
-2026-08-13 23:40:54.846,,SAVE_PRODUCT click save START,,
-2026-08-13 23:40:54.847,,SAVE_PRODUCT click save END,0.000,
-2026-08-13 23:40:54.848,,STATE after-save-click START,,
-2026-08-13 23:40:54.849,,STATE after-save-click END,0.000,null
-2026-08-13 23:40:54.850,,DRAIN LOGS after-save-click START,,
-2026-08-13 23:40:54.851,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.852,,SAVE_PRODUCT wait idle after click START,,
-2026-08-13 23:40:54.853,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
-2026-08-13 23:40:54.854,,STATE after-save-idle-timeout START,,
-2026-08-13 23:40:54.855,,STATE after-save-idle-timeout END,0.000,null
-2026-08-13 23:40:54.855,,DRAIN LOGS after-save-idle-timeout START,,
-2026-08-13 23:40:54.856,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.857,,STATE before-save-timeout-refresh START,,
-2026-08-13 23:40:54.858,,STATE before-save-timeout-refresh END,0.000,null
-2026-08-13 23:40:54.861,,RECOVER refresh START,,
-2026-08-13 23:40:54.862,,RECOVER refresh END,0.000,
-2026-08-13 23:40:54.862,,STATE after-save-timeout-refresh START,,
-2026-08-13 23:40:54.863,,STATE after-save-timeout-refresh END,0.000,null
-2026-08-13 23:40:54.864,,RECOVER wait idle after refresh START,,
-2026-08-13 23:40:54.865,,RECOVER wait idle after refresh END,0.000,
-2026-08-13 23:40:54.866,,STATE save-product-end START,,
-2026-08-13 23:40:54.867,,STATE save-product-end END,0.000,null
-2026-08-13 23:40:54.868,,SAVE_PRODUCT END,,result=saved
+timestamp,sku,stage,elapsed_seconds,details
+2026-08-19 01:32:53.979,PP2R00005A,REGISTER_PRODUCT START,,
+2026-08-19 01:32:53.986,PP2R00005A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:33:22.032,PP2R00005A,REGISTER_PRODUCT fill_form ERROR,28.045,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:33:24.559,PP2R00005B,REGISTER_PRODUCT START,,
+2026-08-19 01:33:24.559,PP2R00005B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:33:51.349,PP2R00005B,REGISTER_PRODUCT fill_form ERROR,26.788,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:33:53.683,PPUO00007A,REGISTER_PRODUCT START,,
+2026-08-19 01:33:53.684,PPUO00007A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:34:09.910,PPUO00007A,REGISTER_PRODUCT fill_form ERROR,16.225,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:34:11.911,PP2Q00001A,REGISTER_PRODUCT START,,
+2026-08-19 01:34:11.912,PP2Q00001A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:34:27.186,PP2Q00001A,REGISTER_PRODUCT fill_form ERROR,15.273,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:34:28.862,PP2Q00001D,REGISTER_PRODUCT START,,
+2026-08-19 01:34:28.862,PP2Q00001D,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:34:44.589,PP2Q00001D,REGISTER_PRODUCT fill_form ERROR,15.725,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:34:47.130,PP2Q00001C,REGISTER_PRODUCT START,,
+2026-08-19 01:34:47.132,PP2Q00001C,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:35:03.653,PP2Q00001C,REGISTER_PRODUCT fill_form ERROR,16.521,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:35:07.011,PP2Q00001B,REGISTER_PRODUCT START,,
+2026-08-19 01:35:07.012,PP2Q00001B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:35:24.500,PP2Q00001B,REGISTER_PRODUCT fill_form ERROR,17.487,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:35:26.969,PPXP10002A,REGISTER_PRODUCT START,,
+2026-08-19 01:35:26.971,PPXP10002A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:35:43.199,PPXP10002A,REGISTER_PRODUCT fill_form ERROR,16.227,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:35:45.042,PPXU10012B,REGISTER_PRODUCT START,,
+2026-08-19 01:35:45.043,PPXU10012B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:36:01.725,PPXU10012B,REGISTER_PRODUCT fill_form ERROR,16.681,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:36:03.852,PPXH10005D,REGISTER_PRODUCT START,,
+2026-08-19 01:36:03.853,PPXH10005D,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:36:20.216,PPXH10005D,REGISTER_PRODUCT fill_form ERROR,16.362,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:36:22.572,PPXU10004B,REGISTER_PRODUCT START,,
+2026-08-19 01:36:22.572,PPXU10004B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:36:37.017,PPXU10004B,REGISTER_PRODUCT fill_form ERROR,14.444,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:36:39.523,PPXP10011B,REGISTER_PRODUCT START,,
+2026-08-19 01:36:39.524,PPXP10011B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:36:55.264,PPXP10011B,REGISTER_PRODUCT fill_form ERROR,15.738,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:36:57.668,PPXQ10019A,REGISTER_PRODUCT START,,
+2026-08-19 01:36:57.668,PPXQ10019A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:01.549,PPXQ10019A,REGISTER_PRODUCT fill_form ERROR,3.880,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:03.835,PPXU10003B,REGISTER_PRODUCT START,,
+2026-08-19 01:37:03.836,PPXU10003B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:21.074,PPXU10003B,REGISTER_PRODUCT fill_form ERROR,17.238,TimeoutException: Message:  Stacktrace: 	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5] 	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210] 	chromedriver!(No symbol) [0x7ff63a4b5d6d] 	chromedriver!(No symbol) [0x7ff63a511289] 	chromedriver!(No symbol) [0x7ff63a51158c] 	chromedriver!(No symbol) [0x7ff63a562027] 	chromedriver!(No symbol) [0x7ff63a55ec0b] 	chromedriver!(No symbol) [0x7ff63a5037cc] 	chromedriver!(No symbol) [0x7ff63a5046f3] 	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b] 	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6] 	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee] 	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe] 	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c] 	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364] 	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4] 	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397] 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14] 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21] 
+2026-08-19 01:37:23.095,PPXQ10024B,REGISTER_PRODUCT START,,
+2026-08-19 01:37:23.096,PPXQ10024B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:26.819,PPXQ10024B,REGISTER_PRODUCT fill_form ERROR,3.722,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:28.843,PPXQ10005A,REGISTER_PRODUCT START,,
+2026-08-19 01:37:28.844,PPXQ10005A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:32.932,PPXQ10005A,REGISTER_PRODUCT fill_form ERROR,4.087,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:34.647,PPXQ10021C,REGISTER_PRODUCT START,,
+2026-08-19 01:37:34.649,PPXQ10021C,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:38.781,PPXQ10021C,REGISTER_PRODUCT fill_form ERROR,4.131,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:41.289,PPXQ10024E,REGISTER_PRODUCT START,,
+2026-08-19 01:37:41.290,PPXQ10024E,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:44.631,PPXQ10024E,REGISTER_PRODUCT fill_form ERROR,3.339,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:47.205,PPXQ10021B,REGISTER_PRODUCT START,,
+2026-08-19 01:37:47.206,PPXQ10021B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:50.116,PPXQ10021B,REGISTER_PRODUCT fill_form ERROR,2.910,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:52.577,PPXP10001A,REGISTER_PRODUCT START,,
+2026-08-19 01:37:52.578,PPXP10001A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:37:55.697,PPXP10001A,REGISTER_PRODUCT fill_form ERROR,3.119,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:37:57.716,PPXH30017B,REGISTER_PRODUCT START,,
+2026-08-19 01:37:57.716,PPXH30017B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:01.359,PPXH30017B,REGISTER_PRODUCT fill_form ERROR,3.641,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:03.982,PPXJ30027A,REGISTER_PRODUCT START,,
+2026-08-19 01:38:03.983,PPXJ30027A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:07.343,PPXJ30027A,REGISTER_PRODUCT fill_form ERROR,3.359,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:09.674,PPXH30032C,REGISTER_PRODUCT START,,
+2026-08-19 01:38:09.675,PPXH30032C,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:12.662,PPXH30032C,REGISTER_PRODUCT fill_form ERROR,2.987,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:14.983,PPXJ30036A,REGISTER_PRODUCT START,,
+2026-08-19 01:38:14.984,PPXJ30036A,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:18.281,PPXJ30036A,REGISTER_PRODUCT fill_form ERROR,3.296,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:20.829,PPXJ30052B,REGISTER_PRODUCT START,,
+2026-08-19 01:38:20.832,PPXJ30052B,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:25.519,PPXJ30052B,REGISTER_PRODUCT fill_form ERROR,4.686,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:27.951,PPXJ30058G,REGISTER_PRODUCT START,,
+2026-08-19 01:38:27.952,PPXJ30058G,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:31.500,PPXJ30058G,REGISTER_PRODUCT fill_form ERROR,3.547,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 01:38:33.387,PPXJ10004D,REGISTER_PRODUCT START,,
+2026-08-19 01:38:33.387,PPXJ10004D,REGISTER_PRODUCT fill_form START,,
+2026-08-19 01:38:36.985,PPXJ10004D,REGISTER_PRODUCT fill_form ERROR,3.597,"RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-08-19 22:50:49.993,226110550-101,REGISTER_PRODUCT START,,
+2026-08-19 22:50:49.994,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-19 22:50:49.995,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-19 22:50:49.996,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-19 22:50:49.997,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-19 22:50:49.998,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-19 22:50:49.999,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-19 22:50:49.000,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-19 22:50:50.001,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-19 22:50:50.002,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-19 22:50:50.003,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-19 22:50:50.004,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-19 22:50:50.005,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-19 22:50:50.006,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-19 22:50:50.009,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-19 22:50:50.010,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-19 22:50:50.011,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-19 22:50:50.011,226110550-101,REGISTER_PRODUCT END,,
+2026-08-19 22:50:51.901,,SAVE_PRODUCT START,,
+2026-08-19 22:50:51.902,,STATE before-pre-save-idle START,,
+2026-08-19 22:50:51.903,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 22:50:51.904,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 22:50:51.905,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 22:50:51.907,,SAVE_PRODUCT original_url START,,
+2026-08-19 22:50:51.909,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:50:51.910,,DRAIN LOGS before-save-click START,,
+2026-08-19 22:50:51.911,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:51.912,,SAVE_PRODUCT find save button START,,
+2026-08-19 22:50:51.913,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 22:50:51.914,,SAVE_PRODUCT click save START,,
+2026-08-19 22:50:51.915,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 22:50:51.916,,STATE after-save-click START,,
+2026-08-19 22:50:51.917,,STATE after-save-click END,0.000,null
+2026-08-19 22:50:51.917,,DRAIN LOGS after-save-click START,,
+2026-08-19 22:50:51.918,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:51.919,,STATE before-save-timeout-refresh START,,
+2026-08-19 22:50:51.920,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 22:50:51.921,,RECOVER refresh START,,
+2026-08-19 22:50:51.922,,RECOVER refresh END,0.000,
+2026-08-19 22:50:51.923,,STATE after-save-timeout-refresh START,,
+2026-08-19 22:50:51.925,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 22:50:51.926,,RECOVER wait idle after refresh START,,
+2026-08-19 22:50:51.927,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 22:50:51.928,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-19 22:50:51.929,,SAVE_PRODUCT START,,
+2026-08-19 22:50:51.931,,STATE before-pre-save-idle START,,
+2026-08-19 22:50:51.932,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 22:50:51.933,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 22:50:51.934,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 22:50:51.935,,SAVE_PRODUCT original_url START,,
+2026-08-19 22:50:51.936,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:50:51.936,,DRAIN LOGS before-save-click START,,
+2026-08-19 22:50:51.937,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:51.938,,SAVE_PRODUCT find save button START,,
+2026-08-19 22:50:51.939,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 22:50:51.940,,SAVE_PRODUCT click save START,,
+2026-08-19 22:50:51.943,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 22:50:51.944,,STATE after-save-click START,,
+2026-08-19 22:50:51.946,,STATE after-save-click END,0.000,null
+2026-08-19 22:50:51.947,,DRAIN LOGS after-save-click START,,
+2026-08-19 22:50:51.948,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:51.949,,SAVE_PRODUCT wait idle after click START,,
+2026-08-19 22:50:51.951,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-19 22:50:51.952,,STATE after-save-idle-timeout START,,
+2026-08-19 22:50:51.953,,STATE after-save-idle-timeout END,0.000,null
+2026-08-19 22:50:51.954,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-19 22:50:51.955,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:51.956,,STATE before-save-timeout-refresh START,,
+2026-08-19 22:50:51.957,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 22:50:51.959,,RECOVER refresh START,,
+2026-08-19 22:50:51.960,,RECOVER refresh END,0.000,
+2026-08-19 22:50:51.961,,STATE after-save-timeout-refresh START,,
+2026-08-19 22:50:51.962,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 22:50:51.963,,RECOVER wait idle after refresh START,,
+2026-08-19 22:50:51.964,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 22:50:51.965,,STATE save-product-end START,,
+2026-08-19 22:50:51.966,,STATE save-product-end END,0.000,null
+2026-08-19 22:50:51.967,,SAVE_PRODUCT END,,result=saved
+2026-08-19 22:51:04.829,226110550-101,REGISTER_PRODUCT START,,
+2026-08-19 22:51:04.831,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-19 22:51:04.832,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-19 22:51:04.835,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-19 22:51:04.837,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-19 22:51:04.840,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-19 22:51:04.846,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-19 22:51:04.847,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-19 22:51:04.848,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-19 22:51:04.849,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-19 22:51:04.851,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-19 22:51:04.852,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-19 22:51:04.853,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-19 22:51:04.867,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-19 22:51:04.894,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-19 22:51:04.896,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-19 22:51:04.900,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-19 22:51:04.905,226110550-101,REGISTER_PRODUCT END,,
+2026-08-19 22:51:04.944,,SAVE_PRODUCT START,,
+2026-08-19 22:51:04.946,,STATE before-pre-save-idle START,,
+2026-08-19 22:51:04.954,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 22:51:04.967,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 22:51:04.969,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 22:51:04.970,,SAVE_PRODUCT original_url START,,
+2026-08-19 22:51:04.971,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:51:04.972,,DRAIN LOGS before-save-click START,,
+2026-08-19 22:51:04.973,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:04.975,,SAVE_PRODUCT find save button START,,
+2026-08-19 22:51:04.976,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 22:51:04.977,,SAVE_PRODUCT click save START,,
+2026-08-19 22:51:04.978,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 22:51:04.982,,STATE after-save-click START,,
+2026-08-19 22:51:04.985,,STATE after-save-click END,0.000,null
+2026-08-19 22:51:04.986,,DRAIN LOGS after-save-click START,,
+2026-08-19 22:51:04.987,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:04.990,,STATE before-save-timeout-refresh START,,
+2026-08-19 22:51:04.993,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 22:51:04.997,,RECOVER refresh START,,
+2026-08-19 22:51:04.998,,RECOVER refresh END,0.000,
+2026-08-19 22:51:04.000,,STATE after-save-timeout-refresh START,,
+2026-08-19 22:51:05.002,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 22:51:05.004,,RECOVER wait idle after refresh START,,
+2026-08-19 22:51:05.005,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 22:51:05.009,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-19 22:51:05.013,,SAVE_PRODUCT START,,
+2026-08-19 22:51:05.016,,STATE before-pre-save-idle START,,
+2026-08-19 22:51:05.018,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 22:51:05.019,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 22:51:05.020,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 22:51:05.021,,SAVE_PRODUCT original_url START,,
+2026-08-19 22:51:05.022,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:51:05.023,,DRAIN LOGS before-save-click START,,
+2026-08-19 22:51:05.026,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:05.027,,SAVE_PRODUCT find save button START,,
+2026-08-19 22:51:05.028,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 22:51:05.029,,SAVE_PRODUCT click save START,,
+2026-08-19 22:51:05.030,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 22:51:05.031,,STATE after-save-click START,,
+2026-08-19 22:51:05.032,,STATE after-save-click END,0.000,null
+2026-08-19 22:51:05.033,,DRAIN LOGS after-save-click START,,
+2026-08-19 22:51:05.034,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:05.035,,SAVE_PRODUCT wait idle after click START,,
+2026-08-19 22:51:05.036,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-19 22:51:05.037,,STATE after-save-idle-timeout START,,
+2026-08-19 22:51:05.038,,STATE after-save-idle-timeout END,0.000,null
+2026-08-19 22:51:05.039,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-19 22:51:05.042,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:05.043,,STATE before-save-timeout-refresh START,,
+2026-08-19 22:51:05.044,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 22:51:05.045,,RECOVER refresh START,,
+2026-08-19 22:51:05.046,,RECOVER refresh END,0.000,
+2026-08-19 22:51:05.047,,STATE after-save-timeout-refresh START,,
+2026-08-19 22:51:05.048,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 22:51:05.049,,RECOVER wait idle after refresh START,,
+2026-08-19 22:51:05.050,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 22:51:05.051,,STATE save-product-end START,,
+2026-08-19 22:51:05.059,,STATE save-product-end END,0.000,null
+2026-08-19 22:51:05.061,,SAVE_PRODUCT END,,result=saved
+2026-08-19 23:06:41.800,226110550-101,REGISTER_PRODUCT START,,
+2026-08-19 23:06:41.801,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-19 23:06:41.802,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-19 23:06:41.803,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-19 23:06:41.804,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-19 23:06:41.805,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-19 23:06:41.806,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-19 23:06:41.806,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-19 23:06:41.807,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-19 23:06:41.808,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-19 23:06:41.809,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-19 23:06:41.811,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-19 23:06:41.812,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-19 23:06:41.813,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-19 23:06:41.814,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-19 23:06:41.814,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-19 23:06:41.815,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-19 23:06:41.816,226110550-101,REGISTER_PRODUCT END,,
+2026-08-19 23:06:42.730,,SAVE_PRODUCT START,,
+2026-08-19 23:06:42.730,,STATE before-pre-save-idle START,,
+2026-08-19 23:06:42.731,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:06:42.732,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:06:42.733,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:06:42.734,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:06:42.735,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:42.736,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:06:42.736,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.737,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:06:42.738,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:06:42.739,,SAVE_PRODUCT click save START,,
+2026-08-19 23:06:42.740,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:06:42.741,,STATE after-save-click START,,
+2026-08-19 23:06:42.741,,STATE after-save-click END,0.000,null
+2026-08-19 23:06:42.742,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:06:42.744,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.746,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:06:42.747,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:42.748,,RECOVER refresh START,,
+2026-08-19 23:06:42.748,,RECOVER refresh END,0.000,
+2026-08-19 23:06:42.749,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:06:42.750,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:42.751,,RECOVER wait idle after refresh START,,
+2026-08-19 23:06:42.752,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:06:42.753,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-19 23:06:42.755,,SAVE_PRODUCT START,,
+2026-08-19 23:06:42.756,,STATE before-pre-save-idle START,,
+2026-08-19 23:06:42.757,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:06:42.758,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:06:42.758,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:06:42.759,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:06:42.762,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:42.763,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:06:42.763,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.764,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:06:42.765,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:06:42.766,,SAVE_PRODUCT click save START,,
+2026-08-19 23:06:42.766,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:06:42.767,,STATE after-save-click START,,
+2026-08-19 23:06:42.768,,STATE after-save-click END,0.000,null
+2026-08-19 23:06:42.769,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:06:42.769,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.770,,SAVE_PRODUCT wait idle after click START,,
+2026-08-19 23:06:42.771,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-19 23:06:42.772,,STATE after-save-idle-timeout START,,
+2026-08-19 23:06:42.773,,STATE after-save-idle-timeout END,0.000,null
+2026-08-19 23:06:42.774,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-19 23:06:42.775,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.776,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:06:42.778,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:42.779,,RECOVER refresh START,,
+2026-08-19 23:06:42.780,,RECOVER refresh END,0.000,
+2026-08-19 23:06:42.781,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:06:42.782,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:42.782,,RECOVER wait idle after refresh START,,
+2026-08-19 23:06:42.783,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:06:42.784,,STATE save-product-end START,,
+2026-08-19 23:06:42.785,,STATE save-product-end END,0.000,null
+2026-08-19 23:06:42.785,,SAVE_PRODUCT END,,result=saved
+2026-08-19 23:06:52.614,226110550-101,REGISTER_PRODUCT START,,
+2026-08-19 23:06:52.615,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-19 23:06:52.616,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-19 23:06:52.617,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-19 23:06:52.619,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-19 23:06:52.619,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-19 23:06:52.620,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-19 23:06:52.621,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-19 23:06:52.622,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-19 23:06:52.623,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-19 23:06:52.624,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-19 23:06:52.625,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-19 23:06:52.625,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-19 23:06:52.627,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-19 23:06:52.629,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-19 23:06:52.630,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-19 23:06:52.631,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-19 23:06:52.632,226110550-101,REGISTER_PRODUCT END,,
+2026-08-19 23:06:52.635,,SAVE_PRODUCT START,,
+2026-08-19 23:06:52.635,,STATE before-pre-save-idle START,,
+2026-08-19 23:06:52.636,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:06:52.637,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:06:52.638,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:06:52.639,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:06:52.639,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:52.640,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:06:52.641,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.642,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:06:52.643,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:06:52.646,,SAVE_PRODUCT click save START,,
+2026-08-19 23:06:52.647,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:06:52.648,,STATE after-save-click START,,
+2026-08-19 23:06:52.648,,STATE after-save-click END,0.000,null
+2026-08-19 23:06:52.649,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:06:52.650,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.651,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:06:52.652,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:52.653,,RECOVER refresh START,,
+2026-08-19 23:06:52.654,,RECOVER refresh END,0.000,
+2026-08-19 23:06:52.655,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:06:52.656,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:52.657,,RECOVER wait idle after refresh START,,
+2026-08-19 23:06:52.657,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:06:52.658,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-19 23:06:52.660,,SAVE_PRODUCT START,,
+2026-08-19 23:06:52.662,,STATE before-pre-save-idle START,,
+2026-08-19 23:06:52.663,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:06:52.664,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:06:52.665,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:06:52.666,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:06:52.667,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:52.668,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:06:52.669,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.670,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:06:52.671,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:06:52.672,,SAVE_PRODUCT click save START,,
+2026-08-19 23:06:52.672,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:06:52.673,,STATE after-save-click START,,
+2026-08-19 23:06:52.674,,STATE after-save-click END,0.000,null
+2026-08-19 23:06:52.675,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:06:52.676,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.678,,SAVE_PRODUCT wait idle after click START,,
+2026-08-19 23:06:52.679,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-19 23:06:52.680,,STATE after-save-idle-timeout START,,
+2026-08-19 23:06:52.681,,STATE after-save-idle-timeout END,0.000,null
+2026-08-19 23:06:52.682,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-19 23:06:52.683,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.684,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:06:52.684,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:52.685,,RECOVER refresh START,,
+2026-08-19 23:06:52.686,,RECOVER refresh END,0.000,
+2026-08-19 23:06:52.687,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:06:52.688,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:06:52.688,,RECOVER wait idle after refresh START,,
+2026-08-19 23:06:52.689,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:06:52.690,,STATE save-product-end START,,
+2026-08-19 23:06:52.691,,STATE save-product-end END,0.000,null
+2026-08-19 23:06:52.692,,SAVE_PRODUCT END,,result=saved
+2026-08-19 23:08:03.501,226110550-101,REGISTER_PRODUCT START,,
+2026-08-19 23:08:03.502,226110550-101,REGISTER_PRODUCT fill_form START,,
+2026-08-19 23:08:03.503,226110550-101,REGISTER_PRODUCT fill_form END,0.000,
+2026-08-19 23:08:03.504,226110550-101,REGISTER_PRODUCT save_product START,,
+2026-08-19 23:08:03.505,226110550-101,REGISTER_PRODUCT save_product END,0.000,
+2026-08-19 23:08:03.506,226110550-101,REGISTER_PRODUCT post-save sleep START,,
+2026-08-19 23:08:03.506,226110550-101,REGISTER_PRODUCT post-save sleep END,10.000,
+2026-08-19 23:08:03.507,226110550-101,REGISTER_PRODUCT wait product name poll START,,
+2026-08-19 23:08:03.508,226110550-101,REGISTER_PRODUCT wait product name END,0.001,
+2026-08-19 23:08:03.509,226110550-101,STATE before-go-to-catalogue START,,
+2026-08-19 23:08:03.511,226110550-101,STATE before-go-to-catalogue END,0.000,{}
+2026-08-19 23:08:03.513,226110550-101,REGISTER_PRODUCT go_to_product_catalogue START,,
+2026-08-19 23:08:03.514,226110550-101,REGISTER_PRODUCT go_to_product_catalogue END,0.000,
+2026-08-19 23:08:03.515,226110550-101,REGISTER_PRODUCT go_to_form START,,
+2026-08-19 23:08:03.516,226110550-101,REGISTER_PRODUCT go_to_form END,0.000,
+2026-08-19 23:08:03.517,226110550-101,REGISTER_PRODUCT wait new form product name START,,
+2026-08-19 23:08:03.518,226110550-101,REGISTER_PRODUCT wait new form product name END,0.000,
+2026-08-19 23:08:03.518,226110550-101,REGISTER_PRODUCT END,,
+2026-08-19 23:08:03.521,,SAVE_PRODUCT START,,
+2026-08-19 23:08:03.522,,STATE before-pre-save-idle START,,
+2026-08-19 23:08:03.523,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:08:03.524,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:08:03.524,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:08:03.525,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:08:03.526,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:08:03.528,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:08:03.529,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.530,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:08:03.531,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:08:03.532,,SAVE_PRODUCT click save START,,
+2026-08-19 23:08:03.532,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:08:03.533,,STATE after-save-click START,,
+2026-08-19 23:08:03.534,,STATE after-save-click END,0.000,null
+2026-08-19 23:08:03.535,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:08:03.536,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.536,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:08:03.537,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:08:03.538,,RECOVER refresh START,,
+2026-08-19 23:08:03.539,,RECOVER refresh END,0.000,
+2026-08-19 23:08:03.539,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:08:03.540,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:08:03.541,,RECOVER wait idle after refresh START,,
+2026-08-19 23:08:03.542,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:08:03.543,,SAVE_PRODUCT END,,driver_timeout_recovered
+2026-08-19 23:08:03.546,,SAVE_PRODUCT START,,
+2026-08-19 23:08:03.547,,STATE before-pre-save-idle START,,
+2026-08-19 23:08:03.547,,STATE before-pre-save-idle END,0.000,null
+2026-08-19 23:08:03.548,,SAVE_PRODUCT wait idle before click START,,
+2026-08-19 23:08:03.549,,SAVE_PRODUCT wait idle before click END,0.000,
+2026-08-19 23:08:03.550,,SAVE_PRODUCT original_url START,,
+2026-08-19 23:08:03.551,,SAVE_PRODUCT original_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:08:03.551,,DRAIN LOGS before-save-click START,,
+2026-08-19 23:08:03.552,,DRAIN LOGS before-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.553,,SAVE_PRODUCT find save button START,,
+2026-08-19 23:08:03.554,,SAVE_PRODUCT find save button END,0.000,
+2026-08-19 23:08:03.555,,SAVE_PRODUCT click save START,,
+2026-08-19 23:08:03.555,,SAVE_PRODUCT click save END,0.000,
+2026-08-19 23:08:03.556,,STATE after-save-click START,,
+2026-08-19 23:08:03.557,,STATE after-save-click END,0.000,null
+2026-08-19 23:08:03.558,,DRAIN LOGS after-save-click START,,
+2026-08-19 23:08:03.559,,DRAIN LOGS after-save-click END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.559,,SAVE_PRODUCT wait idle after click START,,
+2026-08-19 23:08:03.563,,SAVE_PRODUCT wait idle after click ERROR,0.000,TimeoutException: Message: loader stayed visible 
+2026-08-19 23:08:03.563,,STATE after-save-idle-timeout START,,
+2026-08-19 23:08:03.564,,STATE after-save-idle-timeout END,0.000,null
+2026-08-19 23:08:03.565,,DRAIN LOGS after-save-idle-timeout START,,
+2026-08-19 23:08:03.566,,DRAIN LOGS after-save-idle-timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.567,,STATE before-save-timeout-refresh START,,
+2026-08-19 23:08:03.568,,STATE before-save-timeout-refresh END,0.000,null
+2026-08-19 23:08:03.568,,RECOVER refresh START,,
+2026-08-19 23:08:03.569,,RECOVER refresh END,0.000,
+2026-08-19 23:08:03.570,,STATE after-save-timeout-refresh START,,
+2026-08-19 23:08:03.571,,STATE after-save-timeout-refresh END,0.000,null
+2026-08-19 23:08:03.572,,RECOVER wait idle after refresh START,,
+2026-08-19 23:08:03.572,,RECOVER wait idle after refresh END,0.000,
+2026-08-19 23:08:03.573,,STATE save-product-end START,,
+2026-08-19 23:08:03.574,,STATE save-product-end END,0.000,null
+2026-08-19 23:08:03.575,,SAVE_PRODUCT END,,result=saved

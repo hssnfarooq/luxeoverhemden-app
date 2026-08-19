@@ -1,112 +1,87 @@
-2026-08-13 23:32:58.765,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:32:58.766,,SAVE_RESULT current_url START,,
-2026-08-13 23:32:58.767,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:32:58.768,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:32:58.768,,SAVE_RESULT wait END,0.002,result=saved
-2026-08-13 23:32:58.769,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:32:58.770,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:32:58.771,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:32:58.772,,SAVE_RESULT current_url START,,
-2026-08-13 23:32:58.773,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:32:58.774,,SAVE_RESULT error_messages START,,
-2026-08-13 23:32:58.775,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:32:58.776,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:32:58.777,,SAVE_RESULT wait END,0.005,result=driver_timeout
-2026-08-13 23:32:58.778,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:32:58.779,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:34:48.297,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:34:48.298,,SAVE_RESULT current_url START,,
-2026-08-13 23:34:48.299,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:34:48.300,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:34:48.300,,SAVE_RESULT wait END,0.002,result=saved
-2026-08-13 23:34:48.301,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:34:48.302,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:34:48.303,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:34:48.303,,SAVE_RESULT current_url START,,
-2026-08-13 23:34:48.304,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:34:48.305,,SAVE_RESULT error_messages START,,
-2026-08-13 23:34:48.305,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:34:48.306,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:34:48.307,,SAVE_RESULT wait END,0.004,result=driver_timeout
-2026-08-13 23:34:48.308,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:34:48.310,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:01.797,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:01.798,,SAVE_RESULT current_url START,,
-2026-08-13 23:35:01.799,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:35:01.800,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:35:01.801,,SAVE_RESULT wait END,0.002,result=saved
-2026-08-13 23:35:01.801,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:35:01.802,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:01.803,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:01.804,,SAVE_RESULT current_url START,,
-2026-08-13 23:35:01.805,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:01.805,,SAVE_RESULT error_messages START,,
-2026-08-13 23:35:01.806,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:35:01.806,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:35:01.807,,SAVE_RESULT wait END,0.003,result=driver_timeout
-2026-08-13 23:35:01.809,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:35:01.810,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:38.994,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:38.995,,SAVE_RESULT current_url START,,
-2026-08-13 23:35:38.996,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:35:38.997,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:35:38.998,,SAVE_RESULT wait END,0.003,result=saved
-2026-08-13 23:35:38.999,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:35:38.000,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:35:39.001,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:39.002,,SAVE_RESULT current_url START,,
-2026-08-13 23:35:39.003,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:35:39.004,,SAVE_RESULT error_messages START,,
-2026-08-13 23:35:39.005,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:35:39.006,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:35:39.007,,SAVE_RESULT wait END,0.005,result=driver_timeout
-2026-08-13 23:35:39.009,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:35:39.011,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.183,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:36:11.184,,SAVE_RESULT current_url START,,
-2026-08-13 23:36:11.185,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:36:11.186,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:36:11.187,,SAVE_RESULT wait END,0.003,result=saved
-2026-08-13 23:36:11.188,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:36:11.188,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:36:11.190,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:36:11.190,,SAVE_RESULT current_url START,,
-2026-08-13 23:36:11.191,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:36:11.193,,SAVE_RESULT error_messages START,,
-2026-08-13 23:36:11.193,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:36:11.194,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:36:11.195,,SAVE_RESULT wait END,0.005,result=driver_timeout
-2026-08-13 23:36:11.196,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:36:11.197,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.746,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:37:41.747,,SAVE_RESULT current_url START,,
-2026-08-13 23:37:41.748,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:37:41.749,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:37:41.750,,SAVE_RESULT wait END,0.003,result=saved
-2026-08-13 23:37:41.751,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:37:41.752,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:37:41.753,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:37:41.754,,SAVE_RESULT current_url START,,
-2026-08-13 23:37:41.755,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:37:41.756,,SAVE_RESULT error_messages START,,
-2026-08-13 23:37:41.757,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:37:41.757,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:37:41.760,,SAVE_RESULT wait END,0.004,result=driver_timeout
-2026-08-13 23:37:41.761,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:37:41.762,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.908,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:40:54.910,,SAVE_RESULT current_url START,,
-2026-08-13 23:40:54.911,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:40:54.912,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
-2026-08-13 23:40:54.913,,SAVE_RESULT wait END,0.003,result=saved
-2026-08-13 23:40:54.914,,DRAIN LOGS save-result-saved START,,
-2026-08-13 23:40:54.915,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
-2026-08-13 23:40:54.916,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:40:54.917,,SAVE_RESULT current_url START,,
-2026-08-13 23:40:54.918,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
-2026-08-13 23:40:54.919,,SAVE_RESULT error_messages START,,
-2026-08-13 23:40:54.919,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
-2026-08-13 23:40:54.920,,SAVE_RESULT driver_timeout,,
-2026-08-13 23:40:54.921,,SAVE_RESULT wait END,0.005,result=driver_timeout
-2026-08-13 23:40:54.922,,DRAIN LOGS save-result-driver_timeout START,,
-2026-08-13 23:40:54.923,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+timestamp,sku,stage,elapsed_seconds,details
+2026-08-19 15:12:33.110,001620-705,REGISTER_PRODUCT START,,
+2026-08-19 15:12:33.111,001620-705,REGISTER_PRODUCT fill_form START,,
+2026-08-19 15:14:24.928,001620-705,REGISTER_PRODUCT fill_form ERROR,111.816,"Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56"
+2026-08-19 15:14:27.833,001489-115,REGISTER_PRODUCT START,,
+2026-08-19 15:14:27.834,001489-115,REGISTER_PRODUCT fill_form START,,
+2026-08-19 15:16:34.576,001489-115,REGISTER_PRODUCT fill_form ERROR,126.741,"Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56"
+2026-08-19 22:50:52.013,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:50:52.014,,SAVE_RESULT current_url START,,
+2026-08-19 22:50:52.014,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 22:50:52.015,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 22:50:52.016,,SAVE_RESULT wait END,0.002,result=saved
+2026-08-19 22:50:52.017,,DRAIN LOGS save-result-saved START,,
+2026-08-19 22:50:52.018,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:50:52.019,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:50:52.020,,SAVE_RESULT current_url START,,
+2026-08-19 22:50:52.021,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:50:52.022,,SAVE_RESULT error_messages START,,
+2026-08-19 22:50:52.022,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-08-19 22:50:52.023,,SAVE_RESULT driver_timeout,,
+2026-08-19 22:50:52.026,,SAVE_RESULT wait END,0.004,result=driver_timeout
+2026-08-19 22:50:52.027,,DRAIN LOGS save-result-driver_timeout START,,
+2026-08-19 22:50:52.028,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:05.107,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:51:05.109,,SAVE_RESULT current_url START,,
+2026-08-19 22:51:05.110,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 22:51:05.111,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 22:51:05.112,,SAVE_RESULT wait END,0.003,result=saved
+2026-08-19 22:51:05.113,,DRAIN LOGS save-result-saved START,,
+2026-08-19 22:51:05.114,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 22:51:05.115,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:51:05.116,,SAVE_RESULT current_url START,,
+2026-08-19 22:51:05.117,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 22:51:05.118,,SAVE_RESULT error_messages START,,
+2026-08-19 22:51:05.118,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-08-19 22:51:05.119,,SAVE_RESULT driver_timeout,,
+2026-08-19 22:51:05.120,,SAVE_RESULT wait END,0.004,result=driver_timeout
+2026-08-19 22:51:05.121,,DRAIN LOGS save-result-driver_timeout START,,
+2026-08-19 22:51:05.122,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.820,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:42.820,,SAVE_RESULT current_url START,,
+2026-08-19 23:06:42.821,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:06:42.822,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:06:42.822,,SAVE_RESULT wait END,0.002,result=saved
+2026-08-19 23:06:42.823,,DRAIN LOGS save-result-saved START,,
+2026-08-19 23:06:42.824,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:42.824,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:42.825,,SAVE_RESULT current_url START,,
+2026-08-19 23:06:42.825,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:42.826,,SAVE_RESULT error_messages START,,
+2026-08-19 23:06:42.828,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-08-19 23:06:42.829,,SAVE_RESULT driver_timeout,,
+2026-08-19 23:06:42.830,,SAVE_RESULT wait END,0.005,result=driver_timeout
+2026-08-19 23:06:42.831,,DRAIN LOGS save-result-driver_timeout START,,
+2026-08-19 23:06:42.831,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.738,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:52.739,,SAVE_RESULT current_url START,,
+2026-08-19 23:06:52.740,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:06:52.740,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:06:52.741,,SAVE_RESULT wait END,0.002,result=saved
+2026-08-19 23:06:52.742,,DRAIN LOGS save-result-saved START,,
+2026-08-19 23:06:52.743,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:06:52.745,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:52.746,,SAVE_RESULT current_url START,,
+2026-08-19 23:06:52.747,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:06:52.747,,SAVE_RESULT error_messages START,,
+2026-08-19 23:06:52.748,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-08-19 23:06:52.749,,SAVE_RESULT driver_timeout,,
+2026-08-19 23:06:52.749,,SAVE_RESULT wait END,0.003,result=driver_timeout
+2026-08-19 23:06:52.750,,DRAIN LOGS save-result-driver_timeout START,,
+2026-08-19 23:06:52.750,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.613,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:08:03.614,,SAVE_RESULT current_url START,,
+2026-08-19 23:08:03.614,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:08:03.615,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-08-19 23:08:03.616,,SAVE_RESULT wait END,0.002,result=saved
+2026-08-19 23:08:03.616,,DRAIN LOGS save-result-saved START,,
+2026-08-19 23:08:03.617,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-08-19 23:08:03.618,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:08:03.618,,SAVE_RESULT current_url START,,
+2026-08-19 23:08:03.619,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-08-19 23:08:03.620,,SAVE_RESULT error_messages START,,
+2026-08-19 23:08:03.620,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-08-19 23:08:03.621,,SAVE_RESULT driver_timeout,,
+2026-08-19 23:08:03.621,,SAVE_RESULT wait END,0.003,result=driver_timeout
+2026-08-19 23:08:03.622,,DRAIN LOGS save-result-driver_timeout START,,
+2026-08-19 23:08:03.623,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'

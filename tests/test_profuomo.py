@@ -4,9 +4,14 @@ from pathlib import Path
 from unittest.mock import patch
 
 from automations.profuomo import ProfuomoScraper
+from automations.supplier_profile import PROFUOMO_PROFILE
+from config import BASE_DIR
 
 
 class ProfuomoScraperSafetyTests(unittest.TestCase):
+    def test_profuomo_stock_and_upload_share_root_input_file(self):
+        self.assertEqual(PROFUOMO_PROFILE.input_csv_path, Path(BASE_DIR) / "input.csv")
+
     def test_image_url_rejects_a_different_explicit_color_variant(self):
         self.assertFalse(
             ProfuomoScraper._image_url_matches_target(

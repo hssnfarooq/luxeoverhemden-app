@@ -1,8 +1,8 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-08-06 18:34:40
-CSV Path: C:\robot\Casamoda\products\venti_evening.csv
+Timestamp: 2026-08-19 15:10:49
+CSV Path: C:\robot\Casamoda\products\venti_modern_fit.csv
 Supplier: casamoda_venti
 Test Mode: False
 Total Products: 2
@@ -11,46 +11,46 @@ Translation Mappings Loaded: 394
 
 
 ============================================================
-PROCESSING PRODUCT: 002340-002
+PROCESSING PRODUCT: 001620-705
 ============================================================
-Product data: {'sku': '002340-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "18", "39": "22", "40": "31", "41": "23", "42": "51", "43": "40", "44": "49", "45": "29", "46": "29", "47": "37", "48": "15", "49": "29", "50": "9", "52": "28", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/f/fdc8476064a3cb98cb3bb6c09d8b37c6.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/aff6a10dc827412fa8e78d73a0ed3c2c.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/2/2298499d82e2a61d8e1bacf9fb2be887.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/8/80cd2d69077ac664bd1eda32e2092ac6.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
+Product data: {'sku': '001620-705', 'Productnaam': 'Venti zilver popeline', 'name': 'Businesshemd Kurzarm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1620, 'farbnummer': 705, 'color': 'Zilver', 'color_name': 'silber', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Kurzarm', 'cuff': 'SINGLE CUFF', 'sizes': "['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56']", 'rrp': 49.99, 'variant_prices': '{"34": "49.99", "35": "49.99", "36": "49.99", "37": "49.99", "38": "49.99", "39": "49.99", "40": "49.99", "41": "49.99", "42": "49.99", "43": "49.99", "44": "49.99", "45": "49.99", "46": "49.99", "47": "59.99", "48": "59.99", "49": "59.99", "50": "59.99", "51": "59.99", "52": "59.99", "53": "59.99", "54": "59.99", "55": "59.99", "56": "59.99"}', 'purchase_prices': '{"34": "19.25", "35": "19.25", "36": "19.25", "37": "19.25", "38": "19.25", "39": "19.25", "40": "19.25", "41": "19.25", "42": "19.25", "43": "19.25", "44": "19.25", "45": "19.25", "46": "19.25", "47": "21.20", "48": "21.20", "49": "23.10", "50": "23.10", "51": "23.10", "52": "23.10", "53": "23.10", "54": "23.10", "55": "23.10", "56": "23.10"}', 'variant_stocks': '{"34": "0", "35": "5", "36": "7", "37": "24", "38": "17", "39": "22", "40": "64", "41": "1", "42": "65", "43": "0", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0", "49": "0", "50": "0", "51": "0", "52": "0", "53": "0", "54": "0", "55": "0", "56": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/448/126', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/3/38ce43e8463f13f97c8855158b267ba0.jpg?auto=format"]', 'image_count': 1, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
+Productnaam: Venti zilver popeline
 Category: shirts
-Starting register_product for 002340-002
+Starting register_product for 001620-705
 
---- FILL_FORM for SKU: 002340-002 ---
+--- FILL_FORM for SKU: 001620-705 ---
 
---- FETCH_DATA for SKU: 002340-002 ---
-Product data: {'sku': '002340-002', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 2, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "18", "39": "22", "40": "31", "41": "23", "42": "51", "43": "40", "44": "49", "45": "29", "46": "29", "47": "37", "48": "15", "49": "29", "50": "9", "52": "28", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/15', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/f/fdc8476064a3cb98cb3bb6c09d8b37c6.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/aff6a10dc827412fa8e78d73a0ed3c2c.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/2/2298499d82e2a61d8e1bacf9fb2be887.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/8/80cd2d69077ac664bd1eda32e2092ac6.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
+--- FETCH_DATA for SKU: 001620-705 ---
+Product data: {'sku': '001620-705', 'Productnaam': 'Venti zilver popeline', 'name': 'Businesshemd Kurzarm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1620, 'farbnummer': 705, 'color': 'Zilver', 'color_name': 'silber', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Kurzarm', 'cuff': 'SINGLE CUFF', 'sizes': "['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56']", 'rrp': 49.99, 'variant_prices': '{"34": "49.99", "35": "49.99", "36": "49.99", "37": "49.99", "38": "49.99", "39": "49.99", "40": "49.99", "41": "49.99", "42": "49.99", "43": "49.99", "44": "49.99", "45": "49.99", "46": "49.99", "47": "59.99", "48": "59.99", "49": "59.99", "50": "59.99", "51": "59.99", "52": "59.99", "53": "59.99", "54": "59.99", "55": "59.99", "56": "59.99"}', 'purchase_prices': '{"34": "19.25", "35": "19.25", "36": "19.25", "37": "19.25", "38": "19.25", "39": "19.25", "40": "19.25", "41": "19.25", "42": "19.25", "43": "19.25", "44": "19.25", "45": "19.25", "46": "19.25", "47": "21.20", "48": "21.20", "49": "23.10", "50": "23.10", "51": "23.10", "52": "23.10", "53": "23.10", "54": "23.10", "55": "23.10", "56": "23.10"}', 'variant_stocks': '{"34": "0", "35": "5", "36": "7", "37": "24", "38": "17", "39": "22", "40": "64", "41": "1", "42": "65", "43": "0", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0", "49": "0", "50": "0", "51": "0", "52": "0", "53": "0", "54": "0", "55": "0", "56": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/448/126', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/3/38ce43e8463f13f97c8855158b267ba0.jpg?auto=format"]', 'image_count': 1, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
 Category: shirts
 Available translation mappings: 394
   Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
+    Original value: Venti zilver popeline
+    format_key called: field='name:product[name]', key='Venti zilver popeline', category='shirts'
+    format_key result: 'Venti zilver popeline'
+    format_key result: Venti zilver popeline
+    Added to data: Venti zilver popeline -> ('name', 'product[name]')
   Processing field: name:product[sku] for key: sku
-    Original value: 002340-002
-    format_key called: field='name:product[sku]', key='002340-002', category='shirts'
-    format_key result: '002340-002'
-    format_key result: 002340-002
-    Added to data: 002340-002 -> ('name', 'product[sku]')
+    Original value: 001620-705
+    format_key called: field='name:product[sku]', key='001620-705', category='shirts'
+    format_key result: '001620-705'
+    format_key result: 001620-705
+    Added to data: 001620-705 -> ('name', 'product[sku]')
   Skipping ean: not in product or is nan/empty
   Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
+    Original value: 49.99
+    format_key called: field='name:product[price]', key='49.99', category='shirts'
+    format_key result: '49.99'
+    format_key result: 49.99
+    Added to data: 49.99 -> ('name', 'product[price]')
   Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Comfort Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Original value: Modern Fit
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
     Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key result: Comfort fit
-    Added to data: Comfort fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key result: Modern fit
+    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
   Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
     Original value: SINGLE CUFF
     format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
@@ -107,11 +107,11 @@ Available translation mappings: 394
     format_key result: Effen
     Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
   Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
+    Original value: Zilver
+    format_key called: field='label:Kleuren', key='Zilver', category='shirts'
+    format_key result: 'Zilver'
+    format_key result: Zilver
+    Added to data: Zilver -> ('LABEL_SELECT', 'Kleuren')
   Processing field: name:product[kraag]=option:data-title;dutch for key: collar
     Original value: Kent-Kragen
     format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
@@ -126,26 +126,26 @@ Available translation mappings: 394
     format_key result: Kent
     Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
   Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
+    Original value: Kurzarm
+    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Kurzarm', category='shirts'
     Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
+      get_mapped_key called: 'Kurzarm'
+      Looking for key.lower(): 'kurzarm'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '002340-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Comfort fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+      Translation result: 'Korte mouw'
+      SUCCESS: 'Kurzarm' -> 'Korte mouw'
+    Dutch translation: 'Kurzarm' -> 'Korte mouw'
+    format_key result: 'Korte mouw'
+    format_key result: Korte mouw
+    Added to data: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+  Final data dict: {'Venti zilver popeline': ('name', 'product[name]'), '001620-705': ('name', 'product[sku]'), '49.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Zilver': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
   Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '002340-002': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Comfort fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+Data to fill: {'Venti zilver popeline': ('name', 'product[name]'), '001620-705': ('name', 'product[sku]'), '49.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Zilver': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Korte mouw': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
 Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 002340-002 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Comfort fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+  Filling field: Venti zilver popeline -> ('name', 'product[name]')
+  Filling field: 001620-705 -> ('name', 'product[sku]')
+  Filling field: 49.99 -> ('name', 'product[price]')
+  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
       get_mapped_key called: 'shirts'
       Looking for key.lower(): 'shirts'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
@@ -155,83 +155,104 @@ Number of fields to fill: 11
   Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
   Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
   Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
+  Filling field: Zilver -> ('LABEL_SELECT', 'Kleuren')
   Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+  Filling field: Korte mouw -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
       get_mapped_key called: 'shirts'
       Looking for key.lower(): 'shirts'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Overhemden'
       SUCCESS: 'shirts' -> 'Overhemden'
-Updating variant prices for 002340-002: {'38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99', '49': '69.99', '50': '69.99', '52': '69.99', '54': '69.99'}
-Set size 38 price to 59.99
-Set size 39 price to 59.99
-Set size 40 price to 59.99
-Set size 41 price to 59.99
-Set size 42 price to 59.99
-Set size 43 price to 59.99
-Set size 44 price to 59.99
-Set size 45 price to 59.99
-Set size 46 price to 59.99
-Set size 47 price to 64.99
-Set size 48 price to 64.99
-Set size 49 price to 69.99
-Set size 50 price to 69.99
-Set size 52 price to 69.99
-Set size 54 price to 69.99
-ERROR: Product 002340-002 failed with exception: 
-Exception type: RuntimeError
+      Maattabel selected without viewport click: 'Venti modern fit overhemden' (368)
+Updating variant prices for 001620-705: {'34': '49.99', '35': '49.99', '36': '49.99', '37': '49.99', '38': '49.99', '39': '49.99', '40': '49.99', '41': '49.99', '42': '49.99', '43': '49.99', '44': '49.99', '45': '49.99', '46': '49.99', '47': '59.99', '48': '59.99', '49': '59.99', '50': '59.99', '51': '59.99', '52': '59.99', '53': '59.99', '54': '59.99', '55': '59.99', '56': '59.99'}
+Could not find generated variant rows for expected sizes. Rows seen: 46. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
+ERROR: Product 001620-705 failed with exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+Exception type: Exception
 Traceback:
 Traceback (most recent call last):
-  File "automations\magento.py", line 2447, in register_products
+  File "automations\magento.py", line 1843, in update_variant_prices
+    row_matches = WebDriverWait(driver, 60).until(
+        lambda current_driver: cls.ready_variant_row_matches(
+    ...<2 lines>...
+        )
+    )
+  File "selenium\webdriver\support\wait.py", line 121, in until
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "automations\magento.py", line 3000, in register_products
     cls.register_product(driver, product)
     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2149, in register_product
-    raise RuntimeError
-RuntimeError
+  File "automations\magento.py", line 2691, in register_product
+    cls.timed_save_call(
+    ~~~~~~~~~~~~~~~~~~~^
+        "REGISTER_PRODUCT fill_form",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: cls.fill_form(driver, product),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        sku=sku,
+        ^^^^^^^^
+    )
+    ^
+  File "automations\magento.py", line 431, in timed_save_call
+    result = callback()
+  File "automations\magento.py", line 2693, in <lambda>
+    lambda: cls.fill_form(driver, product),
+            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 2609, in fill_form
+    cls.update_variant_prices(driver, product)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 1863, in update_variant_prices
+    raise Exception(
+    ...<2 lines>...
+    ) from ex
+Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
 
 
 ============================================================
-PROCESSING PRODUCT: 002340-000
+PROCESSING PRODUCT: 001489-115
 ============================================================
-Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "46", "44": "119", "45": "103", "46": "153", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
-Productnaam: Venti wit popeline
+Product data: {'sku': '001489-115', 'Productnaam': 'Venti blauw popeline', 'name': 'Businesshemd extra langer Arm 69cm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1489, 'farbnummer': 115, 'color': 'Blauw', 'color_name': 'blau', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Nicht relevant', 'design': 'gemustert', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Extra lang 69cm', 'cuff': 'SINGLE CUFF', 'sizes': "['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56']", 'rrp': 64.99, 'variant_prices': '{"34": "64.99", "35": "64.99", "36": "64.99", "37": "64.99", "38": "64.99", "39": "64.99", "40": "64.99", "41": "64.99", "42": "64.99", "43": "64.99", "44": "64.99", "45": "64.99", "46": "64.99", "47": "74.99", "48": "74.99", "49": "79.99", "50": "79.99", "51": "79.99", "52": "79.99", "53": "79.99", "54": "79.99", "55": "79.99", "56": "79.99"}', 'purchase_prices': '{"34": "25.00", "35": "25.00", "36": "25.00", "37": "25.00", "38": "25.00", "39": "25.00", "40": "25.00", "41": "25.00", "42": "25.00", "43": "25.00", "44": "25.00", "45": "25.00", "46": "25.00", "47": "27.50", "48": "27.50", "49": "30.00", "50": "30.00", "51": "30.00", "52": "30.00", "53": "30.00", "54": "30.00", "55": "30.00", "56": "30.00"}', 'variant_stocks': '{"34": "0", "35": "0", "36": "0", "37": "0", "38": "0", "39": "12", "40": "0", "41": "5", "42": "0", "43": "14", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0", "49": "0", "50": "0", "51": "0", "52": "0", "53": "0", "54": "0", "55": "0", "56": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/447/121', 'source_description': 'Das Businesshemd extra langer Arm sorgt mit seinem modernen Look und der schlanken Passform für einen stilvollen Auftritt im Berufsalltag und bei festlichen Anlässen. Durch die Popeline-Webart erhalten Sie ein fein gewebtes, glattes Hemd, das sich besonders angenehm auf der Haut anfühlt und durch den leichten Glanz einen dezenten, eleganten Akzent setzt. Gefertigt aus reiner Baumwolle bietet dieses Hemd eine hervorragende Atmungsaktivität sowie den ganzen Tag über einen optimalen Tragekomfort. Der extra lange Arm gewährleistet Ihnen auch bei längeren Armen einen perfekten Sitz, ohne Kompromisse bei Stil oder Tragegefühl. Ob unter einem Sakko, mit einem Businessanzug oder zu einer eleganten Stoffhose – dieses Hemd lässt sich vielseitig kombinieren und unterstützt Sie verlässlich in jeder Geschäftssituation oder zu offiziellen Events. Die moderne, schlanke Passform betont eine gepflegte Silhouette und erfüllt damit die Ansprüche an ein hochwertiges Business-Outfit.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/3/38edad17b5a710ebfb20cf13e4433c06.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/0/014525ccf570f377515b3316eed6d5d0.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/f/f497188023e74357f52f94a2ce6f909e.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/c/c07d5d5283dc8d01854804dbfc0990f0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
+Productnaam: Venti blauw popeline
 Category: shirts
-Starting register_product for 002340-000
+Starting register_product for 001489-115
 
---- FILL_FORM for SKU: 002340-000 ---
+--- FILL_FORM for SKU: 001489-115 ---
 
---- FETCH_DATA for SKU: 002340-000 ---
-Product data: {'sku': '002340-000', 'Productnaam': 'Venti wit popeline', 'name': 'Businesshemd', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 2340, 'farbnummer': 0, 'color': 'Wit', 'color_name': 'weiss', 'color_missing': False, 'fit': 'Comfort Fit', 'collar': 'Kent-Kragen', 'design': 'Uni', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Langarm', 'cuff': 'SINGLE CUFF', 'sizes': "['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '52', '54']", 'rrp': 59.99, 'variant_prices': '{"38": "59.99", "39": "59.99", "40": "59.99", "41": "59.99", "42": "59.99", "43": "59.99", "44": "59.99", "45": "59.99", "46": "59.99", "47": "64.99", "48": "64.99", "49": "69.99", "50": "69.99", "52": "69.99", "54": "69.99"}', 'purchase_prices': '{"38": "23.10", "39": "23.10", "40": "23.10", "41": "23.10", "42": "23.10", "43": "23.10", "44": "23.10", "45": "23.10", "46": "23.10", "47": "25.45", "48": "25.45", "49": "27.75", "50": "27.75", "52": "27.75", "54": "27.75"}', 'variant_stocks': '{"38": "16", "39": "19", "40": "41", "41": "32", "42": "74", "43": "46", "44": "119", "45": "103", "46": "153", "47": "151", "48": "134", "49": "129", "50": "57", "52": "50", "54": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/7429/50', 'source_description': nan, 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202602/c/c2283df06b834984da03094b6cedb56a.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/a/a099f266c3020e38316f9a9821942410.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/7/72628f1a840e2aef7f46a6a052ecb4cb.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202602/b/ba6f296210efa88805c0f98cc0d5e6f7.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_evening', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti-evening', 'magento_ready': True, 'blocked_reason': nan}
+--- FETCH_DATA for SKU: 001489-115 ---
+Product data: {'sku': '001489-115', 'Productnaam': 'Venti blauw popeline', 'name': 'Businesshemd extra langer Arm 69cm', 'supplier': 'casamoda', 'brand': 'VENTI', 'category': 'shirts', 'article_number': 1489, 'farbnummer': 115, 'color': 'Blauw', 'color_name': 'blau', 'color_missing': False, 'fit': 'Modern Fit', 'collar': 'Nicht relevant', 'design': 'gemustert', 'quality': 'Popeline', 'fabriccomp': '100 % Baumwolle', 'sleeve': 'Extra lang 69cm', 'cuff': 'SINGLE CUFF', 'sizes': "['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56']", 'rrp': 64.99, 'variant_prices': '{"34": "64.99", "35": "64.99", "36": "64.99", "37": "64.99", "38": "64.99", "39": "64.99", "40": "64.99", "41": "64.99", "42": "64.99", "43": "64.99", "44": "64.99", "45": "64.99", "46": "64.99", "47": "74.99", "48": "74.99", "49": "79.99", "50": "79.99", "51": "79.99", "52": "79.99", "53": "79.99", "54": "79.99", "55": "79.99", "56": "79.99"}', 'purchase_prices': '{"34": "25.00", "35": "25.00", "36": "25.00", "37": "25.00", "38": "25.00", "39": "25.00", "40": "25.00", "41": "25.00", "42": "25.00", "43": "25.00", "44": "25.00", "45": "25.00", "46": "25.00", "47": "27.50", "48": "27.50", "49": "30.00", "50": "30.00", "51": "30.00", "52": "30.00", "53": "30.00", "54": "30.00", "55": "30.00", "56": "30.00"}', 'variant_stocks': '{"34": "0", "35": "0", "36": "0", "37": "0", "38": "0", "39": "12", "40": "0", "41": "5", "42": "0", "43": "14", "44": "0", "45": "0", "46": "0", "47": "0", "48": "0", "49": "0", "50": "0", "51": "0", "52": "0", "53": "0", "54": "0", "55": "0", "56": "0"}', 'source_url': 'https://b2b.casamoda.com/de/de/article/447/121', 'source_description': 'Das Businesshemd extra langer Arm sorgt mit seinem modernen Look und der schlanken Passform für einen stilvollen Auftritt im Berufsalltag und bei festlichen Anlässen. Durch die Popeline-Webart erhalten Sie ein fein gewebtes, glattes Hemd, das sich besonders angenehm auf der Haut anfühlt und durch den leichten Glanz einen dezenten, eleganten Akzent setzt. Gefertigt aus reiner Baumwolle bietet dieses Hemd eine hervorragende Atmungsaktivität sowie den ganzen Tag über einen optimalen Tragekomfort. Der extra lange Arm gewährleistet Ihnen auch bei längeren Armen einen perfekten Sitz, ohne Kompromisse bei Stil oder Tragegefühl. Ob unter einem Sakko, mit einem Businessanzug oder zu einer eleganten Stoffhose – dieses Hemd lässt sich vielseitig kombinieren und unterstützt Sie verlässlich in jeder Geschäftssituation oder zu offiziellen Events. Die moderne, schlanke Passform betont eine gepflegte Silhouette und erfüllt damit die Ansprüche an ein hochwertiges Business-Outfit.', 'image_urls': '["https://casamoda-b2b-production.imgix.net/articles/202309/3/38edad17b5a710ebfb20cf13e4433c06.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/0/014525ccf570f377515b3316eed6d5d0.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/f/f497188023e74357f52f94a2ce6f909e.jpg?auto=format", "https://casamoda-b2b-production.imgix.net/articles/202309/c/c07d5d5283dc8d01854804dbfc0990f0.jpg?auto=format"]', 'image_count': 4, 'has_images': True, 'source_category_slug': 'venti_modern_fit', 'source_category_url': 'https://b2b.casamoda.com/de/de/article_collection/product-list-venti--modern-fit', 'magento_ready': True, 'blocked_reason': nan}
 Category: shirts
 Available translation mappings: 394
   Processing field: name:product[name] for key: Productnaam
-    Original value: Venti wit popeline
-    format_key called: field='name:product[name]', key='Venti wit popeline', category='shirts'
-    format_key result: 'Venti wit popeline'
-    format_key result: Venti wit popeline
-    Added to data: Venti wit popeline -> ('name', 'product[name]')
+    Original value: Venti blauw popeline
+    format_key called: field='name:product[name]', key='Venti blauw popeline', category='shirts'
+    format_key result: 'Venti blauw popeline'
+    format_key result: Venti blauw popeline
+    Added to data: Venti blauw popeline -> ('name', 'product[name]')
   Processing field: name:product[sku] for key: sku
-    Original value: 002340-000
-    format_key called: field='name:product[sku]', key='002340-000', category='shirts'
-    format_key result: '002340-000'
-    format_key result: 002340-000
-    Added to data: 002340-000 -> ('name', 'product[sku]')
+    Original value: 001489-115
+    format_key called: field='name:product[sku]', key='001489-115', category='shirts'
+    format_key result: '001489-115'
+    format_key result: 001489-115
+    Added to data: 001489-115 -> ('name', 'product[sku]')
   Skipping ean: not in product or is nan/empty
   Processing field: name:product[price] for key: rrp
-    Original value: 59.99
-    format_key called: field='name:product[price]', key='59.99', category='shirts'
-    format_key result: '59.99'
-    format_key result: 59.99
-    Added to data: 59.99 -> ('name', 'product[price]')
+    Original value: 64.99
+    format_key called: field='name:product[price]', key='64.99', category='shirts'
+    format_key result: '64.99'
+    format_key result: 64.99
+    Added to data: 64.99 -> ('name', 'product[price]')
   Processing field: name:product[model]=option:data-title;capitalize for key: fit
-    Original value: Comfort Fit
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
+    Original value: Modern Fit
+    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
     Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key result: Comfort fit
-    Added to data: Comfort fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+    After capitalize: 'Modern fit'
+    format_key result: 'Modern fit'
+    format_key result: Modern fit
+    Added to data: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
   Processing field: name:product[manchet]=option:data-title;dutch for key: cuff
     Original value: SINGLE CUFF
     format_key called: field='name:product[manchet]=option:data-title;dutch', key='SINGLE CUFF', category='shirts'
@@ -275,58 +296,58 @@ Available translation mappings: 394
     Added to data: 100% katoen -> ('xpath', "//option[@data-title='{}']")
   Skipping sustainability: not in product or is nan/empty
   Processing field: option:data-title;dutch for key: design
-    Original value: Uni
-    format_key called: field='option:data-title;dutch', key='Uni', category='shirts'
+    Original value: gemustert
+    format_key called: field='option:data-title;dutch', key='gemustert', category='shirts'
     Applying formatting: 'dutch'
-      get_mapped_key called: 'Uni'
-      Looking for key.lower(): 'uni'
+      get_mapped_key called: 'gemustert'
+      Looking for key.lower(): 'gemustert'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Effen'
-      SUCCESS: 'Uni' -> 'Effen'
-    Dutch translation: 'Uni' -> 'Effen'
-    format_key result: 'Effen'
-    format_key result: Effen
-    Added to data: Effen -> ('xpath', "//option[@data-title='{}']")
+      Translation result: 'Patroon print'
+      SUCCESS: 'gemustert' -> 'Patroon print'
+    Dutch translation: 'gemustert' -> 'Patroon print'
+    format_key result: 'Patroon print'
+    format_key result: Patroon print
+    Added to data: Patroon print -> ('xpath', "//option[@data-title='{}']")
   Processing field: label:Kleuren for key: color
-    Original value: Wit
-    format_key called: field='label:Kleuren', key='Wit', category='shirts'
-    format_key result: 'Wit'
-    format_key result: Wit
-    Added to data: Wit -> ('LABEL_SELECT', 'Kleuren')
+    Original value: Blauw
+    format_key called: field='label:Kleuren', key='Blauw', category='shirts'
+    format_key result: 'Blauw'
+    format_key result: Blauw
+    Added to data: Blauw -> ('LABEL_SELECT', 'Kleuren')
   Processing field: name:product[kraag]=option:data-title;dutch for key: collar
-    Original value: Kent-Kragen
-    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Kent-Kragen', category='shirts'
+    Original value: Nicht relevant
+    format_key called: field='name:product[kraag]=option:data-title;dutch', key='Nicht relevant', category='shirts'
     Applying formatting: 'dutch'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
+      get_mapped_key called: 'Nicht relevant'
+      Looking for key.lower(): 'nicht relevant'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-    Dutch translation: 'Kent-Kragen' -> 'Kent'
-    format_key result: 'Kent'
-    format_key result: Kent
-    Added to data: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
+      Translation result: 'Niet relevant'
+      SUCCESS: 'Nicht relevant' -> 'Niet relevant'
+    Dutch translation: 'Nicht relevant' -> 'Niet relevant'
+    format_key result: 'Niet relevant'
+    format_key result: Niet relevant
+    Added to data: Niet relevant -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
   Processing field: name:product[mouwen]=option:data-title;dutch for key: sleeve
-    Original value: Langarm
-    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Langarm', category='shirts'
+    Original value: Extra lang 69cm
+    format_key called: field='name:product[mouwen]=option:data-title;dutch', key='Extra lang 69cm', category='shirts'
     Applying formatting: 'dutch'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
+      get_mapped_key called: 'Extra lang 69cm'
+      Looking for key.lower(): 'extra lang 69cm'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-    Dutch translation: 'Langarm' -> 'Lange mouw (normaal)'
-    format_key result: 'Lange mouw (normaal)'
-    format_key result: Lange mouw (normaal)
-    Added to data: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
-  Final data dict: {'Venti wit popeline': ('name', 'product[name]'), '002340-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Comfort fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+      Translation result: 'Extra lange mouw 69 cm'
+      SUCCESS: 'Extra lang 69cm' -> 'Extra lange mouw 69 cm'
+    Dutch translation: 'Extra lang 69cm' -> 'Extra lange mouw 69 cm'
+    format_key result: 'Extra lange mouw 69 cm'
+    format_key result: Extra lange mouw 69 cm
+    Added to data: Extra lange mouw 69 cm -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+  Final data dict: {'Venti blauw popeline': ('name', 'product[name]'), '001489-115': ('name', 'product[sku]'), '64.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Patroon print': ('xpath', "//option[@data-title='{}']"), 'Blauw': ('LABEL_SELECT', 'Kleuren'), 'Niet relevant': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Extra lange mouw 69 cm': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
   Data entries: 11
-Data to fill: {'Venti wit popeline': ('name', 'product[name]'), '002340-000': ('name', 'product[sku]'), '59.99': ('name', 'product[price]'), 'Comfort fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Effen': ('xpath', "//option[@data-title='{}']"), 'Wit': ('LABEL_SELECT', 'Kleuren'), 'Kent': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Lange mouw (normaal)': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
+Data to fill: {'Venti blauw popeline': ('name', 'product[name]'), '001489-115': ('name', 'product[sku]'), '64.99': ('name', 'product[price]'), 'Modern fit': ('CLICKABLE', 'name:product[model]=option:data-title'), 'Enkel manchet': ('CLICKABLE', 'name:product[manchet]=option:data-title'), 'Poplin': ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']"), '100% katoen': ('xpath', "//option[@data-title='{}']"), 'Patroon print': ('xpath', "//option[@data-title='{}']"), 'Blauw': ('LABEL_SELECT', 'Kleuren'), 'Niet relevant': ('CLICKABLE', 'name:product[kraag]=option:data-title'), 'Extra lange mouw 69 cm': ('CLICKABLE', 'name:product[mouwen]=option:data-title')}
 Number of fields to fill: 11
-  Filling field: Venti wit popeline -> ('name', 'product[name]')
-  Filling field: 002340-000 -> ('name', 'product[sku]')
-  Filling field: 59.99 -> ('name', 'product[price]')
-  Filling field: Comfort fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
+  Filling field: Venti blauw popeline -> ('name', 'product[name]')
+  Filling field: 001489-115 -> ('name', 'product[sku]')
+  Filling field: 64.99 -> ('name', 'product[price]')
+  Filling field: Modern fit -> ('CLICKABLE', 'name:product[model]=option:data-title')
       get_mapped_key called: 'shirts'
       Looking for key.lower(): 'shirts'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
@@ -335,134 +356,63 @@ Number of fields to fill: 11
   Filling field: Enkel manchet -> ('CLICKABLE', 'name:product[manchet]=option:data-title')
   Filling field: Poplin -> ('xpath', "//select[@name='product[materiaal]']//option[@data-title='{}']")
   Filling field: 100% katoen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Effen -> ('xpath', "//option[@data-title='{}']")
-  Filling field: Wit -> ('LABEL_SELECT', 'Kleuren')
-  Filling field: Kent -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
-  Filling field: Lange mouw (normaal) -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
+  Filling field: Patroon print -> ('xpath', "//option[@data-title='{}']")
+  Filling field: Blauw -> ('LABEL_SELECT', 'Kleuren')
+  Filling field: Niet relevant -> ('CLICKABLE', 'name:product[kraag]=option:data-title')
+  Filling field: Extra lange mouw 69 cm -> ('CLICKABLE', 'name:product[mouwen]=option:data-title')
       get_mapped_key called: 'shirts'
       Looking for key.lower(): 'shirts'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
       Translation result: 'Overhemden'
       SUCCESS: 'shirts' -> 'Overhemden'
-Updating variant prices for 002340-000: {'38': '59.99', '39': '59.99', '40': '59.99', '41': '59.99', '42': '59.99', '43': '59.99', '44': '59.99', '45': '59.99', '46': '59.99', '47': '64.99', '48': '64.99', '49': '69.99', '50': '69.99', '52': '69.99', '54': '69.99'}
-Set size 38 price to 59.99
-Set size 39 price to 59.99
-Set size 40 price to 59.99
-Set size 41 price to 59.99
-Set size 42 price to 59.99
-Set size 43 price to 59.99
-Set size 44 price to 59.99
-Set size 45 price to 59.99
-Set size 46 price to 59.99
-Set size 47 price to 64.99
-Set size 48 price to 64.99
-Set size 49 price to 69.99
-Set size 50 price to 69.99
-Set size 52 price to 69.99
-Set size 54 price to 69.99
-SUCCESS: Product 002340-000 registered successfully
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
+      Maattabel selected without viewport click: 'Venti modern fit overhemden extra lange mouwen 69 cm' (400)
+Updating variant prices for 001489-115: {'34': '64.99', '35': '64.99', '36': '64.99', '37': '64.99', '38': '64.99', '39': '64.99', '40': '64.99', '41': '64.99', '42': '64.99', '43': '64.99', '44': '64.99', '45': '64.99', '46': '64.99', '47': '74.99', '48': '74.99', '49': '79.99', '50': '79.99', '51': '79.99', '52': '79.99', '53': '79.99', '54': '79.99', '55': '79.99', '56': '79.99'}
+Could not find generated variant rows for expected sizes. Rows seen: 46. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
+ERROR: Product 001489-115 failed with exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+Exception type: Exception
+Traceback:
+Traceback (most recent call last):
+  File "automations\magento.py", line 1843, in update_variant_prices
+    row_matches = WebDriverWait(driver, 60).until(
+        lambda current_driver: cls.ready_variant_row_matches(
+    ...<2 lines>...
+        )
+    )
+  File "selenium\webdriver\support\wait.py", line 121, in until
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "automations\magento.py", line 3000, in register_products
+    cls.register_product(driver, product)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 2691, in register_product
+    cls.timed_save_call(
+    ~~~~~~~~~~~~~~~~~~~^
+        "REGISTER_PRODUCT fill_form",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: cls.fill_form(driver, product),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        sku=sku,
+        ^^^^^^^^
+    )
+    ^
+  File "automations\magento.py", line 431, in timed_save_call
+    result = callback()
+  File "automations\magento.py", line 2693, in <lambda>
+    lambda: cls.fill_form(driver, product),
+            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 2609, in fill_form
+    cls.update_variant_prices(driver, product)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 1863, in update_variant_prices
+    raise Exception(
+    ...<2 lines>...
+    ) from ex
+Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+
       get_mapped_key called: 'Kent-Kragen'
       Looking for key.lower(): 'kent-kragen'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
