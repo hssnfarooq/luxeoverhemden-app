@@ -4,20 +4,20 @@ import pandas as pd
 from automations.profuomo import ProfuomoScraper
 
 URLS = [
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Shirts?5",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Overshirts?7",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Wedding?9",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Knitwear?11",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Outerwear?13",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Jackets?15",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Polos?17",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Trousers?19",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Shoes?21",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/T-shirts?23",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Ties?25",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Belts?27",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Accessories?29",
-    "https://b2b.profuomo.com/webstore/v2/products/Micro_Fashion_04/Winter%20accessories?31",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Shirts",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Overshirts",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Wedding%2FFestive",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Knitwear",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Outerwear",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Jackets",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Polos",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Trousers",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Shoes",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=T-shirts",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Ties",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Belts",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Accessories",
+    "https://b2b.profuomo.com/categories/Micro_Fashion_04?categoryCodeForLevel1=Winter%20accessories",
 ]
 
 

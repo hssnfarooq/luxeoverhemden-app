@@ -30,7 +30,9 @@ from automations.template_service import TemplateService
 
 
 class Profuomo(BaseScraper):
-    LOGIN_URL = "https://b2b.profuomo.com/webstore/v2/login"
+    LOGIN_URL = "https://b2b.profuomo.com/"
+    CATALOGUE_URL = "https://b2b.profuomo.com/categories/Micro_Fashion_04"
+    REORDER_COLLECTION_NAME = "Profuomo AW26 - Re-order"
     SKU_REGEX = re.compile(r"\b(PP[A-Z0-9]{5,})\b", re.IGNORECASE)
     SIZE_REGEX = re.compile(r"^(?:\d{2,3}[A-Z]?|XS|S|M|L|XL|XXL|XXXL)$")
     NO_RESULTS_TOKENS: tuple[str, ...] = (
@@ -369,6 +371,57 @@ class Profuomo(BaseScraper):
         return any(token in body_text for token in cls.NO_RESULTS_TOKENS)
 
     @classmethod
+    def _open_reorder_catalogue(cls, driver: webdriver.Chrome) -> bool:
+        dropdown = cls._find_first(
+            driver,
+            ((By.CSS_SELECTOR, ".header-collection-dropdown button"),),
+            timeout=8,
+            clickable=True,
+        )
+        if dropdown is None:
+            raise Exception("Could not locate the Profuomo collection selector")
+        try:
+            driver.execute_script("arguments[0].click();", dropdown)
+        except Exception:
+            dropdown.click()
+
+        collection = cls._find_first(
+            driver,
+            (
+                (
+                    By.XPATH,
+                    "//div[contains(@class,'header-collection-dropdown')]"
+                    f"//li[.//span[normalize-space(.)='{cls.REORDER_COLLECTION_NAME}']]",
+                ),
+            ),
+            timeout=5,
+            clickable=True,
+        )
+        if collection is None:
+            raise Exception(
+                f"Could not select Profuomo collection: {cls.REORDER_COLLECTION_NAME}"
+            )
+        try:
+            driver.execute_script("arguments[0].click();", collection)
+        except Exception:
+            collection.click()
+
+        driver.get(cls.CATALOGUE_URL)
+        search_input = cls._find_first(
+            driver,
+            (
+                (By.ID, "productSearch"),
+                (By.NAME, "productSearch"),
+                (By.CSS_SELECTOR, "input#productSearch"),
+                (By.CSS_SELECTOR, "input[name='productSearch']"),
+            ),
+            timeout=12,
+        )
+        if search_input is None:
+            raise Exception("Profuomo catalogue opened without a product search field")
+        return True
+
+    @classmethod
     def profuomo_login(cls, driver: webdriver.Chrome):
         driver.get(cls.LOGIN_URL)
         cls.random_wait()
@@ -397,17 +450,15 @@ class Profuomo(BaseScraper):
         for _ in range(40):
             cls.random_wait()
             if cls._page_has_authenticated_hint(driver):
-                return
-            if not cls._page_has_login_form(driver):
+                cls._open_reorder_catalogue(driver)
                 return
 
-        if cls._page_has_login_form(driver):
-            cls._capture_debug_artifacts(driver, "login_failed")
-            raise Exception("Profuomo login failed or login page layout changed")
+        cls._capture_debug_artifacts(driver, "login_failed")
+        raise Exception("Profuomo login did not reach an authenticated page")
 
 
 class ProfuomoDownloader(Profuomo):
-    PRODUCTS_URL = "https://b2b.profuomo.com/products/Micro_Fashion_04"
+    PRODUCTS_URL = Profuomo.CATALOGUE_URL
     STOCK_ROW_SELECTORS: tuple[tuple[str, str], ...] = (
         (By.CSS_SELECTOR, ".a4f-ordergrid-orderline"),
         (By.CSS_SELECTOR, "[class*='ordergrid'][class*='orderline']"),
@@ -1937,7 +1988,9 @@ class ProfuomoScraper(Profuomo):
             if key.startswith("categoryCodeForLevel") or key == "category":
                 return True
         path = parsed.path.lower().rstrip("/")
-        return path.endswith("/products/micro_fashion_04")
+        return path.endswith(
+            ("/categories/micro_fashion_04", "/products/micro_fashion_04")
+        )
 
     @classmethod
     def _open_product_card(cls, driver: webdriver.Chrome, sku: str) -> bool:
