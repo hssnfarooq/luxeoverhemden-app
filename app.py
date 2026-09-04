@@ -214,6 +214,13 @@ def profuomo(headless=False):
     return ProfuomoDownloader.download_profuomo(headless)
 
 
+def run_profuomo_workflow(headless=True):
+    stock_status = profuomo(headless=headless)
+    if stock_status.get("error") or stock_status.get("message") != "Finished":
+        return stock_status
+    return upload(False, True, headless=headless)
+
+
 @eel.expose
 def profuomo_scraper(url: str):
     return ProfuomoScraper.scrape_profuomo(url)
@@ -318,8 +325,7 @@ if __name__ == "__main__":
                 merge()
                 upload(True, False, headless=True)
             case "profuomo":
-                profuomo(headless=True)
-                upload(False, True, headless=True)
+                run_profuomo_workflow(headless=True)
             case "autoimport":
                 autoimport()
             case "venti_scrape":

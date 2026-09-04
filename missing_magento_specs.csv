@@ -1,45 +1,17 @@
 timestamp,sku,field,source_value,mapped_value,target,reason
-2026-08-19 01:32:54,PP2R00005A,sustainability,Vegetable tanned,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:33:11,PP2R00005A,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+2026-09-04 12:42:06,PPXQ10021B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-08-19 01:33:24,PP2R00005B,sustainability,Vegetable tanned,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:33:40,PP2R00005B,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+2026-09-04 12:42:36,PPXQ10024E,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-08-19 01:34:11,PP2Q00001A,sustainability,Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:34:28,PP2Q00001D,sustainability,Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:34:47,PP2Q00001C,sustainability,Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:35:07,PP2Q00001B,sustainability,Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:35:27,PPXP10002A,fabriccomp,40% Cotton / 35% Viscose / 15% Wool / 10% Linen,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:35:27,PPXP10002A,sustainability,Guaranteed fixed buttons | Italian fabric,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:35:45,PPXU10012B,sustainability,Garment dye | Guaranteed fixed buttons | Cotton,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:36:03,PPXH10005D,sustainability,50% OCS Cotton | Cutaway | Guaranteed fixed buttons,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:36:22,PPXU10004B,fabriccomp,72% Polyester / 28% Elastane,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:36:22,PPXU10004B,sustainability,Stretch | Water repellent | Windproof,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:36:39,PPXP10011B,collar,Lapel collar,,name:product[kraag]=option:data-title;dutch,missing translation mapping
-2026-08-19 01:36:57,PPXQ10019A,sustainability,Italian fabric | Guaranteed fixed buttons | Garment dye | Cotton,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:01,PPXQ10019A,name,Profuomo off white loose fit broek,Profuomo off white loose fit broek,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:03,PPXU10003B,fabriccomp,72% Polyester / 28% Elastane,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:03,PPXU10003B,sustainability,Stretch | Water repellent | Windproof,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:03,PPXU10003B,sleeve,Sleeveless,,name:product[mouwen]=option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:23,PPXQ10024B,sustainability,Cotton | Garment dye | Guaranteed fixed buttons,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:26,PPXQ10024B,name,Profuomo beige antique dye loose fit broek,Profuomo beige antique dye loose fit broek,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:28,PPXQ10005A,fabriccomp,45% Cotton / 36% Linen / 19% Lyocell,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:28,PPXQ10005A,sustainability,Italian fabric | Garment dye | Guaranteed fixed buttons,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:32,PPXQ10005A,name,Profuomo bruine katoen lyocell chino,Profuomo bruine katoen lyocell chino,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:34,PPXQ10021C,sustainability,European fabric | Elastane | Guaranteed fixed buttons | Cotton linen blend,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:38,PPXQ10021C,name,Profuomo beige linnen katoen loose fit broek,Profuomo beige linnen katoen loose fit broek,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:41,PPXQ10024E,sustainability,Cotton | Garment dye | Guaranteed fixed buttons,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:44,PPXQ10024E,name,Profuomo navy antique dye loose fit broek,Profuomo navy antique dye loose fit broek,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:47,PPXQ10021B,sustainability,European fabric | Elastane | Guaranteed fixed buttons | Cotton linen blend,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:50,PPXQ10021B,name,Profuomo navy linnen katoen loose fit broek,Profuomo navy linnen katoen loose fit broek,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:37:52,PPXP10001A,sustainability,Guaranteed fixed buttons | Italian fabric,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:37:55,PPXP10001A,name,Profuomo navy hopsack colbert,Profuomo navy hopsack colbert,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:01,PPXH30017B,name,Profuomo,Profuomo,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:07,PPXJ30027A,name,Profuomo navy merino rollneck,Profuomo navy merino rollneck,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:12,PPXH30032C,name,Profuomo bruin corduroy overhemd,Profuomo bruin corduroy overhemd,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:14,PPXJ30036A,fabriccomp,58% Cotton / 24% Modal / 10% Polyamide / 5% Wool / 3% Elastane,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:38:15,PPXJ30036A,sustainability,Guaranteed fixed buttons,,option:data-title;dutch,missing translation mapping
-2026-08-19 01:38:18,PPXJ30036A,name,Profuomo grey polo collar,Profuomo grey polo collar,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:25,PPXJ30052B,name,Profuomo bruine soft wollen crewneck,Profuomo bruine soft wollen crewneck,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:31,PPXJ30058G,name,Profuomo beige heavy wollen half zip,Profuomo beige heavy wollen half zip,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
-2026-08-19 01:38:36,PPXJ10004D,name,Profuomo navy crewneck,Profuomo navy crewneck,"('name', 'product[name]')","RateLimitError: Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}"
+2026-09-04 12:43:06,PPXQ10021C,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+"
+2026-09-04 12:43:55,PPXQ10024B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+"
+2026-09-04 12:44:08,PPXU10003B,sleeve,Sleeveless,,name:product[mouwen]=option:data-title;dutch,missing translation mapping
+2026-09-04 12:44:43,PPXQ10019A,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+"
+2026-09-04 12:44:56,PPXP10011B,collar,Lapel collar,,name:product[kraag]=option:data-title;dutch,missing translation mapping
+2026-09-04 12:48:21,PP2R00005B,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+"
+2026-09-04 12:48:51,PP2R00005A,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+"

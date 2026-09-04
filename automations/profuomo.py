@@ -5,6 +5,7 @@ import json
 import os
 import re
 import time
+import traceback
 from pathlib import Path
 from typing import Any, Generator
 from urllib.parse import parse_qs, urlparse, urljoin
@@ -63,6 +64,14 @@ class Profuomo(BaseScraper):
         os.getenv("PROFUOMO_ORDER_GRID_EXTRACTION_WAIT_INTERVAL_SECONDS", "0.2")
     )
     STOCK_BROWSER_RESTART_INTERVAL = 60
+    STOCK_SESSION_RETRY_COUNT = int(os.getenv("PROFUOMO_STOCK_SESSION_RETRY_COUNT", "4"))
+    STOCK_SESSION_RETRY_DELAY_SECONDS = float(
+        os.getenv("PROFUOMO_STOCK_SESSION_RETRY_DELAY_SECONDS", "5")
+    )
+    STOCK_OUTPUT_PATH = Path("profuomo_products.csv")
+    STOCK_PARTIAL_PATH = Path("profuomo_products.partial.csv")
+    STOCK_CHECKPOINT_PATH = Path("profuomo_stock_checkpoint.json")
+    STOCK_LOG_PATH = Path("profuomo_stock.log")
     STOCK_PAGE_LOAD_TIMEOUT_SECONDS = int(
         os.getenv("PROFUOMO_STOCK_PAGELOAD_TIMEOUT_SECONDS", "45")
     )
@@ -499,6 +508,101 @@ class ProfuomoDownloader(Profuomo):
             file.write("ArtikelNr,Size,Quantity\n")
             for product in products:
                 file.write(f"{product['id']},{product['size']},{product['stock']}\n")
+
+    @classmethod
+    def _stock_log(cls, message: str) -> None:
+        timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+        try:
+            cls.STOCK_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+            with cls.STOCK_LOG_PATH.open("a", encoding="utf-8") as file:
+                file.write(f"[{timestamp}] {message}\n")
+        except Exception:
+            pass
+
+    @staticmethod
+    def _stock_input_signature(skus: list[dict[str, str | list[str]]]) -> str:
+        normalized = [
+            {
+                "sku": str(item.get("sku", "")).strip().upper(),
+                "sizes": [str(size).strip().upper() for size in item.get("sizes", [])],
+            }
+            for item in skus
+        ]
+        payload = json.dumps(normalized, ensure_ascii=True, separators=(",", ":"))
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _atomic_write_text(path: Path, content: str) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary_path = path.with_name(f"{path.name}.tmp")
+        temporary_path.write_text(content, encoding="utf-8")
+        os.replace(temporary_path, path)
+
+    @classmethod
+    def _atomic_write_products(cls, path: Path, products: list[dict[str, str]]) -> None:
+        lines = ["ArtikelNr,Size,Quantity"]
+        lines.extend(
+            f"{product['id']},{product['size']},{product['stock']}"
+            for product in products
+        )
+        cls._atomic_write_text(path, "\n".join(lines) + "\n")
+
+    @classmethod
+    def _save_stock_checkpoint(
+        cls,
+        skus: list[dict[str, str | list[str]]],
+        processed_skus: set[str],
+        rows: list[dict[str, str]],
+    ) -> None:
+        deduped_rows = cls.sort_products(cls.dedupe_stock_rows(rows))
+        payload = {
+            "version": 1,
+            "input_signature": cls._stock_input_signature(skus),
+            "processed_skus": sorted(processed_skus),
+            "rows": deduped_rows,
+            "updated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        cls._atomic_write_products(cls.STOCK_PARTIAL_PATH, deduped_rows)
+        cls._atomic_write_text(
+            cls.STOCK_CHECKPOINT_PATH,
+            json.dumps(payload, ensure_ascii=True, indent=2) + "\n",
+        )
+
+    @classmethod
+    def _clear_stock_checkpoint(cls) -> None:
+        for path in (cls.STOCK_CHECKPOINT_PATH, cls.STOCK_PARTIAL_PATH):
+            try:
+                path.unlink(missing_ok=True)
+            except Exception as exc:
+                cls._stock_log(f"Warning: could not remove {path}: {exc}")
+
+    @classmethod
+    def _load_stock_checkpoint(
+        cls, skus: list[dict[str, str | list[str]]]
+    ) -> tuple[set[str], list[dict[str, str]]]:
+        if not cls.STOCK_CHECKPOINT_PATH.exists():
+            return set(), []
+        try:
+            payload = json.loads(cls.STOCK_CHECKPOINT_PATH.read_text(encoding="utf-8"))
+            if payload.get("input_signature") != cls._stock_input_signature(skus):
+                cls._stock_log("Input list changed; discarding the previous stock checkpoint")
+                cls._clear_stock_checkpoint()
+                return set(), []
+            processed = {
+                str(sku).strip().upper()
+                for sku in payload.get("processed_skus", [])
+                if str(sku).strip()
+            }
+            rows = cls.dedupe_stock_rows(payload.get("rows", []))
+            cls._stock_log(
+                f"Resuming checkpoint with {len(processed)} completed SKUs and "
+                f"{len(rows)} stock rows"
+            )
+            return processed, rows
+        except Exception as exc:
+            cls._stock_log(f"Invalid stock checkpoint discarded: {exc}")
+            cls._clear_stock_checkpoint()
+            return set(), []
 
     @staticmethod
     def fill_products(
@@ -1415,8 +1519,40 @@ class ProfuomoDownloader(Profuomo):
             except Exception:
                 pass
         new_driver = cls._create_stock_driver(headless)
-        cls.profuomo_login(new_driver)
-        return new_driver
+        try:
+            cls.profuomo_login(new_driver)
+            return new_driver
+        except Exception:
+            try:
+                new_driver.quit()
+            except Exception:
+                pass
+            raise
+
+    @classmethod
+    def _create_stock_session_with_retry(
+        cls,
+        headless: bool,
+        driver: webdriver.Chrome | None = None,
+    ) -> webdriver.Chrome:
+        attempts = max(1, cls.STOCK_SESSION_RETRY_COUNT)
+        last_error: Exception | None = None
+        current_driver = driver
+        for attempt in range(1, attempts + 1):
+            try:
+                return cls._recreate_stock_driver(current_driver, headless)
+            except Exception as exc:
+                last_error = exc
+                current_driver = None
+                cls._stock_log(
+                    f"Stock browser login attempt {attempt}/{attempts} failed: {exc}"
+                )
+                if attempt < attempts:
+                    time.sleep(cls.STOCK_SESSION_RETRY_DELAY_SECONDS * attempt)
+        raise RuntimeError(
+            f"Could not create a Profuomo stock browser session after {attempts} attempts: "
+            f"{last_error}"
+        ) from last_error
 
     @classmethod
     def _collect_rows_for_sku(
@@ -1445,29 +1581,43 @@ class ProfuomoDownloader(Profuomo):
         status: dict[str, str | None] = {"message": None, "error": None}
         driver: webdriver.Chrome | None = None
         try:
-            cls.delete_csvs()
-            all_products: list[dict[str, str]] = []
             skus = cls.get_skus()
-            driver = cls._create_stock_driver(headless)
-            cls.profuomo_login(driver)
+            if not skus:
+                raise Exception("No Profuomo SKUs found in input.csv")
 
-            processed_skus: set[str] = set()
-            unique_skus = [str(p["sku"]).upper() for p in skus]
+            processed_skus, all_products = cls._load_stock_checkpoint(skus)
+            if not processed_skus:
+                try:
+                    Path("notfound.txt").unlink(missing_ok=True)
+                except Exception as exc:
+                    cls._stock_log(f"Warning: could not reset notfound.txt: {exc}")
+
+            unique_skus = list(dict.fromkeys(str(p["sku"]).upper() for p in skus))
+            pending_skus = [sku for sku in unique_skus if sku not in processed_skus]
+            cls._stock_log(
+                f"Stock run started: {len(unique_skus)} total, "
+                f"{len(processed_skus)} resumed, {len(pending_skus)} pending"
+            )
+
+            if pending_skus:
+                driver = cls._create_stock_session_with_retry(headless)
+
+            session_skus_processed = 0
             for index, sku in enumerate(unique_skus, start=1):
                 if sku in processed_skus:
                     continue
-                processed_skus.add(sku)
 
                 if (
                     cls.STOCK_BROWSER_RESTART_INTERVAL > 0
-                    and index > 1
-                    and (index - 1) % cls.STOCK_BROWSER_RESTART_INTERVAL == 0
+                    and session_skus_processed > 0
+                    and session_skus_processed % cls.STOCK_BROWSER_RESTART_INTERVAL == 0
                 ):
                     print(
-                        f"Info: restarting browser session after {index - 1} SKUs "
+                        f"Info: restarting browser session after {session_skus_processed} SKUs "
                         f"to avoid memory buildup"
                     )
-                    driver = cls._recreate_stock_driver(driver, headless)
+                    cls._stock_log(f"Restarting stock browser before SKU {sku} at position {index}")
+                    driver = cls._create_stock_session_with_retry(headless, driver)
 
                 rows: list[dict[str, str]] = []
                 found_product = False
@@ -1480,7 +1630,7 @@ class ProfuomoDownloader(Profuomo):
                             print(
                                 f"Warning: retrying {sku} after browser recovery ({sku_error})"
                             )
-                            driver = cls._recreate_stock_driver(driver, headless)
+                            driver = cls._create_stock_session_with_retry(headless, driver)
                             continue
                         print(f"Error: Could not process SKU {sku}: {sku_error}")
                         rows = []
@@ -1491,28 +1641,44 @@ class ProfuomoDownloader(Profuomo):
                     else:
                         print(f"Error: Could not find SKU {sku}")
                         cls._append_not_found(sku)
-                    continue
+                else:
+                    all_products.extend(rows)
 
-                all_products.extend(rows)
+                processed_skus.add(sku)
+                session_skus_processed += 1
+                cls._save_stock_checkpoint(skus, processed_skus, all_products)
+                cls._stock_log(
+                    f"Checkpoint {len(processed_skus)}/{len(unique_skus)} after {sku}; "
+                    f"{len(all_products)} extracted rows"
+                )
 
             if not all_products:
+                cls._clear_stock_checkpoint()
                 raise Exception(
                     "No stock rows extracted from Profuomo. "
                     "CSV generation aborted to prevent uploading zeroed stock."
                 )
 
             if driver is not None:
-                driver.close()
+                driver.quit()
                 driver = None
 
             all_products = cls.dedupe_stock_rows(all_products)
             products = cls.fill_products(skus, all_products)
             products = cls.sort_products(products)
-            cls.write_products_to_csv("profuomo_products.csv", products)
+            cls._atomic_write_products(cls.STOCK_OUTPUT_PATH, products)
+            cls._clear_stock_checkpoint()
+            cls._stock_log(
+                f"Stock run completed: {len(unique_skus)} SKUs, {len(products)} output rows"
+            )
             status["message"] = "Finished"
         except Exception as ex:
             template = "er is een {0} opgetreden: {1!r}"
             status["error"] = template.format(type(ex).__name__, ex.args)
+            cls._stock_log(
+                f"Stock run interrupted; progress retained: {type(ex).__name__}: {ex}\n"
+                f"{traceback.format_exc()}"
+            )
         finally:
             if driver is not None:
                 try:

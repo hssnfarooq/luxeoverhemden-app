@@ -365,3 +365,2817 @@ Stacktrace:
 	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
 	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
 
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Failed to scrape sku:PPXH30052A: Could not open product card for PPXH30052A
+Skipped PPXD10007J: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30068A: no valid Shirts sizes found
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30068A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30068A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032D: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Failed to scrape sku:PPXH30032H: Could not open product card for PPXH30032H
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXJ30036B: no valid Knitwear sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Failed to scrape sku:PP5V00003B: Could not open product card for PP5V00003B
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Failed to scrape sku:PP5N00002E: Could not open product card for PP5N00002E
+Failed to scrape sku:PP2A00001D: Could not open product card for PP2A00001D
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032F: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXD10007J: no valid Sale sizes found
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Message: invalid argument
+  (Session info: chrome=151.0.7922.138)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff63a98abb5+151b5]
+	chromedriver!GetHandleVerifier [0x7ff63a98ac10+15210]
+	chromedriver!(No symbol) [0x7ff63a4b5b56]
+	chromedriver!(No symbol) [0x7ff63a4a23e8]
+	chromedriver!(No symbol) [0x7ff63a4a0835]
+	chromedriver!(No symbol) [0x7ff63a4a0da2]
+	chromedriver!(No symbol) [0x7ff63a4ba016]
+	chromedriver!(No symbol) [0x7ff63a55fa14]
+	chromedriver!(No symbol) [0x7ff63a539d0a]
+	chromedriver!(No symbol) [0x7ff63a55ec0b]
+	chromedriver!(No symbol) [0x7ff63a5037cc]
+	chromedriver!(No symbol) [0x7ff63a5046f3]
+	chromedriver!GetHandleVerifier [0x7ff63afab79b+635d9b]
+	chromedriver!GetHandleVerifier [0x7ff63afa5ac6+6300c6]
+	chromedriver!GetHandleVerifier [0x7ff63afcbcee+6562ee]
+	chromedriver!GetHandleVerifier [0x7ff63a9a8ffe+335fe]
+	chromedriver!GetHandleVerifier [0x7ff63a9b147c+3ba7c]
+	chromedriver!GetHandleVerifier [0x7ff63a994d64+1f364]
+	chromedriver!GetHandleVerifier [0x7ff63a994ef4+1f4f4]
+	chromedriver!GetHandleVerifier [0x7ff63a977d97+2397]
+	KERNEL32!BaseThreadInitThunk [0x7ff9dc1a84d4+14]
+	ntdll!RtlUserThreadStart [0x7ff9de781d21+21]
+
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXD10007J: no valid Sale sizes found
+Skipped PP5V00003B: no valid Sale sizes found
+Skipped PP5N00002E: no valid Sale sizes found
+Skipped PP2A00001D: no valid Sale sizes found
+Skipped PP5N00002T: no valid Sale sizes found
+Skipped PP5N00002V: no valid Sale sizes found
+Failed to scrape sku:PP5BA0005B: Could not open product card for PP5BA0005B
+Failed to scrape sku:PP5BA0005A: Could not open product card for PP5BA0005A
+Skipped PP5V00003A: no valid Sale sizes found
+Failed to scrape sku:PP0H0A053: Could not open product card for PP0H0A053
+Skipped PP3MAT912B: no valid Sale sizes found
+Failed to scrape sku:PP2V00003A: Could not open product card for PP2V00003A
+Failed to scrape sku:PP1R000130: Could not open product card for PP1R000130
+Failed to scrape sku:PP1R100001: Could not open product card for PP1R100001
+Failed to scrape sku:PP1R000140: Could not open product card for PP1R000140
+Failed to scrape sku:PP3R00003: Could not open product card for PP3R00003
+Skipped PP2Y00009A: no valid Sale sizes found
+Critical error in scrape_profuomo: Could not locate Profuomo login form fields
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032C: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032C: no valid Shirts sizes found
+Failed to scrape sku:PPXH30032E: Could not open product card for PPXH30032E
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found
+Skipped PPXH30029B: no valid Shirts sizes found
+Skipped PPXH30032A: no valid Shirts sizes found
+Skipped PPXH30032C: no valid Shirts sizes found
+Skipped PPXH30032E: no valid Shirts sizes found
+Skipped PPXH30032G: no valid Shirts sizes found
+Skipped PPXH30032H: no valid Shirts sizes found
+Skipped PPXH30033C: no valid Shirts sizes found
+Skipped PPXH30033E: no valid Shirts sizes found
+Skipped PPXH30034C: no valid Shirts sizes found
+Skipped PPXH30052A: no valid Shirts sizes found

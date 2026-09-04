@@ -1,7 +1,8 @@
+import os
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from automations.profuomo import Profuomo, ProfuomoDownloader, ProfuomoScraper
 from automations.supplier_profile import PROFUOMO_PROFILE
@@ -163,6 +164,100 @@ class ProfuomoScraperSafetyTests(unittest.TestCase):
 
     def test_profuomo_stock_and_upload_share_root_input_file(self):
         self.assertEqual(PROFUOMO_PROFILE.input_csv_path, Path(BASE_DIR) / "input.csv")
+
+    def test_interrupted_stock_run_preserves_final_file_and_checkpoint(self):
+        skus = [
+            {"sku": "PPTEST001", "sizes": ["M"]},
+            {"sku": "PPTEST002", "sizes": ["L"]},
+        ]
+        first_rows = ([{"id": "PPTEST001", "size": "M", "stock": "4"}], True)
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            previous_cwd = Path.cwd()
+            os.chdir(temp_dir)
+            try:
+                Path("profuomo_products.csv").write_text(
+                    "ArtikelNr,Size,Quantity\nOLD,M,9\n", encoding="utf-8"
+                )
+                driver = MagicMock()
+                with patch.object(ProfuomoDownloader, "get_skus", return_value=skus), patch.object(
+                    ProfuomoDownloader,
+                    "_create_stock_session_with_retry",
+                    side_effect=[driver, RuntimeError("temporary login failure")],
+                ), patch.object(
+                    ProfuomoDownloader, "_collect_rows_for_sku", return_value=first_rows
+                ), patch.object(
+                    ProfuomoDownloader, "STOCK_BROWSER_RESTART_INTERVAL", 1
+                ):
+                    status = ProfuomoDownloader.download_profuomo(headless=True)
+
+                self.assertIn("temporary login failure", status["error"])
+                self.assertTrue(Path("profuomo_products.csv").exists())
+                self.assertEqual(
+                    Path("profuomo_products.csv").read_text(encoding="utf-8"),
+                    "ArtikelNr,Size,Quantity\nOLD,M,9\n",
+                )
+                self.assertTrue(Path("profuomo_stock_checkpoint.json").exists())
+            finally:
+                os.chdir(previous_cwd)
+
+    def test_stock_run_resumes_checkpoint_and_only_processes_remaining_skus(self):
+        skus = [
+            {"sku": "PPTEST001", "sizes": ["M"]},
+            {"sku": "PPTEST002", "sizes": ["L"]},
+        ]
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            previous_cwd = Path.cwd()
+            os.chdir(temp_dir)
+            try:
+                ProfuomoDownloader._save_stock_checkpoint(
+                    skus,
+                    {"PPTEST001"},
+                    [{"id": "PPTEST001", "size": "M", "stock": "4"}],
+                )
+                driver = MagicMock()
+                collect = MagicMock(
+                    return_value=([{"id": "PPTEST002", "size": "L", "stock": "7"}], True)
+                )
+                with patch.object(ProfuomoDownloader, "get_skus", return_value=skus), patch.object(
+                    ProfuomoDownloader, "_create_stock_driver", return_value=driver
+                ), patch.object(ProfuomoDownloader, "profuomo_login"), patch.object(
+                    ProfuomoDownloader, "_collect_rows_for_sku", collect
+                ), patch.object(ProfuomoDownloader, "STOCK_BROWSER_RESTART_INTERVAL", 0):
+                    status = ProfuomoDownloader.download_profuomo(headless=True)
+
+                self.assertEqual(status["message"], "Finished")
+                collect.assert_called_once_with(driver, "PPTEST002")
+                output = Path("profuomo_products.csv").read_text(encoding="utf-8")
+                self.assertIn("PPTEST001,M,4", output)
+                self.assertIn("PPTEST002,L,7", output)
+                self.assertFalse(Path("profuomo_stock_checkpoint.json").exists())
+            finally:
+                os.chdir(previous_cwd)
+
+    def test_stock_session_creation_retries_transient_login_failure(self):
+        first_driver = MagicMock()
+        second_driver = MagicMock()
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with patch.object(
+                ProfuomoDownloader,
+                "_create_stock_driver",
+                side_effect=[first_driver, second_driver],
+            ), patch.object(
+                ProfuomoDownloader,
+                "profuomo_login",
+                side_effect=[RuntimeError("login unavailable"), None],
+            ), patch.object(
+                ProfuomoDownloader,
+                "STOCK_LOG_PATH",
+                Path(temp_dir) / "profuomo_stock.log",
+            ), patch("automations.profuomo.time.sleep"):
+                driver = ProfuomoDownloader._create_stock_session_with_retry(headless=True)
+
+        self.assertIs(driver, second_driver)
+        first_driver.quit.assert_called_once()
 
     def test_image_url_rejects_a_different_explicit_color_variant(self):
         self.assertFalse(

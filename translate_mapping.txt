@@ -40,28 +40,70 @@ Linen collection : Linen collection
 BETTER COTTON INITIATIVE : Better Cotton Initiative
 ORGANIC CONTENT STANDARD : Organic Content Standard
 RESPONSIBLE WOOL STANDARD : Responsible Wool Standard
+Ultimate non iron | Cutaway | Guaranteed fixed buttons : Ultiem strijkvrij | Cutaway kraag | Gegarandeerd vaste knoppen
+Albini fabric | Button down | Guaranteed fixed buttons : Albini stof | Button-down kraag | Gegarandeerd vaste knoppen
+Japanese fabric | Tech yarn | Guaranteed fixed buttons : Japanse stof | Tech garen | Gegarandeerd vaste knoppen
+Cutaway | Guaranteed fixed buttons | Knitted : Cutaway kraag | Gegarandeerd vaste knoppen | Gebreid
+Cutaway | Slim fit | Twill : Cutaway kraag | Slim fit | Keperbinding
 GLOBAL ORGANIC TEXTILE STANDARD : Global Organic Textile Standard
 LENZING TENCEL LYOCELL : Lenzing Tencel Lyocell
 Overshirt | Guaranteed fixed buttons : Overshirt | Guaranteed fixed buttons
 OCS BLEND 50 : OCS Blend 50
 OCS BLEND 70 : OCS Blend 70
 OCS BLEND 30 : OCS Blend 30
+80% RWS wool : 80% RWS wool
+50% RWS wool : 50% RWS wool
+66% Cotton / 28% Modal / 6% Wool : 66% katoen / 28% modal / 6% wol
+38% Wool / 34% / 14% Polyacrylic / 12% Polyamide / 2% Elastane : 38% wol / 34% alpaca / 14% acryl / 12% nylon / 2% elastaan
+38% Wool / 34% Alpaca / 14% Polyacrylic / 12% Polyamide / 2% Elastane : 38% wol / 34% alpaca / 14% acryl / 12% nylon / 2% elastaan
+Noniron : Strijkvrij
+Contains Lenzing™ lyocell : Contains Lenzing™ lyocell
 RESPONSIBLE WOOL STANDARD 100 : Responsible Wool Standard 100
 RESPONSIBLE WOOL STANDARD 80 : Responsible Wool Standard 80
 RESPONSIBLE WOOL STANDARD 50 : Responsible Wool Standard 50
 will be smaller in production : Niet relevant
+Vegetable tanned : Plantaardig gelooid
+
+Guaranteed fixed buttons | Italian fabric | Garment dye | Sportcord : Gegarandeerd vaste knoppen | Italiaanse stof | Garment dye | Sportkoord
+
+Garment dye | Guaranteed fixed buttons | Cotton : Garment dye | Gegarandeerd vaste knoppen | Katoen
+Guaranteed fixed buttons | Italian fabric : Gegarandeerd vaste knoppen | Italiaanse stof
+50% OCS Cotton | Cutaway | Guaranteed fixed buttons : 50% OCS Katoen | Cutaway kraag | Gegarandeerd vaste knoppen
+Stretch | Water repellent | Windproof : Stretch | Waterafstotend | Winddicht
+Italian fabric | Guaranteed fixed buttons | Garment dye | Cotton : Italiaanse stof | Gegarandeerd vaste knoppen | Garment dye | Katoen
+Cotton | Garment dye | Guaranteed fixed buttons : Katoen | Garment dye | Gegarandeerd vaste knoppen
+50% OCS Cotton | Single needle | Guaranteed fixed buttons : 50% OCS-katoen | Gegarandeerd vaste knopen
+Italian fabric | Garment dye | Guaranteed fixed buttons : Italiaanse stof | Garment dye | Gegarandeerd vaste knoppen
+European fabric | Elastane | Guaranteed fixed buttons | Cotton linen blend : Europese stof | Elastaan | Gegarandeerd vaste knoppen | Katoen linnenmix
+Guaranteed fixed buttons : Gegarandeerd vaste knoppen
+40% Cotton / 35% Viscose / 15% Wool / 10% Linen : 40% katoen / 35% viscose / 15% wol / 10% linnen
+72% Polyester / 28% Elastane : 72% polyester / 28% elastaan
+45% Cotton / 36% Linen / 19% Lyocell : 45% katoen / 36% linnen / 19% lyocell
+58% Cotton / 24% Modal / 10% Polyamide / 5% Wool / 3% Elastane : 58% katoen / 24% modal / 10% polyamide / 5% eol / 3% elastaan
+58% Cotton / 24% Modal / 10% Polyamide / 5% Wool / 3% Elastane : 58% katoen / 24% modal / 10% polyamide / 5% wol / 3% elastaan
+45% Cotton / 36% Linen / 19% Lyocell : 45% katoen / 36% linnen / 19% lyocell
+75% Wool / 25% Polyamide : 75% wol / 25% polyamide
+75% Wool / 20% Polyamide / 5% Cashmere : 75% wol / 20% polyamide / 5% kasjmier
+52% Wool / 48% Cotton : 52% wol / 48% katoen
+70% Wool / 30% Polyester : 70% wol / 30% polyester
+64% Cotton / 36% Polyester : 64% katoen / 36% polyester
+52% Cotton / 48% Polyester : 52% katoen / 48% polyester
 ORGANIC : Organic
 BLUE : Blauw
 DARK BLUE : Blauw
 DARK PINK : Roze
+COGNAC : Cognac
 MID BLUE : Blauw
 PEACH : Oranje
 BEIGE : Beige
 LICHT ZAND : Beige
 TAUPE : Taupe
 BROWN : Bruin
+Aubergine : Aubergine
+Anthra : Antraciet
 MID GREEN : Groen
 GREEN : Groen
+Army : Groen
 DARK GREEN : Legergroen
 Olive : Groen
 WHITE : Wit
@@ -94,6 +136,7 @@ OLIVE : Olijfgroen
 LIGHT BEIGE : Beige
 LIGHT GREEN : Groen
 AUBERGINE : Aubergine
+Royal Melange : Blauw
 RED : Rood
 ARMY : Legergroen
 MID BROWN : Bruin
@@ -249,6 +292,7 @@ NEW WOOL : Nieuw wol
 50% NEW WOOL / 30% POLYAMIDE / 20% MODAL : 50% nieuwe wol / 30% polyamide / 20% modal
 62% COTTON / 38% LINEN : 62% katoen / 38% linnen
 80% WOOL / 20% POLYAMIDE : 80% wol / 20% polyamide
+80% WOOL / 20% POLYAMIDE / 0% : 80% wol / 20% polyamide
 56% POLYESTER / 29% WOOL / 10% COTTON / 5% VISCOSE : 56% polyester / 29% wol / 10% katoen / 5% viscose
 72% LINEN / 28% COTTON : 72% linnen / 28% katoen
 100% LINEN : 100% linnen
