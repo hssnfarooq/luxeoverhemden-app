@@ -231,22 +231,33 @@ class Profuomo(BaseScraper):
     ) -> list[str]:
         category_key = cls._clean_text(category).lower()
         alpha_sizes = {"XS", "S", "M", "L", "XL", "XXL", "XXXL"}
-        cleaned: list[str] = []
+        normalized: list[str] = []
         seen: set[str] = set()
 
         for raw_size in sizes:
             size = cls._normalize_size(raw_size)
             if not size or size in seen:
                 continue
+            seen.add(size)
+            normalized.append(size)
 
-            if category_key == "shirts":
-                if not size.isdigit() or not 35 <= int(size) <= 50:
-                    continue
-            elif category_key in {"knitwear", "polos", "overshirts"}:
+        if category_key == "shirts":
+            numeric = [
+                size for size in normalized if size.isdigit() and 35 <= int(size) <= 50
+            ]
+            alpha = [size for size in normalized if size in alpha_sizes]
+            if numeric and alpha:
+                return alpha if len(alpha) >= 3 and len(numeric) <= 1 else numeric
+            if numeric:
+                return numeric
+            return alpha if len(alpha) >= 2 else []
+
+        cleaned: list[str] = []
+        for size in normalized:
+            if category_key in {"knitwear", "polos", "overshirts"}:
                 if size not in alpha_sizes:
                     continue
 
-            seen.add(size)
             cleaned.append(size)
 
         return cleaned

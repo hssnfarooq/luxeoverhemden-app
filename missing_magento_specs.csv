@@ -1,17 +1,17 @@
 timestamp,sku,field,source_value,mapped_value,target,reason
-2026-09-04 12:42:06,PPXQ10021B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+2026-09-11 00:11:15,PPXQ10021B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-09-04 12:42:36,PPXQ10024E,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+2026-09-11 00:11:44,PPXQ10024E,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-09-04 12:43:06,PPXQ10021C,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+2026-09-11 00:12:14,PPXQ10021C,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-09-04 12:43:55,PPXQ10024B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+2026-09-11 00:13:01,PPXQ10024B,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-09-04 12:44:08,PPXU10003B,sleeve,Sleeveless,,name:product[mouwen]=option:data-title;dutch,missing translation mapping
-2026-09-04 12:44:43,PPXQ10019A,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
+2026-09-11 00:13:15,PPXU10003B,sleeve,Sleeveless,,name:product[mouwen]=option:data-title;dutch,missing translation mapping
+2026-09-11 00:13:49,PPXQ10019A,model,Loose fit,Loose fit,"('CLICKABLE', 'name:product[model]=option:data-title')","TimeoutException: Message: 
 "
-2026-09-04 12:44:56,PPXP10011B,collar,Lapel collar,,name:product[kraag]=option:data-title;dutch,missing translation mapping
-2026-09-04 12:48:21,PP2R00005B,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+2026-09-11 00:14:02,PPXP10011B,collar,Lapel collar,,name:product[kraag]=option:data-title;dutch,missing translation mapping
+2026-09-11 00:17:29,PP2R00005B,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
 "
-2026-09-04 12:48:51,PP2R00005A,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
+2026-09-11 00:17:58,PP2R00005A,materiaal,Runderleer,Runderleer,"('xpath', ""//select[@name='product[materiaal]']//option[@data-title='{}']"")","TimeoutException: Message: 
 "

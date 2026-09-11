@@ -120,6 +120,20 @@ class MagentoFillerTests(unittest.TestCase):
         self.assertEqual(sanitized["sku"].tolist(), ["PP2HC10008"])
         self.assertEqual(sanitized.iloc[0]["sizes"], "['37', '38']")
 
+    def test_sanitize_profuomo_products_keeps_alpha_sized_shirts(self):
+        products = pd.DataFrame(
+            {
+                "sku": ["PPXH10052A"],
+                "category": ["Shirts"],
+                "sizes": ["['S', 'M', 'L', 'XL', 'XXL']"],
+            }
+        )
+
+        sanitized = MagentoFiller.sanitize_profuomo_products(products)
+
+        self.assertEqual(sanitized["sku"].tolist(), ["PPXH10052A"])
+        self.assertEqual(sanitized.iloc[0]["sizes"], "['S', 'M', 'L', 'XL', 'XXL']")
+
     def test_venti_collar_and_sleeve_map_to_existing_magento_options(self):
         MagentoFiller.configure_supplier("venti")
         MagentoFiller._get_mapping()

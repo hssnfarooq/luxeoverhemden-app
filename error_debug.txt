@@ -1,11 +1,11 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-09-04 12:39:56
+Timestamp: 2026-09-11 00:05:37
 CSV Path: C:\robot\products\all.csv
 Supplier: profuomo
 Test Mode: False
-Total Products: 66
+Total Products: 58
 Translation Mappings Loaded: 341
 ================================================================================
 
@@ -25,6 +25,85 @@ Product data: {'sku': 'PPXH30047A', 'name': 'PPXH30047A', 'category': 'Shirts', 
 Productnaam: Profuomo navy cutaway
 Category: Shirts
 SKIPPED: PPXH30047A has no valid images in C:\robot\products\PPXH30047A
+
+============================================================
+PROCESSING PRODUCT: PPXH30029B
+============================================================
+Product data: {'sku': 'PPXH30029B', 'name': 'PPXH30029B', 'category': 'Shirts', 'wsp': nan, 'rrp': nan, 'material': nan, 'color': nan, 'stocklabel': nan, 'design': nan, 'capsule': nan, 'collar': nan, 'fabriccomp': nan, 'fit': nan, 'fabric': nan, 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige casual japanese knitted overhemd', 'image_count': 4.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo beige casual japanese knitted overhemd
+Category: Shirts
+Starting register_product for PPXH30029B
+
+--- FILL_FORM for SKU: PPXH30029B ---
+
+--- FETCH_DATA for SKU: PPXH30029B ---
+Product data: {'sku': 'PPXH30029B', 'name': 'PPXH30029B', 'category': 'Shirts', 'wsp': nan, 'rrp': nan, 'material': nan, 'color': nan, 'stocklabel': nan, 'design': nan, 'capsule': nan, 'collar': nan, 'fabriccomp': nan, 'fit': nan, 'fabric': nan, 'quality': nan, 'sleeve': nan, 'sustainability': nan, 'sizes': "['37', '38', '39', '40', '41', '42', '43', '44', '45']", 'item comment smc': nan, 'Productnaam': 'Profuomo beige casual japanese knitted overhemd', 'image_count': 4.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Category: Shirts
+Available translation mappings: 341
+  Processing field: name:product[name] for key: Productnaam
+    Original value: Profuomo beige casual japanese knitted overhemd
+    format_key called: field='name:product[name]', key='Profuomo beige casual japanese knitted overhemd', category='Shirts'
+    format_key result: 'Profuomo beige casual japanese knitted overhemd'
+    format_key result: Profuomo beige casual japanese knitted overhemd
+    Added to data: Profuomo beige casual japanese knitted overhemd -> ('name', 'product[name]')
+  Processing field: name:product[sku] for key: sku
+    Original value: PPXH30029B
+    format_key called: field='name:product[sku]', key='PPXH30029B', category='Shirts'
+    format_key result: 'PPXH30029B'
+    format_key result: PPXH30029B
+    Added to data: PPXH30029B -> ('name', 'product[sku]')
+  Skipping ean: not in product or is nan/empty
+  Skipping rrp: not in product or is nan/empty
+  Skipping fit: not in product or is nan/empty
+  Skipping cuff: not in product or is nan/empty
+  Skipping noniron: not in product or is nan/empty
+  Skipping quality: not in product or is nan/empty
+  Skipping capsule: not in product or is nan/empty
+  Skipping fabriccomp: not in product or is nan/empty
+  Skipping sustainability: not in product or is nan/empty
+  Skipping design: not in product or is nan/empty
+  Skipping color: not in product or is nan/empty
+  Skipping collar: not in product or is nan/empty
+  Skipping sleeve: not in product or is nan/empty
+  Final data dict: {'Profuomo beige casual japanese knitted overhemd': ('name', 'product[name]'), 'PPXH30029B': ('name', 'product[sku]')}
+  Data entries: 2
+Data to fill: {'Profuomo beige casual japanese knitted overhemd': ('name', 'product[name]'), 'PPXH30029B': ('name', 'product[sku]')}
+Number of fields to fill: 2
+  Filling field: Profuomo beige casual japanese knitted overhemd -> ('name', 'product[name]')
+  Filling field: PPXH30029B -> ('name', 'product[sku]')
+      get_mapped_key called: 'Shirts'
+      Looking for key.lower(): 'shirts'
+      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
+      Translation result: 'Overhemden'
+      SUCCESS: 'Shirts' -> 'Overhemden'
+      Maattabel selected without viewport click: 'Profuomo slim fit overhemden' (199)
+ERROR: Product PPXH30029B failed with exception: Sizes not added
+Exception type: Exception
+Traceback:
+Traceback (most recent call last):
+  File "automations\magento.py", line 3219, in register_products
+    cls.register_product(driver, product)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 2910, in register_product
+    cls.timed_save_call(
+    ~~~~~~~~~~~~~~~~~~~^
+        "REGISTER_PRODUCT fill_form",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: cls.fill_form(driver, product),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        sku=sku,
+        ^^^^^^^^
+    )
+    ^
+  File "automations\magento.py", line 431, in timed_save_call
+    result = callback()
+  File "automations\magento.py", line 2912, in <lambda>
+    lambda: cls.fill_form(driver, product),
+            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "automations\magento.py", line 2827, in fill_form
+    raise Exception("Sizes not added")
+Exception: Sizes not added
+
 
 ============================================================
 PROCESSING PRODUCT: PPWQ10041A
@@ -4487,60 +4566,20 @@ Category: Overshirts
 SKIPPED: PPXF30052A has no valid images in C:\robot\products\PPXF30052A
 
 ============================================================
+PROCESSING PRODUCT: PPXJ30042C
+============================================================
+Product data: {'sku': 'PPXJ30042C', 'name': 'PPXJ30042C', 'category': 'Knitwear', 'wsp': nan, 'rrp': 179.95, 'material': '47% Wool / 31% Polyacrylic / 22% Polyamide', 'color': 'Sand', 'stocklabel': 'september 21, 2026', 'design': nan, 'capsule': nan, 'collar': 'Button through', 'fabriccomp': '47% Wool / 31% Polyacrylic / 22% Polyamide', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': 'Sand colour will be less yellow for production', 'Productnaam': 'Profuomo zand boiled wollen full button polo', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo zand boiled wollen full button polo
+Category: Knitwear
+SKIPPED: PPXJ30042C has no valid images in C:\robot\products\PPXJ30042C
+
+============================================================
 PROCESSING PRODUCT: PPXJ30029H
 ============================================================
 Product data: {'sku': 'PPXJ30029H', 'name': 'PPXJ30029H', 'category': 'Knitwear', 'wsp': nan, 'rrp': 119.95, 'material': '100% Wool', 'color': nan, 'stocklabel': 'augustus 24, 2026', 'design': nan, 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Responsible Wool Standard | Merino wool | Mulesing free | Machine wool wash | Guaranteed fixed buttons | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo  polo collar', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
 Productnaam: Profuomo  polo collar
 Category: Knitwear
 SKIPPED: PPXJ30029H has no valid images in C:\robot\products\PPXJ30029H
-
-============================================================
-PROCESSING PRODUCT: PPXJ30061C
-============================================================
-Product data: {'sku': 'PPXJ30061C', 'name': 'PPXJ30061C', 'category': 'Knitwear', 'wsp': nan, 'rrp': 159.95, 'material': '100% Wool', 'color': 'Sand', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Mulesing free | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo zand heavy wollen crewneck', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo zand heavy wollen crewneck
-Category: Knitwear
-SKIPPED: PPXJ30061C has no valid images in C:\robot\products\PPXJ30061C
-
-============================================================
-PROCESSING PRODUCT: PPXJ30058H
-============================================================
-Product data: {'sku': 'PPXJ30058H', 'name': 'PPXJ30058H', 'category': 'Knitwear', 'wsp': nan, 'rrp': 159.95, 'material': '100% Wool', 'color': 'Sand', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Half zip', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Mulesing free | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo zand heavy wollen half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo zand heavy wollen half zip
-Category: Knitwear
-SKIPPED: PPXJ30058H has no valid images in C:\robot\products\PPXJ30058H
-
-============================================================
-PROCESSING PRODUCT: PPXJ30057D
-============================================================
-Product data: {'sku': 'PPXJ30057D', 'name': 'PPXJ30057D', 'category': 'Knitwear', 'wsp': nan, 'rrp': 139.95, 'material': '100% Wool', 'color': 'Brown', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Mulesing free | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo brown crewneck', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo brown crewneck
-Category: Knitwear
-SKIPPED: PPXJ30057D has no valid images in C:\robot\products\PPXJ30057D
-
-============================================================
-PROCESSING PRODUCT: PPXJ30057C
-============================================================
-Product data: {'sku': 'PPXJ30057C', 'name': 'PPXJ30057C', 'category': 'Knitwear', 'wsp': nan, 'rrp': 139.95, 'material': '100% Wool', 'color': 'Green', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Mulesing free | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo green crewneck', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo green crewneck
-Category: Knitwear
-SKIPPED: PPXJ30057C has no valid images in C:\robot\products\PPXJ30057C
-
-============================================================
-PROCESSING PRODUCT: PPXJ30057B
-============================================================
-Product data: {'sku': 'PPXJ30057B', 'name': 'PPXJ30057B', 'category': 'Knitwear', 'wsp': nan, 'rrp': 139.95, 'material': '100% Wool', 'color': nan, 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Mulesing free | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo  crewneck', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo  crewneck
-Category: Knitwear
-SKIPPED: PPXJ30057B has no valid images in C:\robot\products\PPXJ30057B
-
-============================================================
-PROCESSING PRODUCT: PPXJ30048B
-============================================================
-Product data: {'sku': 'PPXJ30048B', 'name': 'PPXJ30048B', 'category': 'Knitwear', 'wsp': nan, 'rrp': 149.95, 'material': '80% Wool / 20% Polyamide', 'color': 'Grey', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Shawl Collar', 'fabriccomp': '80% Wool / 20% Polyamide', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Wool blend | Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo grey shawl collar', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo grey shawl collar
-Category: Knitwear
-SKIPPED: PPXJ30048B has no valid images in C:\robot\products\PPXJ30048B
 
 ============================================================
 PROCESSING PRODUCT: PPXJ30047E
@@ -4565,14 +4604,6 @@ Product data: {'sku': 'PPXJ30047A', 'name': '504 Gateway Time-out', 'category': 
 Productnaam: Profuomo 
 Category: Knitwear
 SKIPPED: PPXJ30047A has no valid images in C:\robot\products\PPXJ30047A
-
-============================================================
-PROCESSING PRODUCT: PPXJ30046B
-============================================================
-Product data: {'sku': 'PPXJ30046B', 'name': 'PPXJ30046B', 'category': 'Knitwear', 'wsp': nan, 'rrp': 119.95, 'material': '80% Wool / 20% Polyamide', 'color': 'Grey', 'stocklabel': 'september 3, 2026', 'design': nan, 'capsule': nan, 'collar': 'Crewneck', 'fabriccomp': '80% Wool / 20% Polyamide', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': '80% RWS wool | Wool blend', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo grey crewneck', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo grey crewneck
-Category: Knitwear
-SKIPPED: PPXJ30046B has no valid images in C:\robot\products\PPXJ30046B
 
 ============================================================
 PROCESSING PRODUCT: PPXJ30043A
@@ -4703,41 +4734,17 @@ Category: Knitwear
 SKIPPED: PPXJ30001B has no valid images in C:\robot\products\PPXJ30001B
 
 ============================================================
-PROCESSING PRODUCT: PPXJ30023B
-============================================================
-Product data: {'sku': 'PPXJ30023B', 'name': 'PPXJ30023B', 'category': 'Knitwear', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'Black', 'stocklabel': 'september 7, 2026', 'design': nan, 'capsule': nan, 'collar': 'Half zip', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo black half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo black half zip
-Category: Knitwear
-SKIPPED: PPXJ30023B has no valid images in C:\robot\products\PPXJ30023B
-
-============================================================
-PROCESSING PRODUCT: PPXJ30023C
-============================================================
-Product data: {'sku': 'PPXJ30023C', 'name': 'PPXJ30023C', 'category': 'Knitwear', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'Green', 'stocklabel': 'september 7, 2026', 'design': nan, 'capsule': nan, 'collar': 'Half zip', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo green half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo green half zip
-Category: Knitwear
-SKIPPED: PPXJ30023C has no valid images in C:\robot\products\PPXJ30023C
-
-============================================================
-PROCESSING PRODUCT: PPXJ30023D
-============================================================
-Product data: {'sku': 'PPXJ30023D', 'name': 'PPXJ30023D', 'category': 'Knitwear', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'Dark Brown', 'stocklabel': 'september 7, 2026', 'design': nan, 'capsule': nan, 'collar': 'Half zip', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo donkerbruine structuur half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo donkerbruine structuur half zip
-Category: Knitwear
-SKIPPED: PPXJ30023D has no valid images in C:\robot\products\PPXJ30023D
-
-============================================================
-PROCESSING PRODUCT: PPXJ30023E
-============================================================
-Product data: {'sku': 'PPXJ30023E', 'name': 'PPXJ30023E', 'category': 'Knitwear', 'wsp': nan, 'rrp': 99.95, 'material': '100% Cotton', 'color': 'White', 'stocklabel': 'september 7, 2026', 'design': nan, 'capsule': nan, 'collar': 'Half zip', 'fabriccomp': '100% Cotton', 'fit': 'Regular fit', 'fabric': 'Cotton', 'quality': 'Cotton', 'sleeve': 'Long sleeve', 'sustainability': nan, 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo off white structuur half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
-Productnaam: Profuomo off white structuur half zip
-Category: Knitwear
-SKIPPED: PPXJ30023E has no valid images in C:\robot\products\PPXJ30023E
-
-============================================================
 PROCESSING PRODUCT: PPXJ30025A
 ============================================================
 Product data: {'sku': 'PPXJ30025A', 'name': 'PPXJ30025A', 'category': 'Knitwear', 'wsp': nan, 'rrp': 119.95, 'material': '100% Wool', 'color': nan, 'stocklabel': 'augustus 24, 2026', 'design': nan, 'capsule': 'Merino', 'collar': 'Half zip', 'fabriccomp': '100% Wool', 'fit': 'Regular fit', 'fabric': 'Wool', 'quality': 'Wool', 'sleeve': 'Long sleeve', 'sustainability': 'Merino wool | Mulesing free | Machine wool wash | Tierfreundlich', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo  half zip', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
 Productnaam: Profuomo  half zip
 Category: Knitwear
 SKIPPED: PPXJ30025A has no valid images in C:\robot\products\PPXJ30025A
+
+============================================================
+PROCESSING PRODUCT: PPXJ30039A
+============================================================
+Product data: {'sku': 'PPXJ30039A', 'name': 'PPXJ30039A', 'category': 'Knitwear', 'wsp': nan, 'rrp': 249.95, 'material': '100% Cashmere', 'color': 'Navy', 'stocklabel': 'september 21, 2026', 'design': nan, 'capsule': nan, 'collar': 'Polo collar', 'fabriccomp': '100% Cashmere', 'fit': 'Regular fit', 'fabric': 'Cashmere', 'quality': 'Cashmere', 'sleeve': 'Long sleeve', 'sustainability': 'Guaranteed fixed buttons', 'sizes': "['S', 'M', 'L', 'XL', 'XXL']", 'item comment smc': nan, 'Productnaam': 'Profuomo navy polo collar', 'image_count': 1.0, 'has_images': True, 'cuff': nan, 'noniron': nan}
+Productnaam: Profuomo navy polo collar
+Category: Knitwear
+SKIPPED: PPXJ30039A has no valid images in C:\robot\products\PPXJ30039A

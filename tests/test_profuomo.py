@@ -281,6 +281,14 @@ class ProfuomoScraperSafetyTests(unittest.TestCase):
 
         self.assertEqual(sizes, ["37", "38", "45"])
 
+    def test_shirt_sizes_accept_a_genuine_alpha_size_range(self):
+        sizes = ProfuomoScraper.sanitize_sizes_for_category(
+            "Shirts",
+            ["S", "M", "L", "XL", "XXL"],
+        )
+
+        self.assertEqual(sizes, ["S", "M", "L", "XL", "XXL"])
+
     def test_knitwear_sizes_exclude_numeric_values(self):
         sizes = ProfuomoScraper.sanitize_sizes_for_category(
             "Knitwear",

@@ -117,3 +117,19 @@ timestamp,sku,stage,elapsed_seconds,details
 2026-09-04 23:40:58.721,,SAVE_RESULT wait END,0.006,result=driver_timeout
 2026-09-04 23:40:58.722,,DRAIN LOGS save-result-driver_timeout START,,
 2026-09-04 23:40:58.723,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-09-11 20:15:18.666,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-09-11 20:15:18.667,,SAVE_RESULT current_url START,,
+2026-09-11 20:15:18.668,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-09-11 20:15:18.669,,SAVE_RESULT saved_by_url,,original_url=https://luxeoverhemden.nl/admin/catalog/product/new/; current_url=https://luxeoverhemden.nl/admin/catalog/product/edit/id/123/
+2026-09-11 20:15:18.670,,SAVE_RESULT wait END,0.003,result=saved
+2026-09-11 20:15:18.671,,DRAIN LOGS save-result-saved START,,
+2026-09-11 20:15:18.671,,DRAIN LOGS save-result-saved END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
+2026-09-11 20:15:18.672,,SAVE_RESULT wait START,,timeout=1; original_url=https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-09-11 20:15:18.673,,SAVE_RESULT current_url START,,
+2026-09-11 20:15:18.674,,SAVE_RESULT current_url END,0.000,https://luxeoverhemden.nl/admin/catalog/product/new/
+2026-09-11 20:15:18.674,,SAVE_RESULT error_messages START,,
+2026-09-11 20:15:18.675,,SAVE_RESULT error_messages ERROR,0.000,ReadTimeoutError: None: driver did not respond
+2026-09-11 20:15:18.676,,SAVE_RESULT driver_timeout,,
+2026-09-11 20:15:18.676,,SAVE_RESULT wait END,0.003,result=driver_timeout
+2026-09-11 20:15:18.677,,DRAIN LOGS save-result-driver_timeout START,,
+2026-09-11 20:15:18.677,,DRAIN LOGS save-result-driver_timeout END,0.000,browser_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'; performance_log_error=AttributeError: 'FakeDriver' object has no attribute 'get_log'
