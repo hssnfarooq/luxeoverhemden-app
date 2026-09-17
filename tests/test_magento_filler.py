@@ -378,6 +378,13 @@ class MagentoFillerTests(unittest.TestCase):
 
         self.assertEqual(size, "47")
 
+    def test_variant_size_does_not_confuse_price_with_a_different_labeled_size(self):
+        row_text = "Upload Image EUR 49.99 Enabled Maat: 34 Select"
+
+        size = MagentoFiller.variant_size_from_row_text(row_text, {"49"})
+
+        self.assertIsNone(size)
+
     def test_matching_variant_rows_excludes_unrelated_magento_tables(self):
         class FakeRow:
             def __init__(self, text):
@@ -594,6 +601,96 @@ class MagentoFillerTests(unittest.TestCase):
         )
 
         self.assertEqual(result, "driver_timeout")
+
+    def test_wait_for_product_save_result_detects_magento_report_page(self):
+        class Body:
+            text = (
+                "There has been an error processing your request\n"
+                "Error log record number: 316771151725"
+            )
+
+        class FakeDriver:
+            current_url = "https://luxeoverhemden.nl/admin/catalog/product/new/"
+
+            def find_elements(self, by, value):
+                return []
+
+            def find_element(self, by, value):
+                if by == By.TAG_NAME and value == "body":
+                    return Body()
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+        result = MagentoFiller.wait_for_product_save_result(
+            FakeDriver(),
+            "https://luxeoverhemden.nl/admin/catalog/product/new/",
+            timeout=1,
+            sku="226110920-705",
+        )
+
+        self.assertEqual(result, "error")
+
+    def test_save_product_raises_magento_report_number(self):
+        class FakeElement:
+            def is_displayed(self):
+                return True
+
+            def is_enabled(self):
+                return True
+
+        class FakeDriver:
+            current_url = "https://luxeoverhemden.nl/admin/catalog/product/new/"
+
+            def find_element(self, by, value):
+                if by == By.CSS_SELECTOR and value == "#save, button[data-ui-id='save-button']":
+                    return FakeElement()
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+            def execute_script(self, script, element=None):
+                return None
+
+        with patch.object(
+            MagentoFiller,
+            "wait_for_magento_admin_idle",
+            return_value=True,
+        ), patch.object(
+            MagentoFiller,
+            "wait_for_product_save_result",
+            return_value="error",
+        ), patch.object(
+            MagentoFiller,
+            "magento_error_page_details",
+            return_value="Magento server error page (report 316771151725)",
+        ):
+            with self.assertRaisesRegex(RuntimeError, "316771151725"):
+                MagentoFiller.save_product(FakeDriver(), sku="226110920-705")
+
+    def test_recover_product_form_after_failure_opens_clean_form_url(self):
+        class FakeDriver:
+            def __init__(self):
+                self.opened_urls = []
+
+            def get(self, url):
+                self.opened_urls.append(url)
+
+            def find_element(self, by, value):
+                if by == By.NAME and value == "product[name]":
+                    return object()
+                raise AssertionError(f"Unexpected locator: {by}={value}")
+
+            def execute_script(self, script):
+                return None
+
+        driver = FakeDriver()
+        form_url = "https://luxeoverhemden.nl/admin/catalog/product/new/key/abc/"
+
+        recovered = MagentoFiller.recover_product_form_after_failure(
+            driver,
+            form_url,
+            sku="226110920-705",
+        )
+
+        self.assertTrue(recovered)
+        self.assertEqual(driver.opened_urls, [form_url])
 
     def test_save_product_uses_primary_save_and_recovers_stuck_loader(self):
         class FakeElement:

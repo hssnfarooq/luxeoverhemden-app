@@ -317,7 +317,7 @@ Mouliné : Mouliné
 Popeline : Poplin
 Slub : Onregelmatigheid
 Struktur : Structuur
-Twill : Keperstof
+Twill : Twill
 Melange : Melange
 Stretch : Stretch
 Fil Coupé : Fil coupé

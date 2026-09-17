@@ -1,7 +1,7 @@
 ================================================================================
 PRODUCT UPLOAD DEBUG LOG
 ================================================================================
-Timestamp: 2026-08-19 15:10:49
+Timestamp: 2026-09-17 19:25:13
 CSV Path: C:\robot\Casamoda\products\venti_modern_fit.csv
 Supplier: casamoda_venti
 Test Mode: False
@@ -165,28 +165,36 @@ Number of fields to fill: 11
       SUCCESS: 'shirts' -> 'Overhemden'
       Maattabel selected without viewport click: 'Venti modern fit overhemden' (368)
 Updating variant prices for 001620-705: {'34': '49.99', '35': '49.99', '36': '49.99', '37': '49.99', '38': '49.99', '39': '49.99', '40': '49.99', '41': '49.99', '42': '49.99', '43': '49.99', '44': '49.99', '45': '49.99', '46': '49.99', '47': '59.99', '48': '59.99', '49': '59.99', '50': '59.99', '51': '59.99', '52': '59.99', '53': '59.99', '54': '59.99', '55': '59.99', '56': '59.99'}
-Could not find generated variant rows for expected sizes. Rows seen: 46. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
-ERROR: Product 001620-705 failed with exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+Changed variant grid page size from 20 to 30
+No price input for size 34; using inherited parent price.
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 49
+No price input for size 38; using inherited parent price.
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 49
+No price input for size 42; using inherited parent price.
+No price input for size 43; using inherited parent price.
+No price input for size 44; using inherited parent price.
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 47
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 49
+Could not find price input for size 53
+Could not update all variant prices. Rows seen: 49. Matched remaining sizes: ['35', '36', '37', '39', '40', '41', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56']. Still missing: []. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
+ERROR: Product 001620-705 failed with exception: Could not update variant prices for sizes: 35, 36, 37, 39, 40, 41, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
 Exception type: Exception
 Traceback:
 Traceback (most recent call last):
-  File "automations\magento.py", line 1843, in update_variant_prices
-    row_matches = WebDriverWait(driver, 60).until(
-        lambda current_driver: cls.ready_variant_row_matches(
-    ...<2 lines>...
-        )
-    )
-  File "selenium\webdriver\support\wait.py", line 121, in until
-selenium.common.exceptions.TimeoutException: Message: 
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "automations\magento.py", line 3000, in register_products
+  File "automations\magento.py", line 3219, in register_products
     cls.register_product(driver, product)
     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2691, in register_product
+  File "automations\magento.py", line 2910, in register_product
     cls.timed_save_call(
     ~~~~~~~~~~~~~~~~~~~^
         "REGISTER_PRODUCT fill_form",
@@ -199,17 +207,17 @@ Traceback (most recent call last):
     ^
   File "automations\magento.py", line 431, in timed_save_call
     result = callback()
-  File "automations\magento.py", line 2693, in <lambda>
+  File "automations\magento.py", line 2912, in <lambda>
     lambda: cls.fill_form(driver, product),
             ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2609, in fill_form
+  File "automations\magento.py", line 2828, in fill_form
     cls.update_variant_prices(driver, product)
     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1863, in update_variant_prices
+  File "automations\magento.py", line 1906, in update_variant_prices
     raise Exception(
     ...<2 lines>...
-    ) from ex
-Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+    )
+Exception: Could not update variant prices for sizes: 35, 36, 37, 39, 40, 41, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
 
 
 ============================================================
@@ -367,28 +375,36 @@ Number of fields to fill: 11
       SUCCESS: 'shirts' -> 'Overhemden'
       Maattabel selected without viewport click: 'Venti modern fit overhemden extra lange mouwen 69 cm' (400)
 Updating variant prices for 001489-115: {'34': '64.99', '35': '64.99', '36': '64.99', '37': '64.99', '38': '64.99', '39': '64.99', '40': '64.99', '41': '64.99', '42': '64.99', '43': '64.99', '44': '64.99', '45': '64.99', '46': '64.99', '47': '74.99', '48': '74.99', '49': '79.99', '50': '79.99', '51': '79.99', '52': '79.99', '53': '79.99', '54': '79.99', '55': '79.99', '56': '79.99'}
-Could not find generated variant rows for expected sizes. Rows seen: 46. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
-ERROR: Product 001489-115 failed with exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+Changed variant grid page size from 20 to 30
+No price input for size 34; using inherited parent price.
+No price input for size 35; using inherited parent price.
+No price input for size 36; using inherited parent price.
+No price input for size 37; using inherited parent price.
+No price input for size 38; using inherited parent price.
+No price input for size 39; using inherited parent price.
+No price input for size 40; using inherited parent price.
+No price input for size 41; using inherited parent price.
+No price input for size 42; using inherited parent price.
+No price input for size 43; using inherited parent price.
+No price input for size 44; using inherited parent price.
+No price input for size 45; using inherited parent price.
+No price input for size 46; using inherited parent price.
+Could not find price input for size 47
+Could not find price input for size 48
+Could not find price input for size 49
+Could not find price input for size 50
+Could not find price input for size 51
+Could not find price input for size 52
+Could not find price input for size 53
+Could not update all variant prices. Rows seen: 49. Matched remaining sizes: ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56']. Still missing: []. Snapshots: ['Upload Image € Enabled Maat: 34 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 34 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 35 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 35 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 36 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 36 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 37 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 37 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 38 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 38 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 39 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 39 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 40 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 40 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 41 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 41 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 42 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 42 \tSelect\t                                                                                                                                                                                                               ', 'Upload Image € Enabled Maat: 43 Select Upload Image \t \t \t € \t \t Enabled \t \t Maat: 43 \tSelect\t                                                                                                                                                                                                               ']
+ERROR: Product 001489-115 failed with exception: Could not update variant prices for sizes: 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
 Exception type: Exception
 Traceback:
 Traceback (most recent call last):
-  File "automations\magento.py", line 1843, in update_variant_prices
-    row_matches = WebDriverWait(driver, 60).until(
-        lambda current_driver: cls.ready_variant_row_matches(
-    ...<2 lines>...
-        )
-    )
-  File "selenium\webdriver\support\wait.py", line 121, in until
-selenium.common.exceptions.TimeoutException: Message: 
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "automations\magento.py", line 3000, in register_products
+  File "automations\magento.py", line 3219, in register_products
     cls.register_product(driver, product)
     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2691, in register_product
+  File "automations\magento.py", line 2910, in register_product
     cls.timed_save_call(
     ~~~~~~~~~~~~~~~~~~~^
         "REGISTER_PRODUCT fill_form",
@@ -401,375 +417,18 @@ Traceback (most recent call last):
     ^
   File "automations\magento.py", line 431, in timed_save_call
     result = callback()
-  File "automations\magento.py", line 2693, in <lambda>
+  File "automations\magento.py", line 2912, in <lambda>
     lambda: cls.fill_form(driver, product),
             ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 2609, in fill_form
+  File "automations\magento.py", line 2828, in fill_form
     cls.update_variant_prices(driver, product)
     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "automations\magento.py", line 1863, in update_variant_prices
+  File "automations\magento.py", line 1906, in update_variant_prices
     raise Exception(
     ...<2 lines>...
-    ) from ex
-Exception: Could not find generated variant rows for sizes: 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
+    )
+Exception: Could not update variant prices for sizes: 47, 48, 49, 50, 51, 52, 53, 54, 55, 56
 
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
-      get_mapped_key called: 'Kent-Kragen'
-      Looking for key.lower(): 'kent-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Kent'
-      SUCCESS: 'Kent-Kragen' -> 'Kent'
-      get_mapped_key called: 'Langarm'
-      Looking for key.lower(): 'langarm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Lange mouw (normaal)'
-      SUCCESS: 'Langarm' -> 'Lange mouw (normaal)'
-      get_mapped_key called: 'Extra lang 72cm'
-      Looking for key.lower(): 'extra lang 72cm'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Extra lange mouw 72 cm'
-      SUCCESS: 'Extra lang 72cm' -> 'Extra lange mouw 72 cm'
-      get_mapped_key called: 'Kläppchen-Kragen'
-      Looking for key.lower(): 'kläppchen-kragen'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Wing Collar'
-      SUCCESS: 'Kläppchen-Kragen' -> 'Wing Collar'
-      get_mapped_key called: 't-shirts'
-      Looking for key.lower(): 't-shirts'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Ondershirts'
-      SUCCESS: 't-shirts' -> 'Ondershirts'
-      get_mapped_key called: 'V-Ausschnitt'
-      Looking for key.lower(): 'v-ausschnitt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'V-hals'
-      SUCCESS: 'V-Ausschnitt' -> 'V-hals'
-      get_mapped_key called: 'gestrickt / gewirkt'
-      Looking for key.lower(): 'gestrickt / gewirkt'
-      Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...
-      Translation result: 'Knitted'
-      SUCCESS: 'gestrickt / gewirkt' -> 'Knitted'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Modern Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Modern fit'
-    format_key result: 'Modern fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Body Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Body fit'
-    format_key result: 'Body slim fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Comfort Fit', category='shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Comfort fit'
-    format_key result: 'Comfort fit'
-    format_key called: field='name:product[model]=option:data-title;capitalize', key='Basic Circular Knit', category='t-shirts'
-    Applying formatting: 'capitalize'
-    After capitalize: 'Basic circular knit'
-    format_key result: 'Modern fit'
       get_mapped_key called: 'Kent-Kragen'
       Looking for key.lower(): 'kent-kragen'
       Available keys: ['profuomo', 'solid', 'graphic', 'flower', 'stripe', 'check', 'herringbone', 'twotone', 'fauxuni', 'paisley']...

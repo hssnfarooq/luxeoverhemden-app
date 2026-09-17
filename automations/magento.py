@@ -2211,8 +2211,9 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             return None
 
         size_match = re.search(r"\bMaat\s*:?\s*([A-Za-z0-9./-]+)", text, re.IGNORECASE)
-        if size_match and size_match.group(1).strip() in expected_sizes:
-            return size_match.group(1).strip()
+        if size_match:
+            labeled_size = size_match.group(1).strip()
+            return labeled_size if labeled_size in expected_sizes else None
 
         for candidate in sorted(expected_sizes, key=len, reverse=True):
             if re.search(rf"(?<!\d){re.escape(candidate)}(?!\d)", text):
@@ -2536,6 +2537,14 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                 if error_messages:
                     cls.log_save_diag("SAVE_RESULT error_message_found", sku=sku)
                     return "error"
+                fatal_error = cls.magento_error_page_details(current_driver)
+                if fatal_error:
+                    cls.log_save_diag(
+                        "SAVE_RESULT fatal_error_page_found",
+                        sku=sku,
+                        details=fatal_error,
+                    )
+                    return "error"
                 success_messages = cls.timed_save_call(
                     "SAVE_RESULT success_messages",
                     lambda: current_driver.find_elements(
@@ -2582,6 +2591,25 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         cls.drain_save_logs(driver, sku=sku, stage=f"save-result-{result}")
         return result
 
+    @staticmethod
+    def magento_error_page_details(driver: webdriver.Chrome) -> str | None:
+        try:
+            body_text = driver.find_element(By.TAG_NAME, "body").text
+        except Exception:
+            return None
+
+        if "there has been an error processing your request" not in body_text.lower():
+            return None
+
+        report_match = re.search(
+            r"Error log record number\s*:\s*([A-Za-z0-9-]+)",
+            body_text,
+            re.IGNORECASE,
+        )
+        if report_match:
+            return f"Magento server error page (report {report_match.group(1)})"
+        return "Magento server error page (no report number shown)"
+
     @classmethod
     def recover_after_product_save_timeout(
         cls,
@@ -2602,6 +2630,44 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             ),
             sku=sku,
         )
+
+    @classmethod
+    def recover_product_form_after_failure(
+        cls,
+        driver: webdriver.Chrome,
+        form_url: str,
+        *,
+        sku: object = "",
+    ) -> bool:
+        cls.log_save_diag(
+            "PRODUCT_FAILURE_RECOVERY START",
+            sku=sku,
+            details=f"form_url={form_url}",
+        )
+        try:
+            cls.timed_save_call(
+                "PRODUCT_FAILURE_RECOVERY open clean form",
+                lambda: driver.get(form_url),
+                sku=sku,
+            )
+            cls.timed_save_call(
+                "PRODUCT_FAILURE_RECOVERY wait product form",
+                lambda: WebDriverWait(driver, 60).until(
+                    EC.presence_of_element_located((By.NAME, "product[name]"))
+                ),
+                sku=sku,
+            )
+            driver.execute_script("window.scrollTo(0, 0);")
+        except Exception as exc:
+            cls.log_save_diag(
+                "PRODUCT_FAILURE_RECOVERY ERROR",
+                sku=sku,
+                details=f"{type(exc).__name__}: {exc}",
+            )
+            return False
+
+        cls.log_save_diag("PRODUCT_FAILURE_RECOVERY END", sku=sku)
+        return True
 
     @classmethod
     def get_mapped_key(cls, key: str) -> str:
@@ -2875,6 +2941,9 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             original_url,
             sku=sku,
         )
+        if save_result == "error":
+            details = cls.magento_error_page_details(driver)
+            raise RuntimeError(details or "Magento reported an error while saving the product")
         if save_result == "driver_timeout":
             cls.recover_after_product_save_timeout(driver, sku=sku)
             cls.log_save_diag(
@@ -2924,24 +2993,15 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
         cls.log_save_diag("REGISTER_PRODUCT post-save sleep END", sku=sku, elapsed=10.0)
 
         wait_started = time.monotonic()
-        while True:
-            try:
-                cls.log_save_diag("REGISTER_PRODUCT wait product name poll START", sku=sku)
-                WebDriverWait(driver, 10).until(
-                    EC.presence_of_element_located((By.NAME, "product[name]"))
-                )
-                cls.log_save_diag(
-                    "REGISTER_PRODUCT wait product name END",
-                    sku=sku,
-                    elapsed=time.monotonic() - wait_started,
-                )
-                break
-            except Exception as exc:
-                cls.log_save_diag(
-                    "REGISTER_PRODUCT wait product name poll ERROR",
-                    sku=sku,
-                    details=f"{type(exc).__name__}: {exc}",
-                )
+        cls.log_save_diag("REGISTER_PRODUCT wait product name START", sku=sku)
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.NAME, "product[name]"))
+        )
+        cls.log_save_diag(
+            "REGISTER_PRODUCT wait product name END",
+            sku=sku,
+            elapsed=time.monotonic() - wait_started,
+        )
         try:
             driver.find_element(
                 By.CSS_SELECTOR, "[data-ui-id='messages-message-error']"
@@ -3175,6 +3235,7 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
             products = cls.check_existing(driver, products, done_path)
 
             cls.go_to_form(driver)
+            product_form_url = driver.current_url
 
             processed_count = 0
             success_count = 0
@@ -3249,12 +3310,23 @@ en pas de juiste punctuatie toe, zorg er ook voor dat de hoofdletters correct zi
                         f.write(f"Exception type: {type(e).__name__}\n")
                         import traceback
                         f.write(f"Traceback:\n{traceback.format_exc()}\n")
-                    driver.refresh()
-                    cls.random_wait()
-                    driver.execute_script("window.scrollTo(0, 0);")
                     with failed_path.open("a", encoding="utf-8") as f:
                         f.write(product["sku"] + "\n")
                     failed_count += 1
+                    recovered = cls.recover_product_form_after_failure(
+                        driver,
+                        product_form_url,
+                        sku=sku,
+                    )
+                    if not recovered:
+                        data["error"] = (
+                            f"Upload stopped after {sku} failed because Magento's "
+                            "new-product form could not be reopened. Remaining products "
+                            "were not marked as failed."
+                        )
+                        with debug_log_path.open("a", encoding="utf-8") as f:
+                            f.write(f"STOPPED: {data['error']}\n")
+                        break
                     continue
 
             data["message"] = (
